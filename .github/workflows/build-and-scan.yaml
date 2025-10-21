@@ -1,22 +1,26 @@
-name: Build, Push & Scan (GHCR)
+name: Build, Push & Scan (GHCR, JSON only)
 
 on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: "0 8 * * 1"    # jeden Montag 08:00 UTC
+    - cron: "0 0 * * 0"   # jeden Sonntag 00:00 UTC
   workflow_dispatch:
 
 jobs:
-  docker:
+  build-and-scan:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-      security-events: write
+      issues: write
     env:
       REGISTRY: ghcr.io
-      IMAGE_NAME: ${{ github.repository }}-postgres-secured  # kann Großbuchstaben enthalten
+      OWNER: konrading
+      REPO: sem5-pw-cis
+      IMAGE_POSTGRES_NAME: postgres-secured
+      IMAGE_FULL: ghcr.io/konrading/sem5-pw-cis-postgres-secured
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,59 +34,74 @@ jobs:
       - name: Login GHCR
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+          registry: ghcr.io
+          username: ${{ env.OWNER }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # 👇 einmal lowercase bauen und als Output bereitstellen
-      - name: Compute lowercase image name
-        id: img
-        run: |
-          echo "name_lc=${{ env.REGISTRY }}/$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-          echo "ref_latest=${{ env.REGISTRY }}/$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]'):latest" >> $GITHUB_OUTPUT
-
-      - name: Docker meta
-        id: meta
+      - name: Docker meta (postgres-secured)
+        id: meta_pg
         uses: docker/metadata-action@v5
         with:
-          images: ${{ steps.img.outputs.name_lc }}
+          images: ${{ env.IMAGE_FULL }}
           tags: |
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=stable,enable={{is_default_branch}}
             type=raw,value={{date 'YYYYMMDD'}}
             type=sha
 
-      - name: Build & Push
-        id: build
+      - name: Build & Push postgres-secured
         uses: docker/build-push-action@v6
         with:
-          context: images/postgres
+          context: images/postgres   # <--- dein Dockerfile liegt hier
           push: true
           platforms: linux/amd64
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta_pg.outputs.tags }}
+          labels: ${{ steps.meta_pg.outputs.labels }}
 
-      # Trivy Image Scan -> SARIF + JSON Artifact
-      - name: Trivy scan (image)
-        uses: aquasecurity/trivy-action@0.28.0
-        with:
-          image-ref: ${{ steps.img.outputs.ref_latest }}   # <-- lowercase :latest
-          format: sarif
-          output: trivy-image.sarif
-          severity: HIGH,CRITICAL
-          ignore-unfixed: true
-
-      - name: Upload SARIF to Code Scanning
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: trivy-image.sarif
+      # ---- Trivy nur JSON ----
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.1
 
       - name: Trivy JSON (artifact)
         run: |
-          trivy image --ignore-unfixed --severity HIGH,CRITICAL \
-            --format json --output trivy-image.json \
-            "${{ steps.img.outputs.ref_latest }}"
+          trivy image --ignore-unfixed \
+            --severity MEDIUM,HIGH,CRITICAL \
+            --format json \
+            --output trivy-image.json \
+            ${{ env.IMAGE_FULL }}:stable
+
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
           name: trivy-image.json
           path: trivy-image.json
+          retention-days: 30
+
+      # Fail & Issue bei MEDIUM/HIGH/CRITICAL
+      - name: Trivy gate (fail on MEDIUM+)
+        id: gate
+        continue-on-error: true
+        run: |
+          trivy image --quiet --exit-code 1 \
+            --severity MEDIUM,HIGH,CRITICAL \
+            ${{ env.IMAGE_FULL }}:stable
+
+      - name: Open alert issue for repo members
+        if: steps.gate.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `Security alerts on image: postgres-secured`;
+            const body = `
+            **Trivy** hat mindestens \`MEDIUM\`-Schwere gefunden.
+            - Image: \`${process.env.IMAGE_FULL}:stable\`
+            - Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
+
+            JSON-Bericht liegt als Build-Artifact **trivy-image.json** vor.`;
+            await github.rest.issues.create({
+              owner: "${process.env.OWNER}",
+              repo: "${process.env.REPO}",
+              title,
+              body,
+              labels: ['security','trivy']
+            });
+            core.setFailed('Security findings present (MEDIUM/HIGH/CRITICAL).');
