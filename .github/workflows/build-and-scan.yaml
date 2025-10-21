@@ -1,0 +1,93 @@
+name: Build and Scan (Docker + Trivy)
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  schedule:
+    # Montags 03:00 UTC
+    - cron: "0 3 * * 1"
+
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image:
+          # >>> Hier weitere Images eintragen (name/context/dockerfile anpassen)
+          - name: postgres-hardened
+            context: .
+            dockerfile: Dockerfile
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta (tags & labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.image.name }}
+          tags: |
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build & Push image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.image.context }}
+          file: ${{ matrix.image.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      # Einen "primären" Tag wählen (erster Tag aus der Liste), den Trivy scannt
+      - name: Pick primary tag
+        id: pick
+        run: |
+          echo "PRIMARY_TAG=$(echo '${{ steps.meta.outputs.tags }}' | tr ' ' '\n' | head -n1)" >> "$GITHUB_OUTPUT"
+
+      - name: Trivy scan (JSON)
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: ${{ steps.pick.outputs.PRIMARY_TAG }}
+          format: 'json'
+          output: trivy-${{ matrix.image.name }}.json
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
+          exit-code: '0'  # Build nicht brechen – Befunde werden als Report geliefert
+
+      - name: Upload JSON artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-${{ matrix.image.name }}.json
+          path: trivy-${{ matrix.image.name }}.json
+          retention-days: 30
+
+      # Optional: SARIF in "Security → Code scanning alerts"
+      - name: Trivy scan (SARIF)
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: ${{ steps.pick.outputs.PRIMARY_TAG }}
+          format: 'sarif'
+          output: trivy-${{ matrix.image.name }}.sarif
+          vuln-type: 'os,library'
+          exit-code: '0'
+
+      - name: Upload SARIF to code scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-${{ matrix.image.name }}.sarif
