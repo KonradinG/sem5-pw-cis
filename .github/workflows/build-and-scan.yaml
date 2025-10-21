@@ -1,93 +1,80 @@
-name: Build and Scan (Docker + Trivy)
+name: Build, Push & Scan (GHCR)
 
 on:
   push:
-    branches: ["**"]
-  pull_request:
+    branches: [ "main" ]
   schedule:
-    # Montags 03:00 UTC
-    - cron: "0 3 * * 1"
-
-permissions:
-  contents: read
-  packages: write
-  security-events: write
+    - cron: "0 8 * * 1"  # jeden Montag 08:00 UTC
+  workflow_dispatch:
 
 jobs:
-  build-and-scan:
+  docker:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        image:
-          # >>> Hier weitere Images eintragen (name/context/dockerfile anpassen)
-          - name: postgres-hardened
-            context: .
-            dockerfile: Dockerfile
-
+    permissions:
+      contents: read
+      packages: write
+      security-events: write   # für SARIF Upload
+    env:
+      IMAGE_NAME: ${{ github.repository }}-postgres-secured
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Log in to GHCR
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker meta (tags & labels)
+      # Automatische Tag-Generierung: latest auf main + Datums-Tag + SHA
+      - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ matrix.image.name }}
+          images: ghcr.io/${{ env.IMAGE_NAME }}
           tags: |
-            type=sha
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value={{date 'YYYYMMDD'}}
+            type=sha
 
-      - name: Build & Push image
+      - name: Build & Push
         uses: docker/build-push-action@v6
         with:
-          context: ${{ matrix.image.context }}
-          file: ${{ matrix.image.dockerfile }}
+          context: .
           push: true
+          platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      # Einen "primären" Tag wählen (erster Tag aus der Liste), den Trivy scannt
-      - name: Pick primary tag
-        id: pick
-        run: |
-          echo "PRIMARY_TAG=$(echo '${{ steps.meta.outputs.tags }}' | tr ' ' '\n' | head -n1)" >> "$GITHUB_OUTPUT"
-
-      - name: Trivy scan (JSON)
-        uses: aquasecurity/trivy-action@0.24.0
+      # Trivy Image Scan -> SARIF + JSON Artifact
+      - name: Trivy scan (image)
+        uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ${{ steps.pick.outputs.PRIMARY_TAG }}
-          format: 'json'
-          output: trivy-${{ matrix.image.name }}.json
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
-          exit-code: '0'  # Build nicht brechen – Befunde werden als Report geliefert
+          image-ref: ghcr.io/${{ env.IMAGE_NAME }}:latest
+          format: sarif
+          output: trivy-image.sarif
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
 
+      - name: Upload SARIF to Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-image.sarif
+
+      - name: Trivy JSON (artifact)
+        run: |
+          trivy image --ignore-unfixed --severity HIGH,CRITICAL \
+            --format json --output trivy-image.json \
+            ghcr.io/${{ env.IMAGE_NAME }}:latest
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-${{ matrix.image.name }}.json
-          path: trivy-${{ matrix.image.name }}.json
-          retention-days: 30
-
-      # Optional: SARIF in "Security → Code scanning alerts"
-      - name: Trivy scan (SARIF)
-        uses: aquasecurity/trivy-action@0.24.0
-        with:
-          image-ref: ${{ steps.pick.outputs.PRIMARY_TAG }}
-          format: 'sarif'
-          output: trivy-${{ matrix.image.name }}.sarif
-          vuln-type: 'os,library'
-          exit-code: '0'
-
-      - name: Upload SARIF to code scanning
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: trivy-${{ matrix.image.name }}.sarif
+          name: trivy-image.json
+          path: trivy-image.json
