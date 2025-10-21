@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   schedule:
-    - cron: "0 8 * * 1"  # jeden Montag 08:00 UTC
+    - cron: "0 8 * * 1"    # jeden Montag 08:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -13,9 +13,11 @@ jobs:
     permissions:
       contents: read
       packages: write
-      security-events: write   # für SARIF Upload
+      security-events: write
     env:
       IMAGE_NAME: ${{ github.repository }}-postgres-secured
+      CONTEXT_DIR: images/postgres
+      DOCKERFILE: images/postgres/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,7 +35,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Automatische Tag-Generierung: latest auf main + Datums-Tag + SHA
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -47,13 +48,13 @@ jobs:
       - name: Build & Push
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ env.CONTEXT_DIR }}
+          file: ${{ env.DOCKERFILE }}
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      # Trivy Image Scan -> SARIF + JSON Artifact
       - name: Trivy scan (image)
         uses: aquasecurity/trivy-action@0.28.0
         with:
