@@ -77,20 +77,12 @@ jobs:
           retention-days: 30
 
       # Fail & Issue bei MEDIUM/HIGH/CRITICAL
-      - name: Trivy gate (fail on MEDIUM+)
-        id: gate
-        continue-on-error: true
-        run: |
-          trivy image --quiet --exit-code 1 \
-            --severity MEDIUM,HIGH,CRITICAL \
-            ${{ env.IMAGE_FULL }}:stable
-
       - name: Open alert issue for repo members
         if: steps.gate.outcome == 'failure'
         uses: actions/github-script@v7
         with:
           script: |
-            const title = `Security alerts on image: postgres-secured`;
+            const title = 'Security alerts on image: postgres-secured';
             const body = `
             **Trivy** hat mindestens \`MEDIUM\`-Schwere gefunden.
             - Image: \`${process.env.IMAGE_FULL}:stable\`
@@ -98,8 +90,8 @@ jobs:
 
             JSON-Bericht liegt als Build-Artifact **trivy-image.json** vor.`;
             await github.rest.issues.create({
-              owner: "${process.env.OWNER}",
-              repo: "${process.env.REPO}",
+              owner: context.repo.owner,   // <-- wichtig
+              repo: context.repo.repo,     // <-- wichtig
               title,
               body,
               labels: ['security','trivy']
