@@ -2,7 +2,7 @@ FROM postgres:latest
 
 LABEL org.opencontainers.image.title="postgres-hardened"
 LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
-LABEL org.opencontainers.image.source="https://github.com/KonradinG/sem5-pw-cis"
+LABEL org.opencontainers.image.source="https://github.com/konrading/sem5-pw-cis"
 LABEL org.opencontainers.image.licenses="PostgreSQL"
 
 ENV DEBIAN_FRONTEND=noninteractive
