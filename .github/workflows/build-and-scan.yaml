@@ -64,7 +64,7 @@ jobs:
       - name: Trivy JSON (artifact)
         run: |
           trivy image --ignore-unfixed \
-            --severity MEDIUM,HIGH,CRITICAL \
+            --severity LOW,MEDIUM,HIGH,CRITICAL \
             --format json \
             --output trivy-image.json \
             ${{ env.IMAGE_FULL }}:stable
