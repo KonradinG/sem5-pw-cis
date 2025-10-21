@@ -1,0 +1,30 @@
+# Dockerfile
+FROM postgres:latest
+
+LABEL org.opencontainers.image.title="postgres-hardened"
+LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
+LABEL org.opencontainers.image.source="https://github.com/DEIN_USER/DEIN_REPO"
+LABEL org.opencontainers.image.licenses="PostgreSQL"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN set -eux; \
+    apt-get update; \
+    # 1) sicherheitsrelevante Updates (best effort)
+    apt-get install -y --only-upgrade \
+        openssl \
+        libssl3t64 \
+        openssl-provider-legacy \
+        || true; \
+    # 2) XSLT-Stack entfernen, wenn vorhanden (nicht kritisch für Postgres)
+    apt-get purge -y \
+        libxslt1.1 \
+        xsltproc \
+        libxml2-utils \
+        || true; \
+    # 3) Aufräumen
+    apt-get autoremove -y; \
+    rm -rf /var/lib/apt/lists/*; \
+    # 4) kurze Sichtprüfung
+    dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true; \
+    ! dpkg -s libxslt1.1 >/dev/null 2>&1 || (echo "WARN: libxslt1.1 noch installiert" && exit 1)
