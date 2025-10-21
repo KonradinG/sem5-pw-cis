@@ -15,9 +15,8 @@ jobs:
       packages: write
       security-events: write
     env:
-      IMAGE_NAME: ${{ github.repository }}-postgres-secured
-      CONTEXT_DIR: images/postgres
-      DOCKERFILE: images/postgres/Dockerfile
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}-postgres-secured  # kann Großbuchstaben enthalten
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,34 +30,42 @@ jobs:
       - name: Login GHCR
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 👇 einmal lowercase bauen und als Output bereitstellen
+      - name: Compute lowercase image name
+        id: img
+        run: |
+          echo "name_lc=${{ env.REGISTRY }}/$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+          echo "ref_latest=${{ env.REGISTRY }}/$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]'):latest" >> $GITHUB_OUTPUT
 
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ env.IMAGE_NAME }}
+          images: ${{ steps.img.outputs.name_lc }}
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=raw,value={{date 'YYYYMMDD'}}
             type=sha
 
       - name: Build & Push
+        id: build
         uses: docker/build-push-action@v6
         with:
-          context: ${{ env.CONTEXT_DIR }}
-          file: ${{ env.DOCKERFILE }}
+          context: images/postgres
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+      # Trivy Image Scan -> SARIF + JSON Artifact
       - name: Trivy scan (image)
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: ghcr.io/${{ env.IMAGE_NAME }}:latest
+          image-ref: ${{ steps.img.outputs.ref_latest }}   # <-- lowercase :latest
           format: sarif
           output: trivy-image.sarif
           severity: HIGH,CRITICAL
@@ -73,7 +80,7 @@ jobs:
         run: |
           trivy image --ignore-unfixed --severity HIGH,CRITICAL \
             --format json --output trivy-image.json \
-            ghcr.io/${{ env.IMAGE_NAME }}:latest
+            "${{ steps.img.outputs.ref_latest }}"
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
