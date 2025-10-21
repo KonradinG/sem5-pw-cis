@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.source="https://github.com/KonradinG/sem5-pw-cis"
 LABEL org.opencontainers.image.licenses="PostgreSQL"
 
 ENV DEBIAN_FRONTEND=noninteractive
-
+#Test
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --only-upgrade \
