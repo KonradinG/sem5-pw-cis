@@ -1,4 +1,4 @@
-name: Build, Push & Trivy Scan (postgres-18 JSON)
+name: Build, Push & Trivy Scan (Multi-Image JSON)
 
 on:
   push:
@@ -14,12 +14,34 @@ jobs:
       contents: read
       packages: write          # Push zu GHCR
       issues: write            # Issue anlegen bei MEDIUM+
+      
+    strategy:
+      matrix:
+        include:
+          # --- 1. Postgres Image ---
+          - image_name: sem5-pw-cis-postgres-secured
+            image_tag: postgres-18
+            docker_context: images/postgres
+            docker_file: images/postgres/Dockerfile
+
+          # --- 2. MySQL 8.0 Image ---
+          - image_name: sem5-pw-cis-mysql-secured
+            image_tag: "8.0"
+            docker_context: images/mysql
+            docker_file: images/mysql/Dockerfile
+            
+          # --- 3. PHP 8.1-apache Image ---
+          - image_name: sem5-pw-cis-php-apache-secured
+            image_tag: 8.1-apache
+            docker_context: images/php-apache
+            docker_file: images/php-apache/Dockerfile
+
     env:
       REGISTRY: ghcr.io
       IMAGE_NS: konrading
-      IMAGE_REPO: sem5-pw-cis-postgres-secured
-      IMAGE_FULL: ghcr.io/konrading/sem5-pw-cis-postgres-secured
-      IMAGE_TAG: postgres-18
+      IMAGE_REPO: ${{ matrix.image_name }}
+      IMAGE_TAG: ${{ matrix.image_tag }}
+      IMAGE_FULL: ghcr.io/${{ env.IMAGE_NS }}/${{ matrix.image_name }}
 
     steps:
       - name: Checkout
@@ -47,14 +69,13 @@ jobs:
             type=raw,value=${{ env.IMAGE_TAG }}
             type=raw,value={{date 'YYYYMMDD'}}-${{ env.IMAGE_TAG }}
             type=sha
-
-      # HIER ggf. Pfad anpassen, falls dein Dockerfile woanders liegt
-      - name: Build & Push image
+          
+      - name: Build & Push image ${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
         id: build
         uses: docker/build-push-action@v6
         with:
-          context: images/postgres
-          file: images/postgres/Dockerfile
+          context: ${{ matrix.docker_context }}
+          file: ${{ matrix.docker_file }}
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
@@ -63,23 +84,22 @@ jobs:
       - name: Install Trivy
         uses: aquasecurity/setup-trivy@v0.2.1
 
-      # Scan per Digest -> stabil, kein Tag-Drift
       - name: Trivy JSON (scan by digest)
         run: |
           set -eux
           DIGEST="${{ steps.build.outputs.digest }}"
           trivy image --scanners vuln \
-            --format json --output trivy-image.json \
+            --format json --output trivy-image-${{ env.IMAGE_REPO }}.json \
             "${IMAGE_FULL}@${DIGEST}"
           jq '[.Results[]?.Vulnerabilities? | .[]?] 
               | group_by(.Severity) 
-              | map({severity: .[0].Severity, count: length})' trivy-image.json || true
-
+              | map({severity: .[0].Severity, count: length})' trivy-image-${{ env.IMAGE_REPO }}.json || true
+              
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-image.json
-          path: trivy-image.json
+          name: trivy-image-${{ env.IMAGE_REPO }}.json
+          path: trivy-image-${{ env.IMAGE_REPO }}.json
 
       # Build schlägt bei MEDIUM+ fehl
       - name: Trivy gate (fail on MEDIUM+)
@@ -92,7 +112,7 @@ jobs:
             --exit-code 1 \
             --severity MEDIUM,HIGH,CRITICAL \
             "${IMAGE_FULL}@${DIGEST}"
-
+            
       - name: Open alert issue (MEDIUM+)
         if: steps.gate.outcome == 'failure'
         uses: actions/github-script@v7
@@ -100,22 +120,22 @@ jobs:
           DIGEST: ${{ steps.build.outputs.digest }}
           IMAGE_FULL: ${{ env.IMAGE_FULL }}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          IMAGE_REPO: ${{ env.IMAGE_REPO }} 
         with:
           script: |
             const digest = process.env.DIGEST;
             const imageFull = process.env.IMAGE_FULL;
             const imageTag = process.env.IMAGE_TAG;
-
-            const title = `Security alerts on image: ${imageTag}`;
+            const imageRepo = process.env.IMAGE_REPO;
+            const title = `Security alerts on image: ${imageTag} (${imageFull})`;
             const body = [
-              '**Trivy** hat mindestens `MEDIUM`-Schwere gefunden.',
+              '**Trivy** hat mindestens MEDIUM-Schwere gefunden.',
               `- Image: \`${imageFull}:${imageTag}\``,
               `- Digest: \`${digest}\``,
               `- Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               '',
-              'Den vollständigen JSON-Bericht findet ihr im Build-Artifact **trivy-image.json**.'
+              `Den vollständigen JSON-Bericht findet ihr im Build-Artifact **trivy-image-${imageRepo}.json**.`
             ].join('\n');
-
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -123,5 +143,4 @@ jobs:
               body,
               labels: ['security','trivy']
             });
-
             core.setFailed('Security findings present (MEDIUM/HIGH/CRITICAL).');
