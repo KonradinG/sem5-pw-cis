@@ -15,6 +15,7 @@ jobs:
       packages: write          # Push zu GHCR
       issues: write            # Issue anlegen bei MEDIUM+
       
+    # 🌟 Matrix-Definition für Multi-Image-Builds 🌟
     strategy:
       matrix:
         include:
@@ -24,25 +25,19 @@ jobs:
             docker_context: images/postgres
             docker_file: images/postgres/Dockerfile
 
-          # --- 2. MySQL 8.0 Image ---
-          - image_name: sem5-pw-cis-mysql-secured
-            image_tag: "8.0"
-            docker_context: images/mysql
-            docker_file: images/mysql/Dockerfile
-            
-          # --- 3. PHP 8.1-apache Image ---
-          - image_name: sem5-pw-cis-php-apache-secured
-            image_tag: 8.1-apache
-            docker_context: images/php-apache
-            docker_file: images/php-apache/Dockerfile
+          # --- 2. PHP/MySQL Image (angenommen: liegt unter images/php-mysql) ---
+          - image_name: sem5-pw-cis-php-mysql-secured # Neuer logischer Repository-Name
+            image_tag: 8.1-apache-mysql
+            docker_context: images/php-mysql
+            docker_file: images/php-mysql/Dockerfile
 
-    # ⚙️ Korrigierte ENV-Variablen
+    # ⚙️ Dynamische ENV-Variablen
     env:
       REGISTRY: ghcr.io
       IMAGE_NS: konrading
       IMAGE_REPO: ${{ matrix.image_name }}
       IMAGE_TAG: ${{ matrix.image_tag }}
-      # KORREKTUR: Direkte Nutzung des Namespaces 'konrading'
+      # Korrektur des ursprünglichen Fehlers: Direkte Nutzung des Namespaces
       IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
 
     steps:
