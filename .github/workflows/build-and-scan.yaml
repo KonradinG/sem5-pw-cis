@@ -36,12 +36,14 @@ jobs:
             docker_context: images/php-apache
             docker_file: images/php-apache/Dockerfile
 
+    # ⚙️ Korrigierte ENV-Variablen
     env:
       REGISTRY: ghcr.io
       IMAGE_NS: konrading
       IMAGE_REPO: ${{ matrix.image_name }}
       IMAGE_TAG: ${{ matrix.image_tag }}
-      IMAGE_FULL: ghcr.io/${{ env.IMAGE_NS }}/${{ matrix.image_name }}
+      # KORREKTUR: Direkte Nutzung des Namespaces 'konrading'
+      IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
 
     steps:
       - name: Checkout
@@ -69,7 +71,7 @@ jobs:
             type=raw,value=${{ env.IMAGE_TAG }}
             type=raw,value={{date 'YYYYMMDD'}}-${{ env.IMAGE_TAG }}
             type=sha
-          
+
       - name: Build & Push image ${{ env.IMAGE_REPO }}:${{ env.IMAGE_TAG }}
         id: build
         uses: docker/build-push-action@v6
@@ -94,7 +96,7 @@ jobs:
           jq '[.Results[]?.Vulnerabilities? | .[]?] 
               | group_by(.Severity) 
               | map({severity: .[0].Severity, count: length})' trivy-image-${{ env.IMAGE_REPO }}.json || true
-              
+
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
@@ -112,7 +114,7 @@ jobs:
             --exit-code 1 \
             --severity MEDIUM,HIGH,CRITICAL \
             "${IMAGE_FULL}@${DIGEST}"
-            
+
       - name: Open alert issue (MEDIUM+)
         if: steps.gate.outcome == 'failure'
         uses: actions/github-script@v7
