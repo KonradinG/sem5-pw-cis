@@ -96,6 +96,7 @@ jobs:
 
           TABLE=$(jq -r '
             .Results[]?.Vulnerabilities? // [] |
+            map(select(.Severity == "MEDIUM" or .Severity == "HIGH" or .Severity == "CRITICAL")) |
             map("| \(.Severity) | \(.VulnerabilityID) | \(.PkgName) | \(.InstalledVersion) |") |
             .[]
           ' "$FILE")
