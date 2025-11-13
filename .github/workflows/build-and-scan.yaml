@@ -16,6 +16,7 @@ jobs:
       issues: write
 
     strategy:
+      fail-fast: false 
       matrix:
         include:
           # 1) POSTGRES IMAGE
@@ -96,12 +97,25 @@ jobs:
 
           TABLE=$(jq -r '
             .Results[]?.Vulnerabilities? // [] |
+
+            # Nur MEDIUM+ filtern
             map(select(.Severity == "MEDIUM" or .Severity == "HIGH" or .Severity == "CRITICAL")) |
-            map("| \(.Severity) | \(.VulnerabilityID) | \(.PkgName) | \(.InstalledVersion) |") |
+
+            # Severity sortieren: CRITICAL → HIGH → MEDIUM
+            sort_by(
+              if .Severity == "CRITICAL" then 0
+              elif .Severity == "HIGH" then 1
+              else 2 end
+            ) |
+
+            # Tabelle mit klickbarem CVE-Link
+            map(
+              "| \(.Severity) | [\(.VulnerabilityID)](\(.PrimaryURL)) | \(.PkgName) | \(.InstalledVersion) |"
+            ) |
+
             .[]
           ' "$FILE")
 
-          # Wenn TABLE leer ist, Dummy setzen
           if [ -z "$TABLE" ]; then
             TABLE="| NONE | - | - | - |"
           fi
