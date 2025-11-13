@@ -23,6 +23,7 @@ jobs:
             docker_context: images/postgres
             docker_file: images/postgres/Dockerfile
 
+          # Beispiel für zweites Image — kannst du löschen/ändern
           - image_name: sem5-pw-cis-php-mysql-secured
             image_tag: 8.1-apache-mysql
             docker_context: images/php-mysql
@@ -31,9 +32,6 @@ jobs:
     env:
       REGISTRY: ghcr.io
       IMAGE_NS: konrading
-      IMAGE_REPO: ${{ matrix.image_name }}
-      IMAGE_TAG: ${{ matrix.image_tag }}
-      IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
 
     steps:
       - name: Checkout
@@ -55,11 +53,13 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
+        env:
+          IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
         with:
-          images: ${{ env.IMAGE_FULL }}
+          images: ghcr.io/konrading/${{ matrix.image_name }}
           tags: |
-            type=raw,value=${{ env.IMAGE_TAG }}
-            type=raw,value={{date 'YYYYMMDD'}}-${{ env.IMAGE_TAG }}
+            type=raw,value=${{ matrix.image_tag }}
+            type=raw,value={{date 'YYYYMMDD'}}-${{ matrix.image_tag }}
             type=sha
 
       - name: Build & Push image
@@ -77,33 +77,46 @@ jobs:
         uses: aquasecurity/setup-trivy@v0.2.1
 
       - name: Trivy JSON (scan by digest)
+        id: trivyjson
+        env:
+          IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
         run: |
           set -eux
           DIGEST="${{ steps.build.outputs.digest }}"
+
           trivy image --scanners vuln \
-            --format json --output trivy-image-${{ env.IMAGE_REPO }}.json \
+            --format json \
+            --output trivy-image-${{ matrix.image_name }}.json \
             "${IMAGE_FULL}@${DIGEST}"
+
+          jq '[.Results[]?.Vulnerabilities? | .[]?] 
+              | group_by(.Severity) 
+              | map({severity: .[0].Severity, count: length})' \
+             trivy-image-${{ matrix.image_name }}.json || true
 
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-image-${{ env.IMAGE_REPO }}.json
-          path: trivy-image-${{ env.IMAGE_REPO }}.json
+          name: trivy-image-${{ matrix.image_name }}.json
+          path: trivy-image-${{ matrix.image_name }}.json
 
-      # 🔥 NEU: Markdown Tabelle extrahieren
-      - name: Extract vulnerability summary
+      - name: Extract vulnerability summary (Table)
         id: vulns
         run: |
-          echo "TABLE=$(jq -r '
+          TABLE=$(jq -r '
             .Results[]?.Vulnerabilities? // [] |
             map(select(.Severity == "MEDIUM" or .Severity == "HIGH" or .Severity == "CRITICAL")) |
             map("| \(.Severity) | \(.VulnerabilityID) | \(.PkgName) | \(.InstalledVersion) |") |
             .[]
-          ' trivy-image-${{ env.IMAGE_REPO }}.json | sed ':a;N;$!ba;s/\n/\\n/g')" >> $GITHUB_OUTPUT
+          ' trivy-image-${{ matrix.image_name }}.json)
 
-      # Fail on MEDIUM+
+          TABLE_ESCAPED=$(echo "$TABLE" | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "TABLE=$TABLE_ESCAPED" >> $GITHUB_OUTPUT
+
       - name: Trivy gate (fail on MEDIUM+)
         id: gate
+        env:
+          IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
         continue-on-error: true
         run: |
           set -eux
@@ -113,38 +126,30 @@ jobs:
             --severity MEDIUM,HIGH,CRITICAL \
             "${IMAGE_FULL}@${DIGEST}"
 
-      # 🔥 Issue mit CVE Tabelle
       - name: Open alert issue (MEDIUM+)
         if: steps.gate.outcome == 'failure'
         uses: actions/github-script@v7
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
-          IMAGE_FULL: ${{ env.IMAGE_FULL }}
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
-          IMAGE_REPO: ${{ env.IMAGE_REPO }}
+          IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
+          IMAGE_TAG: ${{ matrix.image_tag }}
+          IMAGE_REPO: ${{ matrix.image_name }}
           TABLE: ${{ steps.vulns.outputs.TABLE }}
         with:
           script: |
-            const digest = process.env.DIGEST;
-            const imageFull = process.env.IMAGE_FULL;
-            const imageTag = process.env.IMAGE_TAG;
-            const table = process.env.TABLE;
-
-            const title = `Security alerts on image: ${imageTag}`;
+            const title = `Security alerts on image: ${process.env.IMAGE_TAG}`;
             const body = `
-**Trivy** hat mindestens \`MEDIUM\`-Schwere gefunden.
+**Trivy** hat mindestens MEDIUM/HIGH/CRITICAL gefunden:
 
-- Image: \`${imageFull}:${imageTag}\`
-- Digest: \`${digest}\`
-- Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
+- **Image**: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
+- **Digest**: \`${process.env.DIGEST}\`
+- **Run**: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
 
-### 🔥 Gefundene Sicherheitsprobleme (MEDIUM/HIGH/CRITICAL)
+### Gefundene Sicherheitsprobleme
 
 | Severity | CVE | Package | Installed Version |
 |---------|------|----------|-------------------|
-${table}
-
----
+${process.env.TABLE}
 
 Der vollständige JSON-Bericht liegt im Artifact **trivy-image-${process.env.IMAGE_REPO}.json**.
 `;
@@ -156,4 +161,5 @@ Der vollständige JSON-Bericht liegt im Artifact **trivy-image-${process.env.IMA
               body,
               labels: ['security','trivy']
             });
+
             core.setFailed('Security findings present (MEDIUM/HIGH/CRITICAL).');
