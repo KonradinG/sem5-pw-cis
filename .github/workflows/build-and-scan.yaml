@@ -88,6 +88,27 @@ jobs:
               | map({severity: .[0].Severity, count: length})' \
               trivy-image-${{ matrix.image_name }}.json || true
 
+      - name: Extract vuln table
+        id: vulns
+        run: |
+          set -eux
+          FILE="trivy-image-${{ matrix.image_name }}.json"
+
+          TABLE=$(jq -r '
+            .Results[]?.Vulnerabilities? // [] |
+            map("| \(.Severity) | \(.VulnerabilityID) | \(.PkgName) | \(.InstalledVersion) |") |
+            .[]
+          ' "$FILE")
+
+          # Wenn TABLE leer ist, Dummy setzen
+          if [ -z "$TABLE" ]; then
+            TABLE="| NONE | - | - | - |"
+          fi
+
+          echo "TABLE<<EOF" >> $GITHUB_OUTPUT
+          echo "$TABLE" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v4
         with:
@@ -119,7 +140,7 @@ jobs:
           script: |
             const title = `Security alerts on image: ${process.env.IMAGE_TAG}`;
 
-            // Markdown table (falls leer: Fallback-Zeile)
+            // Tabelle aus Output oder Fallback
             const table = process.env.TABLE && process.env.TABLE.trim().length > 0
               ? process.env.TABLE.replace(/\\n/g, "\n")
               : "| NONE | - | - | - |";
@@ -134,7 +155,7 @@ jobs:
             ---
 
             | Severity | CVE | Package | Installed Version |
-            |---------|-----|----------|-------------------|
+            |----------|------|----------|-------------------|
             ${table}
 
             ---
@@ -142,6 +163,7 @@ jobs:
             Der vollständige JSON-Bericht befindet sich im Artifact:
             **trivy-image-${process.env.IMAGE_REPO}.json**
             `;
+
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
