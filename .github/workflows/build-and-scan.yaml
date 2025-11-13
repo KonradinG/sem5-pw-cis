@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
   schedule:
-    - cron: "0 0 * * 0"       # Sonntag 00:00 UTC
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 jobs:
@@ -16,16 +16,14 @@ jobs:
       issues: write
 
     strategy:
-      fail-fast: false 
+      fail-fast: false
       matrix:
         include:
-          # 1) POSTGRES IMAGE
           - image_name: sem5-pw-cis-postgres-secured
             image_tag: postgres-18
             docker_context: images/postgres
             docker_file: images/postgres/Dockerfile
 
-          # 2) PHP/MYSQL IMAGE
           - image_name: sem5-pw-cis-php-mysql-secured
             image_tag: 8.1-apache-mysql
             docker_context: images/php-mysql
@@ -84,10 +82,6 @@ jobs:
           trivy image --scanners vuln \
             --format json --output trivy-image-${{ matrix.image_name }}.json \
             "${IMAGE_FULL}@${DIGEST}"
-          jq '[.Results[]?.Vulnerabilities? | .[]?]
-              | group_by(.Severity)
-              | map({severity: .[0].Severity, count: length})' \
-              trivy-image-${{ matrix.image_name }}.json || true
 
       - name: Extract vuln table
         id: vulns
@@ -97,22 +91,13 @@ jobs:
 
           TABLE=$(jq -r '
             .Results[]?.Vulnerabilities? // [] |
-
-            # Nur MEDIUM+ filtern
             map(select(.Severity == "MEDIUM" or .Severity == "HIGH" or .Severity == "CRITICAL")) |
-
-            # Severity sortieren: CRITICAL → HIGH → MEDIUM
             sort_by(
               if .Severity == "CRITICAL" then 0
               elif .Severity == "HIGH" then 1
               else 2 end
             ) |
-
-            # Tabelle mit klickbarem CVE-Link
-            map(
-              "| \(.Severity) | [\(.VulnerabilityID)](\(.PrimaryURL)) | \(.PkgName) | \(.InstalledVersion) |"
-            ) |
-
+            map("| \(.Severity) | [\(.VulnerabilityID)](\(.PrimaryURL)) | \(.PkgName) | \(.InstalledVersion) |") |
             .[]
           ' "$FILE")
 
@@ -142,50 +127,92 @@ jobs:
             --severity MEDIUM,HIGH,CRITICAL \
             "${IMAGE_FULL}@${DIGEST}"
 
-      - name: Open alert issue (MEDIUM+)
+      - name: Close existing issue if no CVEs remain
+        if: steps.gate.outcome == 'success'
+        uses: actions/github-script@v7
+        env:
+          IMAGE_TAG: ${{ matrix.image_tag }}
+        with:
+          script: |
+            const label = `image:${process.env.IMAGE_TAG}`;
+
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: label,
+              state: "open"
+            });
+
+            if (issues.data.length > 0) {
+              const issue = issues.data[0];
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: "closed",
+                body: issue.body + "\n\n---\nClosed automatically. No remaining MEDIUM+ vulnerabilities."
+              });
+            }
+
+      - name: Open or update issue (MEDIUM+)
         if: steps.gate.outcome == 'failure'
         uses: actions/github-script@v7
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
           IMAGE_FULL: ghcr.io/konrading/${{ matrix.image_name }}
           IMAGE_TAG: ${{ matrix.image_tag }}
-          IMAGE_REPO: ${{ matrix.image_name }}
           TABLE: ${{ steps.vulns.outputs.TABLE }}
+          IMAGE_JSON_NAME: trivy-image-${{ matrix.image_name }}.json
         with:
           script: |
-            const title = `Security alerts on image: ${process.env.IMAGE_TAG}`;
+            const label = `image:${process.env.IMAGE_TAG}`;
 
-            // Tabelle aus Output oder Fallback
-            const table = process.env.TABLE && process.env.TABLE.trim().length > 0
-              ? process.env.TABLE.replace(/\\n/g, "\n")
-              : "| NONE | - | - | - |";
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: label,
+              state: "open"
+            });
+
+            const table = process.env.TABLE.replace(/\\n/g, "\n");
+
+            const suggestions =
+              "- Check for updated base image tags\n" +
+              "- Apply OS package updates if required\n" +
+              "- Ensure Renovate updates Docker base images\n";
 
             const body = `
-            **Trivy** hat mindestens MEDIUM/HIGH/CRITICAL gefunden:
+            Image: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
+            Digest: \`${process.env.DIGEST}\`
+            Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
 
-            - **Image**: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
-            - **Digest**: \`${process.env.DIGEST}\`
-            - **Run**: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
-
-            ---
+            Vulnerabilities (MEDIUM+):
 
             | Severity | CVE | Package | Installed Version |
             |----------|------|----------|-------------------|
             ${table}
 
-            ---
+            Upgrade suggestions:
+            ${suggestions}
 
-            Der vollständige JSON-Bericht befindet sich im Artifact:
-            **trivy-image-${process.env.IMAGE_REPO}.json**
+            Full JSON report is attached as artifact: ${process.env.IMAGE_JSON_NAME}
             `;
 
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body,
-              labels: ['security','trivy']
-            });
+            if (existing.data.length > 0) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Security alerts on image: ${process.env.IMAGE_TAG}`,
+                body,
+                labels: ["security", "trivy", label]
+              });
+            }
 
             core.setFailed("Security findings present (MEDIUM/HIGH/CRITICAL).");
-
