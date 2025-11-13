@@ -119,13 +119,13 @@ jobs:
           script: |
             const title = `Security alerts on image: ${process.env.IMAGE_TAG}`;
 
-            // Markdown table
-            const table = process.env.TABLE
+            // Markdown table (falls leer: Fallback-Zeile)
+            const table = process.env.TABLE && process.env.TABLE.trim().length > 0
               ? process.env.TABLE.replace(/\\n/g, "\n")
               : "| NONE | - | - | - |";
 
             const body = `
-**Trivy** hat mindestens MEDIUM/HIGH/CRITICAL gefunden.
+**Trivy** hat mindestens MEDIUM/HIGH/CRITICAL gefunden.**
 
 - **Image**: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
 - **Digest**: \`${process.env.DIGEST}\`
@@ -133,6 +133,7 @@ jobs:
 
 ---
 
+### 🔥 Gefundene Sicherheitsprobleme
 
 | Severity | CVE | Package | Installed Version |
 |---------|-----|----------|-------------------|
@@ -140,7 +141,7 @@ ${table}
 
 ---
 
-Der vollständige JSON-Bericht liegt im Artifact  
+Der vollständige JSON-Bericht befindet sich im Artifact:  
 **trivy-image-${process.env.IMAGE_REPO}.json**
 `;
 
@@ -153,3 +154,4 @@ Der vollständige JSON-Bericht liegt im Artifact
             });
 
             core.setFailed("Security findings present (MEDIUM/HIGH/CRITICAL).");
+
