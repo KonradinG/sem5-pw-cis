@@ -28,7 +28,7 @@ jobs:
               per_page: 100
             });
 
-            return { issues: issues.data };
+            return { issues: JSON.stringify(issues.data) };
 
       - name: Update audit logs
         run: |
