@@ -1,0 +1,53 @@
+{
+  "extends": [
+    "config:recommended",
+    ":disableMajorUpdates"
+  ],
+
+  "dependencyDashboard": true,
+  "labels": ["renovate"],
+
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 10,
+
+  "automerge": true,
+  "automergeType": "pr",
+
+  "requiredStatusChecks": ["build-and-scan"],
+
+  "packageRules": [
+    {
+      "description": "Enable digest pinning & updates for Docker",
+      "matchManagers": ["dockerfile"],
+      "matchDatasources": ["docker"],
+      "pinDigests": true,
+      "digest": {
+        "enabled": true
+      },
+      "matchUpdateTypes": ["digest", "patch", "minor"],
+      "automerge": true
+    },
+    {
+      "description": "Security updates get highest priority",
+      "matchManagers": ["dockerfile"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest", "patch"],
+      "matchConfidence": ["high"],
+      "labels": ["security"],
+      "automerge": true,
+      "prPriority": 100
+    },
+    {
+      "description": "No major updates anywhere",
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ],
+
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security", "renovate"],
+    "issueOnly": true,
+    "automerge": false
+  }
+}

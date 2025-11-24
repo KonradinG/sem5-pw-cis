@@ -1,0 +1,94 @@
+name: Audit Log Update
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  update-audit-log:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: read
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch open CVE issues
+        id: fetch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "security",
+              per_page: 100
+            });
+
+            return { issues: issues.data };
+
+      - name: Update audit logs
+        run: |
+          mkdir -p audit-logs
+
+          echo "${{ steps.fetch.outputs.issues }}" > issues.json
+
+          node << 'EOF'
+          const fs = require("fs");
+
+          const issues = JSON.parse(fs.readFileSync("issues.json"));
+
+          for (const issue of issues) {
+
+            const body = issue.body;
+            if (!body) continue;
+
+            // Extract image label (e.g. image:php-mysql)
+            const imageLabel = issue.labels.find(l => l.name.startsWith("image:"));
+            if (!imageLabel) continue;
+
+            const imageName = imageLabel.name.split(":")[1];
+
+            // Find the newest Scan block
+            const match = body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|\Z)/);
+            if (!match) continue;
+
+            const date = match[1];
+            const contents = match[2].trim();
+
+            const auditFile = `audit-logs/${imageName}.md`;
+
+            let oldContent = "";
+            if (fs.existsSync(auditFile)) {
+              oldContent = fs.readFileSync(auditFile, "utf-8");
+            }
+
+            const newEntry = `
+            ## ${date}
+            Issue: #${issue.number}
+            ${contents}
+
+            ---`;
+
+            const finalContent =
+              `# Audit Log für Image: ${imageName}\n\n${newEntry}\n\n${oldContent}`;
+
+            fs.writeFileSync(auditFile, finalContent);
+          }
+          EOF
+
+      - name: Commit audit logs
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add audit-logs/*.md
+
+          if ! git diff --staged --quiet; then
+            git commit -m "Update audit logs"
+            git push
+          else
+            echo "No changes to commit."
+          fi

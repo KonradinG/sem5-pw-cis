@@ -1,0 +1,194 @@
+name: Daily Security Summary
+
+on:
+  schedule:
+    - cron: "0 4 * * *" # täglich 04:00 UTC
+  workflow_dispatch:
+
+jobs:
+  daily-security-summary:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate daily summary JSON
+        id: summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Alle offenen Security-Issues holen
+            const issuesResp = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "open",
+              labels: "security",
+              per_page: 100
+            });
+
+            const issues = issuesResp.data;
+
+            const today = new Date().toISOString().split("T")[0];
+            let rows = [];
+
+            for (const issue of issues) {
+              const body = issue.body || "";
+
+              const imageLabel = issue.labels.find(l => l.name && l.name.startsWith("image:"));
+              if (!imageLabel) continue;
+
+              const imageName = imageLabel.name.split(":")[1];
+
+              const match = body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
+              if (!match) continue;
+
+              const scanDate = match[1];
+              const contents = match[2].trim();
+
+              // Tabellen analysieren
+              const lines = contents.split("\n");
+              let crit = 0, high = 0, med = 0;
+
+              for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed.startsWith("|")) continue;
+                if (trimmed.includes("Severity") || trimmed.includes("----") || trimmed.includes("NONE")) continue;
+
+                const cols = trimmed.split("|").map(s => s.trim()).filter(Boolean);
+                const severity = cols[0] || "";
+
+                if (severity === "CRITICAL") crit++;
+                else if (severity === "HIGH") high++;
+                else if (severity === "MEDIUM") med++;
+              }
+
+              rows.push({
+                imageName,
+                issueNumber: issue.number,
+                scanDate,
+                crit,
+                high,
+                med
+              });
+            }
+
+            // Sortieren nach Dringlichkeit
+            rows.sort((a, b) => {
+              const scoreA = a.crit * 100 + a.high * 10 + a.med;
+              const scoreB = b.crit * 100 + b.high * 10 + b.med;
+              return scoreB - scoreA;
+            });
+
+            return { today, rows };
+
+      - name: Build markdown summary file
+        id: md
+        run: |
+          mkdir -p security-summary
+
+          TODAY="${{ steps.summary.outputs.today }}"
+
+          echo "# Daily Security Summary" > summary.md
+          echo "" >> summary.md
+          echo "Letzte Aktualisierung: $TODAY" >> summary.md
+          echo "" >> summary.md
+
+          echo "| Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |" >> summary.md
+          echo "|-------|-------|--------------|----------|------|--------|" >> summary.md
+
+          node << 'EOF'
+          const fs = require("fs");
+
+          const rows = JSON.parse(process.env.SUMMARY_ROWS || "[]");
+
+          rows.forEach(r => {
+            fs.appendFileSync(
+              "summary.md",
+              `| \\\`${r.imageName}\\\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`
+            );
+          });
+          EOF
+
+          mv summary.md security-summary/security-summary.md
+
+        env:
+          SUMMARY_ROWS: ${{ steps.summary.outputs.rows }}
+
+      - name: Commit markdown summary
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add security-summary/security-summary.md
+
+          if ! git diff --staged --quiet; then
+            git commit -m "Update Daily Security Summary"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Update or create GitHub Summary Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const today = "${{ steps.summary.outputs.today }}";
+
+            const rows = JSON.parse(`${{ steps.summary.outputs.rows }}`);
+
+            let table = `
+            Letzte Aktualisierung: ${today}
+
+            | Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |
+            |-------|-------|--------------|----------|------|--------|
+            `;
+
+                        if (rows.length === 0) {
+                          table += "| - | - | - | 0 | 0 | 0 |\n";
+                        } else {
+                          rows.forEach(r => {
+                            table += `| \`${r.imageName}\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`;
+                          });
+                        }
+
+                        const body = `
+            # Daily Security Summary
+
+            Tägliche Übersicht über offene CVEs pro Image.
+
+            ${table}
+
+            ---
+
+            Markdown-Version im Repository:  
+            \`security-summary/security-summary.md\`
+            `;
+
+            // Issue suchen oder erstellen
+            const existing = await github.rest.issues.listForRepo({
+              owner, repo, state: "open"
+            });
+
+            const summary = existing.data.find(i => i.title === "Daily Security Summary");
+
+            if (summary) {
+              await github.rest.issues.update({
+                owner, repo, issue_number: summary.number, body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner, repo,
+                title: "Daily Security Summary",
+                body,
+                labels: ["security", "report"]
+              });
+            }

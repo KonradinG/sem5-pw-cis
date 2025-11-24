@@ -176,43 +176,53 @@ jobs:
 
             const table = process.env.TABLE.replace(/\\n/g, "\n");
 
-            const suggestions =
-              "- Check for updated base image tags\n" +
-              "- Apply OS package updates if required\n" +
-              "- Ensure Renovate updates Docker base images\n";
-
-            const body = `
-            Image: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
-            Digest: \`${process.env.DIGEST}\`
-            Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
-
-            Vulnerabilities (MEDIUM+):
+            const newSection = `
+            ## Scan ${new Date().toISOString().split("T")[0]}
 
             | Severity | CVE | Package | Installed Version |
             |----------|------|----------|-------------------|
             ${table}
-
-            Upgrade suggestions:
-            ${suggestions}
-
-            Full JSON report is attached as artifact: ${process.env.IMAGE_JSON_NAME}
             `;
 
+            // Falls Issue existiert → prüfen ob dieselben CVEs bereits vorhanden sind
             if (existing.data.length > 0) {
-              await github.rest.issues.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: existing.data[0].number,
-                body
-              });
+              const issue = existing.data[0];
+              const body = issue.body || "";
+
+              // Prüfen ob dieser Block schon existiert
+              if (body.includes(table)) {
+                console.log("🟦 Keine neuen CVEs. Issue bleibt unverändert.");
+              } else {
+                console.log("🟩 Neue CVEs gefunden. Füge neuen Abschnitt hinzu.");
+
+                const updatedBody = body + "\n" + newSection;
+
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: updatedBody
+                });
+              }
             } else {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: `Security alerts on image: ${process.env.IMAGE_TAG}`,
-                body,
-                labels: ["security", "trivy", label]
-              });
-            }
+              // Neues Issue anlegen
+              const initialBody = `
+              Image: \`${process.env.IMAGE_FULL}:${process.env.IMAGE_TAG}\`
+              Digest: \`${process.env.DIGEST}\`
+              Run: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
+
+              ${newSection}
+
+              Full JSON report is attached as artifact: ${process.env.IMAGE_JSON_NAME}
+              `;
+
+                            await github.rest.issues.create({
+                              owner: context.repo.owner,
+                              repo: context.repo.repo,
+                              title: `Security alerts on image: ${process.env.IMAGE_TAG}`,
+                              body: initialBody,
+                              labels: ["security", "trivy", label]
+                            });
+                          }
 
             core.setFailed("Security findings present (MEDIUM/HIGH/CRITICAL).");
