@@ -1,157 +1,140 @@
-name: Daily Security Summary
+- name: Build summary file and update summary issue
+  uses: actions/github-script@v7
+  with:
+    script: |
+      const fs = require("fs");
+      const path = require("path");
 
-on:
-  # automatisch, nachdem Audit Log Update gelaufen ist
-  workflow_run:
-    workflows: ["Audit Log Update"]
-    types: [completed]
+      const owner = context.repo.owner;
+      const repo = context.repo.repo;
 
-  # optional: manuell startbar
-  workflow_dispatch:
+      // Alle offenen Security-Issues holen
+      const issuesResp = await github.rest.issues.listForRepo({
+        owner,
+        repo,
+        state: "open",
+        labels: "security",
+        per_page: 100
+      });
 
-jobs:
-  daily-security-summary:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      contents: write
+      const issues = issuesResp.data;
+      const today = new Date().toISOString().split("T")[0];
+      let rows = [];
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      for (const issue of issues) {
+        const body = issue.body || "";
 
-      - name: Build summary file and update summary issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require("fs");
-            const path = require("path");
+        // image:<name>-Label finden
+        const imageLabel = issue.labels.find(l => l.name && l.name.startsWith("image:"));
+        if (!imageLabel) continue;
 
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
+        const imageName = imageLabel.name.split(":")[1];
 
-            // Alle offenen Security-Issues holen
-            const issuesResp = await github.rest.issues.listForRepo({
-              owner,
-              repo,
-              state: "open",
-              labels: "security",
-              per_page: 100
-            });
+        // Neuesten Scan-Block finden
+        const match = body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
+        if (!match) continue;
 
-            const issues = issuesResp.data;
-            const today = new Date().toISOString().split("T")[0];
-            let rows = [];
+        const scanDate = match[1];
+        const contents = match[2].trim();
 
-            for (const issue of issues) {
-              const body = issue.body || "";
+        // Tabelle parsen und Severity zählen
+        const lines = contents.split("\n");
+        let crit = 0, high = 0, med = 0;
 
-              // image:<name>-Label finden
-              const imageLabel = issue.labels.find(l => l.name && l.name.startsWith("image:"));
-              if (!imageLabel) continue;
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("|")) continue;
+          if (trimmed.includes("Severity") || trimmed.includes("----") || trimmed.includes("NONE")) continue;
 
-              const imageName = imageLabel.name.split(":")[1];
+          const cols = trimmed.split("|").map(s => s.trim()).filter(Boolean);
+          const severity = cols[0] || "";
 
-              // Neuesten Scan-Block finden
-              const match = body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
-              if (!match) continue;
+          if (severity === "CRITICAL") crit++;
+          else if (severity === "HIGH") high++;
+          else if (severity === "MEDIUM") med++;
+        }
 
-              const scanDate = match[1];
-              const contents = match[2].trim();
+        rows.push({
+          imageName,
+          issueNumber: issue.number,
+          scanDate,
+          crit,
+          high,
+          med
+        });
+      }
 
-              // Tabelle parsen und Severity zählen
-              const lines = contents.split("\n");
-              let crit = 0, high = 0, med = 0;
+      // nach "Gefährlichkeit" sortieren
+      rows.sort((a, b) => {
+        const scoreA = a.crit * 100 + a.high * 10 + a.med;
+        const scoreB = b.crit * 100 + b.high * 10 + b.med;
+        return scoreB - scoreA;
+      });
 
-              for (const line of lines) {
-                const trimmed = line.trim();
-                if (!trimmed.startsWith("|")) continue;
-                if (trimmed.includes("Severity") || trimmed.includes("----") || trimmed.includes("NONE")) continue;
+      // Markdown-Datei bauen
+      const dir = path.join(process.cwd(), "security-summary");
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
 
-                const cols = trimmed.split("|").map(s => s.trim()).filter(Boolean);
-                const severity = cols[0] || "";
+      let md = "";
+      md += "# Daily Security Summary\n\n";
+      md += `Letzte Aktualisierung: ${today}\n\n`;
+      md += "| Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |\n";
+      md += "|-------|-------|--------------|----------|------|--------|\n";
 
-                if (severity === "CRITICAL") crit++;
-                else if (severity === "HIGH") high++;
-                else if (severity === "MEDIUM") med++;
-              }
+      if (rows.length === 0) {
+        md += "| - | - | - | 0 | 0 | 0 |\n";
+      } else {
+        for (const r of rows) {
+          md += `| \`${r.imageName}\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`;
+        }
+      }
 
-              rows.push({
-                imageName,
-                issueNumber: issue.number,
-                scanDate,
-                crit,
-                high,
-                med
-              });
-            }
+      const mdPath = path.join(dir, "security-summary.md");
+      fs.writeFileSync(mdPath, md, "utf8");
+      console.log(`Wrote ${mdPath}`);
 
-            // nach "Gefährlichkeit" sortieren
-            rows.sort((a, b) => {
-              const scoreA = a.crit * 100 + a.high * 10 + a.med;
-              const scoreB = b.crit * 100 + b.high * 10 + b.med;
-              return scoreB - scoreA;
-            });
+      // Summary-Issue erstellen/aktualisieren
+      const issueBody = `
+      # Daily Security Summary
 
-            // Markdown-Datei bauen
-            const dir = path.join(process.cwd(), "security-summary");
-            if (!fs.existsSync(dir)) {
-              fs.mkdirSync(dir, { recursive: true });
-            }
+      Tägliche Übersicht über offene CVEs pro Image.
 
-            let md = "";
-            md += "# Daily Security Summary\n\n";
-            md += `Letzte Aktualisierung: ${today}\n\n`;
-            md += "| Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |\n";
-            md += "|-------|-------|--------------|----------|------|--------|\n";
+      ${md}
 
-            if (rows.length === 0) {
-              md += "| - | - | - | 0 | 0 | 0 |\n";
-            } else {
-              for (const r of rows) {
-                md += `| \`${r.imageName}\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`;
-              }
-            }
+      ---
 
-            const mdPath = path.join(dir, "security-summary.md");
-            fs.writeFileSync(mdPath, md, "utf8");
-            console.log(`Wrote ${mdPath}`);
+      Markdown-Version im Repository:  
+      \`security-summary/security-summary.md\`
+      `;
 
-            // Summary-Issue erstellen/aktualisieren
-            const body = `
-            # Daily Security Summary
+      const existing = await github.rest.issues.listForRepo({
+        owner,
+        repo,
+        state: "open",
+        per_page: 50
+      });
 
-            Tägliche Übersicht über offene CVEs pro Image.
+      const summaryIssue = existing.data.find(
+        i => i.title === "Daily Security Summary"
+      );
 
-            ${md}
-
-            ---
-
-            Markdown-Version im Repository:  
-            \`security-summary/security-summary.md\`
-            `;
-
-                        const existing = await github.rest.issues.listForRepo({
-                          owner,
-                          repo,
-                          state: "open",
-                          per_page: 50
-                        });
-
-                        const summaryIssue = existing.data.find(
-                          i => i.title === "Daily Security Summary"
-                        );
-
-                        if (summaryIssue) {
-                          await github.rest.issues.update({
-                            owner,
-                            repo,
-                            issue_number: summaryIssue.number,
-                            body
-                          });
-                          console.log(`Updated existing Daily Security Summary issue #${summaryIssue.number}`);
-                        } else {
-                          const created = await github.rest.issues.create({
-                            owner,
-                            repo,
-                            title: "Daily Security Summa
+      if (summaryIssue) {
+        await github.rest.issues.update({
+          owner,
+          repo,
+          issue_number: summaryIssue.number,
+          body: issueBody
+        });
+        console.log(`Updated existing Daily Security Summary issue #${summaryIssue.number}`);
+      } else {
+        const created = await github.rest.issues.create({
+          owner,
+          repo,
+          title: "Daily Security Summary",
+          body: issueBody,
+          labels: ["security", "report"]
+        });
+        console.log(`Created new Daily Security Summary issue #${created.data.number}`);
+      }
