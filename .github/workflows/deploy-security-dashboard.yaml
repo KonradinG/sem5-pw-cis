@@ -1,9 +1,14 @@
 name: Deploy Security Dashboard
 
 on:
+  # automatisch, nachdem der Daily Summary Workflow fertig ist
+  workflow_run:
+    workflows: ["Daily Security Summary"]
+    types:
+      - completed
+
+  # optional: manuell startbar
   workflow_dispatch:
-  schedule:
-    - cron: "30 4 * * *" # täglich 04:30 UTC
 
 permissions:
   contents: read
@@ -26,7 +31,7 @@ jobs:
         run: |
           mkdir -p public
 
-          # kopiere Summary & Audit-Logs (falls vorhanden) mit ins Pages-Output
+          # Summary & Audit-Logs ins Pages-Output kopieren (falls vorhanden)
           if [ -d "security-summary" ]; then
             cp -r security-summary public/
           fi
@@ -53,7 +58,7 @@ jobs:
 
           if (tableLines.length >= 2) {
             const headerCells = tableLines[0].split('|').slice(1, -1).map(c => c.trim());
-            const bodyLines = tableLines.slice(2); // Header + Separator überspringen
+            const bodyLines = tableLines.slice(2); // Header + Separator
 
             tableHtml = '<table><thead><tr>' +
               headerCells.map(c => `<th>${c}</th>`).join('') +
@@ -181,7 +186,7 @@ jobs:
           </body>
           </html>`;
 
-          fs.writeFileSync(path.join('public', 'index.html'), html);
+          fs.writeFileSync(path.join('public', 'index.html'), html, 'utf8');
           EOF
 
       - name: Upload GitHub Pages artifact

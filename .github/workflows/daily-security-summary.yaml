@@ -1,8 +1,13 @@
 name: Daily Security Summary
 
 on:
-  schedule:
-    - cron: "0 4 * * *" # täglich 04:00 UTC
+  # automatisch, nachdem Audit Log Update gelaufen ist
+  workflow_run:
+    workflows: ["Audit Log Update"]
+    types:
+      - completed
+
+  # optional: manuell startbar
   workflow_dispatch:
 
 jobs:
@@ -16,11 +21,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate daily summary JSON
-        id: summary
+      - name: Build summary file and update summary issue
         uses: actions/github-script@v7
         with:
           script: |
+            const fs = require("fs");
+            const path = require("path");
+
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
@@ -34,25 +41,26 @@ jobs:
             });
 
             const issues = issuesResp.data;
-
             const today = new Date().toISOString().split("T")[0];
             let rows = [];
 
             for (const issue of issues) {
               const body = issue.body || "";
 
+              // image:<name>-Label finden
               const imageLabel = issue.labels.find(l => l.name && l.name.startsWith("image:"));
               if (!imageLabel) continue;
 
               const imageName = imageLabel.name.split(":")[1];
 
+              // Neuesten Scan-Block finden
               const match = body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
               if (!match) continue;
 
               const scanDate = match[1];
               const contents = match[2].trim();
 
-              // Tabellen analysieren
+              // Tabelle parsen und Severity zählen
               const lines = contents.split("\n");
               let crit = 0, high = 0, med = 0;
 
@@ -79,93 +87,44 @@ jobs:
               });
             }
 
-            // Sortieren nach Dringlichkeit
+            // nach "Gefährlichkeit" sortieren
             rows.sort((a, b) => {
               const scoreA = a.crit * 100 + a.high * 10 + a.med;
               const scoreB = b.crit * 100 + b.high * 10 + b.med;
               return scoreB - scoreA;
             });
 
-            return { today, rows };
+            // Markdown-Datei bauen
+            const dir = path.join(process.cwd(), "security-summary");
+            if (!fs.existsSync(dir)) {
+              fs.mkdirSync(dir, { recursive: true });
+            }
 
-      - name: Build markdown summary file
-        id: md
-        run: |
-          mkdir -p security-summary
+            let md = "";
+            md += "# Daily Security Summary\n\n";
+            md += `Letzte Aktualisierung: ${today}\n\n`;
+            md += "| Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |\n";
+            md += "|-------|-------|--------------|----------|------|--------|\n";
 
-          TODAY="${{ steps.summary.outputs.today }}"
+            if (rows.length === 0) {
+              md += "| - | - | - | 0 | 0 | 0 |\n";
+            } else {
+              for (const r of rows) {
+                md += `| \`${r.imageName}\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`;
+              }
+            }
 
-          echo "# Daily Security Summary" > summary.md
-          echo "" >> summary.md
-          echo "Letzte Aktualisierung: $TODAY" >> summary.md
-          echo "" >> summary.md
+            const mdPath = path.join(dir, "security-summary.md");
+            fs.writeFileSync(mdPath, md, "utf8");
+            console.log(`Wrote ${mdPath}`);
 
-          echo "| Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |" >> summary.md
-          echo "|-------|-------|--------------|----------|------|--------|" >> summary.md
-
-          node << 'EOF'
-          const fs = require("fs");
-
-          const rows = JSON.parse(process.env.SUMMARY_ROWS || "[]");
-
-          rows.forEach(r => {
-            fs.appendFileSync(
-              "summary.md",
-              `| \\\`${r.imageName}\\\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`
-            );
-          });
-          EOF
-
-          mv summary.md security-summary/security-summary.md
-
-        env:
-          SUMMARY_ROWS: ${{ steps.summary.outputs.rows }}
-
-      - name: Commit markdown summary
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add security-summary/security-summary.md
-
-          if ! git diff --staged --quiet; then
-            git commit -m "Update Daily Security Summary"
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      - name: Update or create GitHub Summary Issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-
-            const today = "${{ steps.summary.outputs.today }}";
-
-            const rows = JSON.parse(`${{ steps.summary.outputs.rows }}`);
-
-            let table = `
-            Letzte Aktualisierung: ${today}
-
-            | Image | Issue | Letzter Scan | CRITICAL | HIGH | MEDIUM |
-            |-------|-------|--------------|----------|------|--------|
-            `;
-
-                        if (rows.length === 0) {
-                          table += "| - | - | - | 0 | 0 | 0 |\n";
-                        } else {
-                          rows.forEach(r => {
-                            table += `| \`${r.imageName}\` | #${r.issueNumber} | ${r.scanDate} | ${r.crit} | ${r.high} | ${r.med} |\n`;
-                          });
-                        }
-
-                        const body = `
+            // Summary-Issue erstellen/aktualisieren
+            const body = `
             # Daily Security Summary
 
             Tägliche Übersicht über offene CVEs pro Image.
 
-            ${table}
+            ${md}
 
             ---
 
@@ -173,22 +132,27 @@ jobs:
             \`security-summary/security-summary.md\`
             `;
 
-            // Issue suchen oder erstellen
-            const existing = await github.rest.issues.listForRepo({
-              owner, repo, state: "open"
-            });
+                        const existing = await github.rest.issues.listForRepo({
+                          owner,
+                          repo,
+                          state: "open",
+                          per_page: 50
+                        });
 
-            const summary = existing.data.find(i => i.title === "Daily Security Summary");
+                        const summaryIssue = existing.data.find(
+                          i => i.title === "Daily Security Summary"
+                        );
 
-            if (summary) {
-              await github.rest.issues.update({
-                owner, repo, issue_number: summary.number, body
-              });
-            } else {
-              await github.rest.issues.create({
-                owner, repo,
-                title: "Daily Security Summary",
-                body,
-                labels: ["security", "report"]
-              });
-            }
+                        if (summaryIssue) {
+                          await github.rest.issues.update({
+                            owner,
+                            repo,
+                            issue_number: summaryIssue.number,
+                            body
+                          });
+                          console.log(`Updated existing Daily Security Summary issue #${summaryIssue.number}`);
+                        } else {
+                          const created = await github.rest.issues.create({
+                            owner,
+                            repo,
+                            title: "Daily Security Summa

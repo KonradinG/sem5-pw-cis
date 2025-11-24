@@ -1,9 +1,11 @@
 name: Audit Log Update
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * *" # täglich um 03:00
+  workflow_run:
+    workflows:
+      ["Build, Push, Trivy Scan & Create Issue if Medium+   (Multi-Image JSON)"]
+    types:
+      - completed
 
 jobs:
   update-audit-log:
@@ -32,7 +34,7 @@ jobs:
 
             return { issues: issues.data };
 
-      # 2) JSON-Datei erstellen (leere JSON korrekt behandeln!)
+      # 2) issues.json erzeugen
       - name: Write issues.json
         run: |
           mkdir -p audit-logs
@@ -49,7 +51,6 @@ jobs:
           node << 'EOF'
           const fs = require("fs");
 
-          // Inhalt lesen
           let raw = fs.readFileSync("issues.json", "utf8").trim();
           if (!raw) {
             console.log("No issues found — skipping.");
@@ -60,7 +61,7 @@ jobs:
           try {
             issues = JSON.parse(raw);
           } catch (err) {
-            console.log("Invalid JSON, skipping.");
+            console.log("Invalid JSON — skipping.");
             console.log(raw);
             process.exit(0);
           }
@@ -79,7 +80,6 @@ jobs:
 
             const imageName = imageLabel.name.split(":")[1];
 
-            // Neuesten Scan-Block extrahieren
             const match = issue.body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
 
             if (!match) continue;
