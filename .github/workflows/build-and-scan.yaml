@@ -1,4 +1,4 @@
-name: Build, Push, Trivy Scan & Create Issue if Medium+   (Multi-Image JSON)
+name: build-and-scan
 
 on:
   push:

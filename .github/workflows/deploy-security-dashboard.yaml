@@ -4,8 +4,7 @@ on:
   # automatisch, nachdem der Daily Summary Workflow fertig ist
   workflow_run:
     workflows: ["Daily Security Summary"]
-    types:
-      - completed
+    types: [completed]
 
   # optional: manuell startbar
   workflow_dispatch:

@@ -2,8 +2,7 @@ name: Audit Log Update
 
 on:
   workflow_run:
-    workflows:
-      ["Build, Push, Trivy Scan & Create Issue if Medium+   (Multi-Image JSON)"]
+    workflows: ["build-and-scan"]
     types:
       - completed
 

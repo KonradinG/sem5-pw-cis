@@ -4,8 +4,7 @@ on:
   # automatisch, nachdem Audit Log Update gelaufen ist
   workflow_run:
     workflows: ["Audit Log Update"]
-    types:
-      - completed
+    types: [completed]
 
   # optional: manuell startbar
   workflow_dispatch:
