@@ -1,0 +1,42 @@
+name: weekly-security-summary
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build weekly summary
+        run: |
+          mkdir -p security-summary
+          OUT=security-summary/weekly-summary.md
+          echo "# Weekly Security Summary" > $OUT
+          echo "" >> $OUT
+
+          for f in cve-baseline/*.json; do
+            TAG=$(basename $f .json)
+            RISK=$(jq '.risk_index' $f)
+            CRIT=$(jq '.critical' $f)
+            HIGH=$(jq '.high' $f)
+            MED=$(jq '.medium' $f)
+
+            echo "## $TAG" >> $OUT
+            echo "- RISK_INDEX: $RISK" >> $OUT
+            echo "- CRITICAL: $CRIT" >> $OUT
+            echo "- HIGH: $HIGH" >> $OUT
+            echo "- MEDIUM: $MED" >> $OUT
+            echo "" >> $OUT
+          done
+
+      - run: |
+          git add security-summary
+          git commit -m "Weekly summary" || true
+          git push || true

@@ -1,206 +1,76 @@
-name: Deploy Security Dashboard
+name: deploy-security-dashboard
 
 on:
-  # automatisch, nachdem der Daily Summary Workflow fertig ist
   workflow_run:
-    workflows: ["Daily Security Summary"]
+    workflows: ["weekly-security-summary"]
     types: [completed]
 
-  # optional: manuell startbar
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  dashboard:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build dashboard (HTML + static files)
+      - name: Build dashboard
         run: |
           mkdir -p public
+          cp -r audit-logs cve-baseline security-summary public/
 
-          # Summary & Audit-Logs ins Pages-Output kopieren (falls vorhanden)
-          if [ -d "security-summary" ]; then
-            cp -r security-summary public/
-          fi
-
-          if [ -d "audit-logs" ]; then
-            cp -r audit-logs public/
-          fi
-
-          node << 'EOF'
-          const fs = require('fs');
-          const path = require('path');
-
-          // === Security Summary einlesen ===
-          let summaryMd = '';
-          try {
-            summaryMd = fs.readFileSync(path.join('security-summary', 'security-summary.md'), 'utf8');
-          } catch (e) {
-            summaryMd = '';
-          }
-
-          const lines = summaryMd.split('\n');
-          const tableLines = lines.filter(l => l.trim().startsWith('|'));
-          let tableHtml = '<p>Noch keine Summary-Daten vorhanden.</p>';
-
-          if (tableLines.length >= 2) {
-            const headerCells = tableLines[0].split('|').slice(1, -1).map(c => c.trim());
-            const bodyLines = tableLines.slice(2); // Header + Separator
-
-            tableHtml = '<table><thead><tr>' +
-              headerCells.map(c => `<th>${c}</th>`).join('') +
-              '</tr></thead><tbody>';
-
-            for (const row of bodyLines) {
-              const trimmed = row.trim();
-              if (!trimmed.startsWith('|') || trimmed.includes('- | - | -')) continue;
-              const cells = row.split('|').slice(1, -1).map(c => c.trim());
-              tableHtml += '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
-            }
-
-            tableHtml += '</tbody></table>';
-          }
-
-          // === Liste der Audit-Logs aufbauen ===
-          let auditList = '<p>Noch keine Audit-Logs vorhanden.</p>';
-          try {
-            const dir = 'audit-logs';
-            if (fs.existsSync(dir)) {
-              const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'));
-              if (files.length > 0) {
-                auditList = '<ul>' + files.map(f => {
-                  const img = f.replace('.md', '');
-                  return `<li><a href="audit-logs/${f}">${img}</a></li>`;
-                }).join('') + '</ul>';
-              }
-            }
-          } catch (e) {
-            auditList = '<p>Noch keine Audit-Logs vorhanden.</p>';
-          }
-
-          const html = `<!DOCTYPE html>
-          <html lang="de">
+          cat > public/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html>
           <head>
-            <meta charset="UTF-8" />
             <title>Security Dashboard</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <style>
-              :root {
-                color-scheme: dark;
-              }
-              body {
-                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                margin: 0;
-                padding: 2rem 1rem;
-                background: #020617;
-                color: #e5e7eb;
-              }
-              .container {
-                max-width: 960px;
-                margin: 0 auto;
-              }
-              h1, h2 {
-                color: #facc15;
-              }
-              a {
-                color: #38bdf8;
-              }
-              table {
-                border-collapse: collapse;
-                width: 100%;
-                margin-top: 1rem;
-                font-size: 0.9rem;
-              }
-              th, td {
-                border: 1px solid #1f2937;
-                padding: 0.4rem 0.6rem;
-                text-align: left;
-              }
-              th {
-                background: #111827;
-              }
-              tr:nth-child(even) {
-                background: #020617;
-              }
-              .card {
-                background: #020617;
-                border-radius: 0.75rem;
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-                border: 1px solid #1f2937;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-              }
-              .subtitle {
-                color: #9ca3af;
-                font-size: 0.9rem;
-                margin-top: -0.5rem;
-                margin-bottom: 1.5rem;
-              }
-              .pill {
-                display: inline-block;
-                padding: 0.15rem 0.6rem;
-                border-radius: 999px;
-                font-size: 0.75rem;
-                background: #111827;
-                border: 1px solid #1f2937;
-                margin-right: 0.25rem;
-              }
-            </style>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
           </head>
           <body>
-            <div class="container">
-              <h1>Security Dashboard</h1>
-              <p class="subtitle">Automatisch generiert aus Trivy-Scans, Audit-Logs und Daily Security Summary.</p>
+            <h1>Security Risk Trend</h1>
+            <canvas id="riskChart"></canvas>
 
-              <div class="card">
-                <h2>Daily Security Summary</h2>
-                <p>Übersicht der offenen CVEs pro Image (CRITICAL / HIGH / MEDIUM).</p>
-                ${tableHtml}
-                <p style="margin-top:0.75rem;font-size:0.85rem;">
-                  Rohdaten: <span class="pill">security-summary/security-summary.md</span>
-                </p>
-              </div>
+            <script>
+              async function load() {
+                const res = await fetch("audit-logs/postgres-18.md");
+                const text = await res.text();
 
-              <div class="card">
-                <h2>Audit-Logs pro Image</h2>
-                <p>Komplette Scan-Historie pro Image (Markdown-Dateien im Repo).</p>
-                ${auditList}
-                <p style="margin-top:0.75rem;font-size:0.85rem;">
-                  Jeder Eintrag entspricht einem Scan (Datum + CVE-Liste).
-                </p>
-              </div>
-            </div>
+                const labels = [];
+                const risks = [];
+
+                text.split("## ").slice(1).forEach(block => {
+                  const lines = block.split("\n");
+                  const date = lines[0].trim();
+                  const match = block.match(/RISK_INDEX=(\d+)/);
+
+                  if (match) {
+                    labels.push(date);
+                    risks.push(Number(match[1]));
+                  }
+                });
+
+                new Chart(document.getElementById("riskChart"), {
+                  type: "line",
+                  data: {
+                    labels: labels.reverse(),
+                    datasets: [{
+                      label: "Risk Index",
+                      borderColor: "red",
+                      fill: false,
+                      data: risks.reverse()
+                    }]
+                  }
+                });
+              }
+              load();
+            </script>
           </body>
-          </html>`;
-
-          fs.writeFileSync(path.join('public', 'index.html'), html, 'utf8');
+          </html>
           EOF
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

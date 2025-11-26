@@ -1,0 +1,171 @@
+name: scan-main
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+jobs:
+  scan-main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      issues: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image_tag: postgres-18
+            docker_context: images/postgres
+            docker_file: images/postgres/Dockerfile
+          - image_tag: 8.1-apache-mysql
+            docker_context: images/php-mysql
+            docker_file: images/php-mysql/Dockerfile
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+      - uses: aquasecurity/setup-trivy@v0.2.1
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.docker_context }}
+          file: ${{ matrix.docker_file }}
+          push: false
+          tags: main-${{ matrix.image_tag }}
+
+      - name: Trivy scan (JSON)
+        run: |
+          trivy image --format json \
+            --output trivy-${{ matrix.image_tag }}.json \
+            main-${{ matrix.image_tag }}
+
+      - name: Update baseline, audit log & checkpoint
+        run: |
+          set -e
+          mkdir -p cve-baseline audit-logs checkpoints
+
+          FILE="trivy-${{ matrix.image_tag }}.json"
+          TAG="${{ matrix.image_tag }}"
+          DATE=$(date +%Y-%m-%d)
+
+          CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$FILE")
+          HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' "$FILE")
+          MED=$(jq  '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="MEDIUM")] | length' "$FILE")
+
+          # max CVSS v3 Score, falls verfügbar (sonst 0)
+          MAX_CVSS=$(jq '
+            [
+              .Results[]?.Vulnerabilities? // [] |
+              .[] |
+              (.CVSS?.nvd?.V3Score // .CVSS?.redhat?.V3Score // .CVSS?.github?.V3Score // 0)
+            ] | max // 0
+          ' "$FILE")
+
+          RISK=$((CRIT*5 + HIGH*3 + MED*1))
+
+          cat > cve-baseline/${TAG}.json <<EOF
+          {
+            "date": "$DATE",
+            "critical": $CRIT,
+            "high": $HIGH,
+            "medium": $MED,
+            "risk_index": $RISK,
+            "max_cvss_v3": $MAX_CVSS
+          }
+          EOF
+
+          AUDIT="audit-logs/${TAG}.md"
+          touch "$AUDIT"
+          {
+            echo "## $DATE"
+            echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED RISK_INDEX=$RISK MAX_CVSS_V3=$MAX_CVSS"
+            echo "---"
+            echo
+            cat "$AUDIT"
+          } > tmp && mv tmp "$AUDIT"
+
+          # "Ransomware-Checkpoint": Wenn komplett CVE-frei (MED/HIGH/CRIT = 0)
+          if [ "$CRIT" -eq 0 ] && [ "$HIGH" -eq 0 ] && [ "$MED" -eq 0 ]; then
+            cat > checkpoints/${TAG}.json <<EOF
+            {
+              "date": "$DATE",
+              "image_tag": "$TAG",
+              "risk_index": $RISK,
+              "max_cvss_v3": $MAX_CVSS,
+              "note": "Automatic checkpoint - no MED/HIGH/CRIT CVEs at this time."
+            }
+            EOF
+          fi
+
+      - name: Extract vuln table (MED+)
+        id: vulns
+        run: |
+          TABLE=$(jq -r '
+            .Results[]?.Vulnerabilities? // [] |
+            map(select(.Severity=="MEDIUM" or .Severity=="HIGH" or .Severity=="CRITICAL")) |
+            sort_by(
+              if .Severity=="CRITICAL" then 0
+              elif .Severity=="HIGH" then 1
+              else 2 end
+            ) |
+            map("| \(.Severity) | [\(.VulnerabilityID)](\(.PrimaryURL)) | \(.PkgName) | \(.InstalledVersion) |")
+            | .[]
+          ' trivy-${{ matrix.image_tag }}.json)
+
+          echo "TABLE<<EOF" >> $GITHUB_OUTPUT
+          echo "${TABLE:-| NONE | - | - | - |}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create/update security issue (MED+)
+        uses: actions/github-script@v7
+        env:
+          IMAGE_TAG: ${{ matrix.image_tag }}
+          TABLE: ${{ steps.vulns.outputs.TABLE }}
+        with:
+          script: |
+            const label = `image:${process.env.IMAGE_TAG}`;
+            const { data: existing } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: label,
+              state: "open"
+            });
+
+            const block = `
+            ## Scan ${new Date().toISOString().split("T")[0]}
+
+            | Severity | CVE | Package | Version |
+            ${process.env.TABLE}
+            `;
+
+            if (existing.length) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing[0].number,
+                body: (existing[0].body || "") + block
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Security alerts: ${process.env.IMAGE_TAG}`,
+                body: block,
+                labels: ["security", "trivy", label]
+              });
+            }
+
+      - name: Commit baselines, audit logs & checkpoints
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add cve-baseline audit-logs checkpoints || true
+          git diff --staged --quiet || git commit -m "Update CVE baselines, audit logs & checkpoints"
+          git push || true

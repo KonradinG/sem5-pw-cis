@@ -1,0 +1,36 @@
+name: deploy-gated-by-cves
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: CVE gate (block on CRITICAL)
+        run: |
+          if ls cve-baseline/*.json >/dev/null 2>&1; then
+            for f in cve-baseline/*.json; do
+              IMG=$(basename "$f" .json)
+              CRIT=$(jq '.critical' "$f")
+              if [ "$CRIT" -gt 0 ]; then
+                echo "❌ Blocking deploy: image $IMG has $CRIT CRITICAL CVEs (from $f)"
+                exit 1
+              fi
+            done
+            echo "✅ No CRITICAL CVEs in baselines. Deploy allowed."
+          else
+            echo "⚠️ No baselines found in cve-baseline/. Decide if you want to block or allow."
+            exit 1
+          fi
+
+      - name: Deploy (placeholder)
+        run: |
+          echo "Hier kommt deine eigentliche Deployment-Logik hin."
