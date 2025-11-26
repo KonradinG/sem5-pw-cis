@@ -75,7 +75,25 @@ jobs:
             main-${{ matrix.image_tag }}
 
       # ===============================
-      # Write vulnerability table to file
+      # CVE Gate 🔴 fail ONLY on CRITICAL
+      # ===============================
+      - name: CVE gate (block on CRITICAL)
+        run: |
+          CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' trivy-${{ matrix.image_tag }}.json)
+          HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' trivy-${{ matrix.image_tag }}.json)
+          MED=$(jq  '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="MEDIUM")] | length' trivy-${{ matrix.image_tag }}.json)
+
+          echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED"
+
+          if [ "$CRIT" -gt 0 ]; then
+            echo "❌ CRITICAL vulnerabilities found – blocking pipeline"
+            exit 1
+          else
+            echo "✅ No CRITICAL vulnerabilities – pipeline allowed"
+          fi
+
+      # ===============================
+      # Write vulnerability table
       # ===============================
       - name: Extract MEDIUM+ vulnerabilities
         run: |
@@ -96,13 +114,11 @@ jobs:
           fi
 
       # ===============================
-      # Baseline + Audit Logs + Risk Index + CVSS
+      # Baseline + Audit Logs + Risk Index
       # ===============================
       - name: Update CVE baseline & audit logs
         run: |
-          set -e
           mkdir -p cve-baseline audit-logs
-
           FILE="trivy-${{ matrix.image_tag }}.json"
           TAG="${{ matrix.image_tag }}"
           DATE=$(date +%Y-%m-%d)
@@ -110,19 +126,6 @@ jobs:
           CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$FILE")
           HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' "$FILE")
           MED=$(jq  '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="MEDIUM")] | length' "$FILE")
-
-          MAX_CVSS=$(jq '
-            [
-              .Results[]?.Vulnerabilities? // [] |
-              .[] |
-              (
-                .CVSS?.nvd?.V3Score //
-                .CVSS?.redhat?.V3Score //
-                .CVSS?.github?.V3Score //
-                0
-              )
-            ] | max // 0
-          ' "$FILE")
 
           RISK=$((CRIT*5 + HIGH*3 + MED))
 
@@ -132,8 +135,7 @@ jobs:
             "critical": $CRIT,
             "high": $HIGH,
             "medium": $MED,
-            "risk_index": $RISK,
-            "max_cvss_v3": $MAX_CVSS
+            "risk_index": $RISK
           }
           EOF
 
@@ -141,7 +143,7 @@ jobs:
           touch "$AUDIT"
           {
             echo "## $DATE"
-            echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED RISK_INDEX=$RISK MAX_CVSS_V3=$MAX_CVSS"
+            echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED RISK_INDEX=$RISK"
             echo "---"
             echo
             cat "$AUDIT"
@@ -155,7 +157,6 @@ jobs:
         with:
           script: |
             const fs = require("fs");
-
             const imageTag = "${{ matrix.image_tag }}";
             const label = `image:${imageTag}`;
             const table = fs.readFileSync("vuln-table.txt", "utf8");
@@ -193,7 +194,7 @@ jobs:
             }
 
       # ===============================
-      # Commit baseline & audit logs
+      # Commit baselines & audit logs
       # ===============================
       - name: Commit CVE baselines & audit logs
         run: |
