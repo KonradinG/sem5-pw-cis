@@ -28,32 +28,44 @@ jobs:
             docker_file: images/php-mysql/Dockerfile
 
     steps:
+      # ===============================
+      # Checkout
+      # ===============================
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # ===============================
+      # Docker setup
+      # ===============================
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # ===============================
+      # Trivy install + cache
+      # ===============================
       - name: Cache Trivy DB
         uses: actions/cache@v4
         with:
           path: ~/.cache/trivy
           key: trivy-db
 
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.1
+
       # ===============================
       # Build image LOCALLY (Option A)
       # ===============================
-      - name: Build Docker image (local only)
+      - name: Build Docker image (local)
         uses: docker/build-push-action@v6
         with:
           context: ${{ matrix.docker_context }}
           file: ${{ matrix.docker_file }}
-          load: true
+          load: true # ✅ wichtig
           push: false
           tags: main-${{ matrix.image_tag }}
 
       # ===============================
-      # Trivy Scan (lokales Image)
+      # Trivy scan (local image)
       # ===============================
       - name: Trivy scan (local image, JSON)
         run: |
@@ -175,14 +187,14 @@ jobs:
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `Security alerts: ${process.env.IMAGE_TAG}`,
+                title: \`Security alerts: ${process.env.IMAGE_TAG}\`,
                 body: block,
                 labels: ["security", "trivy", label]
               });
             }
 
       # ===============================
-      # ✅ Commit Baseline & Audit Logs
+      # Commit Baseline & Audit Logs
       # ===============================
       - name: Commit CVE baselines & audit logs
         run: |
