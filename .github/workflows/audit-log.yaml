@@ -3,8 +3,7 @@ name: Audit Log Update
 on:
   workflow_run:
     workflows: ["build-and-scan"]
-    types:
-      - completed
+    types: [completed]
 
 jobs:
   update-audit-log:
@@ -17,8 +16,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # 1) CVE-Issues abrufen
-      - name: Fetch open CVE issues
+      # 1) CVE-Issues abrufen (ALLE: open + closed)
+      - name: Fetch CVE issues
         id: fetch
         uses: actions/github-script@v7
         with:
@@ -26,7 +25,7 @@ jobs:
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: "open",
+              state: "all",
               labels: "security",
               per_page: 100
             });
@@ -50,7 +49,7 @@ jobs:
           node << 'EOF'
           const fs = require("fs");
 
-          let raw = fs.readFileSync("issues.json", "utf8").trim();
+          const raw = fs.readFileSync("issues.json", "utf8").trim();
           if (!raw) {
             console.log("No issues found — skipping.");
             process.exit(0);
@@ -59,9 +58,8 @@ jobs:
           let issues;
           try {
             issues = JSON.parse(raw);
-          } catch (err) {
+          } catch (e) {
             console.log("Invalid JSON — skipping.");
-            console.log(raw);
             process.exit(0);
           }
 
@@ -71,21 +69,18 @@ jobs:
           }
 
           for (const issue of issues) {
+            if (!issue.body) continue;
 
-            if (!issue || !issue.body) continue;
-
+            // image:<name> Label finden
             const imageLabel = issue.labels.find(l => l.name.startsWith("image:"));
             if (!imageLabel) continue;
 
             const imageName = imageLabel.name.split(":")[1];
 
-            const match = issue.body.match(/## Scan (\d{4}-\d{2}-\d{2})([\s\S]*?)(?=## Scan|$)/);
-
+            const match = issue.body.match(/## Scan[^\n]*([\s\S]*?)(?=## Scan|$)/);
             if (!match) continue;
 
-            const date = match[1];
-            const contents = match[2].trim();
-
+            const scanContent = match[0].trim();
             const auditFile = `audit-logs/${imageName}.md`;
 
             let oldContent = "";
@@ -93,23 +88,31 @@ jobs:
               oldContent = fs.readFileSync(auditFile, "utf8");
             }
 
-            const newEntry = 
-            `## ${date}
-            Issue: #${issue.number}
-            ${contents}
+            // Deduplizieren (nicht doppelt schreiben)
+            if (oldContent.includes(scanContent)) {
+              continue;
+            }
 
-            ---`;
+            const entry = `
+              ${scanContent}
 
-                        const finalContent =
-            `# Audit Log für Image: ${imageName}
+              Issue: #${issue.number}
+              State: ${issue.state}
 
-            ${newEntry}
+              ---
+              `;
 
-            ${oldContent}`;
+                          const finalContent =
+              `# Audit Log für Image: ${imageName}
 
-                        fs.writeFileSync(auditFile, finalContent);
-                      }
-                      EOF
+              ${entry}
+
+              ${oldContent}`;
+
+            fs.writeFileSync(auditFile, finalContent);
+            console.log(`Updated audit log: ${auditFile}`);
+          }
+          EOF
 
       # 4) Commit ins Repo
       - name: Commit audit logs
