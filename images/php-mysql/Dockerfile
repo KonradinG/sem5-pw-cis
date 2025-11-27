@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y python3-pip && \
 
 # Stage 2: PHP + Apache App
 ##############################
-FROM php:8.1-apache AS php_app
+FROM php:8.5-apache AS php_app
 
 # Grundpakete + PHP-Extensions
 RUN apt-get update && apt-get install -y \
