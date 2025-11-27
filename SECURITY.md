@@ -6,7 +6,7 @@ This document complements `SECURITY_PIPELINE.md` and adds details about the Soft
 
 - 📊 [Live Security Dashboard](https://konrading.github.io/sem5-pw-cis/) – Current vulnerability status and trends
 - 📦 [SBOM Download](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/sbom.yml) – Software Bill of Materials artifacts
-- 📝 [Audit Logs](../audit-logs/) – Historical scan records per image
+- 📝 [Audit Logs](https://github.com/KonradinG/sem5-pw-cis/tree/main/audit-logs) – Historical scan records per image
 - 🔧 [Technical Pipeline Documentation](SECURITY_PIPELINE.md) – Detailed architecture and workflows
 
 ## SBOM / Software Bill of Materials
