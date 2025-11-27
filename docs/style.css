@@ -33,6 +33,9 @@ footer { text-align: center; padding: 2rem 0 3rem; font-size: 0.75rem; color: #6
   font-size: .9rem;
   border: 1px solid #e0e0e0;
 }
+.update-banner:not(.update-running):not(.update-idle):not(.update-error) {
+  display: none; /* Stay hidden until a status class is applied */
+}
 .update-running { background: #fff3cd; color: #8a6d3b; border-color: #ffe08a; }
 .update-idle    { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
 .update-error   { background: #fdecea; color: #c62828; border-color: #ef9a9a; }
