@@ -43,12 +43,5 @@
       "matchUpdateTypes": ["major"],
       "enabled": false
     }
-  ],
-
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": ["security", "renovate"],
-    "issueOnly": true,
-    "automerge": false
-  }
+  ]
 }
