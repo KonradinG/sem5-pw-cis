@@ -48,18 +48,18 @@ The security pipeline consists of multiple automated stages that are executed on
 All steps are enforced automatically without relying on manual approval for security decisions.
 
 ```mermaid
-flowchart TD
-  A[Push / Schedule] --> B[Build image]
-  B --> C[Scan image (Trivy)]
-  C --> D{MEDIUM+ found?}
-  D -->|yes| E[Create/Update Security Issue]
+graph TD
+  A[Push or schedule] --> B[Build image]
+  B --> C[Scan image with Trivy]
+  C --> D{Medium-or-higher found?}
+  D -->|yes| E[Create or update security issue]
   D -->|no| F[No issue changes]
   E --> G[Renovate updates]
   G --> H[PR CVE comparison]
   H --> I{Security improved?}
   I -->|yes| J[Auto-merge]
   I -->|no| K[Block merge]
-  J --> L[Weekly summary + audit logs]
+  J --> L[Weekly summary and audit logs]
   K --> L
 ```
 
