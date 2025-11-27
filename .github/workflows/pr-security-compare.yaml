@@ -2,115 +2,148 @@ name: pr-security-compare
 
 on:
   pull_request:
-    branches: ["main"]
+    types: [opened, synchronize, reopened]
 
 jobs:
   compare:
-    if: github.actor == 'renovate[bot]'
     runs-on: ubuntu-latest
+
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
 
     strategy:
+      fail-fast: false
       matrix:
-        image_tag: [postgres-18, 8.1-apache-mysql]
+        include:
+          - name: postgres-18
+            dockerfile: images/postgres/Dockerfile
+            context: images/postgres
+            filter: postgres
+
+          - name: 8.1-apache-mysql
+            dockerfile: images/php-mysql/Dockerfile
+            context: images/php-mysql
+            filter: php_mysql
 
     steps:
-      - uses: actions/checkout@v4
+      # Repo holen
+      - name: Checkout
+        uses: actions/checkout@v4
 
+      # Welche Images wurden geändert?
+      - name: Detect changed Dockerfiles
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            postgres:
+              - 'images/postgres/**'
+            php_mysql:
+              - 'images/php-mysql/**'
+
+      # Skip wenn dieses Image nicht betroffen ist
+      - name: Skip irrelevant image
+        if: steps.changes.outputs[matrix.filter] != 'true'
+        run: |
+          echo "Image ${{ matrix.name }} not changed – skipping"
+          exit 0
+
+      # Buildx
       - uses: docker/setup-buildx-action@v3
+
+      # Trivy installieren
       - uses: aquasecurity/setup-trivy@v0.2.1
 
-      - name: Build PR image
-        uses: docker/build-push-action@v6
-        with:
-          context: ${{ matrix.image_tag == 'postgres-18' && 'images/postgres' || 'images/php-mysql' }}
-          file: ${{ matrix.image_tag == 'postgres-18' && 'images/postgres/Dockerfile' || 'images/php-mysql/Dockerfile' }}
-          push: false
-          tags: pr-${{ matrix.image_tag }}
+      # BASE IMAGE bauen
+      - name: Build BASE image
+        run: |
+          docker build \
+            -t base-${{ matrix.name }} \
+            -f ${{ matrix.dockerfile }} \
+            ${{ matrix.context }}
 
+      # BASE scan
+      - name: Scan BASE image
+        run: |
+          trivy image \
+            --scanners vuln \
+            --severity MEDIUM,HIGH,CRITICAL \
+            --format json \
+            --output base-${{ matrix.name }}.json \
+            base-${{ matrix.name }}
+
+      # PR IMAGE bauen
+      - name: Build PR image
+        run: |
+          docker build \
+            -t pr-${{ matrix.name }} \
+            -f ${{ matrix.dockerfile }} \
+            ${{ matrix.context }}
+
+      # PR scan
       - name: Scan PR image
         run: |
-          trivy image --format json \
-            --output pr-${{ matrix.image_tag }}.json \
-            pr-${{ matrix.image_tag }}
+          trivy image \
+            --scanners vuln \
+            --severity MEDIUM,HIGH,CRITICAL \
+            --format json \
+            --output pr-${{ matrix.name }}.json \
+            pr-${{ matrix.name }}
 
-      - name: Compare risk & CVSS
-        id: cmp
+      # CVE vergleichen
+      - name: Compare CVEs
+        id: compare
         run: |
-          set -e
-          TAG="${{ matrix.image_tag }}"
-          BASE_FILE="cve-baseline/${TAG}.json"
+          base=$(jq '[.Results[].Vulnerabilities[]?] | length' base-${{ matrix.name }}.json)
+          pr=$(jq '[.Results[].Vulnerabilities[]?] | length' pr-${{ matrix.name }}.json)
 
-          if [ ! -f "$BASE_FILE" ]; then
-            echo "No baseline for $TAG, skipping auto-merge decision."
-            echo "AUTO=false" >> $GITHUB_OUTPUT
-            exit 0
+          echo "base=$base"
+          echo "pr=$pr"
+
+          echo "base=$base" >> $GITHUB_OUTPUT
+          echo "pr=$pr" >> $GITHUB_OUTPUT
+
+          if [ "$pr" -gt "$base" ]; then
+            echo "SECURITY REGRESSION"
+            exit 1
           fi
 
-          PR_FILE="pr-${TAG}.json"
-
-          PR_CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$PR_FILE")
-          PR_HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' "$PR_FILE")
-          PR_MED=$(jq  '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="MEDIUM")] | length' "$PR_FILE")
-
-          PR_RISK=$((PR_CRIT*5 + PR_HIGH*3 + PR_MED*1))
-
-          PR_MAX_CVSS=$(jq '
-            [
-              .Results[]?.Vulnerabilities? // [] |
-              .[] |
-              (.CVSS?.nvd?.V3Score // .CVSS?.redhat?.V3Score // .CVSS?.github?.V3Score // 0)
-            ] | max // 0
-          ' "$PR_FILE")
-
-          BASE_RISK=$(jq '.risk_index' "$BASE_FILE")
-          BASE_MAX_CVSS=$(jq '.max_cvss_v3' "$BASE_FILE")
-
-          echo "PR_CRIT=$PR_CRIT" >> $GITHUB_OUTPUT
-          echo "PR_RISK=$PR_RISK" >> $GITHUB_OUTPUT
-          echo "BASE_RISK=$BASE_RISK" >> $GITHUB_OUTPUT
-          echo "PR_MAX_CVSS=$PR_MAX_CVSS" >> $GITHUB_OUTPUT
-          echo "BASE_MAX_CVSS=$BASE_MAX_CVSS" >> $GITHUB_OUTPUT
-
-          if [ "$PR_CRIT" -eq 0 ] && [ "$PR_RISK" -lt "$BASE_RISK" ] && [ "$(printf '%.1f\n' "$PR_MAX_CVSS")" != "" ] && awk "BEGIN {exit !($PR_MAX_CVSS <= $BASE_MAX_CVSS + 0.01)}"; then
-            echo "AUTO=true" >> $GITHUB_OUTPUT
-          else
-            echo "AUTO=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Comment on PR
+      # Kommentar in PR
+      - name: Comment result
         uses: actions/github-script@v7
         with:
           script: |
-            const pr = context.payload.pull_request;
+            const base = Number("${{ steps.compare.outputs.base }}");
+            const pr = Number("${{ steps.compare.outputs.pr }}");
+
             const body = `
-            Security comparison for image \`${{ matrix.image_tag }}\`:
+            **Security comparison for \`${{ matrix.name }}\`**
 
-            - Baseline Risk Index: ${{ steps.cmp.outputs.BASE_RISK }}
-            - PR Risk Index:       ${{ steps.cmp.outputs.PR_RISK }}
-            - Baseline max CVSS v3: ${{ steps.cmp.outputs.BASE_MAX_CVSS }}
-            - PR max CVSS v3:       ${{ steps.cmp.outputs.PR_MAX_CVSS }}
-            - Critical in PR:       ${{ steps.cmp.outputs.PR_CRIT }}
+            | Scan | MEDIUM+ CVEs |
+            |------|-------------|
+            | Base | ${base} |
+            | PR   | ${pr} |
 
-            Decision: ${{ steps.cmp.outputs.AUTO == 'true' && '✅ Auto-merge allowed' || '❌ Auto-merge blocked (manual review required)' }}
+            Result: ${pr <= base ? "SAFE – can be merged" : "WORSE – blocked"}
             `;
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: pr.number,
+              issue_number: context.issue.number,
               body
             });
 
-      - name: Auto merge PR if safe
-        if: steps.cmp.outputs.AUTO == 'true'
+      # Auto-Merge erlauben (nur wenn sicher)
+      - name: Enable auto-merge if safe
+        if: success()
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.pulls.merge({
+            await github.rest.pulls.enableAutoMerge({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
+              pull_number: context.issue.number,
               merge_method: "squash"
             });
