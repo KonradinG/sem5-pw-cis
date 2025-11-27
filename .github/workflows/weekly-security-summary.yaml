@@ -2,41 +2,110 @@ name: weekly-security-summary
 
 on:
   schedule:
-    - cron: "0 4 * * 1"
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 jobs:
-  summary:
+  weekly-summary:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Build weekly summary
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Gather CVE statistics
+        id: stats
         run: |
-          mkdir -p security-summary
-          OUT=security-summary/weekly-summary.md
-          echo "# Weekly Security Summary" > $OUT
-          echo "" >> $OUT
+          summarize () {
+            FILE=$1
+            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="MEDIUM")] | length' $FILE)"
+            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="HIGH")] | length' $FILE)"
+            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' $FILE)"
+          }
 
-          for f in cve-baseline/*.json; do
-            TAG=$(basename $f .json)
-            RISK=$(jq '.risk_index' $f)
-            CRIT=$(jq '.critical' $f)
-            HIGH=$(jq '.high' $f)
-            MED=$(jq '.medium' $f)
+          read PG_MEDIUM PG_HIGH PG_CRIT <<< $(summarize audit-logs/postgres/latest.json)
+          read PHP_MEDIUM PHP_HIGH PHP_CRIT <<< $(summarize audit-logs/php-mysql/latest.json)
 
-            echo "## $TAG" >> $OUT
-            echo "- RISK_INDEX: $RISK" >> $OUT
-            echo "- CRITICAL: $CRIT" >> $OUT
-            echo "- HIGH: $HIGH" >> $OUT
-            echo "- MEDIUM: $MED" >> $OUT
-            echo "" >> $OUT
-          done
+          {
+            echo "PG_MEDIUM=$PG_MEDIUM"
+            echo "PG_HIGH=$PG_HIGH"
+            echo "PG_CRIT=$PG_CRIT"
+            echo "PHP_MEDIUM=$PHP_MEDIUM"
+            echo "PHP_HIGH=$PHP_HIGH"
+            echo "PHP_CRIT=$PHP_CRIT"
+          } >> $GITHUB_ENV
 
-      - run: |
-          git add security-summary
-          git commit -m "Weekly summary" || true
-          git push || true
+      - name: Generate Markdown summary
+        run: |
+          cat <<EOF > SECURITY_SUMMARY.md
+          #  Weekly Security Summary
+
+          **Repository:** ${{ github.repository }}  
+          **Week:** $(date +'%Y-%m-%d')
+
+          ---
+
+          ##  CVE Overview
+
+          | Image | MEDIUM | HIGH | CRITICAL |
+          |------|--------|------|----------|
+          | postgres | $PG_MEDIUM | $PG_HIGH | $PG_CRIT |
+          | php-mysql | $PHP_MEDIUM | $PHP_HIGH | $PHP_CRIT |
+
+          ---
+
+          ##  Security Policy Status
+
+          -  **CRITICAL vulnerabilities block deployment**
+          -  Auto-merge only when CVE count decreases
+          -  Renovate security PRs monitored
+
+          ---
+
+          Generated automatically via GitHub Actions 
+          EOF
+
+      - name: Commit summary to repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add SECURITY_SUMMARY.md
+          git commit -m "security: weekly security summary" || true
+          git push
+
+      - name: Create / Update weekly issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('SECURITY_SUMMARY.md', 'utf8');
+
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['security-summary'],
+              state: 'open'
+            });
+
+            if (issues.data.length) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: "Weekly Security Summary",
+                body,
+                labels: ['security', 'security-summary']
+              });
+            }

@@ -1,0 +1,43 @@
+name: auto-close-renovate-issues
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  close-renovate-issue:
+    if: >
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'renovate')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: read
+
+    steps:
+      - name: Close related Renovate issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Suche offene Renovate-Issues, die auf diese PR verweisen
+            const issues = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              labels: ['renovate'],
+              state: 'open'
+            });
+
+            for (const issue of issues.data) {
+              if ((issue.body || '').includes(pr.html_url)) {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: issue.number,
+                  state: 'closed'
+                });
+              }
+            }

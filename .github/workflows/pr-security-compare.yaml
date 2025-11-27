@@ -8,7 +8,7 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
 
@@ -18,24 +18,33 @@ jobs:
           filters: |
             postgres:
               - images/postgres/**
-            php:
+            php-mysql:
               - images/php-mysql/**
 
-      - name: Build matrix
-        id: set-matrix
+      - name: Build dynamic matrix
+        id: matrix
         run: |
-          matrix='{"include":[]}'
+          MATRIX='{"include":[]}'
+
           if [ "${{ steps.filter.outputs.postgres }}" = "true" ]; then
-            matrix=$(jq '.include += [{"image":"postgres","context":"images/postgres","tag":"postgres-18"}]' <<< "$matrix")
+            MATRIX=$(jq '.include += [{"name":"postgres","context":"images/postgres","dockerfile":"images/postgres/Dockerfile"}]' <<< "$MATRIX")
           fi
-          if [ "${{ steps.filter.outputs.php }}" = "true" ]; then
-            matrix=$(jq '.include += [{"image":"php-mysql","context":"images/php-mysql","tag":"8.1-apache-mysql"}]' <<< "$matrix")
+
+          if [ "${{ steps.filter.outputs.php-mysql }}" = "true" ]; then
+            MATRIX=$(jq '.include += [{"name":"php-mysql","context":"images/php-mysql","dockerfile":"images/php-mysql/Dockerfile"}]' <<< "$MATRIX")
           fi
-          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   compare:
     needs: detect-changes
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    if: needs.detect-changes.outputs.matrix != '{"include":[]}'
+
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
@@ -43,18 +52,107 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: docker/setup-buildx-action@v3
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v3
 
-      - uses: aquasecurity/setup-trivy@v0.2.1
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.1
 
+      # === BUILD BASE (main) ===
+      - name: Build base image (main)
+        run: |
+          git fetch origin main
+          git checkout origin/main
+
+          docker build \
+            -t base-${{ matrix.name }} \
+            -f ${{ matrix.dockerfile }} \
+            ${{ matrix.context }}
+
+      - name: Scan base image
+        run: |
+          trivy image \
+            --scanners vuln \
+            --format json \
+            --output base.json \
+            base-${{ matrix.name }}
+
+      # === BUILD PR IMAGE ===
       - name: Build PR image
         run: |
-          docker build -t pr-${{ matrix.image }}:${{ matrix.tag }} ${{ matrix.context }}
+          git checkout ${{ github.head_ref }}
+
+          docker build \
+            -t pr-${{ matrix.name }} \
+            -f ${{ matrix.dockerfile }} \
+            ${{ matrix.context }}
 
       - name: Scan PR image
         run: |
           trivy image \
             --scanners vuln \
-            --severity MEDIUM,HIGH,CRITICAL \
-            pr-${{ matrix.image }}:${{ matrix.tag }} \
-            --exit-code 1 || true
+            --format json \
+            --output pr.json \
+            pr-${{ matrix.name }}
+
+      # === COMPARE ===
+      - name: Compare CVEs (STRICT)
+        id: compare
+        run: |
+          BASE_TOTAL=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity!="LOW")] | length' base.json)
+          PR_TOTAL=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity!="LOW")] | length' pr.json)
+          PR_CRITICAL=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' pr.json)
+
+          echo "BASE_TOTAL=$BASE_TOTAL" >> $GITHUB_ENV
+          echo "PR_TOTAL=$PR_TOTAL" >> $GITHUB_ENV
+          echo "PR_CRITICAL=$PR_CRITICAL" >> $GITHUB_ENV
+
+          echo "Base CVEs: $BASE_TOTAL"
+          echo "PR CVEs:   $PR_TOTAL"
+          echo "CRITICAL:  $PR_CRITICAL"
+
+          # HARD BLOCK
+          if [ "$PR_CRITICAL" -gt 0 ]; then
+            echo " CRITICAL vulnerabilities present"
+            exit 1
+          fi
+
+          # MUST improve
+          if [ "$PR_TOTAL" -ge "$BASE_TOTAL" ]; then
+            echo " CVE count not improved"
+            exit 1
+          fi
+
+          echo " Security improved"
+
+      # === COMMENT ===
+      - name: Comment result
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: [
+                ` **Security improvement detected for \`${{ matrix.name }}\`**`,
+                ``,
+                `• Base CVEs: **${process.env.BASE_TOTAL}**`,
+                `• PR CVEs: **${process.env.PR_TOTAL}**`,
+                `• CRITICAL: **0**`,
+                ``,
+                `Safe to merge `
+              ].join("\n")
+            })
+
+      # === ENABLE AUTOMERGE ===
+      - name: Enable automerge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.enableAutoMerge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              merge_method: "squash"
+            })
