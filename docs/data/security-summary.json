@@ -1,42 +1,34 @@
 {
-  "generatedAt": "2025-11-27T18:20:55Z",
+  "generatedAt": "2025-11-27T18:28:37Z",
   "period": {
     "start": "2025-11-20",
     "end": "2025-11-27"
   },
   "images": [
     {
-      "name": "php-mysql-secured",
+      "name": "(no-trivy-reports)",
       "critical": 0,
-      "high": 2,
-      "medium": 3,
-      "low": 1,
-      "unknown": 0
-    },
-    {
-      "name": "postgres-secured",
-      "critical": 1,
       "high": 0,
-      "medium": 2,
-      "low": 1,
-      "unknown": 1
+      "medium": 0,
+      "low": 0,
+      "unknown": 0
     }
   ],
   "totals": {
-    "critical": 1,
-    "high": 2,
-    "medium": 5,
-    "low": 2,
-    "unknown": 1
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0
   },
   "delta": {
-    "critical": 1,
-    "high": 2,
-    "medium": 5,
-    "low": 2,
-    "unknown": 1
+    "critical": -1,
+    "high": -2,
+    "medium": -5,
+    "low": -2,
+    "unknown": -1
   },
-  "direction": "worse",
+  "direction": "better",
   "trend": [
     {
       "date": "2025-11-13",
@@ -52,19 +44,18 @@
     },
     {
       "date": "2025-11-27",
-      "critical": 1,
-      "high": 2,
-      "medium": 5
+      "critical": 0,
+      "high": 0,
+      "medium": 0
     }
   ],
-  "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
-  "findings": "Analyse der MEDIUM/HIGH/CRITICAL Findings erforderlich.",
-  "recommendations": "Priorisiere Behebung von HIGH/CRITICAL; Re-Scan nach Updates durchführen.",
-  "riskIndex": 10,
+  "summary": "Keine sicherheitsrelevanten Schwachstellen (MEDIUM+) in dieser Periode erkannt.",
+  "findings": "Aktuell keine offenen Findings mit Merge-Relevanz.",
+  "recommendations": "Weiter wöchentliche Scans und Renovate-PRs überwachen; keine Maßnahmen nötig.",
+  "riskIndex": 0,
   "riskIndexMethod": "(critical*10 + high*5 + medium*2) / 300 * 100; capped at 100",
   "version": 3,
   "sources": [
-    "reports\\trivy\\php-mysql.json",
-    "reports\\trivy\\postgres.json"
+    "reports\\trivy"
   ]
 }
