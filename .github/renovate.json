@@ -15,7 +15,7 @@
   "automerge": true,
   "automergeType": "pr",
 
-  "requiredStatusChecks": ["build-and-scan"],
+  "requiredStatusChecks": ["scan-main"],
 
   "packageRules": [
     {
