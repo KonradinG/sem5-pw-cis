@@ -1,0 +1,49 @@
+name: Manage Issues and Labels
+
+on:
+  workflow_dispatch:
+
+jobs:
+  manage-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Close completed issue #39
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 39,
+              body: '✅ Workflow läuft erfolgreich seit mehreren Tagen. Dashboard ist live und wird wöchentlich aktualisiert.'
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 39,
+              state: 'closed'
+            });
+
+      - name: Label security issue #31
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 31,
+              labels: ['security', 'trivy', 'image:8.1-apache-mysql']
+            });
+
+      - name: Label security issue #30
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 30,
+              labels: ['security', 'trivy', 'image:postgres-18']
+            });
