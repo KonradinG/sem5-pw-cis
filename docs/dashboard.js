@@ -203,9 +203,9 @@
           return;
         }
         if (status === 'built') {
-          banner.hidden = false;
-          banner.classList.remove('update-running','update-error');
-          banner.classList.add('update-idle');
+          // Site is current → hide banner entirely
+          banner.classList.remove('update-running','update-error','update-idle');
+          banner.hidden = true;
           const finished = cache.pages.updated_at ? new Date(cache.pages.updated_at) : null;
           const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
           textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
@@ -252,9 +252,8 @@
           return;
         }
         if (status === 'built') {
-          banner.hidden = false;
-          banner.classList.remove('update-running','update-error');
-          banner.classList.add('update-idle');
+          banner.classList.remove('update-running','update-error','update-idle');
+          banner.hidden = true;
           const finished = data.updated_at ? new Date(data.updated_at) : null;
           const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
           textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
