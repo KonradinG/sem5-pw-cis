@@ -1,6 +1,6 @@
 # Starte EINMAL von Docker Hub, baue DEIN eigenes Image
 # und hoste es danach nur in GHCR
-FROM postgres:18
+FROM postgres:18.1
 
 LABEL org.opencontainers.image.title="postgres-secured"
 LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
