@@ -12,6 +12,7 @@
   const riskIndexEl = document.getElementById("riskIndex");
   const riskDirectionEl = document.getElementById("riskDirection");
   const periodEl = document.getElementById("period");
+  const lastUpdatedEl = document.getElementById("lastUpdated");
   const totalsBody = document.getElementById("totalsBody");
   const imagesTableBody = document.querySelector("#images-table tbody");
   const trendCanvas = document.getElementById("riskTrendChart");
@@ -116,6 +117,16 @@
       const start = data.period?.start ?? "?";
       const end = data.period?.end ?? "?";
       periodEl.textContent = `Woche: ${start} bis ${end}`;
+
+      // Last updated timestamp
+      if (data.generatedAt && lastUpdatedEl) {
+        const date = new Date(data.generatedAt);
+        const formatted = date.toLocaleString('de-DE', { 
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+        });
+        lastUpdatedEl.querySelector('span').textContent = formatted;
+      }
 
       // Risk index
       const riskIndex = typeof data.riskIndex === "number" ? data.riskIndex : 0;

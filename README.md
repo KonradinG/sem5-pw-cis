@@ -1,5 +1,9 @@
 # Secure Container Images – DevSecOps Pipeline
 
+[![Security Dashboard](https://img.shields.io/badge/Security-Dashboard-blue?style=flat&logo=github)](https://konrading.github.io/sem5-pw-cis/)
+[![SBOM Available](https://img.shields.io/badge/SBOM-Available-green?style=flat&logo=github)](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/sbom.yml)
+[![Trivy Scanning](https://img.shields.io/badge/Trivy-Weekly%20Scan-orange?style=flat&logo=aqua)](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/security_summary.yml)
+
 A fully automated DevSecOps pipeline for hardened container images with a strong focus on vulnerability management, automated dependency updates, and transparent security reporting. The goal is a reproducible, auditable, and customer‑ready example of modern container security practices.
 
 ## Table of Contents
@@ -28,21 +32,7 @@ All images are built, scanned, and monitored automatically for known vulnerabili
 
 The security pipeline runs on push and on schedule. It scans locally, builds and scans images, opens/updates security issues, and auto‑merges safe dependency updates.
 
-```mermaid
-flowchart TD
-	 A[Push / Schedule] --> B[scan-main: local build & scan]
-	 B --> C[build-and-scan: build, GHCR push, Trivy]
-	 C --> D{Security issues MEDIUM+?}
-	 D -->|yes| E[Open/append GitHub Issue]
-	 D -->|no| F[No new issues]
-	 E --> G[Renovate dependency updates]
-	 G --> H[PR CVE comparison]
-	 H --> I{Security improved?}
-	 I -->|yes| J[Auto-merge]
-	 I -->|no| K[Block merge]
-	 J --> L[Weekly summary + audit logs]
-	 K --> L
-```
+For detailed pipeline architecture and technical implementation, see [SECURITY_PIPELINE.md](SECURITY_PIPELINE.md).
 
 ## Implemented Controls
 
@@ -150,13 +140,20 @@ Adjust the cron schedule or history retention via workflow or script parameters 
 | `cve-baseline/`       | Reference vulnerability baselines |
 | `SECURITY_SUMMARY.md` | Security documentation            |
 
+## Implemented Features
+
+- ✅ Web‑based security dashboard (GitHub Pages)
+- ✅ Graphical vulnerability trend visualization (Chart.js)
+- ✅ Weekly automated security summary reports
+- ✅ SBOM generation (CycloneDX format, monthly)
+- ✅ GitHub Security tab integration (SARIF upload)
+
 ## Planned Enhancements
 
-- Web‑based security dashboard (GitHub Pages)
-- Graphical vulnerability trend visualization
 - Static Application Security Testing (SAST)
 - Config and infrastructure misconfiguration scanning
-- Exportable customer‑ready security reports
+- SBOM diff comparison (before/after dependency updates)
+- Exportable customer‑ready PDF security reports
 
 ## Target Audience
 

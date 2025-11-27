@@ -1,3 +1,16 @@
+"""Security Summary Generator
+
+Aggregates Trivy vulnerability scan reports into a unified security summary JSON
+for dashboard visualization. Tracks historical trends, computes risk indices,
+and generates recommendations based on severity distributions.
+
+Usage:
+    python generate_security_summary.py \
+        --trivy reports/trivy/image1.json reports/trivy/image2.json \
+        --previous docs/data/security-summary.json \
+        --output docs/data/security-summary.json
+"""
+
 import json
 import os
 import argparse
@@ -13,6 +26,14 @@ MAX_SCORE = 300  # Normalization baseline for riskIndex formula
 
 
 def safe_load_json(path: str) -> Any:
+    """Load JSON file with error handling.
+    
+    Args:
+        path: File path to JSON file
+        
+    Returns:
+        Parsed JSON data or None if file not found/invalid
+    """
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -24,6 +45,14 @@ def safe_load_json(path: str) -> Any:
 
 
 def find_trivy_reports(directory: str) -> List[str]:
+    """Discover all JSON files in a directory for Trivy report processing.
+    
+    Args:
+        directory: Path to directory containing Trivy JSON reports
+        
+    Returns:
+        Sorted list of absolute paths to JSON files
+    """
     if not os.path.isdir(directory):
         return []
     files = []
@@ -34,6 +63,15 @@ def find_trivy_reports(directory: str) -> List[str]:
 
 
 def parse_trivy_report(path: str) -> Dict[str, Any]:
+    """Parse a single Trivy JSON report and extract vulnerability counts.
+    
+    Args:
+        path: Path to Trivy JSON report file
+        
+    Returns:
+        Dictionary with image name and flattened severity counts
+        (critical, high, medium, low, unknown)
+    """
     data = safe_load_json(path)
     if not data:
         return {}
@@ -52,6 +90,14 @@ def parse_trivy_report(path: str) -> Dict[str, Any]:
 
 
 def collect_image_vulnerabilities(report_paths: List[str]) -> List[Dict[str, Any]]:
+    """Aggregate vulnerability counts across multiple Trivy reports.
+    
+    Args:
+        report_paths: List of paths to Trivy JSON report files
+        
+    Returns:
+        List of image records with name and severity counts, sorted by name
+    """
     images: Dict[str, Dict[str, int]] = {}
     for rpt in report_paths:
         parsed = parse_trivy_report(rpt)
@@ -66,6 +112,16 @@ def collect_image_vulnerabilities(report_paths: List[str]) -> List[Dict[str, Any
 
 
 def load_previous_summary(path: str) -> Dict[str, Any]:
+    """Load previous security summary with format migration support.
+    
+    Migrates nested vulnerability structures to flattened format if needed.
+    
+    Args:
+        path: Path to previous security-summary.json
+        
+    Returns:
+        Previous summary data with migrated image structures
+    """
     data = safe_load_json(path) or {}
     # Migration: if images have nested structure
     migrated_images = []
@@ -79,6 +135,14 @@ def load_previous_summary(path: str) -> Dict[str, Any]:
 
 
 def compute_totals(images: List[Dict[str, Any]]) -> Dict[str, int]:
+    """Sum vulnerability counts across all images.
+    
+    Args:
+        images: List of image records with severity counts
+        
+    Returns:
+        Dictionary with total counts per severity level
+    """
     totals = {"critical": 0, "high": 0, "medium": 0, "low": 0, "unknown": 0}
     for img in images:
         for sev in totals.keys():
@@ -87,6 +151,16 @@ def compute_totals(images: List[Dict[str, Any]]) -> Dict[str, int]:
 
 
 def compute_risk_index(totals: Dict[str, int]) -> int:
+    """Calculate normalized risk index from vulnerability counts.
+    
+    Formula: (critical*10 + high*5 + medium*2) / 300 * 100, capped at 100
+    
+    Args:
+        totals: Dictionary with severity counts
+        
+    Returns:
+        Risk index value (0-100)
+    """
     score = (
         totals.get("critical", 0) * WEIGHTS["critical"]
         + totals.get("high", 0) * WEIGHTS["high"]
@@ -98,6 +172,15 @@ def compute_risk_index(totals: Dict[str, int]) -> int:
 
 
 def determine_direction(current_totals: Dict[str, int], previous_totals: Dict[str, int]) -> str:
+    """Determine security trend direction by comparing MEDIUM+ vulnerabilities.
+    
+    Args:
+        current_totals: Current severity counts
+        previous_totals: Previous week's severity counts
+        
+    Returns:
+        'better', 'worse', or 'stable'
+    """
     current_sum = current_totals["critical"] + current_totals["high"] + current_totals["medium"]
     previous_sum = previous_totals.get("critical", 0) + previous_totals.get("high", 0) + previous_totals.get("medium", 0)
     if current_sum > previous_sum:
@@ -108,6 +191,22 @@ def determine_direction(current_totals: Dict[str, int], previous_totals: Dict[st
 
 
 def build_summary(images: List[Dict[str, Any]], previous: Dict[str, Any], history_limit: int, min_history: int, backfill_mode: str, sources: List[str]) -> Dict[str, Any]:
+    """Build complete security summary with trend tracking and recommendations.
+    
+    Handles trend deduplication, synthetic backfilling for minimum history,
+    and generates contextual recommendations based on findings.
+    
+    Args:
+        images: List of current image vulnerability records
+        previous: Previous summary for trend continuation
+        history_limit: Maximum trend entries to retain
+        min_history: Minimum trend points (backfills if needed)
+        backfill_mode: 'repeat' or 'zeros' for synthetic entries
+        sources: List of report paths used
+        
+    Returns:
+        Complete security summary dictionary (version 3 format)
+    """
     today = datetime.utcnow().date()
     period_end = today
     period_start = today - timedelta(days=7)
@@ -198,12 +297,23 @@ def build_summary(images: List[Dict[str, Any]], previous: Dict[str, Any], histor
 
 
 def write_json(path: str, data: Dict[str, Any]) -> None:
+    """Write JSON data to file with directory creation.
+    
+    Args:
+        path: Output file path
+        data: Dictionary to serialize as JSON
+    """
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 def parse_args() -> argparse.Namespace:
+    """Parse command-line arguments for security summary generation.
+    
+    Returns:
+        Parsed arguments namespace
+    """
     parser = argparse.ArgumentParser(description="Generate aggregated security summary from Trivy reports.")
     parser.add_argument("--trivy", nargs="*", help="Explicit Trivy JSON report files (optional).")
     parser.add_argument("--trivy-dir", default=DEFAULT_TRIVY_DIR, help="Directory to auto-discover Trivy JSON reports.")
@@ -216,6 +326,10 @@ def parse_args() -> argparse.Namespace:
 
 
 def main():
+    """Main entry point for security summary generation.
+    
+    Orchestrates report discovery, parsing, summary building, and output.
+    """
     args = parse_args()
     previous = load_previous_summary(args.previous)
     report_paths = args.trivy if args.trivy else find_trivy_reports(args.trivy_dir)

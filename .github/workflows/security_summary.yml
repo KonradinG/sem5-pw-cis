@@ -6,11 +6,57 @@ on:
   workflow_dispatch:
 
 jobs:
-  scan-and-generate:
+  scan-images:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
+      security-events: write
+    strategy:
+      matrix:
+        image:
+          - name: php-mysql
+            context: images/php-mysql
+            tag: local-php-mysql
+          - name: postgres
+            context: images/postgres
+            tag: local-postgres
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ${{ matrix.image.name }} image
+        run: |
+          docker build -t ${{ matrix.image.tag }} ${{ matrix.image.context }}
+
+      - name: Trivy JSON scan ${{ matrix.image.name }}
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: ${{ matrix.image.tag }}
+          format: "json"
+          output: "reports/trivy/${{ matrix.image.name }}.json"
+
+      - name: Trivy SARIF scan ${{ matrix.image.name }} (MEDIUM+)
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: ${{ matrix.image.tag }}
+          format: "sarif"
+          output: "reports/trivy/${{ matrix.image.name }}.sarif"
+          exit-code: "0"
+          severity: "MEDIUM,HIGH,CRITICAL"
+
+      - name: Upload scan artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-${{ matrix.image.name }}
+          path: reports/trivy/${{ matrix.image.name }}.*
+          retention-days: 7
+
+  generate-summary:
+    runs-on: ubuntu-latest
+    needs: scan-images
+    permissions:
       contents: write
-      security-events: write # allow uploading SARIF to Code Scanning
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,47 +66,12 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Build php-mysql image
-        run: |
-          docker build -t local-php-mysql images/php-mysql
-
-      - name: Build postgres image
-        run: |
-          docker build -t local-postgres images/postgres
-
-      - name: Trivy scan php-mysql
-        uses: aquasecurity/trivy-action@v0.14.0
+      - name: Download all scan artifacts
+        uses: actions/download-artifact@v4
         with:
-          image-ref: local-php-mysql
-          format: "json"
-          output: "reports/trivy/php-mysql.json"
-
-      - name: Trivy scan postgres
-        uses: aquasecurity/trivy-action@v0.14.0
-        with:
-          image-ref: local-postgres
-          format: "json"
-          output: "reports/trivy/postgres.json"
-
-      # --- Additional SARIF export for GitHub Code Scanning (Security Tab) ---
-      # We run a second Trivy invocation per image with SARIF output; exit-code forced to 0 so workflow doesn't fail on findings.
-      - name: Trivy SARIF scan php-mysql (MEDIUM+)
-        uses: aquasecurity/trivy-action@v0.14.0
-        with:
-          image-ref: local-php-mysql
-          format: "sarif"
-          output: "reports/trivy/php-mysql.sarif"
-          exit-code: "0"
-          severity: "MEDIUM,HIGH,CRITICAL"
-
-      - name: Trivy SARIF scan postgres (MEDIUM+)
-        uses: aquasecurity/trivy-action@v0.14.0
-        with:
-          image-ref: local-postgres
-          format: "sarif"
-          output: "reports/trivy/postgres.sarif"
-          exit-code: "0"
-          severity: "MEDIUM,HIGH,CRITICAL"
+          path: reports/trivy
+          pattern: trivy-*
+          merge-multiple: true
 
       - name: Merge SARIF files
         run: |
