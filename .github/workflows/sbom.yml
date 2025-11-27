@@ -1,0 +1,38 @@
+name: SBOM Generation
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 1 * *" # Monthly on the 1st at 02:00 UTC
+
+jobs:
+  generate-sbom:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate SBOM (CycloneDX JSON)
+        # Syft action generates an SBOM of the repository contents
+        uses: anchore/sbom-action@v0.16.2
+        with:
+          path: .
+          format: cyclonedx-json
+          # Use a stable path to prepare for future diffing without implementing it now
+          # TODO(diff): keep stable name/location for later SBOM diff without adding analysis here
+          output-file: sbom/sbom-cyclonedx.json
+
+      - name: Upload SBOM artifact (90 days retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cyclonedx
+          path: sbom/sbom-cyclonedx.json
+          # Keep for 90 days (subject to org/repo policy limits)
+          retention-days: 90
+
+      - name: Summary output
+        run: |
+          echo 'SBOM (CycloneDX JSON) generated and uploaded as workflow artifact.'
+          echo 'Download via GitHub Actions run artifacts (not committed into repo).'

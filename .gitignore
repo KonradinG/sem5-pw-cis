@@ -1,1 +1,32 @@
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Node (if any demos later)
+node_modules/
+
+# Env files
+.env
+.env.*
+
+# Coverage/Reports (local)
+coverage/
+.coverage*
+reports/
+*.sarif
+
+# SBOM local output (workflow uploads as artifact, not committed)
+sbom/
+
+# Misc
 beschreibung.txt

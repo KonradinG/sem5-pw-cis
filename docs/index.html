@@ -1,36 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>Security Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Weekly Security Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+      integrity="sha256-wPYFqYw7YQobU9tDZCgx5DYlO8yHDSuDnU1VMp4F9uE="
+      crossorigin="anonymous"
+    ></script>
   </head>
-
   <body>
-    <h1>Container Security Dashboard</h1>
-    <p>Automated vulnerability tracking and trends</p>
+    <header>
+      <h1>Weekly Security Dashboard</h1>
+      <p class="tagline">Automatisierte Container Vulnerability Übersicht</p>
+    </header>
 
-    <section>
-      <h2>Current Risk Overview</h2>
-      <table id="summary-table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>CRITICAL</th>
-            <th>HIGH</th>
-            <th>MEDIUM</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
+    <main class="grid">
+      <!-- Risk Index Card -->
+      <section class="card" id="risk-card">
+        <h2>Risk Index</h2>
+        <div class="risk-value" id="riskIndex">–</div>
+        <div class="risk-direction" id="riskDirection"></div>
+        <div class="period" id="period">Woche: –</div>
+      </section>
 
-    <section>
-      <h2>Vulnerability Trend</h2>
-      <canvas id="trendChart"></canvas>
-    </section>
+      <!-- Totals Card -->
+      <section class="card" id="totals-card">
+        <h2>Aktuelle Findings</h2>
+        <table class="totals-table">
+          <thead>
+            <tr>
+              <th>Severity</th>
+              <th>Anzahl</th>
+              <th>Δ</th>
+            </tr>
+          </thead>
+          <tbody id="totalsBody"></tbody>
+        </table>
+      </section>
 
-    <script src="dashboard.js"></script>
+      <!-- Summary & Empfehlungen Card -->
+      <section class="card" id="summary-card">
+        <h2>Summary & Empfehlungen</h2>
+        <p id="summaryText" class="summary-text">–</p>
+        <p id="recommendationsText" class="recommendations-text">–</p>
+      </section>
+
+      <!-- Images Table Card -->
+      <section class="card wide" id="images-card">
+        <h2>Images</h2>
+        <table id="images-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Critical</th>
+              <th>High</th>
+              <th>Medium</th>
+              <th>Low</th>
+              <th>Unknown</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Trend Chart Card -->
+      <section class="card wide" id="trend-card">
+        <h2>Risk Index Trend (max 4 Wochen)</h2>
+        <canvas id="riskTrendChart" height="160"></canvas>
+        <div class="foot-note" id="trendNote">
+          Historie wird aus security-summary.json berechnet.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small
+        >Quelle: docs/data/security-summary.json · Aktualisiert clientseitig ·
+        SBOM verfügbar als Artefakt im
+        <a
+          href="https://github.com/KonradinG/sem5-pw-cis/actions/workflows/sbom.yml"
+          target="_blank"
+          rel="noopener"
+          >SBOM Workflow</a
+        ></small
+      >
+      <footer>
+        <small>
+          Quelle: docs/data/security-summary.json · Aktualisiert clientseitig ·
+          SBOM als Artefakt im
+          <a
+            href="https://github.com/KonradinG/sem5-pw-cis/actions/workflows/sbom.yml"
+            target="_blank"
+            rel="noopener"
+            >SBOM Workflow</a
+          >
+          (Datei: <code>sbom/sbom-cyclonedx.json</code>, Aufbewahrung: 90 Tage)
+        </small>
+      </footer>
+    </footer>
   </body>
 </html>

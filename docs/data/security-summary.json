@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2025-11-27T17:47:11Z",
+  "period": {
+    "start": "2025-11-20",
+    "end": "2025-11-27"
+  },
+  "images": [
+    {
+      "name": "php-mysql-secured",
+      "critical": 0,
+      "high": 2,
+      "medium": 3,
+      "low": 1,
+      "unknown": 0
+    },
+    {
+      "name": "postgres-secured",
+      "critical": 1,
+      "high": 0,
+      "medium": 2,
+      "low": 1,
+      "unknown": 1
+    }
+  ],
+  "totals": {
+    "critical": 1,
+    "high": 2,
+    "medium": 5,
+    "low": 2,
+    "unknown": 1
+  },
+  "delta": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0
+  },
+  "direction": "stable",
+  "trend": [
+    {
+      "date": "2025-11-13",
+      "critical": 1,
+      "high": 2,
+      "medium": 5
+    },
+    {
+      "date": "2025-11-20",
+      "critical": 1,
+      "high": 2,
+      "medium": 5
+    },
+    {
+      "date": "2025-11-27",
+      "critical": 1,
+      "high": 2,
+      "medium": 5
+    }
+  ],
+  "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
+  "findings": "Analyse der MEDIUM/HIGH/CRITICAL Findings erforderlich.",
+  "recommendations": "Priorisiere Behebung von HIGH/CRITICAL; Re-Scan nach Updates durchführen.",
+  "riskIndex": 10,
+  "riskIndexMethod": "(critical*10 + high*5 + medium*2) / 300 * 100; capped at 100",
+  "version": 3,
+  "sources": [
+    "reports\\trivy\\php-mysql.json",
+    "reports\\trivy\\postgres.json"
+  ]
+}

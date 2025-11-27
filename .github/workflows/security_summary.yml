@@ -1,0 +1,108 @@
+name: Weekly Security Summary
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # Every Monday 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  scan-and-generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      security-events: write # allow uploading SARIF to Code Scanning
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build php-mysql image
+        run: |
+          docker build -t local-php-mysql images/php-mysql
+
+      - name: Build postgres image
+        run: |
+          docker build -t local-postgres images/postgres
+
+      - name: Trivy scan php-mysql
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: local-php-mysql
+          format: "json"
+          output: "reports/trivy/php-mysql.json"
+
+      - name: Trivy scan postgres
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: local-postgres
+          format: "json"
+          output: "reports/trivy/postgres.json"
+
+      # --- Additional SARIF export for GitHub Code Scanning (Security Tab) ---
+      # We run a second Trivy invocation per image with SARIF output; exit-code forced to 0 so workflow doesn't fail on findings.
+      - name: Trivy SARIF scan php-mysql (MEDIUM+)
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: local-php-mysql
+          format: "sarif"
+          output: "reports/trivy/php-mysql.sarif"
+          exit-code: "0"
+          severity: "MEDIUM,HIGH,CRITICAL"
+
+      - name: Trivy SARIF scan postgres (MEDIUM+)
+        uses: aquasecurity/trivy-action@v0.14.0
+        with:
+          image-ref: local-postgres
+          format: "sarif"
+          output: "reports/trivy/postgres.sarif"
+          exit-code: "0"
+          severity: "MEDIUM,HIGH,CRITICAL"
+
+      - name: Merge SARIF files
+        run: |
+          python - <<'PYMERGE'
+          import json, pathlib
+          p1 = pathlib.Path('reports/trivy/php-mysql.sarif')
+          p2 = pathlib.Path('reports/trivy/postgres.sarif')
+          if not p1.exists() or not p2.exists():
+              raise SystemExit('Missing SARIF inputs')
+          s1 = json.loads(p1.read_text(encoding='utf-8'))
+          s2 = json.loads(p2.read_text(encoding='utf-8'))
+          # Basic merge: concatenate runs arrays
+          merged = {
+              **{k: v for k, v in s1.items() if k != 'runs'},
+              'runs': s1.get('runs', []) + s2.get('runs', [])
+          }
+          out = pathlib.Path('reports/trivy/combined.sarif')
+          out.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(f'Merged SARIF written to {out} with {len(merged["runs"])} runs.')
+          PYMERGE
+
+      - name: Upload combined SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: reports/trivy/combined.sarif
+
+      - name: Generate security summary
+        run: |
+          python scripts/generate_security_summary.py \
+            --trivy reports/trivy/php-mysql.json reports/trivy/postgres.json \
+            --previous docs/data/security-summary.json \
+            --output docs/data/security-summary.json
+
+      - name: Commit and push summary
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          # Commit only the dashboard summary to avoid repo noise from raw reports
+          git add docs/data/security-summary.json
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+          else
+            git commit -m 'chore(security): weekly security summary update'
+            git push
+          fi

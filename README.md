@@ -74,10 +74,58 @@ flowchart TD
 
 ## Security Reporting
 
-### Weekly Security Summary
+### Weekly Security Summary & Dashboard
 
-- Automatically generated overview maintained as a persistent GitHub Issue
-- Includes vulnerability counts per image, trend comparisons, and historical evolution
+The file `docs/data/security-summary.json` is generated weekly (and can be run on-demand) and powers the web dashboard in `docs/`.
+
+Current JSON structure (version 3):
+
+```
+{
+	"generatedAt": "UTC timestamp",
+	"period": {"start": "YYYY-MM-DD", "end": "YYYY-MM-DD"},
+	"images": [
+		{"name": "image-name", "critical": 0, "high": 1, "medium": 2, "low": 5, "unknown": 0}
+	],
+	"totals": {"critical": 0, "high": 1, "medium": 2, "low": 5, "unknown": 0},
+	"delta": {"critical": 0, "high": -1, "medium": 0, "low": 2, "unknown": 0},
+	"direction": "better|worse|stable",
+	"trend": [
+		{"date": "2025-11-20", "critical": 0, "high": 1, "medium": 2},
+		{"date": "2025-11-27", "critical": 0, "high": 0, "medium": 2}
+	],
+	"riskIndex": 7,
+	"riskIndexMethod": "(critical*10 + high*5 + medium*2) / 300 * 100; capped at 100",
+	"version": 3,
+	"sources": ["reports/trivy/php-mysql.json", "reports/trivy/postgres.json"]
+}
+```
+
+The dashboard expects flattened image severity fields and a `trend` array for Chart.js.
+
+### Generation Script
+
+`scripts/generate_security_summary.py` can be invoked manually:
+
+```bash
+python scripts/generate_security_summary.py \
+	--trivy reports/trivy/php-mysql.json reports/trivy/postgres.json \
+	--previous docs/data/security-summary.json \
+	--output docs/data/security-summary.json
+```
+
+If `--trivy` paths are omitted it auto-discovers JSON reports in `--trivy-dir` (default `reports/trivy`). Missing or invalid reports produce a placeholder entry.
+
+### Automated Workflow
+
+The GitHub Actions workflow `.github/workflows/security_summary.yml` runs weekly (Monday 03:00 UTC) and on manual dispatch:
+
+1. Builds the container images.
+2. Scans them with Trivy (JSON output stored under `reports/trivy/`).
+3. Generates/updates `security-summary.json` with historical trend retention (last 26 entries by default).
+4. Commits and pushes changes if there are modifications.
+
+Adjust the cron schedule or history retention via workflow or script parameters as needed.
 
 ### Audit Logs
 
