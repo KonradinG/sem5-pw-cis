@@ -22,6 +22,7 @@
   const trendCanvas = document.getElementById("riskTrendChart");
   const summaryText = document.getElementById("summaryText");
   const recommendationsText = document.getElementById("recommendationsText");
+  const GH_CACHE_PATH = "data/gh-cache.json";
 
   // Constants for risk index calculation (mirrors server-side script)
   const WEIGHTS = { critical: 10, high: 5, medium: 2 }; // low & unknown ignored for index
@@ -170,6 +171,14 @@
   checkPagesStatus();
   setInterval(checkPagesStatus, 60000);
 
+  async function fetchGhCache() {
+    try {
+      const res = await fetch(GH_CACHE_PATH, { cache: 'no-store' });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
   // Check GitHub Pages build/deploy status and show a banner if updating
   async function checkPagesStatus() {
     if (__pagesPollDisabled) return;
@@ -178,6 +187,46 @@
     if (!banner || !textEl) return;
 
     try {
+      // Prefer cached status written by workflow
+      const cache = await fetchGhCache();
+      if (cache && cache.pages && cache.pages.status) {
+        const status = String(cache.pages.status).toLowerCase();
+        if (status === 'queued' || status === 'building') {
+          banner.hidden = false;
+          banner.classList.remove('update-idle','update-error');
+          banner.classList.add('update-running');
+          const started = cache.pages.created_at ? new Date(cache.pages.created_at) : null;
+          const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
+          textEl.textContent = `🔄 Seiten-Update läuft (${status})${ago}`;
+          __pagesPrevStatus = 'running';
+          return;
+        }
+        if (status === 'built') {
+          banner.hidden = false;
+          banner.classList.remove('update-running','update-error');
+          banner.classList.add('update-idle');
+          const finished = cache.pages.updated_at ? new Date(cache.pages.updated_at) : null;
+          const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
+          textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
+          if (__pagesPrevStatus === 'running' && /github\.io$/.test(location.hostname)) {
+            setTimeout(() => location.reload(), 10000);
+          }
+          __pagesPrevStatus = 'built';
+          return;
+        }
+        if (status === 'errored') {
+          banner.hidden = false;
+          banner.classList.remove('update-running','update-idle');
+          banner.classList.add('update-error');
+          textEl.textContent = `⚠️ Seiten-Update fehlgeschlagen`;
+          __pagesPrevStatus = 'error';
+          return;
+        }
+        // unknown → hide
+        banner.hidden = true;
+        return;
+      }
+
       const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/pages/builds/latest`, {
         headers: { 'Accept': 'application/vnd.github+json' }, cache: 'no-store'
       });
@@ -273,8 +322,16 @@
   async function loadOpenIssues() {
     const container = document.getElementById("issues-container");
     try {
-      const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open');
-      const issues = await response.json();
+      // Try cached issues first (written by workflow)
+      let issues = null;
+      const cache = await fetchGhCache();
+      if (cache && Array.isArray(cache.issues)) {
+        issues = cache.issues;
+      } else {
+        const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        issues = await response.json();
+      }
 
       if (!Array.isArray(issues) || issues.length === 0) {
         container.innerHTML = '<p class="no-issues">✅ Keine offenen Security Issues</p>';
