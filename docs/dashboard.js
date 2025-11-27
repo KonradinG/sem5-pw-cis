@@ -7,6 +7,9 @@
 
 (function init() {
   const SUMMARY_PATH = "data/security-summary.json";
+  const GH_OWNER = "KonradinG";
+  const GH_REPO = "sem5-pw-cis";
+  let __pagesPrevStatus = 'unknown';
 
   // DOM references
   const riskIndexEl = document.getElementById("riskIndex");
@@ -161,6 +164,98 @@
 
   // Load open security issues
   loadOpenIssues();
+
+  // Initial check and periodic refresh for GitHub Pages status
+  checkPagesStatus();
+  setInterval(checkPagesStatus, 60000);
+
+  // Check GitHub Pages build/deploy status and show a banner if updating
+  async function checkPagesStatus() {
+    const banner = document.getElementById("updateBanner");
+    const textEl = document.getElementById("updateBannerText");
+    if (!banner || !textEl) return;
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/pages/builds/latest`, {
+        headers: { 'Accept': 'application/vnd.github+json' }, cache: 'no-store'
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const status = String(data.status || '').toLowerCase();
+        if (status === 'queued' || status === 'building') {
+          banner.hidden = false;
+          banner.classList.remove('update-idle','update-error');
+          banner.classList.add('update-running');
+          const started = data.created_at ? new Date(data.created_at) : null;
+          const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
+          textEl.textContent = `🔄 Seiten-Update läuft (${status})${ago}`;
+          __pagesPrevStatus = 'running';
+          return;
+        }
+        if (status === 'built') {
+          banner.hidden = false;
+          banner.classList.remove('update-running','update-error');
+          banner.classList.add('update-idle');
+          const finished = data.updated_at ? new Date(data.updated_at) : null;
+          const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
+          textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
+          if (__pagesPrevStatus === 'running' && /github\.io$/.test(location.hostname)) {
+            // Give the CDN a few seconds to propagate, then reload to pick up the new build
+            setTimeout(() => location.reload(), 10000);
+          }
+          __pagesPrevStatus = 'built';
+          return;
+        }
+        if (status === 'errored') {
+          banner.hidden = false;
+          banner.classList.remove('update-running','update-idle');
+          banner.classList.add('update-error');
+          textEl.textContent = `⚠️ Seiten-Update fehlgeschlagen`;
+          __pagesPrevStatus = 'error';
+          return;
+        }
+        // Unknown → hide
+        banner.hidden = true;
+        return;
+      }
+
+      // Fallback: if Pages API not available, try to infer from Actions runs
+      const runsRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows`, { cache: 'no-store' });
+      if (runsRes.ok) {
+        const wf = await runsRes.json();
+        // Try to find Pages workflow by name
+        const pagesWf = (wf.workflows || []).find(w => /pages build and deployment/i.test(w.name || ''));
+        if (pagesWf) {
+          const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows/${pagesWf.id}/runs?per_page=1`, { cache: 'no-store' });
+          if (r.ok) {
+            const j = await r.json();
+            const run = j.workflow_runs?.[0];
+            if (run && (run.status === 'in_progress' || run.status === 'queued')) {
+              banner.hidden = false;
+              banner.classList.remove('update-idle','update-error');
+              banner.classList.add('update-running');
+              const started = run.created_at ? new Date(run.created_at) : null;
+              const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
+              textEl.textContent = `🔄 Seiten-Update läuft${ago}`;
+              __pagesPrevStatus = 'running';
+              return;
+            }
+          }
+        }
+      }
+      banner.hidden = true;
+    } catch (e) {
+      const banner = document.getElementById('updateBanner');
+      if (banner) {
+        banner.hidden = false;
+        banner.classList.remove('update-idle','update-running');
+        banner.classList.add('update-error');
+        const textEl = document.getElementById('updateBannerText');
+        if (textEl) textEl.textContent = '⚠️ Status konnte nicht geladen werden';
+      }
+    }
+  }
 
   /**
    * Load and display open GitHub issues with security label

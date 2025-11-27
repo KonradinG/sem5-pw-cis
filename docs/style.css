@@ -22,6 +22,30 @@ header .last-updated span {
 }
 footer { text-align: center; padding: 2rem 0 3rem; font-size: 0.75rem; color: #607d8b; }
 
+/* Update banner (Pages) */
+.update-banner {
+  margin-top: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  border-radius: 6px;
+  font-size: .9rem;
+  border: 1px solid #e0e0e0;
+}
+.update-running { background: #fff3cd; color: #8a6d3b; border-color: #ffe08a; }
+.update-idle    { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
+.update-error   { background: #fdecea; color: #c62828; border-color: #ef9a9a; }
+
+.spinner {
+  width: 14px; height: 14px;
+  border: 2px solid rgba(0,0,0,.1);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
 main.grid {
   display: grid;
   gap: 1.2rem;
