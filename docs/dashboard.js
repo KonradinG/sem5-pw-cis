@@ -158,4 +158,74 @@
   }
 
   load();
+
+  // Load open security issues
+  loadOpenIssues();
+
+  /**
+   * Load and display open GitHub issues with security label
+   */
+  async function loadOpenIssues() {
+    const container = document.getElementById("issues-container");
+    try {
+      const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open');
+      const issues = await response.json();
+
+      if (!Array.isArray(issues) || issues.length === 0) {
+        container.innerHTML = '<p class="no-issues">✅ Keine offenen Security Issues</p>';
+        return;
+      }
+
+      let html = '<div class="issues-list">';
+      issues.forEach(issue => {
+        const createdDate = new Date(issue.created_at);
+        const age = timeAgo(createdDate);
+        const labels = issue.labels.map(l => 
+          `<span class="label" style="background-color: #${l.color}">${l.name}</span>`
+        ).join('');
+
+        html += `
+          <div class="issue-item">
+            <div class="issue-header">
+              <a href="${issue.html_url}" target="_blank" class="issue-title">
+                #${issue.number}: ${issue.title}
+              </a>
+              <span class="age">${age}</span>
+            </div>
+            <div class="issue-labels">${labels}</div>
+          </div>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    } catch (error) {
+      console.error('Error loading issues:', error);
+      container.innerHTML = '<p class="error">⚠️ Fehler beim Laden der Issues</p>';
+    }
+  }
+
+  /**
+   * Convert date to human-readable relative time
+   * @param {Date} date - The date to convert
+   * @returns {string} Human-readable time ago string
+   */
+  function timeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    const intervals = [
+      { label: 'Jahr', seconds: 31536000 },
+      { label: 'Monat', seconds: 2592000 },
+      { label: 'Woche', seconds: 604800 },
+      { label: 'Tag', seconds: 86400 },
+      { label: 'Stunde', seconds: 3600 },
+      { label: 'Minute', seconds: 60 }
+    ];
+
+    for (const interval of intervals) {
+      const count = Math.floor(seconds / interval.seconds);
+      if (count >= 1) {
+        return `vor ${count} ${interval.label}${count !== 1 ? 'en' : ''}`;
+      }
+    }
+    return 'gerade eben';
+  }
 })();

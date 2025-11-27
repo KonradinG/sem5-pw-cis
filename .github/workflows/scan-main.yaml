@@ -139,17 +139,59 @@ jobs:
           }
           EOF
 
+          # Extract current CVE IDs
+          CURRENT_CVES=$(jq -r '[.Results[]?.Vulnerabilities? // [] | .[].VulnerabilityID] | unique | .[]' "$FILE" | sort)
+
+          # Extract previous CVE IDs from last audit log entry
           AUDIT="audit-logs/${TAG}.md"
           touch "$AUDIT"
+          PREVIOUS_CVES=""
+          if [ -s "$AUDIT" ]; then
+            PREVIOUS_CVES=$(grep -oP 'CVE-\d{4}-\d+' "$AUDIT" | head -20 | sort -u)
+          fi
+
+          # Detect lifecycle changes
+          NEW_CVES=$(comm -23 <(echo "$CURRENT_CVES") <(echo "$PREVIOUS_CVES") | head -10)
+          FIXED_CVES=$(comm -13 <(echo "$CURRENT_CVES") <(echo "$PREVIOUS_CVES") | head -10)
+
+          # Build lifecycle section
+          LIFECYCLE=""
+          if [ -n "$NEW_CVES" ]; then
+            LIFECYCLE="$LIFECYCLE\n#### 🆕 Neu erkannte CVEs\n"
+            echo "$NEW_CVES" | while read cve; do
+              LIFECYCLE="$LIFECYCLE- $cve\n"
+            done
+          fi
+          if [ -n "$FIXED_CVES" ]; then
+            LIFECYCLE="$LIFECYCLE\n#### ✅ Behobene CVEs\n"
+            echo "$FIXED_CVES" | while read cve; do
+              LIFECYCLE="$LIFECYCLE- $cve\n"
+            done
+          fi
+
+          # Extract top CVEs with details
+          TOP_CVES=$(jq -r '
+            [.Results[]?.Vulnerabilities? // [] | .[] | 
+            select(.Severity == "CRITICAL" or .Severity == "HIGH")] |
+            sort_by(.Severity) | reverse | .[0:5] |
+            .[] | 
+            "- **[\(.VulnerabilityID)](\(.PrimaryURL // "N/A"))** (\(.Severity)) - `\(.PkgName)@\(.InstalledVersion)` | CVSS: \(.CVSS.nvd.V3Score // .CVSS.redhat.V3Score // "N/A") | Fix: \(.FixedVersion // "Pending")"
+          ' "$FILE" 2>/dev/null || echo "- Keine CRITICAL/HIGH Vulnerabilities")
+
           {
             echo "## $DATE"
             echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED RISK_INDEX=$RISK"
+            echo ""
+            if [ -n "$LIFECYCLE" ]; then
+              echo "### 🔄 Lifecycle Changes"
+              echo -e "$LIFECYCLE"
+            fi
+            echo "### 🔴 Top Critical/High Vulnerabilities"
+            echo "$TOP_CVES"
             echo "---"
             echo
             cat "$AUDIT"
-          } > tmp && mv tmp "$AUDIT"
-
-      # ===============================
+          } > tmp && mv tmp "$AUDIT"      # ===============================
       # Create / update CVE Issue
       # ===============================
       - name: Create or update CVE issue (MEDIUM+)

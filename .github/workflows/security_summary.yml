@@ -105,12 +105,18 @@ jobs:
             --previous docs/data/security-summary.json \
             --output docs/data/security-summary.json
 
+      - name: Copy Trivy reports for dashboard access
+        run: |
+          mkdir -p docs/data/trivy-reports
+          cp reports/trivy/php-mysql.json docs/data/trivy-reports/
+          cp reports/trivy/postgres-18.json docs/data/trivy-reports/ 2>/dev/null || cp reports/trivy/postgres.json docs/data/trivy-reports/postgres-18.json
+
       - name: Commit and push summary
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          # Commit only the dashboard summary to avoid repo noise from raw reports
-          git add docs/data/security-summary.json
+          # Commit dashboard files including trivy reports for CVE details page
+          git add docs/data/security-summary.json docs/data/trivy-reports/
           if git diff --cached --quiet; then
             echo 'No changes to commit.'
           else

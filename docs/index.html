@@ -75,9 +75,38 @@
           Historie wird aus security-summary.json berechnet.
         </div>
       </section>
+
+      <!-- Issue Board -->
+      <section class="card wide" id="issues-card">
+        <h2>🎯 Offene Security Issues</h2>
+        <div id="issues-container">
+          <p class="loading">Lade Issues...</p>
+        </div>
+      </section>
     </main>
 
     <footer>
+      <div style="margin-bottom: 1rem">
+        <a href="cve-details.html" class="cve-details-btn"
+          >🔍 Alle CVEs anzeigen</a
+        >
+      </div>
+      <div style="margin-bottom: 1rem; font-size: 0.85rem">
+        <strong>📥 Trivy Reports:</strong>
+        <a
+          href="data/trivy-reports/php-mysql.json"
+          download
+          style="margin: 0 0.5rem; color: #0969da"
+          >php-mysql.json</a
+        >
+        |
+        <a
+          href="data/trivy-reports/postgres-18.json"
+          download
+          style="margin: 0 0.5rem; color: #0969da"
+          >postgres-18.json</a
+        >
+      </div>
       <small>
         Quelle: docs/data/security-summary.json · Aktualisiert clientseitig ·
         SBOM als Artefakt im
