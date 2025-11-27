@@ -2,15 +2,14 @@ name: pr-security-compare
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened]
 
 jobs:
   detect-changes:
-    name: Detect changed Dockerfiles
     runs-on: ubuntu-latest
     outputs:
       postgres: ${{ steps.filter.outputs.postgres }}
-      php_mysql: ${{ steps.filter.outputs.php_mysql }}
+      php: ${{ steps.filter.outputs.php }}
     steps:
       - uses: actions/checkout@v4
 
@@ -19,31 +18,25 @@ jobs:
         with:
           filters: |
             postgres:
-              - images/postgres/Dockerfile
-            php_mysql:
-              - images/php-mysql/Dockerfile
+              - images/postgres/**
+            php:
+              - images/php-mysql/**
 
   compare:
-    name: compare
     needs: detect-changes
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-
     strategy:
-      fail-fast: false
       matrix:
         include:
-          - name: postgres-18
-            dockerfile: images/postgres/Dockerfile
+          - image: postgres
+            enabled: ${{ needs.detect-changes.outputs.postgres }}
             context: images/postgres
-            enabled: ${{ needs.detect-changes.outputs.postgres == 'true' }}
+            tag: postgres-18
 
-          - name: 8.1-apache-mysql
-            dockerfile: images/php-mysql/Dockerfile
+          - image: php-mysql
+            enabled: ${{ needs.detect-changes.outputs.php }}
             context: images/php-mysql
-            enabled: ${{ needs.detect-changes.outputs.php_mysql == 'true' }}
+            tag: 8.1-apache-mysql
 
     if: matrix.enabled == 'true'
 
@@ -54,65 +47,14 @@ jobs:
 
       - uses: aquasecurity/setup-trivy@v0.2.1
 
-      - name: Build BASE image
-        run: |
-          docker build -f ${{ matrix.dockerfile }} \
-            -t base-${{ matrix.name }}:latest \
-            ${{ matrix.context }}
-
       - name: Build PR image
         run: |
-          docker build -f ${{ matrix.dockerfile }} \
-            -t pr-${{ matrix.name }}:latest \
-            ${{ matrix.context }}
+          docker build -t pr-${{ matrix.image }}:${{ matrix.tag }} ${{ matrix.context }}
 
-      - name: Scan BASE
+      - name: Scan PR image
         run: |
-          trivy image --scanners vuln \
+          trivy image \
+            --scanners vuln \
             --severity MEDIUM,HIGH,CRITICAL \
-            --format json \
-            --output base.json \
-            base-${{ matrix.name }}:latest
-
-      - name: Scan PR
-        run: |
-          trivy image --scanners vuln \
-            --severity MEDIUM,HIGH,CRITICAL \
-            --format json \
-            --output pr.json \
-            pr-${{ matrix.name }}:latest
-
-      - name: Compare risk
-        id: compare
-        run: |
-          BASE=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity!="LOW")] | length' base.json)
-          PR=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity!="LOW")] | length' pr.json)
-
-          echo "base=$BASE" >> $GITHUB_OUTPUT
-          echo "pr=$PR" >> $GITHUB_OUTPUT
-
-          if [ "$PR" -gt "$BASE" ]; then exit 1; fi
-
-      - name: Comment on PR
-        uses: actions/github-script@v7
-        env:
-          BASE: ${{ steps.compare.outputs.base }}
-          PRC: ${{ steps.compare.outputs.pr }}
-          IMAGE: ${{ matrix.name }}
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `
-              ###  Security comparison for **${process.env.IMAGE}**
-
-              | Scan | MEDIUM+ CVEs |
-              |----:|------------:|
-              | Base | ${process.env.BASE} |
-              | PR | ${process.env.PRC} |
-
-               SAFE – can be merged
-              `
-            })
+            pr-${{ matrix.image }}:${{ matrix.tag }} \
+            --exit-code 1 || true
