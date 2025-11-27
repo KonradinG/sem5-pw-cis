@@ -1,5 +1,50 @@
 {
-  "generatedAt": "1970-01-01T00:00:00.000Z",
-  "issues": [],
-  "pages": { "status": "unknown", "created_at": null, "updated_at": null }
+  "generatedAt": "2025-11-27T21:17:43.051Z",
+  "issues": [
+    {
+      "number": 31,
+      "title": "Security alerts: 8.1-apache-mysql",
+      "html_url": "https://github.com/KonradinG/sem5-pw-cis/issues/31",
+      "created_at": "2025-11-26T12:33:09Z",
+      "labels": [
+        {
+          "name": "security",
+          "color": "ededed"
+        },
+        {
+          "name": "trivy",
+          "color": "ededed"
+        },
+        {
+          "name": "image:8.1-apache-mysql",
+          "color": "ededed"
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "title": "Security alerts: postgres-18",
+      "html_url": "https://github.com/KonradinG/sem5-pw-cis/issues/30",
+      "created_at": "2025-11-26T12:32:41Z",
+      "labels": [
+        {
+          "name": "security",
+          "color": "ededed"
+        },
+        {
+          "name": "trivy",
+          "color": "ededed"
+        },
+        {
+          "name": "image:postgres-18",
+          "color": "ededed"
+        }
+      ]
+    }
+  ],
+  "pages": {
+    "status": "built",
+    "created_at": "2025-11-27T21:16:56Z",
+    "updated_at": "2025-11-27T21:17:31Z"
+  }
 }
