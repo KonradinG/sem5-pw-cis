@@ -1,34 +1,42 @@
 {
-  "generatedAt": "2025-11-27T18:49:46Z",
+  "generatedAt": "2025-11-27T20:02:12Z",
   "period": {
     "start": "2025-11-20",
     "end": "2025-11-27"
   },
   "images": [
     {
-      "name": "(no-trivy-reports)",
+      "name": "local-php-mysql",
       "critical": 0,
-      "high": 0,
-      "medium": 0,
-      "low": 0,
-      "unknown": 0
+      "high": 31,
+      "medium": 117,
+      "low": 470,
+      "unknown": 2
+    },
+    {
+      "name": "local-postgres",
+      "critical": 0,
+      "high": 3,
+      "medium": 8,
+      "low": 82,
+      "unknown": 1
     }
   ],
   "totals": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0
+    "high": 34,
+    "medium": 125,
+    "low": 552,
+    "unknown": 3
   },
   "delta": {
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0
+    "high": 34,
+    "medium": 125,
+    "low": 552,
+    "unknown": 3
   },
-  "direction": "stable",
+  "direction": "worse",
   "trend": [
     {
       "date": "2025-11-13",
@@ -45,17 +53,18 @@
     {
       "date": "2025-11-27",
       "critical": 0,
-      "high": 0,
-      "medium": 0
+      "high": 34,
+      "medium": 125
     }
   ],
-  "summary": "Keine sicherheitsrelevanten Schwachstellen (MEDIUM+) in dieser Periode erkannt.",
-  "findings": "Aktuell keine offenen Findings mit Merge-Relevanz.",
-  "recommendations": "Weiter wöchentliche Scans und Renovate-PRs überwachen; keine Maßnahmen nötig.",
-  "riskIndex": 0,
+  "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
+  "findings": "Analyse der MEDIUM/HIGH/CRITICAL Findings erforderlich.",
+  "recommendations": "Priorisiere Behebung von HIGH/CRITICAL; Re-Scan nach Updates durchführen.",
+  "riskIndex": 100,
   "riskIndexMethod": "(critical*10 + high*5 + medium*2) / 300 * 100; capped at 100",
   "version": 3,
   "sources": [
-    "reports/trivy"
+    "reports/trivy/php-mysql.json",
+    "reports/trivy/postgres.json"
   ]
 }
