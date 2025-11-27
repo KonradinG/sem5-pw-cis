@@ -40,6 +40,9 @@ footer { text-align: center; padding: 2rem 0 3rem; font-size: 0.75rem; color: #6
 .update-idle    { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
 .update-error   { background: #fdecea; color: #c62828; border-color: #ef9a9a; }
 
+/* Hide spinner when not actively running */
+.update-idle .spinner, .update-error .spinner { display: none; }
+
 .spinner {
   width: 14px; height: 14px;
   border: 2px solid rgba(0,0,0,.1);
