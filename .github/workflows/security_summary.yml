@@ -29,14 +29,14 @@ jobs:
           docker build -t ${{ matrix.image.tag }} ${{ matrix.image.context }}
 
       - name: Trivy JSON scan ${{ matrix.image.name }}
-        uses: aquasecurity/trivy-action@v0.14.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: ${{ matrix.image.tag }}
           format: "json"
           output: "reports/trivy/${{ matrix.image.name }}.json"
 
       - name: Trivy SARIF scan ${{ matrix.image.name }} (MEDIUM+)
-        uses: aquasecurity/trivy-action@v0.14.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: ${{ matrix.image.tag }}
           format: "sarif"
