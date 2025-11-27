@@ -2,7 +2,7 @@ name: Weekly Security Summary
 
 on:
   schedule:
-    - cron: "0 0 * * 0" # Sunday 00:00 UTC
+    - cron: "0 0 * * 0" # Sonntag 00:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -16,10 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ✅ Trivy CLI sauber installieren (kein Action-Wrapping)
       - name: Install Trivy
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg lsb-release
+          sudo apt-get install -y wget gnupg lsb-release jq
           wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key \
             | sudo gpg --dearmor -o /usr/share/keyrings/trivy.gpg
           echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb \
@@ -27,6 +28,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y trivy
 
+      # ✅ Images scannen & Zahlen einsammeln
       - name: Scan images and collect CVEs
         run: |
           set -e
@@ -35,14 +37,19 @@ jobs:
           echo "image,medium,high,critical" > out/current.csv
 
           declare -A images
-          images[postgres]="postgres:$(grep '^FROM postgres:' images/postgres/Dockerfile | cut -d: -f2)"
-          images[php-mysql]="php:$(grep '^FROM php:' images/php-mysql/Dockerfile | head -1 | cut -d: -f2)"
+
+          # ✅ PostgreSQL
+          images[postgres]="$(awk '/^FROM / {print $2; exit}' images/postgres/Dockerfile)"
+
+          # ✅ PHP / MySQL (Multi-Stage sicher!)
+          images[php-mysql]="$(awk '/^FROM php:/ {print $2; exit}' images/php-mysql/Dockerfile)"
 
           for name in "${!images[@]}"; do
             image="${images[$name]}"
-            echo "Scanning $image"
+            echo "🔍 Scanning $image"
 
             trivy image \
+              --scanners vuln \
               --severity MEDIUM,HIGH,CRITICAL \
               --format json \
               "$image" > out/$name.json
@@ -54,54 +61,55 @@ jobs:
             echo "$name,$m,$h,$c" >> out/current.csv
           done
 
-      - name: Update weekly summary issue with trend analysis
+      # ✅ Weekly Issue + Verlauf + Trend
+      - name: Update weekly security summary issue
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require("fs");
 
-            const rows = fs.readFileSync("out/current.csv","utf8")
+            const rows = fs.readFileSync("out/current.csv", "utf8")
               .trim().split("\n").slice(1)
               .map(r => {
-                const [img,m,h,c]=r.split(",");
-                return {img,m:+m,h:+h,c:+c};
+                const [img,m,h,c] = r.split(",");
+                return {img, m:+m, h:+h, c:+c};
               });
 
             const title = "Weekly Security Summary";
 
-            const issues = await github.rest.issues.listForRepo({
+            const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: "security-summary",
-              state: "open"
+              state: "open",
+              labels: "security-summary"
             });
 
-            let issue = issues.data.find(i => i.title === title);
+            let issue = issues.find(i => i.title === title);
 
             if (!issue) {
               issue = (await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 title,
-                labels: ["security","security-summary"],
-                body: "## 🛡 Weekly Security Summary\nHistorical CVE tracking."
+                labels: ["security", "security-summary"],
+                body: "## 🛡 Weekly Security Summary\nAutomatisch erzeugter CVE-Verlauf pro Image."
               })).data;
             }
 
-            const comments = await github.rest.issues.listComments({
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number
             });
 
-            let prev = {};
-            if (comments.data.length) {
-              const last = comments.data.at(-1).body;
+            let previous = {};
+            if (comments.length) {
+              const last = comments.at(-1).body;
               for (const r of rows) {
                 const m = last.match(
-                  new RegExp(`${r.img}.*?(\\d+)\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)`)
+                  new RegExp(`${r.img}\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)`)
                 );
-                if (m) prev[r.img]={m:+m[1],h:+m[2],c:+m[3]};
+                if (m) previous[r.img] = {m:+m[1], h:+m[2], c:+m[3]};
               }
             }
 
@@ -110,17 +118,17 @@ jobs:
             body += "|------|--------|------|----------|-------|\n";
 
             for (const r of rows) {
-              const p = prev[r.img] || {m:0,h:0,c:0};
-              const diff = (r.m+r.h+r.c)-(p.m+p.h+p.c);
-              const trend = diff>0?"🔺":diff<0?"🟢":"➖";
+              const p = previous[r.img] || {m:0,h:0,c:0};
+              const delta = (r.m+r.h+r.c) - (p.m+p.h+p.c);
+              const trend = delta > 0 ? "🔺" : delta < 0 ? "🟢" : "➖";
               body += `| ${r.img} | ${r.m} | ${r.h} | ${r.c} | ${trend} |\n`;
             }
 
             body += `
             **Security Policy**
-            - 🔴 CRITICAL = hard block
-            - ✅ Auto-merge only if CVEs decrease
-            - 📈 Weekly trend visibility
+            - 🔴 CRITICAL = Hard Block
+            - ✅ Auto-Merge nur bei sinkender CVE-Anzahl
+            - 📈 Wöchentliche Trendanalyse
             `;
 
             await github.rest.issues.createComment({
