@@ -8,8 +8,7 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      postgres: ${{ steps.filter.outputs.postgres }}
-      php: ${{ steps.filter.outputs.php }}
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
 
@@ -22,23 +21,24 @@ jobs:
             php:
               - images/php-mysql/**
 
+      - name: Build matrix
+        id: set-matrix
+        run: |
+          matrix='{"include":[]}'
+          if [ "${{ steps.filter.outputs.postgres }}" = "true" ]; then
+            matrix=$(jq '.include += [{"image":"postgres","context":"images/postgres","tag":"postgres-18"}]' <<< "$matrix")
+          fi
+          if [ "${{ steps.filter.outputs.php }}" = "true" ]; then
+            matrix=$(jq '.include += [{"image":"php-mysql","context":"images/php-mysql","tag":"8.1-apache-mysql"}]' <<< "$matrix")
+          fi
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
   compare:
     needs: detect-changes
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        include:
-          - image: postgres
-            enabled: ${{ needs.detect-changes.outputs.postgres }}
-            context: images/postgres
-            tag: postgres-18
-
-          - image: php-mysql
-            enabled: ${{ needs.detect-changes.outputs.php }}
-            context: images/php-mysql
-            tag: 8.1-apache-mysql
-
-    if: matrix.enabled == 'true'
+      fail-fast: false
+      matrix: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
 
     steps:
       - uses: actions/checkout@v4
