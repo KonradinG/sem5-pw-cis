@@ -77,30 +77,19 @@ jobs:
           pattern: trivy-*
           merge-multiple: true
 
-      - name: Merge SARIF files
-        run: |
-          python - <<'PYMERGE'
-          import json, pathlib
-          p1 = pathlib.Path('reports/trivy/php-mysql.sarif')
-          p2 = pathlib.Path('reports/trivy/postgres.sarif')
-          if not p1.exists() or not p2.exists():
-              raise SystemExit('Missing SARIF inputs')
-          s1 = json.loads(p1.read_text(encoding='utf-8'))
-          s2 = json.loads(p2.read_text(encoding='utf-8'))
-          # Basic merge: concatenate runs arrays
-          merged = {
-              **{k: v for k, v in s1.items() if k != 'runs'},
-              'runs': s1.get('runs', []) + s2.get('runs', [])
-          }
-          out = pathlib.Path('reports/trivy/combined.sarif')
-          out.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding='utf-8')
-          print(f'Merged SARIF written to {out} with {len(merged["runs"])} runs.')
-          PYMERGE
-
-      - name: Upload combined SARIF
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Upload SARIF (php-mysql)
+        if: ${{ hashFiles('reports/trivy/php-mysql.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
         with:
-          sarif_file: reports/trivy/combined.sarif
+          sarif_file: reports/trivy/php-mysql.sarif
+          category: container-security-php-mysql
+
+      - name: Upload SARIF (postgres)
+        if: ${{ hashFiles('reports/trivy/postgres.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: reports/trivy/postgres.sarif
+          category: container-security-postgres
 
       - name: Generate security summary
         run: |
