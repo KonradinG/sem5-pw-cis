@@ -4,6 +4,8 @@
     ":disableMajorUpdates"
   ],
 
+  "enabledManagers": ["dockerfile"],
+
   "dependencyDashboard": true,
   "labels": ["renovate"],
 
@@ -32,7 +34,6 @@
       "matchManagers": ["dockerfile"],
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["digest", "patch"],
-      "matchConfidence": ["high"],
       "labels": ["security"],
       "automerge": true,
       "prPriority": 100
