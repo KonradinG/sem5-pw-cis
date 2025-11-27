@@ -1,111 +1,107 @@
-name: weekly-security-summary
+name: Weekly Security Summary
 
 on:
   schedule:
+    # Every Sunday at 00:00 UTC
     - cron: "0 0 * * 0"
   workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
 
 jobs:
   weekly-summary:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      issues: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install jq
-        run: sudo apt-get install -y jq
+      - name: Install Trivy
+        uses: aquasecurity/trivy-action@0.23.0
+        with:
+          install-only: true
 
-      - name: Gather CVE statistics
-        id: stats
+      - name: Scan Docker images
+        id: scan
         run: |
-          summarize () {
-            FILE=$1
-            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="MEDIUM")] | length' $FILE)"
-            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="HIGH")] | length' $FILE)"
-            echo "$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' $FILE)"
-          }
+          set -e
 
-          read PG_MEDIUM PG_HIGH PG_CRIT <<< $(summarize audit-logs/postgres/latest.json)
-          read PHP_MEDIUM PHP_HIGH PHP_CRIT <<< $(summarize audit-logs/php-mysql/latest.json)
+          images=(
+            "postgres:$(grep -E '^FROM postgres:' images/postgres/Dockerfile | cut -d: -f2)"
+            "php-mysql:$(grep -E '^FROM php:' images/php-mysql/Dockerfile | head -1 | cut -d: -f2)"
+          )
 
-          {
-            echo "PG_MEDIUM=$PG_MEDIUM"
-            echo "PG_HIGH=$PG_HIGH"
-            echo "PG_CRIT=$PG_CRIT"
-            echo "PHP_MEDIUM=$PHP_MEDIUM"
-            echo "PHP_HIGH=$PHP_HIGH"
-            echo "PHP_CRIT=$PHP_CRIT"
-          } >> $GITHUB_ENV
+          echo "| Image | MEDIUM | HIGH | CRITICAL |" > summary.md
+          echo "|------|--------|------|----------|" >> summary.md
 
-      - name: Generate Markdown summary
-        run: |
-          cat <<EOF > SECURITY_SUMMARY.md
-          #  Weekly Security Summary
+          for image in "${images[@]}"; do
+            name="${image%%:*}"
+            tag="${image##*:}"
 
-          **Repository:** ${{ github.repository }}  
-          **Week:** $(date +'%Y-%m-%d')
+            echo "Scanning $name:$tag"
 
-          ---
+            trivy image \
+              --severity MEDIUM,HIGH,CRITICAL \
+              --format json \
+              "$image" > trivy.json
 
-          ##  CVE Overview
+            medium=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="MEDIUM")] | length' trivy.json)
+            high=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="HIGH")] | length' trivy.json)
+            critical=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' trivy.json)
 
-          | Image | MEDIUM | HIGH | CRITICAL |
-          |------|--------|------|----------|
-          | postgres | $PG_MEDIUM | $PG_HIGH | $PG_CRIT |
-          | php-mysql | $PHP_MEDIUM | $PHP_HIGH | $PHP_CRIT |
+            echo "| $name | $medium | $high | $critical |" >> summary.md
+          done
 
-          ---
-
-          ##  Security Policy Status
-
-          -  **CRITICAL vulnerabilities block deployment**
-          -  Auto-merge only when CVE count decreases
-          -  Renovate security PRs monitored
-
-          ---
-
-          Generated automatically via GitHub Actions 
-          EOF
-
-      - name: Commit summary to repo
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add SECURITY_SUMMARY.md
-          git commit -m "security: weekly security summary" || true
-          git push
-
-      - name: Create / Update weekly issue
+      - name: Create or update weekly security issue
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
-            const body = fs.readFileSync('SECURITY_SUMMARY.md', 'utf8');
+            const summary = fs.readFileSync('summary.md', 'utf8');
+
+            const title = `Weekly Security Summary`;
+            const body = `
+            ##  Weekly Security Summary
+
+            **Repository:** ${context.repo.owner}/${context.repo.repo}  
+            **Week:** ${new Date().toISOString().slice(0, 10)}
+
+            ### CVE Overview
+            ${summary}
+
+            ### Security Policy Status
+            -  **CRITICAL vulnerabilities hard-block deployments**
+            -  **Auto-merge only allowed when CVE count decreases**
+            -  **Renovate security PRs continuously monitored**
+
+            ---
+            _Generated automatically via GitHub Actions_
+            `;
 
             const issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ['security-summary'],
-              state: 'open'
+              state: "open",
+              labels: "security-summary"
             });
 
-            if (issues.data.length) {
+            const existing = issues.data.find(i => i.title === title);
+
+            if (existing) {
               await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                issue_number: issues.data[0].number,
+                issue_number: existing.number,
                 body
               });
             } else {
               await github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: "Weekly Security Summary",
+                title,
                 body,
-                labels: ['security', 'security-summary']
+                labels: ["security", "security-summary"]
               });
             }
