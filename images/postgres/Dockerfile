@@ -5,7 +5,7 @@ FROM postgres:18.1
 LABEL org.opencontainers.image.title="postgres-secured"
 LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
 LABEL org.opencontainers.image.licenses="PostgreSQL"
-
+#Test von Test
 # NUR FÜR PIPELINE-TEST – hat KEINEN Einfluss auf das Image
 LABEL org.opencontainers.image.pipeline-test="pr-security-compare-trigger"
 
