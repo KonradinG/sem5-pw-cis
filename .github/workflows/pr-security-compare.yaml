@@ -1,4 +1,4 @@
-name: pr-security-compare
+name: PR Security Comparison
 
 on:
   pull_request:

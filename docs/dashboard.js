@@ -180,9 +180,10 @@
       issues.forEach(issue => {
         const createdDate = new Date(issue.created_at);
         const age = timeAgo(createdDate);
-        const labels = issue.labels.map(l => 
-          `<span class="label" style="background-color: #${l.color}">${l.name}</span>`
-        ).join('');
+        const labels = issue.labels.map(l => {
+          const textColor = getContrastColor(l.color || 'cccccc');
+          return `<span class="label" style="background-color: #${l.color}; color: ${textColor}">${l.name}</span>`;
+        }).join('');
 
         html += `
           <div class="issue-item">
@@ -227,5 +228,19 @@
       }
     }
     return 'gerade eben';
+  }
+
+  // Choose readable text color (#000 or #fff) for a given hex background
+  function getContrastColor(hex) {
+    try {
+      const h = String(hex || '').replace('#', '').padEnd(6, '0');
+      const r = parseInt(h.substring(0, 2), 16) || 0;
+      const g = parseInt(h.substring(2, 4), 16) || 0;
+      const b = parseInt(h.substring(4, 6), 16) || 0;
+      const yiq = (r * 299 + g * 587 + b * 114) / 1000; // luminance heuristic
+      return yiq >= 140 ? '#000' : '#fff';
+    } catch (e) {
+      return '#000';
+    }
   }
 })();

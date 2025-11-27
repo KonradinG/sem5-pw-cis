@@ -1,4 +1,4 @@
-name: deploy-gated-by-cves
+name: Deploy Gated by CVEs
 
 on:
   workflow_dispatch:

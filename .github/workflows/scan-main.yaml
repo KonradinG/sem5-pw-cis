@@ -1,4 +1,4 @@
-name: scan-main
+name: Container Security Scan (push/schedule)
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: deploy-security-dashboard
+name: Deploy Security Dashboard
 
 on:
   workflow_run:

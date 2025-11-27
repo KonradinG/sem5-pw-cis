@@ -1,4 +1,4 @@
-name: Weekly Security Summary
+name: Weekly Container Security Summary & Dashboard
 
 on:
   schedule:

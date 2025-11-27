@@ -1,4 +1,4 @@
-name: auto-close-renovate-issues
+name: Auto-Close Renovate Issues
 
 on:
   pull_request:
