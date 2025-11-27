@@ -10,6 +10,7 @@
   const GH_OWNER = "KonradinG";
   const GH_REPO = "sem5-pw-cis";
   let __pagesPrevStatus = 'unknown';
+  let __pagesPollDisabled = false; // stop polling on API 403s to avoid console noise
 
   // DOM references
   const riskIndexEl = document.getElementById("riskIndex");
@@ -171,6 +172,7 @@
 
   // Check GitHub Pages build/deploy status and show a banner if updating
   async function checkPagesStatus() {
+    if (__pagesPollDisabled) return;
     const banner = document.getElementById("updateBanner");
     const textEl = document.getElementById("updateBannerText");
     if (!banner || !textEl) return;
@@ -217,6 +219,14 @@
         }
         // Unknown → hide
         banner.hidden = true;
+        return;
+      }
+
+      // If forbidden (403), likely rate-limited or requires auth → stop polling gracefully
+      if (res.status === 403) {
+        banner.hidden = true;
+        __pagesPollDisabled = true;
+        console.warn('GitHub API 403 for Pages status; disabling further polling.');
         return;
       }
 
