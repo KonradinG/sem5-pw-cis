@@ -1,9 +1,13 @@
-# Starte EINMAL von Docker Hub, baue DEIN eigenes Image und hoste es danach nur in GHCR
+# Starte EINMAL von Docker Hub, baue DEIN eigenes Image
+# und hoste es danach nur in GHCR
 FROM postgres:18
 
 LABEL org.opencontainers.image.title="postgres-secured"
 LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
 LABEL org.opencontainers.image.licenses="PostgreSQL"
+
+# NUR FÜR PIPELINE-TEST – hat KEINEN Einfluss auf das Image
+LABEL org.opencontainers.image.pipeline-test="pr-security-compare-trigger"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
