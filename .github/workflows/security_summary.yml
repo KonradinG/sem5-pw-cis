@@ -24,6 +24,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare reports directory
+        run: |
+          mkdir -p reports/trivy
+
       - name: Build ${{ matrix.image.name }} image
         run: |
           docker build -t ${{ matrix.image.tag }} ${{ matrix.image.context }}
