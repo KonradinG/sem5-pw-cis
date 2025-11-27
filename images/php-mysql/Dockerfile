@@ -1,7 +1,7 @@
 ##############################
 # Stage 1: MySQL mit Security-Fixes
 ##############################
-FROM mysql:8.0 AS mysql_fixed
+FROM mysql:8.4 AS mysql_fixed
 
 # Security-Fixes:
 # - CVE-2025-47273 (setuptools)
@@ -12,7 +12,7 @@ FROM mysql:8.0 AS mysql_fixed
 #   3. Temporäre Pakete und Cache entfernen
 #   4. Installation validieren (bricht Build ab, falls Version nicht passt)
 
-FROM mysql:8.0 AS mysql_fixed
+FROM mysql:8.4 AS mysql_fixed
 
 RUN apt-get update && apt-get install -y python3-pip && \
     python3 -m pip install --upgrade setuptools==78.1.1 && \
