@@ -11,6 +11,7 @@
   const GH_REPO = "sem5-pw-cis";
   let __pagesPrevStatus = 'unknown';
   let __pagesPollDisabled = false; // stop polling on API 403s to avoid console noise
+  const IS_PUBLIC = /\.github\.io$/.test(location.hostname);
 
   // DOM references
   const riskIndexEl = document.getElementById("riskIndex");
@@ -227,6 +228,12 @@
         return;
       }
 
+      // On public GitHub Pages, avoid unauthenticated API calls (403) if cache is missing
+      if (IS_PUBLIC) {
+        banner.hidden = true;
+        return;
+      }
+
       const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/pages/builds/latest`, {
         headers: { 'Accept': 'application/vnd.github+json' }, cache: 'no-store'
       });
@@ -327,10 +334,13 @@
       const cache = await fetchGhCache();
       if (cache && Array.isArray(cache.issues)) {
         issues = cache.issues;
-      } else {
+      } else if (!IS_PUBLIC) {
         const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open', { cache: 'no-store' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         issues = await response.json();
+      } else {
+        container.innerHTML = '<p class="no-issues">ℹ️ Cache wird vorbereitet…</p>';
+        return;
       }
 
       if (!Array.isArray(issues) || issues.length === 0) {
