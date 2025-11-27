@@ -2,138 +2,168 @@ name: Weekly Security Summary
 
 on:
   schedule:
-    - cron: "0 0 * * 0" # Sonntag 00:00 UTC
+    - cron: "0 0 * * 0" # Sunday 00:00 UTC
   workflow_dispatch:
-
-permissions:
-  issues: write
-  contents: read
 
 jobs:
   weekly-summary:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      issues: write
+      packages: read
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # ✅ Trivy CLI sauber installieren (kein Action-Wrapping)
       - name: Install Trivy
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gnupg lsb-release jq
-          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key \
-            | sudo gpg --dearmor -o /usr/share/keyrings/trivy.gpg
-          echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb \
-            $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
-          sudo apt-get update
-          sudo apt-get install -y trivy
+        uses: aquasecurity/setup-trivy@v0.2.1
 
-      # ✅ Images scannen & Zahlen einsammeln
-      - name: Scan images and collect CVEs
+      - name: Prepare directories
+        run: |
+          mkdir -p docs/data
+          mkdir -p .tmp
+
+      - name: Scan images and collect CVE counts
         run: |
           set -e
-          mkdir -p out
 
-          echo "image,medium,high,critical" > out/current.csv
+          echo '{}' > .tmp/current.json
 
-          declare -A images
-
-          # ✅ PostgreSQL
-          images[postgres]="$(awk '/^FROM / {print $2; exit}' images/postgres/Dockerfile)"
-
-          # ✅ PHP / MySQL (Multi-Stage sicher!)
-          images[php-mysql]="$(awk '/^FROM php:/ {print $2; exit}' images/php-mysql/Dockerfile)"
-
-          for name in "${!images[@]}"; do
-            image="${images[$name]}"
-            echo "🔍 Scanning $image"
+          scan_image () {
+            NAME=$1
+            IMAGE=$2
 
             trivy image \
               --scanners vuln \
               --severity MEDIUM,HIGH,CRITICAL \
               --format json \
-              "$image" > out/$name.json
+              "$IMAGE" > .tmp/$NAME.json
 
-            m=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="MEDIUM")] | length' out/$name.json)
-            h=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="HIGH")] | length' out/$name.json)
-            c=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' out/$name.json)
+            MEDIUM=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="MEDIUM")] | length' .tmp/$NAME.json)
+            HIGH=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="HIGH")] | length' .tmp/$NAME.json)
+            CRITICAL=$(jq '[.Results[].Vulnerabilities[]? | select(.Severity=="CRITICAL")] | length' .tmp/$NAME.json)
 
-            echo "$name,$m,$h,$c" >> out/current.csv
-          done
+            jq \
+              --arg name "$NAME" \
+              --argjson m "$MEDIUM" \
+              --argjson h "$HIGH" \
+              --argjson c "$CRITICAL" \
+              '. + {($name): {medium:$m, high:$h, critical:$c}}' \
+              .tmp/current.json > .tmp/tmp.json
 
-      # ✅ Weekly Issue + Verlauf + Trend
-      - name: Update weekly security summary issue
+            mv .tmp/tmp.json .tmp/current.json
+          }
+
+          POSTGRES_TAG=$(grep '^FROM postgres:' images/postgres/Dockerfile | cut -d: -f2)
+          PHP_TAG=$(grep '^FROM php:' images/php-mysql/Dockerfile | head -1 | cut -d: -f2)
+
+          scan_image "postgres-secured" "postgres:${POSTGRES_TAG}"
+          scan_image "php-mysql-secured" "php:${PHP_TAG}"
+
+      - name: Update security-summary.json
+        run: |
+          DATE=$(date +%F)
+
+          if [ ! -f docs/data/security-summary.json ]; then
+            cat <<EOF > docs/data/security-summary.json
+            {
+              "generated": "$DATE",
+              "images": [],
+              "trend": []
+            }
+            EOF
+          fi
+
+          CURRENT=$(cat .tmp/current.json)
+
+          IMAGES=$(jq -n --argjson cur "$CURRENT" '
+            [
+              {
+                name: "postgres-secured",
+                critical: $cur["postgres-secured"].critical,
+                high: $cur["postgres-secured"].high,
+                medium: $cur["postgres-secured"].medium
+              },
+              {
+                name: "php-mysql-secured",
+                critical: $cur["php-mysql-secured"].critical,
+                high: $cur["php-mysql-secured"].high,
+                medium: $cur["php-mysql-secured"].medium
+              }
+            ]
+          ')
+
+          TREND_ENTRY=$(jq -n --arg date "$DATE" --argjson cur "$CURRENT" '
+            {
+              date: $date,
+              critical: ($cur["postgres-secured"].critical + $cur["php-mysql-secured"].critical),
+              high: ($cur["postgres-secured"].high + $cur["php-mysql-secured"].high),
+              medium: ($cur["postgres-secured"].medium + $cur["php-mysql-secured"].medium)
+            }
+          ')
+
+          jq \
+            --argjson images "$IMAGES" \
+            --argjson trendEntry "$TREND_ENTRY" \
+            '.generated = "'$DATE'" |
+             .images = $images |
+             .trend += [$trendEntry]' \
+            docs/data/security-summary.json > .tmp/final.json
+
+          mv .tmp/final.json docs/data/security-summary.json
+
+      - name: Update Weekly Summary Issue
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require("fs");
+            const data = JSON.parse(fs.readFileSync("docs/data/security-summary.json"));
 
-            const rows = fs.readFileSync("out/current.csv", "utf8")
-              .trim().split("\n").slice(1)
-              .map(r => {
-                const [img,m,h,c] = r.split(",");
-                return {img, m:+m, h:+h, c:+c};
-              });
+            let body = `# Weekly Security Summary\n\nGenerated: ${data.generated}\n\n`;
+            body += "| Image | CRITICAL | HIGH | MEDIUM |\n";
+            body += "|------|----------|------|--------|\n";
 
-            const title = "Weekly Security Summary";
+            for (const img of data.images) {
+              body += `| ${img.name} | ${img.critical} | ${img.high} | ${img.medium} |\n`;
+            }
 
-            const { data: issues } = await github.rest.issues.listForRepo({
+            let issues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: "open",
-              labels: "security-summary"
+              state: "open"
             });
 
-            let issue = issues.find(i => i.title === title);
+            let issue = issues.data.find(i => i.title === "Weekly Security Summary");
 
-            if (!issue) {
-              issue = (await github.rest.issues.create({
+            if (issue) {
+              await github.rest.issues.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title,
-                labels: ["security", "security-summary"],
-                body: "## 🛡 Weekly Security Summary\nAutomatisch erzeugter CVE-Verlauf pro Image."
-              })).data;
+                issue_number: issue.number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: "Weekly Security Summary",
+                body,
+                labels: ["security", "summary"]
+              });
             }
 
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issue.number
-            });
+      - name: Commit security summary
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add docs/data/security-summary.json
 
-            let previous = {};
-            if (comments.length) {
-              const last = comments.at(-1).body;
-              for (const r of rows) {
-                const m = last.match(
-                  new RegExp(`${r.img}\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)`)
-                );
-                if (m) previous[r.img] = {m:+m[1], h:+m[2], c:+m[3]};
-              }
-            }
-
-            let body = `### 📅 ${new Date().toISOString().slice(0,10)}\n\n`;
-            body += "| Image | MEDIUM | HIGH | CRITICAL | Trend |\n";
-            body += "|------|--------|------|----------|-------|\n";
-
-            for (const r of rows) {
-              const p = previous[r.img] || {m:0,h:0,c:0};
-              const delta = (r.m+r.h+r.c) - (p.m+p.h+p.c);
-              const trend = delta > 0 ? "🔺" : delta < 0 ? "🟢" : "➖";
-              body += `| ${r.img} | ${r.m} | ${r.h} | ${r.c} | ${trend} |\n`;
-            }
-
-            body += `
-            **Security Policy**
-            - 🔴 CRITICAL = Hard Block
-            - ✅ Auto-Merge nur bei sinkender CVE-Anzahl
-            - 📈 Wöchentliche Trendanalyse
-            `;
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issue.number,
-              body
-            });
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Weekly security summary update"
+            git push
+          fi
