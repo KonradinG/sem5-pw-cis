@@ -7,11 +7,6 @@
 
 (function init() {
   const SUMMARY_PATH = "data/security-summary.json";
-  const GH_OWNER = "KonradinG";
-  const GH_REPO = "sem5-pw-cis";
-  let __pagesPrevStatus = 'unknown';
-  let __pagesPollDisabled = false; // stop polling on API 403s to avoid console noise
-  const IS_PUBLIC = /\.github\.io$/.test(location.hostname);
 
   // DOM references
   const riskIndexEl = document.getElementById("riskIndex");
@@ -23,7 +18,6 @@
   const trendCanvas = document.getElementById("riskTrendChart");
   const summaryText = document.getElementById("summaryText");
   const recommendationsText = document.getElementById("recommendationsText");
-  const GH_CACHE_PATH = "data/gh-cache.json";
 
   // Constants for risk index calculation (mirrors server-side script)
   const WEIGHTS = { critical: 10, high: 5, medium: 2 }; // low & unknown ignored for index
@@ -168,179 +162,15 @@
   // Load open security issues
   loadOpenIssues();
 
-  // Initial check and periodic refresh for GitHub Pages status
-  checkPagesStatus();
-  setInterval(checkPagesStatus, 60000);
-
-  async function fetchGhCache() {
-    try {
-      const res = await fetch(GH_CACHE_PATH, { cache: 'no-store' });
-      if (!res.ok) return null;
-      return await res.json();
-    } catch { return null; }
-  }
-
-  // Check GitHub Pages build/deploy status and show a banner if updating
-  async function checkPagesStatus() {
-    if (__pagesPollDisabled) return;
-    const banner = document.getElementById("updateBanner");
-    const textEl = document.getElementById("updateBannerText");
-    if (!banner || !textEl) return;
-
-    try {
-      // Prefer cached status written by workflow
-      const cache = await fetchGhCache();
-      if (cache && cache.pages && cache.pages.status) {
-        const status = String(cache.pages.status).toLowerCase();
-        if (status === 'queued' || status === 'building') {
-          banner.hidden = false;
-          banner.classList.remove('update-idle','update-error');
-          banner.classList.add('update-running');
-          const started = cache.pages.created_at ? new Date(cache.pages.created_at) : null;
-          const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
-          textEl.textContent = `🔄 Seiten-Update läuft (${status})${ago}`;
-          __pagesPrevStatus = 'running';
-          return;
-        }
-        if (status === 'built') {
-          // Site is current → hide banner entirely
-          banner.classList.remove('update-running','update-error','update-idle');
-          banner.hidden = true;
-          const finished = cache.pages.updated_at ? new Date(cache.pages.updated_at) : null;
-          const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
-          textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
-          if (__pagesPrevStatus === 'running' && /github\.io$/.test(location.hostname)) {
-            setTimeout(() => location.reload(), 10000);
-          }
-          __pagesPrevStatus = 'built';
-          return;
-        }
-        if (status === 'errored') {
-          banner.hidden = false;
-          banner.classList.remove('update-running','update-idle');
-          banner.classList.add('update-error');
-          textEl.textContent = `⚠️ Seiten-Update fehlgeschlagen`;
-          __pagesPrevStatus = 'error';
-          return;
-        }
-        // unknown → hide
-        banner.hidden = true;
-        return;
-      }
-
-      // On public GitHub Pages, avoid unauthenticated API calls (403) if cache is missing
-      if (IS_PUBLIC) {
-        banner.hidden = true;
-        return;
-      }
-
-      const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/pages/builds/latest`, {
-        headers: { 'Accept': 'application/vnd.github+json' }, cache: 'no-store'
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        const status = String(data.status || '').toLowerCase();
-        if (status === 'queued' || status === 'building') {
-          banner.hidden = false;
-          banner.classList.remove('update-idle','update-error');
-          banner.classList.add('update-running');
-          const started = data.created_at ? new Date(data.created_at) : null;
-          const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
-          textEl.textContent = `🔄 Seiten-Update läuft (${status})${ago}`;
-          __pagesPrevStatus = 'running';
-          return;
-        }
-        if (status === 'built') {
-          banner.classList.remove('update-running','update-error','update-idle');
-          banner.hidden = true;
-          const finished = data.updated_at ? new Date(data.updated_at) : null;
-          const ago = finished ? ` – aktualisiert vor ${timeAgo(finished)}` : '';
-          textEl.textContent = `✅ Seiten-Status: aktuell${ago}`;
-          if (__pagesPrevStatus === 'running' && /github\.io$/.test(location.hostname)) {
-            // Give the CDN a few seconds to propagate, then reload to pick up the new build
-            setTimeout(() => location.reload(), 10000);
-          }
-          __pagesPrevStatus = 'built';
-          return;
-        }
-        if (status === 'errored') {
-          banner.hidden = false;
-          banner.classList.remove('update-running','update-idle');
-          banner.classList.add('update-error');
-          textEl.textContent = `⚠️ Seiten-Update fehlgeschlagen`;
-          __pagesPrevStatus = 'error';
-          return;
-        }
-        // Unknown → hide
-        banner.hidden = true;
-        return;
-      }
-
-      // If forbidden (403), likely rate-limited or requires auth → stop polling gracefully
-      if (res.status === 403) {
-        banner.hidden = true;
-        __pagesPollDisabled = true;
-        console.warn('GitHub API 403 for Pages status; disabling further polling.');
-        return;
-      }
-
-      // Fallback: if Pages API not available, try to infer from Actions runs
-      const runsRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows`, { cache: 'no-store' });
-      if (runsRes.ok) {
-        const wf = await runsRes.json();
-        // Try to find Pages workflow by name
-        const pagesWf = (wf.workflows || []).find(w => /pages build and deployment/i.test(w.name || ''));
-        if (pagesWf) {
-          const r = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows/${pagesWf.id}/runs?per_page=1`, { cache: 'no-store' });
-          if (r.ok) {
-            const j = await r.json();
-            const run = j.workflow_runs?.[0];
-            if (run && (run.status === 'in_progress' || run.status === 'queued')) {
-              banner.hidden = false;
-              banner.classList.remove('update-idle','update-error');
-              banner.classList.add('update-running');
-              const started = run.created_at ? new Date(run.created_at) : null;
-              const ago = started ? ` – gestartet vor ${timeAgo(started)}` : '';
-              textEl.textContent = `🔄 Seiten-Update läuft${ago}`;
-              __pagesPrevStatus = 'running';
-              return;
-            }
-          }
-        }
-      }
-      banner.hidden = true;
-    } catch (e) {
-      const banner = document.getElementById('updateBanner');
-      if (banner) {
-        banner.hidden = false;
-        banner.classList.remove('update-idle','update-running');
-        banner.classList.add('update-error');
-        const textEl = document.getElementById('updateBannerText');
-        if (textEl) textEl.textContent = '⚠️ Status konnte nicht geladen werden';
-      }
-    }
-  }
-
   /**
    * Load and display open GitHub issues with security label
    */
   async function loadOpenIssues() {
     const container = document.getElementById("issues-container");
     try {
-      // Try cached issues first (written by workflow)
-      let issues = null;
-      const cache = await fetchGhCache();
-      if (cache && Array.isArray(cache.issues)) {
-        issues = cache.issues;
-      } else if (!IS_PUBLIC) {
-        const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open', { cache: 'no-store' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        issues = await response.json();
-      } else {
-        container.innerHTML = '<p class="no-issues">ℹ️ Cache wird vorbereitet…</p>';
-        return;
-      }
+      const response = await fetch('https://api.github.com/repos/KonradinG/sem5-pw-cis/issues?labels=security&state=open');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const issues = await response.json();
 
       if (!Array.isArray(issues) || issues.length === 0) {
         container.innerHTML = '<p class="no-issues">✅ Keine offenen Security Issues</p>';
