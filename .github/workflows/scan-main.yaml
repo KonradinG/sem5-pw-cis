@@ -138,7 +138,6 @@ jobs:
           if [ -f "$BASELINE" ]; then
             PREVIOUS_CVES=$(jq -r '.cves // []' "$BASELINE" 2>/dev/null | jq -r '.[]' | sort)
           fi
-          fi
 
           # Detect lifecycle changes
           NEW_CVES=$(comm -23 <(echo "$CURRENT_CVES") <(echo "$PREVIOUS_CVES") | head -10)
@@ -171,6 +170,10 @@ jobs:
               "- **\(.VulnerabilityID)** (\(.Severity)) - `\(.PkgName)@\(.InstalledVersion)` | CVSS: \(.CVSS.nvd.V3Score // .CVSS.redhat.V3Score // "N/A") | Fix: \(.FixedVersion // "Pending")"
             end
           ' "$FILE" 2>/dev/null || echo "- Keine CRITICAL/HIGH Vulnerabilities")
+
+          # Prepare audit log
+          AUDIT="audit-logs/${TAG}.md"
+          touch "$AUDIT"
 
           {
             echo "## $DATE"
