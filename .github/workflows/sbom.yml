@@ -24,13 +24,13 @@ jobs:
           # TODO(diff): keep stable name/location for later SBOM diff without adding analysis here
           output-file: sbom/sbom-cyclonedx.json
 
-      - name: Upload SBOM artifact (90 days retention)
+      - name: Upload SBOM artifact (30 days retention)
         uses: actions/upload-artifact@v4
         with:
           name: sbom-cyclonedx
           path: sbom/sbom-cyclonedx.json
-          # Keep for 90 days (subject to org/repo policy limits)
-          retention-days: 90
+          # Aligned with cleanup-old-runs.yml retention policy
+          retention-days: 30
 
       - name: Summary output
         run: |
