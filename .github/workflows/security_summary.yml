@@ -104,12 +104,47 @@ jobs:
           cp reports/trivy/php-mysql.json docs/data/trivy-reports/
           cp reports/trivy/postgres-18.json docs/data/trivy-reports/ 2>/dev/null || cp reports/trivy/postgres.json docs/data/trivy-reports/postgres-18.json
 
+      - name: Update CVE baselines
+        run: |
+          mkdir -p cve-baseline
+          DATE=$(date +%Y-%m-%d)
+
+          # Update baseline for each image
+          for IMAGE in php-mysql postgres; do
+            FILE="reports/trivy/${IMAGE}.json"
+            if [ -f "$FILE" ]; then
+              CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$FILE")
+              HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' "$FILE")
+              MED=$(jq  '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="MEDIUM")] | length' "$FILE")
+              RISK=$((CRIT*5 + HIGH*3 + MED))
+              
+              CURRENT_CVES=$(jq -r '[.Results[]?.Vulnerabilities? // [] | .[].VulnerabilityID] | unique' "$FILE")
+              
+              # Map postgres to postgres-18 for baseline naming
+              TAG="${IMAGE}"
+              if [ "$IMAGE" = "postgres" ]; then
+                TAG="postgres-18"
+              fi
+              
+              cat > "cve-baseline/${TAG}.json" <<EOF
+          {
+            "date": "$DATE",
+            "critical": $CRIT,
+            "high": $HIGH,
+            "medium": $MED,
+            "risk_index": $RISK,
+            "cves": $CURRENT_CVES
+          }
+          EOF
+            fi
+          done
+
       - name: Commit and push summary
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          # Commit dashboard files including trivy reports for CVE details page
-          git add docs/data/security-summary.json docs/data/trivy-reports/
+          # Commit dashboard files including trivy reports and baselines
+          git add docs/data/security-summary.json docs/data/trivy-reports/ cve-baseline/
           if git diff --cached --quiet; then
             echo 'No changes to commit.'
           else
