@@ -53,6 +53,7 @@ jobs:
           file: ./images/php-mysql/Dockerfile
           tags: php-mysql-secured:latest
           push: false
+          load: true
 
       - name: Build postgres image (no push)
         uses: docker/build-push-action@v6
@@ -61,6 +62,7 @@ jobs:
           file: ./images/postgres/Dockerfile
           tags: postgres-secured:latest
           push: false
+          load: true
 
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
