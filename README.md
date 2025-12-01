@@ -148,6 +148,10 @@ Adjust the cron schedule or history retention via workflow or script parameters 
 - ✅ SBOM generation (CycloneDX format, monthly)
 - ✅ GitHub Security tab integration (SARIF upload)
 
+### SBOM generation
+
+The SBOM is generated in CI using Anchore's `sbom-action` and written to `sbom/sbom-cyclonedx.json`. The folder `sbom/` is tracked in the repo so the action has a valid destination path.
+
 ## Planned Enhancements
 
 - Static Application Security Testing (SAST)
