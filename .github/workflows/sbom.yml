@@ -10,29 +10,31 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Generate SBOM (CycloneDX JSON)
-        # Syft action generates an SBOM of the repository contents
-        uses: anchore/sbom-action@v0.16.2
+        # Generate an SBOM of the repository contents using Syft
+        # Major-version pinning avoids broken or removed patch versions
+        uses: anchore/sbom-action@v0
         with:
           path: .
           format: cyclonedx-json
-          # Use a stable path to prepare for future diffing without implementing it now
-          # TODO(diff): keep stable name/location for later SBOM diff without adding analysis here
+          # Stable path & filename to prepare for future SBOM diffing
+          # TODO(diff): enable SBOM diff once retention & history are sufficient
           output-file: sbom/sbom-cyclonedx.json
 
-      - name: Upload SBOM artifact (30 days retention)
+      - name: Upload SBOM artifact (90 days retention)
         uses: actions/upload-artifact@v4
         with:
           name: sbom-cyclonedx
           path: sbom/sbom-cyclonedx.json
-          # Aligned with cleanup-old-runs.yml retention policy
-          retention-days: 30
+          retention-days: 90
 
       - name: Summary output
         run: |
-          echo 'SBOM (CycloneDX JSON) generated and uploaded as workflow artifact.'
-          echo 'Download via GitHub Actions run artifacts (not committed into repo).'
+          echo "SBOM (CycloneDX JSON) generated successfully."
+          echo "Artifact retained for 90 days."
+          echo "SBOM is not committed to the repository."
