@@ -67,15 +67,15 @@ jobs:
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
         with:
-          version: v1.38.0
+          syft-version: v1.38.0
 
       - name: Generate SBOM for php-mysql image (CycloneDX JSON)
         run: |
-          syft registry:docker-daemon:php-mysql-secured:latest -o cyclonedx-json > sbom/php-mysql.cyclonedx.json
+          syft docker:php-mysql-secured:latest -o cyclonedx-json > sbom/php-mysql.cyclonedx.json
 
       - name: Generate SBOM for postgres image (CycloneDX JSON)
         run: |
-          syft registry:docker-daemon:postgres-secured:latest -o cyclonedx-json > sbom/postgres.cyclonedx.json
+          syft docker:postgres-secured:latest -o cyclonedx-json > sbom/postgres.cyclonedx.json
 
       - name: Upload image SBOM artifacts (30 days retention)
         uses: actions/upload-artifact@v4
