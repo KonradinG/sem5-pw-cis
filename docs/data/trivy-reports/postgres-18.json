@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-11-27T20:01:05.384754293Z",
+  "CreatedAt": "2025-12-01T04:07:34.313316616Z",
   "ArtifactName": "local-postgres",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:67a475d6bc969460046d74fb281904bcd021e1bdd1db71040cb1dad50b62f814",
+    "ImageID": "sha256:9e65ca912191a78319952ff1efa1a7434fcb0e6ca86ad8ceaba30972c89e0a06",
     "DiffIDs": [
       "sha256:70a290c5e58b68f39496ab93a62f21b8b2ca0502e97905131838de1b39a37cbb",
       "sha256:39a24a141073e06c4da99ac4c283e4ad2d279eb53b979cb87ba26a93a39f359f",
@@ -23,14 +23,14 @@
       "sha256:539cbec8e5fb5f5c754a2264e7770d0ea04a26afa6a2a313c08c611066471f9b",
       "sha256:c3fdd28f0183744a497df7b2d3a0b32e64eecbccfe241172dcef2c774e913c6d",
       "sha256:6346e5641bb55613d1122e9af70cac2cd4590cf9624a2f5064b72b330dda7ce0",
-      "sha256:b81ba998284e29e4e92d05477e846e8085f9d8153597aac93e099a19250be645"
+      "sha256:d307c929b2cd3ffc691ce30f1e5aaf5b6ad8a8213869ed8553fa2328bbf8d712"
     ],
     "RepoTags": [
       "local-postgres:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-11-27T20:00:55.925820004Z",
+      "created": "2025-12-01T04:07:20.156680957Z",
       "history": [
         {
           "created": "2025-11-17T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-11-27T20:00:55Z",
+          "created": "2025-12-01T04:07:20Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:539cbec8e5fb5f5c754a2264e7770d0ea04a26afa6a2a313c08c611066471f9b",
           "sha256:c3fdd28f0183744a497df7b2d3a0b32e64eecbccfe241172dcef2c774e913c6d",
           "sha256:6346e5641bb55613d1122e9af70cac2cd4590cf9624a2f5064b72b330dda7ce0",
-          "sha256:b81ba998284e29e4e92d05477e846e8085f9d8153597aac93e099a19250be645"
+          "sha256:d307c929b2cd3ffc691ce30f1e5aaf5b6ad8a8213869ed8553fa2328bbf8d712"
         ]
       },
       "config": {
@@ -4043,10 +4043,10 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -4333,10 +4333,10 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -4731,11 +4731,12 @@
           "Description": "tar.Reader does not set a maximum size on the number of sparse region data blocks in GNU tar pax 1.0 sparse files. A maliciously-crafted archive containing a large number of sparse regions can cause a Reader to read an unbounded amount of data from the archive into memory. When reading from a compressed source, a small compressed input can result in large allocations.",
           "Severity": "HIGH",
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 3,
             "amazon": 3,
             "bitnami": 2,
             "oracle-oval": 3,
-            "redhat": 2
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "bitnami": {
@@ -4749,10 +4750,14 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:21816",
+            "https://access.redhat.com/errata/RHSA-2025:22011",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
+            "https://bugzilla.redhat.com/2404715",
             "https://bugzilla.redhat.com/2407258",
-            "https://errata.almalinux.org/10/ALSA-2025-21816.html",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
+            "https://errata.almalinux.org/9/ALSA-2025-22011.html",
+            "https://errata.rockylinux.org/RLSA-2025:21816",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",

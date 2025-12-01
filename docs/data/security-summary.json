@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2025-11-27T20:02:12Z",
+  "generatedAt": "2025-12-01T04:08:44Z",
   "period": {
-    "start": "2025-11-20",
-    "end": "2025-11-27"
+    "start": "2025-11-24",
+    "end": "2025-12-01"
   },
   "images": [
     {
       "name": "local-php-mysql",
       "critical": 0,
-      "high": 31,
-      "medium": 117,
-      "low": 470,
+      "high": 30,
+      "medium": 118,
+      "low": 471,
       "unknown": 2
     },
     {
@@ -24,19 +24,19 @@
   ],
   "totals": {
     "critical": 0,
-    "high": 34,
-    "medium": 125,
-    "low": 552,
+    "high": 33,
+    "medium": 126,
+    "low": 553,
     "unknown": 3
   },
   "delta": {
     "critical": 0,
-    "high": 34,
-    "medium": 125,
-    "low": 552,
-    "unknown": 3
+    "high": -1,
+    "medium": 1,
+    "low": 1,
+    "unknown": 0
   },
-  "direction": "worse",
+  "direction": "stable",
   "trend": [
     {
       "date": "2025-11-13",
@@ -55,6 +55,12 @@
       "critical": 0,
       "high": 34,
       "medium": 125
+    },
+    {
+      "date": "2025-12-01",
+      "critical": 0,
+      "high": 33,
+      "medium": 126
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
