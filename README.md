@@ -1,7 +1,7 @@
 # Secure Container Images – DevSecOps Pipeline
 
 [![Security Dashboard](https://img.shields.io/badge/Security-Dashboard-blue?style=flat&logo=github)](https://konrading.github.io/sem5-pw-cis/)
-[![SBOM Available](https://img.shields.io/badge/SBOM-Available-green?style=flat&logo=github)](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/sbom.yml)
+[![SBOM Available](https://img.shields.io/badge/SBOM-Available-green?style=flat&logo=github)](https://github.com/KonradinG/sem5-pw-cis/network/dependencies)
 [![Trivy Scanning](https://img.shields.io/badge/Trivy-Weekly%20Scan-orange?style=flat&logo=aqua)](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/security_summary.yml)
 
 A fully automated DevSecOps pipeline for hardened container images with a strong focus on vulnerability management, automated dependency updates, and transparent security reporting. The goal is a reproducible, auditable, and customer‑ready example of modern container security practices.
