@@ -15,6 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Ensure sbom output directory
+        run: mkdir -p sbom
+
       - name: Generate SBOM (CycloneDX JSON)
         # Generate an SBOM of the repository contents using Syft
         # Major-version pinning avoids broken or removed patch versions
@@ -26,15 +29,63 @@ jobs:
           # TODO(diff): enable SBOM diff once retention & history are sufficient
           output-file: sbom/sbom-cyclonedx.json
 
-      - name: Upload SBOM artifact (90 days retention)
+      - name: Upload SBOM artifact (30 days retention)
         uses: actions/upload-artifact@v4
         with:
           name: sbom-cyclonedx
           path: sbom/sbom-cyclonedx.json
-          retention-days: 90
+          retention-days: 30
 
       - name: Summary output
         run: |
           echo "SBOM (CycloneDX JSON) generated successfully."
-          echo "Artifact retained for 90 days."
+          echo "Artifact retained for 30 days."
           echo "SBOM is not committed to the repository."
+
+      # --- Image SBOMs ---
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build php-mysql image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./images/php-mysql
+          file: ./images/php-mysql/Dockerfile
+          tags: php-mysql-secured:latest
+          push: false
+
+      - name: Build postgres image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./images/postgres
+          file: ./images/postgres/Dockerfile
+          tags: postgres-secured:latest
+          push: false
+
+      - name: Install Syft
+        uses: anchore/sbom-action/download-syft@v0
+        with:
+          version: v1.38.0
+
+      - name: Generate SBOM for php-mysql image (CycloneDX JSON)
+        run: |
+          syft registry:docker-daemon:php-mysql-secured:latest -o cyclonedx-json > sbom/php-mysql.cyclonedx.json
+
+      - name: Generate SBOM for postgres image (CycloneDX JSON)
+        run: |
+          syft registry:docker-daemon:postgres-secured:latest -o cyclonedx-json > sbom/postgres.cyclonedx.json
+
+      - name: Upload image SBOM artifacts (30 days retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-images-cyclonedx
+          path: |
+            sbom/php-mysql.cyclonedx.json
+            sbom/postgres.cyclonedx.json
+          retention-days: 30
+
+      - name: Summary output (images)
+        run: |
+          echo "Image SBOMs (CycloneDX JSON) generated successfully for php-mysql and postgres."
+          echo "Artifacts retained for 30 days."
+          echo "SBOMs are not committed to the repository."
