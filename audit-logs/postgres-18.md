@@ -1,3 +1,17 @@
+## 2025-12-07
+CRITICAL=0 HIGH=4 MEDIUM=18 RISK_INDEX=30
+
+### 🔄 Lifecycle Changes
+
+#### 🆕 Neu erkannte CVEs
+
+### 🔴 Top Critical/High Vulnerabilities
+- **[CVE-2025-61729](https://avd.aquasec.com/nvd/cve-2025-61729)** (HIGH) - `stdlib@v1.24.6` | CVSS: N/A | Fix: 1.24.11, 1.25.5
+- **[CVE-2025-58187](https://avd.aquasec.com/nvd/cve-2025-58187)** (HIGH) - `stdlib@v1.24.6` | CVSS: N/A | Fix: 1.24.9, 1.25.3
+- **[CVE-2025-58186](https://avd.aquasec.com/nvd/cve-2025-58186)** (HIGH) - `stdlib@v1.24.6` | CVSS: N/A | Fix: 1.24.8, 1.25.2
+- **[CVE-2025-58183](https://avd.aquasec.com/nvd/cve-2025-58183)** (HIGH) - `stdlib@v1.24.6` | CVSS: 7.5 | Fix: 1.24.8, 1.25.2
+---
+
 ## 2025-12-01
 CRITICAL=0 HIGH=3 MEDIUM=8 RISK_INDEX=17
 
