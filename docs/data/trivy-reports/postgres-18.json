@@ -1,14 +1,14 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:05:03.116473636Z",
-  "ArtifactName": "local-postgres",
+  "CreatedAt": "2025-12-11T13:16:50.65840773Z",
+  "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
     "OS": {
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:d427fc956e9efdc60c49f5c54453593b84ab3ef88829e2a98b181f87bf6c4f9a",
+    "ImageID": "sha256:a64f7c54328b6819230f5f22db727352ffb387b64167f5ef94d723734c9eabd3",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:21130c06be0c14127f0673e85b9fc3e0d2b5d4cdb83479dae1ae9ea1e8e52567",
@@ -23,14 +23,14 @@
       "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
       "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
       "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-      "sha256:e2e20b7514f6c2d50dcd20889302ee6825f984b85a376a97167b87ae1e4a0196"
+      "sha256:04d9caf367de6df244aa9ffcd74e74b8f07ac6bbc45284bb507b30e1c9673838"
     ],
     "RepoTags": [
-      "local-postgres:latest"
+      "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:04:48.525844468Z",
+      "created": "2025-12-11T13:16:40.694129354Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:48Z",
+          "created": "2025-12-11T13:16:40Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
           "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
           "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-          "sha256:e2e20b7514f6c2d50dcd20889302ee6825f984b85a376a97167b87ae1e4a0196"
+          "sha256:04d9caf367de6df244aa9ffcd74e74b8f07ac6bbc45284bb507b30e1c9673838"
         ]
       },
       "config": {
@@ -250,7 +250,7 @@
   },
   "Results": [
     {
-      "Target": "local-postgres (debian 13.2)",
+      "Target": "local-postgres-18 (debian 13.2)",
       "Class": "os-pkgs",
       "Type": "debian",
       "Vulnerabilities": [

@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:04:54.373949442Z",
+  "CreatedAt": "2025-12-11T13:16:49.504402512Z",
   "ArtifactName": "local-vote",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,24 +8,24 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:045be66ffdc53a06c3f2c3e4db406cbd843ff874d53456d128f6c6140c18e956",
+    "ImageID": "sha256:a5a1163e62c8ea6d1ea2836e7615245a9b4660b16cc73f7094cd896a59fca8bc",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:424dc4972605239ec660864fe4cc7bcf6ebdadd752a7ee7ad065a83c34798378",
       "sha256:600af8de593b464a3642857b2dce39ad42474145771745962fb90ea9c276fa9d",
       "sha256:fa384bf02ac198a84ae5f0bbe085a6e4bd2de0be1b595833ba52e9780a936ba9",
-      "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952",
-      "sha256:e3d8147ff9c524356e12a7a6034112c28b46d1408b032963507aababb17ea541",
-      "sha256:9d3ecae9294c55d562d839d3d8a6e449d88639e66e715c5196c6b70433ba7543",
-      "sha256:74d8bb9fff2ee5a18c27b2fc215a24868e9f028b82a51d9b70659cba7bff0f11",
-      "sha256:b4494316fe03f75a178d06a3c83fb4bfdb652faf81cdc6315410b2d3c5639779"
+      "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21",
+      "sha256:3ac439a2f30648f4fa8478c626091e66cb7805a457d4879f81c15c944fd7fa69",
+      "sha256:8913e9871f89d759c49475dd66b2b573137a7ed7336fccbe8d56d611f2b4124d",
+      "sha256:cbc9477ac59508b62a4b4a39a449d555b4ad58077cd3d461fdc057280272cdaf",
+      "sha256:82bdbed3f64df0d65d698f113e9402012cfc0c6ceba4b5a32766df96be1f1fb2"
     ],
     "RepoTags": [
       "local-vote:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:04:43.502854665Z",
+      "created": "2025-12-11T13:16:39.304473932Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -84,38 +84,38 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:40Z",
+          "created": "2025-12-11T13:16:36Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get install -y --no-install-recommends curl \u0026\u0026     rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:40Z",
+          "created": "2025-12-11T13:16:36Z",
           "created_by": "WORKDIR /usr/local/app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:40Z",
+          "created": "2025-12-11T13:16:36Z",
           "created_by": "COPY requirements.txt ./requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:43Z",
+          "created": "2025-12-11T13:16:39Z",
           "created_by": "RUN /bin/sh -c pip install --no-cache-dir -r requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:43Z",
+          "created": "2025-12-11T13:16:39Z",
           "created_by": "COPY . . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:43Z",
+          "created": "2025-12-11T13:16:39Z",
           "created_by": "EXPOSE map[80/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:04:43Z",
+          "created": "2025-12-11T13:16:39Z",
           "created_by": "CMD [\"gunicorn\" \"app:app\" \"-b\" \"0.0.0.0:80\" \"--log-file\" \"-\" \"--access-logfile\" \"-\" \"--workers\" \"4\" \"--keep-alive\" \"0\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -129,11 +129,11 @@
           "sha256:424dc4972605239ec660864fe4cc7bcf6ebdadd752a7ee7ad065a83c34798378",
           "sha256:600af8de593b464a3642857b2dce39ad42474145771745962fb90ea9c276fa9d",
           "sha256:fa384bf02ac198a84ae5f0bbe085a6e4bd2de0be1b595833ba52e9780a936ba9",
-          "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952",
-          "sha256:e3d8147ff9c524356e12a7a6034112c28b46d1408b032963507aababb17ea541",
-          "sha256:9d3ecae9294c55d562d839d3d8a6e449d88639e66e715c5196c6b70433ba7543",
-          "sha256:74d8bb9fff2ee5a18c27b2fc215a24868e9f028b82a51d9b70659cba7bff0f11",
-          "sha256:b4494316fe03f75a178d06a3c83fb4bfdb652faf81cdc6315410b2d3c5639779"
+          "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21",
+          "sha256:3ac439a2f30648f4fa8478c626091e66cb7805a457d4879f81c15c944fd7fa69",
+          "sha256:8913e9871f89d759c49475dd66b2b573137a7ed7336fccbe8d56d611f2b4124d",
+          "sha256:cbc9477ac59508b62a4b4a39a449d555b4ad58077cd3d461fdc057280272cdaf",
+          "sha256:82bdbed3f64df0d65d698f113e9402012cfc0c6ceba4b5a32766df96be1f1fb2"
         ]
       },
       "config": {
@@ -463,7 +463,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -1425,7 +1425,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -1471,7 +1471,7 @@
           "InstalledVersion": "3.8.9-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3389",
@@ -1616,7 +1616,7 @@
           "InstalledVersion": "3.8.9-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-9820",
           "DataSource": {
@@ -1638,7 +1638,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1691,7 +1691,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1759,7 +1759,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -1827,7 +1827,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1880,7 +1880,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1948,7 +1948,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2016,7 +2016,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2069,7 +2069,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2137,7 +2137,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2205,7 +2205,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2258,7 +2258,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2326,7 +2326,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2496,7 +2496,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2015-3276",
@@ -2553,7 +2553,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-14159",
@@ -2606,7 +2606,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-17740",
@@ -2662,7 +2662,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:eb322925262714df09be737e0e27d0968e10b50282d2e5c7eca7ab96b5e33952"
+            "DiffID": "sha256:d8686b177dd1a03e68838e0f3cfc8b0d5772709ebfc0ebb9e7a7d16ce49bbb21"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15719",

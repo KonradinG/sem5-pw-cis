@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:05:01.80053882Z",
+  "CreatedAt": "2025-12-11T13:16:56.498947014Z",
   "ArtifactName": "local-worker",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,21 +8,21 @@
       "Family": "debian",
       "Name": "11.9"
     },
-    "ImageID": "sha256:dccb91fdad0a2161be85a2f0a9ea891ab2cc2f7c970ded7349c8cee39d3bb44a",
+    "ImageID": "sha256:06ea09f83f98aa64d6a65b697e3dcabfeb9e39628743b6d511ec926d33fa56b0",
     "DiffIDs": [
       "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f",
       "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
       "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
       "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-      "sha256:e38dbb3b27e57926bd837f0c874001a2e9d157ba8563a0706103b599fcef9497",
-      "sha256:e0e7396c5ff450fddf13937e173abc53df789ef9c77ad1f67ecd8c80381509da"
+      "sha256:3db7780cedae0eec4e8e826b396978bb3fc327b8296ff0d5452eecce52ddb02c",
+      "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
     ],
     "RepoTags": [
       "local-worker:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:04:49.201080056Z",
+      "created": "2025-12-11T13:16:47.701420028Z",
       "history": [
         {
           "created": "2024-05-14T01:28:26Z",
@@ -61,17 +61,17 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:38Z",
+          "created": "2025-12-11T13:16:35Z",
           "created_by": "WORKDIR /app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:49Z",
+          "created": "2025-12-11T13:16:47Z",
           "created_by": "COPY /app . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:04:49Z",
+          "created": "2025-12-11T13:16:47Z",
           "created_by": "ENTRYPOINT [\"dotnet\" \"Worker.dll\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -85,8 +85,8 @@
           "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
           "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
           "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-          "sha256:e38dbb3b27e57926bd837f0c874001a2e9d157ba8563a0706103b599fcef9497",
-          "sha256:e0e7396c5ff450fddf13937e173abc53df789ef9c77ad1f67ecd8c80381509da"
+          "sha256:3db7780cedae0eec4e8e826b396978bb3fc327b8296ff0d5452eecce52ddb02c",
+          "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
         ]
       },
       "config": {
@@ -13628,7 +13628,7 @@
           "FixedVersion": "8.0.3, 4.0.14, 4.1.13, 5.0.18, 6.0.11, 7.0.7",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:e0e7396c5ff450fddf13937e173abc53df789ef9c77ad1f67ecd8c80381509da"
+            "DiffID": "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-32655",
@@ -13689,7 +13689,7 @@
           "FixedVersion": "4.7.2, 5.0.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:e0e7396c5ff450fddf13937e173abc53df789ef9c77ad1f67ecd8c80381509da"
+            "DiffID": "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-24112",

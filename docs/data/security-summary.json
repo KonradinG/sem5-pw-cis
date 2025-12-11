@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2025-12-11T13:06:32Z",
+  "generatedAt": "2025-12-11T13:18:15Z",
   "period": {
     "start": "2025-12-04",
     "end": "2025-12-11"
   },
   "images": [
     {
-      "name": "local-php-mysql",
+      "name": "local-8.1-apache-mysql",
       "critical": 0,
       "high": 82,
       "medium": 173,
@@ -14,7 +14,7 @@
       "unknown": 2
     },
     {
-      "name": "local-postgres",
+      "name": "local-postgres-18",
       "critical": 0,
       "high": 4,
       "medium": 18,
@@ -22,7 +22,7 @@
       "unknown": 1
     },
     {
-      "name": "local-python",
+      "name": "local-python-3.14",
       "critical": 0,
       "high": 2,
       "medium": 16,
@@ -62,13 +62,13 @@
     "unknown": 10
   },
   "delta": {
-    "critical": 8,
-    "high": 92,
-    "medium": 160,
-    "low": 621,
-    "unknown": -37
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0
   },
-  "direction": "worse",
+  "direction": "stable",
   "trend": [
     {
       "date": "2025-11-13",
@@ -115,8 +115,8 @@
   "version": 3,
   "sources": [
     "reports/trivy/php-mysql.json",
-    "reports/trivy/postgres.json",
-    "reports/trivy/python.json",
+    "reports/trivy/postgres-18.json",
+    "reports/trivy/python-3.14.json",
     "reports/trivy/vote.json",
     "reports/trivy/result.json",
     "reports/trivy/worker.json"
