@@ -19,6 +19,41 @@
     </header>
 
     <main class="grid">
+      <!-- Test Images Warning -->
+      <section
+        class="card wide"
+        id="test-info-card"
+        style="background: #fff3cd; border-left: 4px solid #ff9800"
+      >
+        <h3 style="margin-top: 0; color: #e65100">
+          ℹ️ Test Images Information
+        </h3>
+        <p>
+          <strong>Example Voting App Images</strong> (<code>vote</code>,
+          <code>result</code>, <code>worker</code>) are included as
+          <strong>test/demonstration images</strong> suggested by Prof. Nestler
+          from
+          <a
+            href="https://github.com/dockersamples/example-voting-app"
+            target="_blank"
+            rel="noopener"
+            >github.com/dockersamples/example-voting-app</a
+          >.
+        </p>
+        <p><strong>CVE-Gate Behavior:</strong></p>
+        <ul style="margin: 0.5rem 0; padding-left: 1.5rem">
+          <li>✅ All vulnerabilities are scanned, reported, and tracked</li>
+          <li>✅ Visible in audit logs, GitHub Issues, and this dashboard</li>
+          <li>
+            ❌ Do NOT block the pipeline (exempted for demonstration purposes)
+          </li>
+          <li>
+            ⚠️ Production images (postgres-18, php-mysql, python-3.14) ARE
+            blocked on CRITICAL CVEs
+          </li>
+        </ul>
+      </section>
+
       <!-- Risk Index Card -->
       <section class="card" id="risk-card">
         <h2>Risk Index</h2>

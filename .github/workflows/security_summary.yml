@@ -16,13 +16,13 @@ jobs:
         image:
           - name: php-mysql
             context: images/php-mysql
-            tag: local-php-mysql
-          - name: postgres
+            tag: local-8.1-apache-mysql
+          - name: postgres-18
             context: images/postgres
-            tag: local-postgres
-          - name: python
+            tag: local-postgres-18
+          - name: python-3.14
             context: images/python
-            tag: local-python
+            tag: local-python-3.14
           - name: vote
             context: example-voting-app-main/vote
             tag: local-vote
@@ -134,7 +134,7 @@ jobs:
       - name: Generate security summary
         run: |
           python scripts/generate_security_summary.py \
-            --trivy reports/trivy/php-mysql.json reports/trivy/postgres.json reports/trivy/python.json reports/trivy/vote.json reports/trivy/result.json reports/trivy/worker.json \
+            --trivy reports/trivy/php-mysql.json reports/trivy/postgres-18.json reports/trivy/python-3.14.json reports/trivy/vote.json reports/trivy/result.json reports/trivy/worker.json \
             --previous docs/data/security-summary.json \
             --output docs/data/security-summary.json
 
@@ -142,8 +142,8 @@ jobs:
         run: |
           mkdir -p docs/data/trivy-reports
           cp reports/trivy/php-mysql.json docs/data/trivy-reports/
-          cp reports/trivy/postgres-18.json docs/data/trivy-reports/ 2>/dev/null || cp reports/trivy/postgres.json docs/data/trivy-reports/postgres-18.json
-          cp reports/trivy/python.json docs/data/trivy-reports/ 2>/dev/null || true
+          cp reports/trivy/postgres-18.json docs/data/trivy-reports/ 2>/dev/null || true
+          cp reports/trivy/python-3.14.json docs/data/trivy-reports/ 2>/dev/null || true
           cp reports/trivy/vote.json docs/data/trivy-reports/ 2>/dev/null || true
           cp reports/trivy/result.json docs/data/trivy-reports/ 2>/dev/null || true
           cp reports/trivy/worker.json docs/data/trivy-reports/ 2>/dev/null || true
@@ -153,9 +153,17 @@ jobs:
           mkdir -p cve-baseline
           DATE=$(date +%Y-%m-%d)
 
-          # Update baseline for each image
-          for IMAGE in php-mysql postgres python vote result worker; do
-            FILE="reports/trivy/${IMAGE}.json"
+          # Update baseline for each image with standardized names
+          for IMAGE_NAME in php-mysql postgres-18 python-3.14 vote result worker; do
+            # Map display name to file name
+            FILE_NAME="$IMAGE_NAME"
+            case "$IMAGE_NAME" in
+              php-mysql) FILE_NAME="php-mysql" ;;
+              postgres-18) FILE_NAME="postgres-18" ;;
+              python-3.14) FILE_NAME="python-3.14" ;;
+            esac
+            
+            FILE="reports/trivy/${IMAGE_NAME}.json"
             if [ -f "$FILE" ]; then
               CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$FILE")
               HIGH=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="HIGH")] | length' "$FILE")
@@ -164,13 +172,7 @@ jobs:
               
               CURRENT_CVES=$(jq -r '[.Results[]?.Vulnerabilities? // [] | .[].VulnerabilityID] | unique' "$FILE")
               
-              # Map postgres to postgres-18 for baseline naming
-              TAG="${IMAGE}"
-              if [ "$IMAGE" = "postgres" ]; then
-                TAG="postgres-18"
-              fi
-              
-              cat > "cve-baseline/${TAG}.json" <<EOF
+              cat > "cve-baseline/${FILE_NAME}.json" <<EOF
           {
             "date": "$DATE",
             "critical": $CRIT,

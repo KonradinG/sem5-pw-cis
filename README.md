@@ -24,14 +24,14 @@ All images are built, scanned, and monitored automatically for known vulnerabili
 
 ## Included Images
 
-| Image                      | Description                                                                                                                       |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `postgres-secured`         | Hardened PostgreSQL container image                                                                                               |
-| `php-mysql-secured`        | PHP and MySQL container image with security hardening                                                                             |
-| `python-secured`           | Hardened Python 3.14 container image                                                                                              |
-| `vote`, `result`, `worker` | Example Voting App images (test images suggested by Prof. Nestler, [source](https://github.com/dockersamples/example-voting-app)) |
+| Image                      | Description                                                                                                                         |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `postgres-18`              | Hardened PostgreSQL container image                                                                                                 |
+| `php-mysql` / `8.1-apache` | PHP and MySQL container image with security hardening                                                                               |
+| `python-3.14`              | Hardened Python 3.14 container image                                                                                                |
+| `vote`, `result`, `worker` | **Test images** from example-voting-app (suggested by Prof. Nestler, [source](https://github.com/dockersamples/example-voting-app)) |
 
-**Note on Test Images:** The Example Voting App images (`vote`, `result`, `worker`) serve exclusively for demonstration purposes and intentionally contain known vulnerabilities. The CVE-Gate does not block these images to demonstrate the full pipeline functionality (scanning, issue tracking, reporting) even with critical vulnerabilities. All vulnerabilities are nevertheless fully captured and documented.
+**Note on Test Images:** The Example Voting App images (`vote`, `result`, `worker`) serve exclusively for demonstration purposes and intentionally contain known vulnerabilities. The CVE-Gate does not block these images to demonstrate the full pipeline functionality (scanning, issue tracking, reporting) even with critical vulnerabilities. All vulnerabilities are nevertheless fully captured, tracked in audit logs, and displayed on the security dashboard. Only the hard-blocking mechanism is exempted for these test images.
 
 ## Pipeline
 
@@ -73,7 +73,19 @@ For detailed pipeline architecture and technical implementation, see [SECURITY_P
 
 ### Weekly Security Summary & Dashboard
 
+The live security dashboard is available at: **[Security Dashboard](https://konrading.github.io/sem5-pw-cis/)**
+
 The file `docs/data/security-summary.json` is generated weekly (and can be run on-demand) and powers the web dashboard in `docs/`.
+
+**Dashboard Features:**
+
+- Risk Index visualization with trend chart
+- Real-time vulnerability overview (CRITICAL, HIGH, MEDIUM, LOW)
+- Per-image severity breakdown
+- Direct links to detailed CVE analysis
+- Integration with GitHub Issues for security tracking
+
+**Important Note on Dashboard:** The dashboard displays all 6 images including the Example Voting App test images (`vote`, `result`, `worker`). These test images intentionally contain known vulnerabilities to demonstrate the full pipeline capability. See the information box at the top of the dashboard for details on CVE-Gate exemptions.
 
 Current JSON structure (version 3):
 
