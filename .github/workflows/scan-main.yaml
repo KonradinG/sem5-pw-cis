@@ -91,7 +91,7 @@ jobs:
             main-${{ matrix.image_tag }}
 
       # ===============================
-      # CVE Gate 🔴 fail ONLY on CRITICAL
+      # CVE Gate 🔴 fail ONLY on CRITICAL (except test images)
       # ===============================
       - name: CVE gate (block on CRITICAL)
         run: |
@@ -101,6 +101,15 @@ jobs:
 
           echo "CRITICAL=$CRIT HIGH=$HIGH MEDIUM=$MED"
 
+          # Skip CVE gate for example-voting-app test images (Prof. Nestler Test)
+          # These images are for demonstration purposes and contain known vulnerabilities
+          if [[ "${{ matrix.image_tag }}" == "vote" || "${{ matrix.image_tag }}" == "result" || "${{ matrix.image_tag }}" == "worker" ]]; then
+            echo "⚠️  Skipping CVE gate for test image (${{ matrix.image_tag }}) - demonstration purposes only"
+            echo "   Image has $CRIT CRITICAL, $HIGH HIGH, $MED MEDIUM vulnerabilities (tracked but not blocking)"
+            exit 0
+          fi
+
+          # Block pipeline for production images with CRITICAL CVEs
           if [ "$CRIT" -gt 0 ]; then
             echo "❌ CRITICAL vulnerabilities found – blocking pipeline"
             exit 1

@@ -30,6 +30,8 @@ A dedicated GitHub Actions workflow (`sbom.yml`):
 - Independent from vulnerability scanning (no coupling with Trivy pipeline)
 - Includes test images from the [example-voting-app](https://github.com/dockersamples/example-voting-app) (added as test per Prof. Nestler's recommendation)
 
+**Note on Test Images:** The example-voting-app images contain known vulnerabilities and are excluded from the CVE-Gate blocking mechanism to demonstrate full pipeline capabilities including high-severity vulnerability tracking and reporting.
+
 ### How to Obtain the SBOM
 
 1. Navigate to: Actions → `SBOM Generation` workflow runs

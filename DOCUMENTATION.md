@@ -95,6 +95,10 @@ Scannt alle Container-Images auf Schwachstellen (MEDIUM, HIGH, CRITICAL).
 4. Image Build (lokal)
 5. Trivy Scan → JSON Output
 6. **CVE Gate**: Blockiert bei CRITICAL > 0
+   - **Exception**: Test-Images (`vote`, `result`, `worker`) werden übersprungen
+   - Grund: Demonstration der Pipeline-Funktionalität mit realistischen Schwachstellen
+   - Diese Images stammen von ([example-voting-app](https://github.com/dockersamples/example-voting-app)) Empfehlung von Prof. Nestlers für Test-Zwecke
+   - Vulnerabilities werden trotzdem vollständig getrackt und dokumentiert
 7. Extrahiert MEDIUM+ Vulnerabilities → Tabelle
 8. **Update CVE Baseline**:
    - Speichert in `cve-baseline/<image>.json`

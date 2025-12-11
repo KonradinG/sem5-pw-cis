@@ -32,6 +32,15 @@ The security pipeline is designed to achieve the following goals:
 
 **Note:** As per Prof. Nestler's recommendation, the pipeline also scans test images from the [example-voting-app](https://github.com/dockersamples/example-voting-app) to demonstrate vulnerability tracking across different application components.
 
+**CVE-Gate Exception for Test Images:** The voting-app images (`vote`, `result`, `worker`) are excluded from the CRITICAL CVE blocking mechanism. These images serve purely demonstration purposes and intentionally contain known vulnerabilities to showcase:
+
+- Full vulnerability detection capabilities
+- Issue creation and tracking workflows
+- Audit log generation
+- Security reporting for high-risk applications
+
+All vulnerabilities are still scanned, reported, and tracked in GitHub Issues and audit logs, but do not block the pipeline execution.
+
 ---
 
 ## Pipeline Architecture

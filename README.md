@@ -24,12 +24,14 @@ All images are built, scanned, and monitored automatically for known vulnerabili
 
 ## Included Images
 
-| Image                      | Description                                                                                                       |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `postgres-secured`         | Hardened PostgreSQL container image                                                                               |
-| `php-mysql-secured`        | PHP and MySQL container image with security hardening                                                             |
-| `python-secured`           | Hardened Python 3.14 container image                                                                              |
-| `vote`, `result`, `worker` | Example Voting App images (Test von Prof. Nestler, [Quelle](https://github.com/dockersamples/example-voting-app)) |
+| Image                      | Description                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `postgres-secured`         | Hardened PostgreSQL container image                                                                                             |
+| `php-mysql-secured`        | PHP and MySQL container image with security hardening                                                                           |
+| `python-secured`           | Hardened Python 3.14 container image                                                                                            |
+| `vote`, `result`, `worker` | Example Voting App images (Test vorgeschlagen von Prof. Nestler, [Quelle](https://github.com/dockersamples/example-voting-app)) |
+
+**Hinweis zu Test-Images:** Die Example Voting App Images (`vote`, `result`, `worker`) dienen ausschließlich Demonstrationszwecken und enthalten bewusst bekannte Schwachstellen. Der CVE-Gate blockiert bei diesen Images nicht, um die vollständige Pipeline-Funktionalität (Scanning, Issue-Tracking, Reporting) auch bei kritischen Vulnerabilities zu demonstrieren. Alle Schwachstellen werden dennoch vollständig erfasst und dokumentiert.
 
 ## Pipeline
 
