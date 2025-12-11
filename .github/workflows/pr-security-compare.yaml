@@ -172,14 +172,30 @@ jobs:
               ].join("\n")
             })
 
-      # === ENABLE AUTOMERGE ===
+      # === ENABLE AUTOMERGE (Optional) ===
       - name: Enable automerge
         uses: actions/github-script@v7
+        continue-on-error: true
         with:
           script: |
-            await github.rest.pulls.enableAutoMerge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
-              merge_method: "squash"
-            })
+            try {
+              await github.graphql(`
+                mutation {
+                  enablePullRequestAutoMerge(input: {
+                    pullRequestId: "${{ github.event.pull_request.node_id }}"
+                    mergeMethod: SQUASH
+                    commitHeadline: "Auto-merge: Security improved"
+                  }) {
+                    pullRequest {
+                      autoMergeRequest {
+                        enabledAt
+                      }
+                    }
+                  }
+                }
+              `)
+              console.log('✅ Auto-merge enabled')
+            } catch (error) {
+              console.log('ℹ️ Auto-merge not available (may require branch protection settings)')
+              console.log('Error: ' + error.message)
+            }
