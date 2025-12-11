@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2025-12-08T03:53:05Z",
+  "generatedAt": "2025-12-11T13:06:32Z",
   "period": {
-    "start": "2025-12-01",
-    "end": "2025-12-08"
+    "start": "2025-12-04",
+    "end": "2025-12-11"
   },
   "images": [
     {
       "name": "local-php-mysql",
       "critical": 0,
-      "high": 38,
-      "medium": 131,
-      "low": 471,
-      "unknown": 46
+      "high": 82,
+      "medium": 173,
+      "low": 473,
+      "unknown": 2
     },
     {
       "name": "local-postgres",
@@ -20,21 +20,53 @@
       "medium": 18,
       "low": 82,
       "unknown": 1
+    },
+    {
+      "name": "local-python",
+      "critical": 0,
+      "high": 2,
+      "medium": 16,
+      "low": 370,
+      "unknown": 1
+    },
+    {
+      "name": "local-result",
+      "critical": 1,
+      "high": 16,
+      "medium": 32,
+      "low": 87,
+      "unknown": 1
+    },
+    {
+      "name": "local-vote",
+      "critical": 0,
+      "high": 0,
+      "medium": 11,
+      "low": 70,
+      "unknown": 1
+    },
+    {
+      "name": "local-worker",
+      "critical": 7,
+      "high": 30,
+      "medium": 59,
+      "low": 92,
+      "unknown": 4
     }
   ],
   "totals": {
-    "critical": 0,
-    "high": 42,
-    "medium": 149,
-    "low": 553,
-    "unknown": 47
+    "critical": 8,
+    "high": 134,
+    "medium": 309,
+    "low": 1174,
+    "unknown": 10
   },
   "delta": {
-    "critical": 0,
-    "high": 9,
-    "medium": 23,
-    "low": 0,
-    "unknown": 44
+    "critical": 8,
+    "high": 92,
+    "medium": 160,
+    "low": 621,
+    "unknown": -37
   },
   "direction": "worse",
   "trend": [
@@ -67,6 +99,12 @@
       "critical": 0,
       "high": 42,
       "medium": 149
+    },
+    {
+      "date": "2025-12-11",
+      "critical": 8,
+      "high": 134,
+      "medium": 309
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
@@ -77,6 +115,10 @@
   "version": 3,
   "sources": [
     "reports/trivy/php-mysql.json",
-    "reports/trivy/postgres.json"
+    "reports/trivy/postgres.json",
+    "reports/trivy/python.json",
+    "reports/trivy/vote.json",
+    "reports/trivy/result.json",
+    "reports/trivy/worker.json"
   ]
 }
