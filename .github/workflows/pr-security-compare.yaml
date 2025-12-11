@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
+    # Detect which images have been changed in the PR
     steps:
       - uses: actions/checkout@v4
 
