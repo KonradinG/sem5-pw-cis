@@ -20,6 +20,18 @@ jobs:
           - name: postgres
             context: images/postgres
             tag: local-postgres
+          - name: python
+            context: images/python
+            tag: local-python
+          - name: vote
+            context: example-voting-app-main/vote
+            tag: local-vote
+          - name: result
+            context: example-voting-app-main/result
+            tag: local-result
+          - name: worker
+            context: example-voting-app-main/worker
+            tag: local-worker
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -91,10 +103,38 @@ jobs:
           sarif_file: reports/trivy/postgres.sarif
           category: container-security-postgres
 
+      - name: Upload SARIF (python)
+        if: ${{ hashFiles('reports/trivy/python.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: reports/trivy/python.sarif
+          category: container-security-python
+
+      - name: Upload SARIF (vote)
+        if: ${{ hashFiles('reports/trivy/vote.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: reports/trivy/vote.sarif
+          category: container-security-vote
+
+      - name: Upload SARIF (result)
+        if: ${{ hashFiles('reports/trivy/result.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: reports/trivy/result.sarif
+          category: container-security-result
+
+      - name: Upload SARIF (worker)
+        if: ${{ hashFiles('reports/trivy/worker.sarif') != '' }}
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: reports/trivy/worker.sarif
+          category: container-security-worker
+
       - name: Generate security summary
         run: |
           python scripts/generate_security_summary.py \
-            --trivy reports/trivy/php-mysql.json reports/trivy/postgres.json \
+            --trivy reports/trivy/php-mysql.json reports/trivy/postgres.json reports/trivy/python.json reports/trivy/vote.json reports/trivy/result.json reports/trivy/worker.json \
             --previous docs/data/security-summary.json \
             --output docs/data/security-summary.json
 
@@ -103,6 +143,10 @@ jobs:
           mkdir -p docs/data/trivy-reports
           cp reports/trivy/php-mysql.json docs/data/trivy-reports/
           cp reports/trivy/postgres-18.json docs/data/trivy-reports/ 2>/dev/null || cp reports/trivy/postgres.json docs/data/trivy-reports/postgres-18.json
+          cp reports/trivy/python.json docs/data/trivy-reports/ 2>/dev/null || true
+          cp reports/trivy/vote.json docs/data/trivy-reports/ 2>/dev/null || true
+          cp reports/trivy/result.json docs/data/trivy-reports/ 2>/dev/null || true
+          cp reports/trivy/worker.json docs/data/trivy-reports/ 2>/dev/null || true
 
       - name: Update CVE baselines
         run: |
@@ -110,7 +154,7 @@ jobs:
           DATE=$(date +%Y-%m-%d)
 
           # Update baseline for each image
-          for IMAGE in php-mysql postgres; do
+          for IMAGE in php-mysql postgres python vote result worker; do
             FILE="reports/trivy/${IMAGE}.json"
             if [ -f "$FILE" ]; then
               CRIT=$(jq '[.Results[]?.Vulnerabilities? // [] | .[] | select(.Severity=="CRITICAL")] | length' "$FILE")

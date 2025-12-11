@@ -20,6 +20,14 @@ jobs:
               - images/postgres/**
             php-mysql:
               - images/php-mysql/**
+            python:
+              - images/python/**
+            vote:
+              - example-voting-app-main/vote/**
+            result:
+              - example-voting-app-main/result/**
+            worker:
+              - example-voting-app-main/worker/**
 
       - name: Build dynamic matrix
         id: matrix
@@ -32,6 +40,22 @@ jobs:
 
           if [ "${{ steps.filter.outputs.php-mysql }}" = "true" ]; then
             MATRIX=$(jq '.include += [{"name":"php-mysql","context":"images/php-mysql","dockerfile":"images/php-mysql/Dockerfile"}]' <<< "$MATRIX")
+          fi
+
+          if [ "${{ steps.filter.outputs.python }}" = "true" ]; then
+            MATRIX=$(jq '.include += [{"name":"python","context":"images/python","dockerfile":"images/python/Dockerfile"}]' <<< "$MATRIX")
+          fi
+            
+          if [ "${{ steps.filter.outputs.vote }}" = "true" ]; then
+            MATRIX=$(jq '.include += [{"name":"vote","context":"example-voting-app-main/vote","dockerfile":"example-voting-app-main/vote/Dockerfile"}]' <<< "$MATRIX")
+          fi
+
+          if [ "${{ steps.filter.outputs.result }}" = "true" ]; then
+            MATRIX=$(jq '.include += [{"name":"result","context":"example-voting-app-main/result","dockerfile":"example-voting-app-main/result/Dockerfile"}]' <<< "$MATRIX")
+          fi
+
+          if [ "${{ steps.filter.outputs.worker }}" = "true" ]; then
+            MATRIX=$(jq '.include += [{"name":"worker","context":"example-voting-app-main/worker","dockerfile":"example-voting-app-main/worker/Dockerfile"}]' <<< "$MATRIX")
           fi
 
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT

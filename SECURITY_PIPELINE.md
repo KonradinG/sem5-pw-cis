@@ -30,6 +30,8 @@ The security pipeline is designed to achieve the following goals:
 - Transparent and auditable security decisions
 - Customer-facing visibility of security posture
 
+**Note:** As per Prof. Nestler's recommendation, the pipeline also scans test images from the [example-voting-app](https://github.com/dockersamples/example-voting-app) to demonstrate vulnerability tracking across different application components.
+
 ---
 
 ## Pipeline Architecture

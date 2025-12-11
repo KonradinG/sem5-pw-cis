@@ -26,6 +26,22 @@ jobs:
             docker_context: images/php-mysql
             docker_file: images/php-mysql/Dockerfile
 
+          - image_tag: python-3.14
+            docker_context: images/python
+            docker_file: images/python/Dockerfile
+
+          - image_tag: vote
+            docker_context: example-voting-app-main/vote
+            docker_file: example-voting-app-main/vote/Dockerfile
+
+          - image_tag: result
+            docker_context: example-voting-app-main/result
+            docker_file: example-voting-app-main/result/Dockerfile
+
+          - image_tag: worker
+            docker_context: example-voting-app-main/worker
+            docker_file: example-voting-app-main/worker/Dockerfile
+
     steps:
       # ===============================
       # Checkout

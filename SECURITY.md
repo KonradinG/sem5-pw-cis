@@ -28,6 +28,7 @@ A dedicated GitHub Actions workflow (`sbom.yml`):
 - Trigger: manual (`workflow_dispatch`) or scheduled monthly (1st day at 02:00 UTC)
 - No code changes are committed; SBOM is uploaded as an artifact only
 - Independent from vulnerability scanning (no coupling with Trivy pipeline)
+- Includes test images from the [example-voting-app](https://github.com/dockersamples/example-voting-app) (added as test per Prof. Nestler's recommendation)
 
 ### How to Obtain the SBOM
 

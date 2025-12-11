@@ -65,6 +65,42 @@ jobs:
           push: false
           load: true
 
+      - name: Build python image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./images/python
+          file: ./images/python/Dockerfile
+          tags: python-secured:latest
+          push: false
+          load: true
+
+      - name: Build vote image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./example-voting-app-main/vote
+          file: ./example-voting-app-main/vote/Dockerfile
+          tags: vote:latest
+          push: false
+          load: true
+
+      - name: Build result image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./example-voting-app-main/result
+          file: ./example-voting-app-main/result/Dockerfile
+          tags: result:latest
+          push: false
+          load: true
+
+      - name: Build worker image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: ./example-voting-app-main/worker
+          file: ./example-voting-app-main/worker/Dockerfile
+          tags: worker:latest
+          push: false
+          load: true
+
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
         with:
@@ -78,6 +114,22 @@ jobs:
         run: |
           syft docker:postgres-secured:latest -o cyclonedx-json > sbom/postgres.cyclonedx.json
 
+      - name: Generate SBOM for python image (CycloneDX JSON)
+        run: |
+          syft docker:python-secured:latest -o cyclonedx-json > sbom/python.cyclonedx.json
+
+      - name: Generate SBOM for vote image (CycloneDX JSON)
+        run: |
+          syft docker:vote:latest -o cyclonedx-json > sbom/vote.cyclonedx.json
+
+      - name: Generate SBOM for result image (CycloneDX JSON)
+        run: |
+          syft docker:result:latest -o cyclonedx-json > sbom/result.cyclonedx.json
+
+      - name: Generate SBOM for worker image (CycloneDX JSON)
+        run: |
+          syft docker:worker:latest -o cyclonedx-json > sbom/worker.cyclonedx.json
+
       - name: Upload image SBOM artifacts (30 days retention)
         uses: actions/upload-artifact@v4
         with:
@@ -85,10 +137,14 @@ jobs:
           path: |
             sbom/php-mysql.cyclonedx.json
             sbom/postgres.cyclonedx.json
+            sbom/python.cyclonedx.json
+            sbom/vote.cyclonedx.json
+            sbom/result.cyclonedx.json
+            sbom/worker.cyclonedx.json
           retention-days: 30
 
       - name: Summary output (images)
         run: |
-          echo "Image SBOMs (CycloneDX JSON) generated successfully for php-mysql and postgres."
+          echo "Image SBOMs (CycloneDX JSON) generated successfully for php-mysql, postgres, python, vote, result, and worker."
           echo "Artifacts retained for 30 days."
           echo "SBOMs are not committed to the repository."
