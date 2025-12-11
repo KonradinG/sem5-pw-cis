@@ -156,8 +156,9 @@ Every Renovate pull request is subject to a security comparison workflow.
 
 The pipeline compares:
 
-- Vulnerability counts before the update
-- Vulnerability counts after the update
+- Vulnerability counts before the update (from `cve-baseline/<image>.json`)
+- Vulnerability counts after the update (from Trivy scan of PR branch)
+- Checks for new CRITICAL vulnerabilities
 
 ### Merge Rules
 
@@ -165,10 +166,21 @@ The pipeline compares:
 | ----------------------------------- | ---------------------- |
 | CRITICAL vulnerabilities present    | Merge blocked          |
 | Total vulnerability count increases | Merge blocked          |
-| Total vulnerability count decreases | Merge allowed          |
+| Total vulnerability count decreases | **Auto-merge enabled** |
 | No change in vulnerability count    | Manual review required |
 
 This prevents silent security regressions and enforces measurable improvement.
+
+### Auto-Merge Implementation
+
+When security conditions are met, the workflow:
+
+1. Uses **GraphQL mutation** `enablePullRequestAutoMerge`
+2. Sets merge method to `SQUASH` for clean commits
+3. Gracefully handles cases where auto-merge is not configured (branch protection rules)
+4. Posts PR comment confirming security comparison results
+
+Note: Auto-merge requires branch protection settings to be enabled on the repository.
 
 ---
 

@@ -136,18 +136,19 @@ Vergleicht CVE-Anzahl vor/nach Dependency-Update. Verhindert Security-Regression
 
 1. **Detect Changes**: `dorny/paths-filter` prüft geänderte Image-Pfade
 2. **Dynamic Matrix**: Nur geänderte Images werden gescannt
-3. **Build & Scan**: Neues Image (PR-Branch)
-4. **Baseline Load**: Lädt `cve-baseline/<image>.json` vom `main` Branch
-5. **Comparison**:
+3. **Fetch PR Branch**: `git fetch origin <pr-branch>` (stellt remote branch lokal zur Verfügung)
+4. **Build & Scan**: Neues Image (PR-Branch) bauen und mit Trivy scannen
+5. **Baseline Load**: Lädt `cve-baseline/<image>.json` vom `main` Branch
+6. **Comparison**:
    ```
    NEW_CRIT vs BASELINE_CRIT
    NEW_HIGH vs BASELINE_HIGH
    NEW_MED  vs BASELINE_MED
    ```
-6. **Auto-Merge Entscheidung**:
-   - ✅ Erlaubt: Wenn CVE-Anzahl sinkt oder gleich bleibt
+7. **Auto-Merge Entscheidung** (via GraphQL):
+   - ✅ Erlaubt: Wenn CVE-Anzahl sinkt oder gleich bleibt (GraphQL: `enablePullRequestAutoMerge`)
    - ❌ Blockiert: Bei neuen CRITICAL oder steigenden Zahlen
-7. **PR Comment**: Zeigt Vergleichstabelle
+8. **PR Comment**: Zeigt Vergleichstabelle mit Security-Verbesserungen
 
 **Outputs:**
 
@@ -281,19 +282,27 @@ Erstellt Software Bill of Materials (CycloneDX JSON Format).
 - Manuell (`workflow_dispatch`)
 
 **Funktion:**
-Verhindert Deployment, wenn CRITICAL CVEs vorhanden sind.
+Verhindert Deployment, wenn CRITICAL CVEs in **Production-Images** vorhanden sind.
 
 **Ablauf:**
 
 1. Lädt alle `cve-baseline/*.json`
 2. Prüft jedes Image auf `"critical" > 0`
-3. **Blockiert** (exit 1) wenn CRITICAL gefunden
-4. **Erlaubt** Deployment wenn keine CRITICAL
+3. **Exception für Test-Images**: `vote`, `result`, `worker` überspringen
+   - Diese Test-Images werden gescannt und getracked
+   - Blockieren aber nicht das Deployment (Demo-Zweck)
+   - Grund: Demonstrationszweck für Prof. Nestler
+4. **Production-Images**: `postgres-18`, `php-mysql`, `python-3.14`
+   - **Blockiert** (exit 1) wenn CRITICAL gefunden
+   - **Erlaubt** Deployment wenn keine CRITICAL
 
 **Outputs:**
 
 - Status Check für Deployment-Gate
-- Log-Meldungen (✅ erlaubt / ❌ blockiert)
+- Log-Meldungen:
+  - ✅ Production-Images: keine CRITICAL CVEs → Deploy erlaubt
+  - ❌ Production-Images: CRITICAL CVEs gefunden → Deploy blockiert
+  - ℹ️ Test-Images: CRITICAL CVEs gefunden → überspringen
 
 ---
 

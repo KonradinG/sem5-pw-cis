@@ -24,14 +24,14 @@ All images are built, scanned, and monitored automatically for known vulnerabili
 
 ## Included Images
 
-| Image                      | Description                                                                                                                     |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `postgres-secured`         | Hardened PostgreSQL container image                                                                                             |
-| `php-mysql-secured`        | PHP and MySQL container image with security hardening                                                                           |
-| `python-secured`           | Hardened Python 3.14 container image                                                                                            |
-| `vote`, `result`, `worker` | Example Voting App images (Test vorgeschlagen von Prof. Nestler, [Quelle](https://github.com/dockersamples/example-voting-app)) |
+| Image                      | Description                                                                                                                       |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `postgres-secured`         | Hardened PostgreSQL container image                                                                                               |
+| `php-mysql-secured`        | PHP and MySQL container image with security hardening                                                                             |
+| `python-secured`           | Hardened Python 3.14 container image                                                                                              |
+| `vote`, `result`, `worker` | Example Voting App images (test images suggested by Prof. Nestler, [source](https://github.com/dockersamples/example-voting-app)) |
 
-**Hinweis zu Test-Images:** Die Example Voting App Images (`vote`, `result`, `worker`) dienen ausschließlich Demonstrationszwecken und enthalten bewusst bekannte Schwachstellen. Der CVE-Gate blockiert bei diesen Images nicht, um die vollständige Pipeline-Funktionalität (Scanning, Issue-Tracking, Reporting) auch bei kritischen Vulnerabilities zu demonstrieren. Alle Schwachstellen werden dennoch vollständig erfasst und dokumentiert.
+**Note on Test Images:** The Example Voting App images (`vote`, `result`, `worker`) serve exclusively for demonstration purposes and intentionally contain known vulnerabilities. The CVE-Gate does not block these images to demonstrate the full pipeline functionality (scanning, issue tracking, reporting) even with critical vulnerabilities. All vulnerabilities are nevertheless fully captured and documented.
 
 ## Pipeline
 
@@ -61,11 +61,13 @@ For detailed pipeline architecture and technical implementation, see [SECURITY_P
 
 ### Hard Blocking Rules
 
-| Condition                      | Behaviour             |
-| ------------------------------ | --------------------- |
-| CRITICAL vulnerability present | Auto‑merge is blocked |
-| Vulnerability count increases  | Auto‑merge is blocked |
-| Vulnerability count decreases  | Auto‑merge is allowed |
+| Condition                       | Behaviour                    |
+| ------------------------------- | ---------------------------- |
+| CRITICAL vulnerability present  | Auto‑merge is blocked        |
+| Vulnerability count increases   | Auto‑merge is blocked        |
+| Vulnerability count decreases   | Auto‑merge enabled (GraphQL) |
+| Production images with CRITICAL | Deployment blocked           |
+| Test images with CRITICAL       | Skipped (demo only)          |
 
 ## Security Reporting
 
