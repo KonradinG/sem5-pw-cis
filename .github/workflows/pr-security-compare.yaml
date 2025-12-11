@@ -59,7 +59,8 @@ jobs:
             MATRIX=$(jq '.include += [{"name":"worker","context":"example-voting-app-main/worker","dockerfile":"example-voting-app-main/worker/Dockerfile"}]' <<< "$MATRIX")
           fi
 
-          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+          # Remove whitespace and output as single line
+          echo "matrix=$(echo "$MATRIX" | jq -c .)" >> $GITHUB_OUTPUT
 
   compare:
     needs: detect-changes
