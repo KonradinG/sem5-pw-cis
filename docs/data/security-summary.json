@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2025-12-11T13:18:15Z",
+  "generatedAt": "2025-12-15T04:02:30Z",
   "period": {
-    "start": "2025-12-04",
-    "end": "2025-12-11"
+    "start": "2025-12-08",
+    "end": "2025-12-15"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 82,
-      "medium": 173,
+      "high": 83,
+      "medium": 174,
       "low": 473,
-      "unknown": 2
+      "unknown": 1
     },
     {
       "name": "local-postgres-18",
@@ -41,7 +41,7 @@
       "name": "local-vote",
       "critical": 0,
       "high": 0,
-      "medium": 11,
+      "medium": 10,
       "low": 70,
       "unknown": 1
     },
@@ -51,24 +51,24 @@
       "high": 30,
       "medium": 59,
       "low": 92,
-      "unknown": 4
+      "unknown": 5
     }
   ],
   "totals": {
     "critical": 8,
-    "high": 134,
+    "high": 135,
     "medium": 309,
     "low": 1174,
     "unknown": 10
   },
   "delta": {
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0
   },
-  "direction": "stable",
+  "direction": "worse",
   "trend": [
     {
       "date": "2025-11-13",
@@ -104,6 +104,12 @@
       "date": "2025-12-11",
       "critical": 8,
       "high": 134,
+      "medium": 309
+    },
+    {
+      "date": "2025-12-15",
+      "critical": 8,
+      "high": 135,
       "medium": 309
     }
   ],

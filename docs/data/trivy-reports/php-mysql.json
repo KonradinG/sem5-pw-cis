@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:17:19.005294529Z",
+  "CreatedAt": "2025-12-15T04:01:27.380282347Z",
   "ArtifactName": "local-8.1-apache-mysql",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:551d8e20adcfa5a99777c550c2e7e091fdbfc0e58779c10a948c6277acf86cb9",
+    "ImageID": "sha256:d15445dce96a186ab2d1608dd4a49bb2bda8305d839c5b41d2a5310e0a6ea480",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:6b20a1b1b249b950c067b9188d09daa03dbc5aa070f29df4202080c556af80fc",
@@ -24,23 +24,23 @@
       "sha256:009c987c4d03d3d0d914a509b7912c848af9e72dab8b05659640fd4cedaa0114",
       "sha256:17e487aca947d52853a1525e0fd83dcd034b891f1497b280e85ecf2bd9951731",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-      "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475",
+      "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-      "sha256:9d49f009f0949bae5e4bf1cc64b084cd34b730dc903e8d103d84670484c845ed",
+      "sha256:8d0646d431f150ac4bce8c984a8e802ba21db9c635060b97aa1ff5dd5726be93",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-      "sha256:d5064945715c89c5f0399e408cf9567e46af68ea607e9affe76fb2e8d171cb16",
-      "sha256:078fbd78bce38ce40c68201655308a6aa6fa3927fc6455f90f51a3d20403ba2b",
-      "sha256:95f1322d6222cbdf43f7afca318952c3f1b02553d552f3545e227a1eff190646",
-      "sha256:0891c6cc41c4bc418aafef35d28acf5ee1551faaa70814ba730686a35da32084",
-      "sha256:0c9ad600fa87db30b8bf29441338fbd1ca1af0f36c73867864db5c22093a11e8",
-      "sha256:9c4e44eec45c1d1aca1700c31f735bddaa60cd292034bc789cb98f049334312d"
+      "sha256:e40711b10e99b9539b3b2de56cdfa687f579d9e17c17b1c26f18f99f47776ef1",
+      "sha256:672b92c077e873c52c2db002c76b7401b8438b0217e2b4efcf8718f33ea8193c",
+      "sha256:73782c9c41915bc877dffc1645cbce38ec82c13954bddd08a84764b71c14f840",
+      "sha256:4e11c933da3e3e7494c411ff5a8917c69ba0a49dc553b72b51f8c122982f612d",
+      "sha256:7db6e619d349fd32cf480f57450cebc9222fcdb285cee2635eddacafb6503996",
+      "sha256:977203b3c83c55cc707a2f23ad2bc425b8ffe79ce57493195b0ebf598e088b2d"
     ],
     "RepoTags": [
       "local-8.1-apache-mysql:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:16:55.908267267Z",
+      "created": "2025-12-15T04:01:09.887713141Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -203,63 +203,63 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:51Z",
+          "created": "2025-12-15T04:01:06Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026 apt-get install -y     git unzip libzip-dev libonig-dev  \u0026\u0026 docker-php-ext-install pdo_mysql zip  \u0026\u0026 a2enmod rewrite # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:53Z",
+          "created": "2025-12-15T04:01:07Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026 apt-get upgrade -y \u0026\u0026 apt-get clean # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:53Z",
+          "created": "2025-12-15T04:01:07Z",
           "created_by": "COPY /usr/bin/composer /usr/bin/composer # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:53Z",
+          "created": "2025-12-15T04:01:07Z",
           "created_by": "WORKDIR /var/www/html",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:53Z",
+          "created": "2025-12-15T04:01:07Z",
           "created_by": "COPY composer.json /var/www/html/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:54Z",
+          "created": "2025-12-15T04:01:08Z",
           "created_by": "RUN /bin/sh -c composer install --no-interaction --prefer-dist --no-dev # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:54Z",
+          "created": "2025-12-15T04:01:08Z",
           "created_by": "COPY src/ /var/www/html/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:55Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "RUN /bin/sh -c composer dump-autoload -o  \u0026\u0026 chown -R www-data:www-data /var/www/html # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:55Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "RUN /bin/sh -c mkdir -p /var/www/html/reports/uploads  \u0026\u0026 chown -R www-data:www-data /var/www/html/reports # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:55Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "RUN /bin/sh -c echo \"upload_max_filesize=20M\\npost_max_size=20M\" \u003e /usr/local/etc/php/conf.d/uploads.ini # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:55Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "EXPOSE map[80/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:55Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "CMD [\"apache2-foreground\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -283,16 +283,16 @@
           "sha256:009c987c4d03d3d0d914a509b7912c848af9e72dab8b05659640fd4cedaa0114",
           "sha256:17e487aca947d52853a1525e0fd83dcd034b891f1497b280e85ecf2bd9951731",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-          "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475",
+          "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-          "sha256:9d49f009f0949bae5e4bf1cc64b084cd34b730dc903e8d103d84670484c845ed",
+          "sha256:8d0646d431f150ac4bce8c984a8e802ba21db9c635060b97aa1ff5dd5726be93",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-          "sha256:d5064945715c89c5f0399e408cf9567e46af68ea607e9affe76fb2e8d171cb16",
-          "sha256:078fbd78bce38ce40c68201655308a6aa6fa3927fc6455f90f51a3d20403ba2b",
-          "sha256:95f1322d6222cbdf43f7afca318952c3f1b02553d552f3545e227a1eff190646",
-          "sha256:0891c6cc41c4bc418aafef35d28acf5ee1551faaa70814ba730686a35da32084",
-          "sha256:0c9ad600fa87db30b8bf29441338fbd1ca1af0f36c73867864db5c22093a11e8",
-          "sha256:9c4e44eec45c1d1aca1700c31f735bddaa60cd292034bc789cb98f049334312d"
+          "sha256:e40711b10e99b9539b3b2de56cdfa687f579d9e17c17b1c26f18f99f47776ef1",
+          "sha256:672b92c077e873c52c2db002c76b7401b8438b0217e2b4efcf8718f33ea8193c",
+          "sha256:73782c9c41915bc877dffc1645cbce38ec82c13954bddd08a84764b71c14f840",
+          "sha256:4e11c933da3e3e7494c411ff5a8917c69ba0a49dc553b72b51f8c122982f612d",
+          "sha256:7db6e619d349fd32cf480f57450cebc9222fcdb285cee2635eddacafb6503996",
+          "sha256:977203b3c83c55cc707a2f23ad2bc425b8ffe79ce57493195b0ebf598e088b2d"
         ]
       },
       "config": {
@@ -356,6 +356,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 3,
             "redhat": 3
           },
           "CVSS": {
@@ -405,6 +406,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 4,
             "redhat": 3
           },
           "CVSS": {
@@ -454,6 +456,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -503,6 +506,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -947,6 +951,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 3,
             "redhat": 3
           },
           "CVSS": {
@@ -996,6 +1001,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 4,
             "redhat": 3
           },
           "CVSS": {
@@ -1045,6 +1051,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -1094,6 +1101,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -1538,6 +1546,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 3,
             "redhat": 3
           },
           "CVSS": {
@@ -1587,6 +1596,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 4,
             "redhat": 3
           },
           "CVSS": {
@@ -1636,6 +1646,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -1685,6 +1696,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -2129,6 +2141,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 3,
             "redhat": 3
           },
           "CVSS": {
@@ -2178,6 +2191,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 3,
+            "photon": 4,
             "redhat": 3
           },
           "CVSS": {
@@ -2227,6 +2241,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -2276,6 +2291,7 @@
           ],
           "VendorSeverity": {
             "bitnami": 2,
+            "photon": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -8862,7 +8878,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-1000021",
@@ -8915,7 +8931,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-24975",
@@ -8971,7 +8987,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-52005",
@@ -9033,7 +9049,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-1000021",
@@ -9086,7 +9102,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-24975",
@@ -9142,7 +9158,7 @@
           "InstalledVersion": "1:2.47.3-0+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-52005",
@@ -16713,7 +16729,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -24639,6 +24655,107 @@
           "LastModifiedDate": "2025-11-26T17:12:06.677Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-39859",
+          "PkgID": "linux-libc-dev@6.12.57-1",
+          "PkgName": "linux-libc-dev",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
+            "UID": "87d4472f9f5d13b3"
+          },
+          "InstalledVersion": "6.12.57-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
+          },
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39859",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "kernel: ptp: ocp: fix use-after-free bugs causing by ptp_ocp_watchdog",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ocp: fix use-after-free bugs causing by ptp_ocp_watchdog\n\nThe ptp_ocp_detach() only shuts down the watchdog timer if it is\npending. However, if the timer handler is already running, the\ntimer_delete_sync() is not called. This leads to race conditions\nwhere the devlink that contains the ptp_ocp is deallocated while\nthe timer handler is still accessing it, resulting in use-after-free\nbugs. The following details one of the race scenarios.\n\n(thread 1)                           | (thread 2)\nptp_ocp_remove()                     |\n  ptp_ocp_detach()                   | ptp_ocp_watchdog()\n    if (timer_pending(\u0026bp-\u003ewatchdog))|   bp = timer_container_of()\n      timer_delete_sync()            |\n                                     |\n  devlink_free(devlink) //free       |\n                                     |   bp-\u003e //use\n\nResolve this by unconditionally calling timer_delete_sync() to ensure\nthe timer is reliably deactivated, preventing any access after free.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-416"
+          ],
+          "VendorSeverity": {
+            "nvd": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-39859",
+            "https://git.kernel.org/linus/8bf935cf789872350b04c1a6468b0a509f67afb2 (6.17-rc5)",
+            "https://git.kernel.org/stable/c/8bf935cf789872350b04c1a6468b0a509f67afb2",
+            "https://git.kernel.org/stable/c/f10d3c7267ac7387a5129d5506c3c5f2460cfd9b",
+            "https://lore.kernel.org/linux-cve-announce/2025091905-CVE-2025-39859-52d5@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-39859",
+            "https://www.cve.org/CVERecord?id=CVE-2025-39859"
+          ],
+          "PublishedDate": "2025-09-19T16:15:44.867Z",
+          "LastModifiedDate": "2025-12-12T21:21:21.383Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-39862",
+          "PkgID": "linux-libc-dev@6.12.57-1",
+          "PkgName": "linux-libc-dev",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
+            "UID": "87d4472f9f5d13b3"
+          },
+          "InstalledVersion": "6.12.57-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
+          },
+          "SeveritySource": "nvd",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39862",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "kernel: wifi: mt76: mt7915: fix list corruption after hardware restart",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix list corruption after hardware restart\n\nSince stations are recreated from scratch, all lists that wcids are added\nto must be cleared before calling ieee80211_restart_hw.\nSet wcid-\u003esta = 0 for each wcid entry in order to ensure that they are\nnot added again before they are ready.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "nvd": 3,
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7.8
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-39862",
+            "https://git.kernel.org/linus/065c79df595af21d6d1b27d642860faa1d938774 (6.17-rc5)",
+            "https://git.kernel.org/stable/c/065c79df595af21d6d1b27d642860faa1d938774",
+            "https://git.kernel.org/stable/c/8fa8eb52bc2eb08d93202863b5fc478e0bebc00c",
+            "https://lore.kernel.org/linux-cve-announce/2025091906-CVE-2025-39862-5acb@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-39862",
+            "https://www.cve.org/CVERecord?id=CVE-2025-39862"
+          ],
+          "PublishedDate": "2025-09-19T16:15:45.203Z",
+          "LastModifiedDate": "2025-12-12T20:09:59.973Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-39905",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
@@ -24651,6 +24768,7 @@
           "Layer": {
             "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39905",
           "DataSource": {
             "ID": "debian",
@@ -24660,11 +24778,19 @@
           "Title": "kernel: net: phylink: add lock for serializing concurrent pl-\u003ephydev writes with resolver",
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phylink: add lock for serializing concurrent pl-\u003ephydev writes with resolver\n\nCurrently phylink_resolve() protects itself against concurrent\nphylink_bringup_phy() or phylink_disconnect_phy() calls which modify\npl-\u003ephydev by relying on pl-\u003estate_mutex.\n\nThe problem is that in phylink_resolve(), pl-\u003estate_mutex is in a lock\ninversion state with pl-\u003ephydev-\u003elock. So pl-\u003ephydev-\u003elock needs to be\nacquired prior to pl-\u003estate_mutex. But that requires dereferencing\npl-\u003ephydev in the first place, and without pl-\u003estate_mutex, that is\nracy.\n\nHence the reason for the extra lock. Currently it is redundant, but it\nwill serve a functional purpose once mutex_lock(\u0026phy-\u003elock) will be\nmoved outside of the mutex_lock(\u0026pl-\u003estate_mutex) section.\n\nAnother alternative considered would have been to let phylink_resolve()\nacquire the rtnl_mutex, which is also held when phylink_bringup_phy()\nand phylink_disconnect_phy() are called. But since phylink_disconnect_phy()\nruns under rtnl_lock(), it would deadlock with phylink_resolve() when\ncalling flush_work(\u0026pl-\u003eresolve). Additionally, it would have been\nundesirable because it would have unnecessarily blocked many other call\npaths as well in the entire kernel, so the smaller-scoped lock was\npreferred.",
           "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-362"
+          ],
           "VendorSeverity": {
+            "nvd": 3,
             "redhat": 2,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:H",
               "V3Score": 7.1
@@ -24680,7 +24806,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-39905"
           ],
           "PublishedDate": "2025-10-01T08:15:33.37Z",
-          "LastModifiedDate": "2025-10-02T19:12:17.16Z"
+          "LastModifiedDate": "2025-12-12T18:35:31.16Z"
         },
         {
           "VulnerabilityID": "CVE-2025-39933",
@@ -25151,12 +25277,13 @@
             "https://access.redhat.com/security/cve/CVE-2025-40215",
             "https://git.kernel.org/linus/b441cf3f8c4b8576639d20c8eb4aa32917602ecd (6.16)",
             "https://git.kernel.org/stable/c/b441cf3f8c4b8576639d20c8eb4aa32917602ecd",
+            "https://git.kernel.org/stable/c/dc3636912d41770466543623cb76e7b88fdb42c7",
             "https://lore.kernel.org/linux-cve-announce/2025120438-CVE-2025-40215-0256@gregkh/T",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-40215",
             "https://www.cve.org/CVERecord?id=CVE-2025-40215"
           ],
           "PublishedDate": "2025-12-04T13:15:48.473Z",
-          "LastModifiedDate": "2025-12-04T17:15:08.283Z"
+          "LastModifiedDate": "2025-12-12T18:15:39.057Z"
         },
         {
           "VulnerabilityID": "CVE-2025-40217",
@@ -26211,6 +26338,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio-net: fix received length check in big packets\n\nSince commit 4959aebba8c0 (\"virtio-net: use mtu size as buffer length\nfor big packets\"), when guest gso is off, the allocated size for big\npackets is not MAX_SKB_FRAGS * PAGE_SIZE anymore but depends on\nnegotiated MTU. The number of allocated frags for big packets is stored\nin vi-\u003ebig_packets_num_skbfrags.\n\nBecause the host announced buffer length can be malicious (e.g. the host\nvhost_net driver's get_rx_bufs is modified to announce incorrect\nlength), we need a check in virtio_net receive path. Currently, the\ncheck is not adapted to the new change which can lead to NULL page\npointer dereference in the below while loop when receiving length that\nis larger than the allocated one.\n\nThis commit fixes the received length check corresponding to the new\nchange.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26258,6 +26386,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Don't overflow during division for dirty tracking\n\nIf pgshift is 63 then BITS_PER_TYPE(*bitmap-\u003ebitmap) * pgsize will overflow\nto 0 and this triggers divide by 0.\n\nIn this case the index should just be 0, so reorganize things to divide\nby shift and avoid hitting any overflows.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26352,6 +26481,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: fix use-after-free due to MST port state bypass\n\nsyzbot reported[1] a use-after-free when deleting an expired fdb. It is\ndue to a race condition between learning still happening and a port being\ndeleted, after all its fdbs have been flushed. The port's state has been\ntoggled to disabled so no learning should happen at that time, but if we\nhave MST enabled, it will bypass the port's state, that together with VLAN\nfiltering disabled can lead to fdb learning at a time when it shouldn't\nhappen while the port is being deleted. VLAN filtering must be disabled\nbecause we flush the port VLANs when it's being deleted which will stop\nlearning. This fix adds a check for the port's vlan group which is\ninitialized to NULL when the port is getting deleted, that avoids the port\nstate bypass. When MST is enabled there would be a minimal new overhead\nin the fast-path because the port's vlan group pointer is cache-hot.\n\n[1] https://syzkaller.appspot.com/bug?extid=dd280197f0f7ab3917be",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26399,6 +26529,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_event: validate skb length for unknown CC opcode\n\nIn hci_cmd_complete_evt(), if the command complete event has an unknown\nopcode, we assume the first byte of the remaining skb-\u003edata contains the\nreturn status. However, parameter data has previously been pulled in\nhci_event_func(), which may leave the skb empty. If so, using skb-\u003edata[0]\nfor the return status uses un-init memory.\n\nThe fix is to check skb-\u003elen before using skb-\u003edata.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 3,
             "ubuntu": 2
           },
@@ -26491,6 +26622,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Add bounds checking in bit_putcs to fix vmalloc-out-of-bounds\n\nAdd bounds checking to prevent writes past framebuffer boundaries when\nrendering text near screen edges. Return early if the Y position is off-screen\nand clip image height to screen boundary. Break from the rendering loop if the\nX position is off-screen. When clipping image width to fit the screen, update\nthe character count to match the clipped width to prevent buffer size\nmismatches.\n\nWithout the character count update, bit_putcs_aligned and bit_putcs_unaligned\nreceive mismatched parameters where the buffer is allocated for the clipped\nwidth but cnt reflects the original larger count, causing out-of-bounds writes.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 3,
             "ubuntu": 2
           },
@@ -26631,6 +26763,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bcsp: receive data only if registered\n\nCurrently, bcsp_recv() can be called even when the BCSP protocol has not\nbeen registered. This leads to a NULL pointer dereference, as shown in\nthe following stack trace:\n\n    KASAN: null-ptr-deref in range [0x0000000000000108-0x000000000000010f]\n    RIP: 0010:bcsp_recv+0x13d/0x1740 drivers/bluetooth/hci_bcsp.c:590\n    Call Trace:\n     \u003cTASK\u003e\n     hci_uart_tty_receive+0x194/0x220 drivers/bluetooth/hci_ldisc.c:627\n     tiocsti+0x23c/0x2c0 drivers/tty/tty_io.c:2290\n     tty_ioctl+0x626/0xde0 drivers/tty/tty_io.c:2706\n     vfs_ioctl fs/ioctl.c:51 [inline]\n     __do_sys_ioctl fs/ioctl.c:907 [inline]\n     __se_sys_ioctl+0xfc/0x170 fs/ioctl.c:893\n     do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]\n     do_syscall_64+0xfa/0x3b0 arch/x86/entry/syscall_64.c:94\n     entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nTo prevent this, ensure that the HCI_UART_REGISTERED flag is set before\nprocessing received data. If the protocol is not registered, return\n-EUNATCH.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26681,6 +26814,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: Fix UAF on sco_conn_free\n\nBUG: KASAN: slab-use-after-free in sco_conn_free net/bluetooth/sco.c:87 [inline]\nBUG: KASAN: slab-use-after-free in kref_put include/linux/kref.h:65 [inline]\nBUG: KASAN: slab-use-after-free in sco_conn_put+0xdd/0x410\nnet/bluetooth/sco.c:107\nWrite of size 8 at addr ffff88811cb96b50 by task kworker/u17:4/352\n\nCPU: 1 UID: 0 PID: 352 Comm: kworker/u17:4 Not tainted\n6.17.0-rc5-g717368f83676 #4 PREEMPT(voluntary)\nHardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014\nWorkqueue: hci13 hci_cmd_sync_work\nCall Trace:\n \u003cTASK\u003e\n __dump_stack lib/dump_stack.c:94 [inline]\n dump_stack_lvl+0x10b/0x170 lib/dump_stack.c:120\n print_address_description mm/kasan/report.c:378 [inline]\n print_report+0x191/0x550 mm/kasan/report.c:482\n kasan_report+0xc4/0x100 mm/kasan/report.c:595\n sco_conn_free net/bluetooth/sco.c:87 [inline]\n kref_put include/linux/kref.h:65 [inline]\n sco_conn_put+0xdd/0x410 net/bluetooth/sco.c:107\n sco_connect_cfm+0xb4/0xae0 net/bluetooth/sco.c:1441\n hci_connect_cfm include/net/bluetooth/hci_core.h:2082 [inline]\n hci_conn_failed+0x20a/0x2e0 net/bluetooth/hci_conn.c:1313\n hci_conn_unlink+0x55f/0x810 net/bluetooth/hci_conn.c:1121\n hci_conn_del+0xb6/0x1110 net/bluetooth/hci_conn.c:1147\n hci_abort_conn_sync+0x8c5/0xbb0 net/bluetooth/hci_sync.c:5689\n hci_cmd_sync_work+0x281/0x380 net/bluetooth/hci_sync.c:332\n process_one_work kernel/workqueue.c:3236 [inline]\n process_scheduled_works+0x77e/0x1040 kernel/workqueue.c:3319\n worker_thread+0xbee/0x1200 kernel/workqueue.c:3400\n kthread+0x3c7/0x870 kernel/kthread.c:463\n ret_from_fork+0x13a/0x1e0 arch/x86/kernel/process.c:148\n ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245\n \u003c/TASK\u003e\n\nAllocated by task 31370:\n kasan_save_stack mm/kasan/common.c:47 [inline]\n kasan_save_track+0x30/0x70 mm/kasan/common.c:68\n poison_kmalloc_redzone mm/kasan/common.c:388 [inline]\n __kasan_kmalloc+0x82/0x90 mm/kasan/common.c:405\n kasan_kmalloc include/linux/kasan.h:260 [inline]\n __do_kmalloc_node mm/slub.c:4382 [inline]\n __kmalloc_noprof+0x22f/0x390 mm/slub.c:4394\n kmalloc_noprof include/linux/slab.h:909 [inline]\n sk_prot_alloc+0xae/0x220 net/core/sock.c:2239\n sk_alloc+0x34/0x5a0 net/core/sock.c:2295\n bt_sock_alloc+0x3c/0x330 net/bluetooth/af_bluetooth.c:151\n sco_sock_alloc net/bluetooth/sco.c:562 [inline]\n sco_sock_create+0xc0/0x350 net/bluetooth/sco.c:593\n bt_sock_create+0x161/0x3b0 net/bluetooth/af_bluetooth.c:135\n __sock_create+0x3ad/0x780 net/socket.c:1589\n sock_create net/socket.c:1647 [inline]\n __sys_socket_create net/socket.c:1684 [inline]\n __sys_socket+0xd5/0x330 net/socket.c:1731\n __do_sys_socket net/socket.c:1745 [inline]\n __se_sys_socket net/socket.c:1743 [inline]\n __x64_sys_socket+0x7a/0x90 net/socket.c:1743\n do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]\n do_syscall_64+0xc7/0x240 arch/x86/entry/syscall_64.c:94\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nFreed by task 31374:\n kasan_save_stack mm/kasan/common.c:47 [inline]\n kasan_save_track+0x30/0x70 mm/kasan/common.c:68\n kasan_save_free_info+0x40/0x50 mm/kasan/generic.c:576\n poison_slab_object mm/kasan/common.c:243 [inline]\n __kasan_slab_free+0x3d/0x50 mm/kasan/common.c:275\n kasan_slab_free include/linux/kasan.h:233 [inline]\n slab_free_hook mm/slub.c:2428 [inline]\n slab_free mm/slub.c:4701 [inline]\n kfree+0x199/0x3b0 mm/slub.c:4900\n sk_prot_free net/core/sock.c:2278 [inline]\n __sk_destruct+0x4aa/0x630 net/core/sock.c:2373\n sco_sock_release+0x2ad/0x300 net/bluetooth/sco.c:1333\n __sock_release net/socket.c:649 [inline]\n sock_close+0xb8/0x230 net/socket.c:1439\n __fput+0x3d1/0x9e0 fs/file_table.c:468\n task_work_run+0x206/0x2a0 kernel/task_work.c:227\n get_signal+0x1201/0x1410 kernel/signal.c:2807\n arch_do_signal_or_restart+0x34/0x740 arch/x86/kernel/signal.c:337\n exit_to_user_mode_loop+0x68/0xc0 kernel/entry/common.c:40\n exit_to_user_mode_prepare include/linux/irq-entry-common.h:225 [inline]\n s\n---truncated---",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26731,6 +26865,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\njfs: Verify inode mode when loading from disk\n\nThe inode mode loaded from corrupted disk can be invalid. Do like what\ncommit 0a9e74051313 (\"isofs: Verify inode mode when loading from disk\")\ndoes.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26781,6 +26916,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix race in hci_cmd_sync_dequeue_once\n\nhci_cmd_sync_dequeue_once() does lookup and then cancel\nthe entry under two separate lock sections. Meanwhile,\nhci_cmd_sync_work() can also delete the same entry,\nleading to double list_del() and \"UAF\".\n\nFix this by holding cmd_sync_work_lock across both\nlookup and cancel, so that the entry cannot be removed\nconcurrently.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 3,
             "ubuntu": 2
           },
@@ -26874,6 +27010,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix crash while sending Action Frames in standalone AP Mode\n\nCurrently, whenever there is a need to transmit an Action frame,\nthe brcmfmac driver always uses the P2P vif to send the \"actframe\" IOVAR to\nfirmware. The P2P interfaces were available when wpa_supplicant is managing\nthe wlan interface.\n\nHowever, the P2P interfaces are not created/initialized when only hostapd\nis managing the wlan interface. And if hostapd receives an ANQP Query REQ\nAction frame even from an un-associated STA, the brcmfmac driver tries\nto use an uninitialized P2P vif pointer for sending the IOVAR to firmware.\nThis NULL pointer dereferencing triggers a driver crash.\n\n [ 1417.074538] Unable to handle kernel NULL pointer dereference at virtual\n address 0000000000000000\n [...]\n [ 1417.075188] Hardware name: Raspberry Pi 4 Model B Rev 1.5 (DT)\n [...]\n [ 1417.075653] Call trace:\n [ 1417.075662]  brcmf_p2p_send_action_frame+0x23c/0xc58 [brcmfmac]\n [ 1417.075738]  brcmf_cfg80211_mgmt_tx+0x304/0x5c0 [brcmfmac]\n [ 1417.075810]  cfg80211_mlme_mgmt_tx+0x1b0/0x428 [cfg80211]\n [ 1417.076067]  nl80211_tx_mgmt+0x238/0x388 [cfg80211]\n [ 1417.076281]  genl_family_rcv_msg_doit+0xe0/0x158\n [ 1417.076302]  genl_rcv_msg+0x220/0x2a0\n [ 1417.076317]  netlink_rcv_skb+0x68/0x140\n [ 1417.076330]  genl_rcv+0x40/0x60\n [ 1417.076343]  netlink_unicast+0x330/0x3b8\n [ 1417.076357]  netlink_sendmsg+0x19c/0x3f8\n [ 1417.076370]  __sock_sendmsg+0x64/0xc0\n [ 1417.076391]  ____sys_sendmsg+0x268/0x2a0\n [ 1417.076408]  ___sys_sendmsg+0xb8/0x118\n [ 1417.076427]  __sys_sendmsg+0x90/0xf8\n [ 1417.076445]  __arm64_sys_sendmsg+0x2c/0x40\n [ 1417.076465]  invoke_syscall+0x50/0x120\n [ 1417.076486]  el0_svc_common.constprop.0+0x48/0xf0\n [ 1417.076506]  do_el0_svc+0x24/0x38\n [ 1417.076525]  el0_svc+0x30/0x100\n [ 1417.076548]  el0t_64_sync_handler+0x100/0x130\n [ 1417.076569]  el0t_64_sync+0x190/0x198\n [ 1417.076589] Code: f9401e80 aa1603e2 f9403be1 5280e483 (f9400000)\n\nFix this, by always using the vif corresponding to the wdev on which the\nAction frame Transmission request was initiated by the userspace. This way,\neven if P2P vif is not available, the IOVAR is sent to firmware on AP vif\nand the ANQP Query RESP Action frame is transmitted without crashing the\ndriver.\n\nMove init_completion() for \"send_af_done\" from brcmf_p2p_create_p2pdev()\nto brcmf_p2p_attach(). Because the former function would not get executed\nwhen only hostapd is managing wlan interface, and it is not safe to do\nreinit_completion() later in brcmf_p2p_tx_action_frame(), without any prior\ninit_completion().\n\nAnd in the brcmf_p2p_tx_action_frame() function, the condition check for\nP2P Presence response frame is not needed, since the wpa_supplicant is\nproperly sending the P2P Presense Response frame on the P2P-GO vif instead\nof the P2P-Device vif.\n\n[Cc stable]",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -26924,6 +27061,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: bitblit: bound-check glyph index in bit_putcs*\n\nbit_putcs_aligned()/unaligned() derived the glyph pointer from the\ncharacter value masked by 0xff/0x1ff, which may exceed the actual font's\nglyph count and read past the end of the built-in font array.\nClamp the index to the actual glyph count before computing the address.\n\nThis fixes a global out-of-bounds read reported by syzbot.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 1,
             "redhat": 3,
             "ubuntu": 2
           },
@@ -26974,6 +27112,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbcon: Set fb_display[i]-\u003emode to NULL when the mode is released\n\nRecently, we discovered the following issue through syzkaller:\n\nBUG: KASAN: slab-use-after-free in fb_mode_is_equal+0x285/0x2f0\nRead of size 4 at addr ff11000001b3c69c by task syz.xxx\n...\nCall Trace:\n \u003cTASK\u003e\n dump_stack_lvl+0xab/0xe0\n print_address_description.constprop.0+0x2c/0x390\n print_report+0xb9/0x280\n kasan_report+0xb8/0xf0\n fb_mode_is_equal+0x285/0x2f0\n fbcon_mode_deleted+0x129/0x180\n fb_set_var+0xe7f/0x11d0\n do_fb_ioctl+0x6a0/0x750\n fb_ioctl+0xe0/0x140\n __x64_sys_ioctl+0x193/0x210\n do_syscall_64+0x5f/0x9c0\n entry_SYSCALL_64_after_hwframe+0x76/0x7e\n\nBased on experimentation and analysis, during framebuffer unregistration,\nonly the memory of fb_info-\u003emodelist is freed, without setting the\ncorresponding fb_display[i]-\u003emode to NULL for the freed modes. This leads\nto UAF issues during subsequent accesses. Here's an example of reproduction\nsteps:\n1. With /dev/fb0 already registered in the system, load a kernel module\n   to register a new device /dev/fb1;\n2. Set fb1's mode to the global fb_display[] array (via FBIOPUT_CON2FBMAP);\n3. Switch console from fb to VGA (to allow normal rmmod of the ko);\n4. Unload the kernel module, at this point fb1's modelist is freed, leaving\n   a wild pointer in fb_display[];\n5. Trigger the bug via system calls through fb0 attempting to delete a mode\n   from fb0.\n\nAdd a check in do_unregister_framebuffer(): if the mode to be freed exists\nin fb_display[], set the corresponding mode pointer to NULL.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -27021,6 +27160,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix crash in nfsd4_read_release()\n\nWhen tracing is enabled, the trace_nfsd_read_done trace point\ncrashes during the pynfs read.testNoFh test.",
           "Severity": "HIGH",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -27094,56 +27234,6 @@
           "LastModifiedDate": "2025-12-09T18:37:13.64Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-40331",
-          "PkgID": "linux-libc-dev@6.12.57-1",
-          "PkgName": "linux-libc-dev",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
-            "UID": "87d4472f9f5d13b3"
-          },
-          "InstalledVersion": "6.12.57-1",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40331",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "kernel: sctp: Prevent TOCTOU out-of-bounds write",
-          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: Prevent TOCTOU out-of-bounds write\n\nFor the following path not holding the sock lock,\n\n  sctp_diag_dump() -\u003e sctp_for_each_endpoint() -\u003e sctp_ep_dump()\n\nmake sure not to exceed bounds in case the address list has grown\nbetween buffer allocation (time-of-check) and write (time-of-use).",
-          "Severity": "HIGH",
-          "VendorSeverity": {
-            "redhat": 3,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-40331",
-            "https://git.kernel.org/linus/95aef86ab231f047bb8085c70666059b58f53c09 (6.18-rc5)",
-            "https://git.kernel.org/stable/c/2fe08fcaacb7eb019fa9c81db39b2214de216677",
-            "https://git.kernel.org/stable/c/3006959371007fc2eae4a078f823c680fa52de1a",
-            "https://git.kernel.org/stable/c/584307275b2048991b2e8984962189b6cc0a9b85",
-            "https://git.kernel.org/stable/c/72e3fea68eac8d088e44c3dd954e843478e9240e",
-            "https://git.kernel.org/stable/c/89eac1e150dbd42963e13d23828cb8c4e0763196",
-            "https://git.kernel.org/stable/c/95aef86ab231f047bb8085c70666059b58f53c09",
-            "https://git.kernel.org/stable/c/b106a68df0650b694b254427cd9250c04500edd3",
-            "https://git.kernel.org/stable/c/c9119f243d9c0da3c3b5f577a328de3e7ffd1b42",
-            "https://lore.kernel.org/linux-cve-announce/2025120910-CVE-2025-40331-ee3c@gregkh/T",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-40331",
-            "https://www.cve.org/CVERecord?id=CVE-2025-40331"
-          ],
-          "PublishedDate": "2025-12-09T16:17:43.247Z",
-          "LastModifiedDate": "2025-12-09T18:36:53.557Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-40342",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
@@ -27193,7 +27283,7 @@
           "LastModifiedDate": "2025-12-09T18:36:53.557Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-40344",
+          "VulnerabilityID": "CVE-2025-40345",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
           "PkgIdentifier": {
@@ -27205,18 +27295,17 @@
           "Layer": {
             "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
           },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40344",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40345",
           "DataSource": {
             "ID": "debian",
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Title": "kernel: ASoC: Intel: avs: Disable periods-elapsed work when closing PCM",
-          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: avs: Disable periods-elapsed work when closing PCM\n\navs_dai_fe_shutdown() handles the shutdown procedure for HOST HDAudio\nstream while period-elapsed work services its IRQs. As the former\nfrees the DAI's private context, these two operations shall be\nsynchronized to avoid slab-use-after-free or worse errors.",
+          "Title": "kernel: usb: storage: sddr55: Reject out-of-bound new_pba",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: storage: sddr55: Reject out-of-bound new_pba\n\nDiscovered by Atuin - Automated Vulnerability Discovery Engine.\n\nnew_pba comes from the status packet returned after each write.\nA bogus device could report values beyond the block count derived\nfrom info-\u003ecapacity, letting the driver walk off the end of\npba_to_lba[] and corrupt heap memory.\n\nReject PBAs that exceed the computed block count and fail the\ntransfer so we avoid touching out-of-range mapping entries.",
           "Severity": "HIGH",
           "VendorSeverity": {
-            "redhat": 2,
-            "ubuntu": 2
+            "redhat": 3
           },
           "CVSS": {
             "redhat": {
@@ -27225,17 +27314,20 @@
             }
           },
           "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-40344",
-            "https://git.kernel.org/linus/845f716dc5f354c719f6fda35048b6c2eca99331 (6.18-rc4)",
-            "https://git.kernel.org/stable/c/845f716dc5f354c719f6fda35048b6c2eca99331",
-            "https://git.kernel.org/stable/c/b41fca4aa60be896ba8a81b57aac5dcc6eee66c0",
-            "https://git.kernel.org/stable/c/ca6d2b7aca778afbf8c0c4b330d10cb228c14052",
-            "https://lore.kernel.org/linux-cve-announce/2025120912-CVE-2025-40344-0c59@gregkh/T",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-40344",
-            "https://www.cve.org/CVERecord?id=CVE-2025-40344"
+            "https://access.redhat.com/security/cve/CVE-2025-40345",
+            "https://git.kernel.org/stable/c/04a8a6393f3f2f471e05eacca33282dd30b01432",
+            "https://git.kernel.org/stable/c/26e9b5da3231da7dc357b363883b5b7b51a64092",
+            "https://git.kernel.org/stable/c/5ebe8d479aaf4f41ac35e6955332304193c646f6",
+            "https://git.kernel.org/stable/c/a20f1dd19d21dcb70140ea5a71b1f8cbe0c7e68f",
+            "https://git.kernel.org/stable/c/aa64e0e17e3a5991a25e6a46007770c629039869",
+            "https://git.kernel.org/stable/c/b59d4fda7e7d0aff1043a7f742487cb829f5aac1",
+            "https://git.kernel.org/stable/c/d00a6c04a502cd52425dbf35588732c652b16490",
+            "https://lore.kernel.org/linux-cve-announce/2025121248-CVE-2025-40345-1796@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-40345",
+            "https://www.cve.org/CVERecord?id=CVE-2025-40345"
           ],
-          "PublishedDate": "2025-12-09T16:17:44.777Z",
-          "LastModifiedDate": "2025-12-09T18:36:53.557Z"
+          "PublishedDate": "2025-12-12T18:15:39.253Z",
+          "LastModifiedDate": "2025-12-12T18:15:39.253Z"
         },
         {
           "VulnerabilityID": "CVE-2019-15213",
@@ -29907,8 +29999,8 @@
               "V3Score": 5.5
             },
             "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 3.3
             }
           },
           "References": [
@@ -31724,7 +31816,7 @@
             "https://git.kernel.org/stable/c/cf5fb87fcdaaaafec55dcc0dc5a9e15ead343973",
             "https://git.kernel.org/stable/c/d7615bde541f16517d6790412da6ec46fa8a4c1f",
             "https://linux.oracle.com/cve/CVE-2025-38678.html",
-            "https://linux.oracle.com/errata/ELSA-2025-28040.html",
+            "https://linux.oracle.com/errata/ELSA-2025-28048.html",
             "https://lore.kernel.org/linux-cve-announce/2025090318-CVE-2025-38678-faa7@gregkh/T",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-38678",
             "https://ubuntu.com/security/notices/USN-7879-1",
@@ -31737,6 +31829,7 @@
             "https://ubuntu.com/security/notices/USN-7889-3",
             "https://ubuntu.com/security/notices/USN-7889-4",
             "https://ubuntu.com/security/notices/USN-7889-5",
+            "https://ubuntu.com/security/notices/USN-7889-6",
             "https://ubuntu.com/security/notices/USN-7909-1",
             "https://ubuntu.com/security/notices/USN-7909-2",
             "https://ubuntu.com/security/notices/USN-7909-3",
@@ -32255,87 +32348,6 @@
           "LastModifiedDate": "2025-12-01T22:03:46.933Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-39859",
-          "PkgID": "linux-libc-dev@6.12.57-1",
-          "PkgName": "linux-libc-dev",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
-            "UID": "87d4472f9f5d13b3"
-          },
-          "InstalledVersion": "6.12.57-1",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39859",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "kernel: ptp: ocp: fix use-after-free bugs causing by ptp_ocp_watchdog",
-          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ocp: fix use-after-free bugs causing by ptp_ocp_watchdog\n\nThe ptp_ocp_detach() only shuts down the watchdog timer if it is\npending. However, if the timer handler is already running, the\ntimer_delete_sync() is not called. This leads to race conditions\nwhere the devlink that contains the ptp_ocp is deallocated while\nthe timer handler is still accessing it, resulting in use-after-free\nbugs. The following details one of the race scenarios.\n\n(thread 1)                           | (thread 2)\nptp_ocp_remove()                     |\n  ptp_ocp_detach()                   | ptp_ocp_watchdog()\n    if (timer_pending(\u0026bp-\u003ewatchdog))|   bp = timer_container_of()\n      timer_delete_sync()            |\n                                     |\n  devlink_free(devlink) //free       |\n                                     |   bp-\u003e //use\n\nResolve this by unconditionally calling timer_delete_sync() to ensure\nthe timer is reliably deactivated, preventing any access after free.",
-          "Severity": "MEDIUM",
-          "VendorSeverity": {
-            "ubuntu": 2
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-39859",
-            "https://git.kernel.org/linus/8bf935cf789872350b04c1a6468b0a509f67afb2 (6.17-rc5)",
-            "https://git.kernel.org/stable/c/8bf935cf789872350b04c1a6468b0a509f67afb2",
-            "https://git.kernel.org/stable/c/f10d3c7267ac7387a5129d5506c3c5f2460cfd9b",
-            "https://lore.kernel.org/linux-cve-announce/2025091905-CVE-2025-39859-52d5@gregkh/T",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-39859",
-            "https://www.cve.org/CVERecord?id=CVE-2025-39859"
-          ],
-          "PublishedDate": "2025-09-19T16:15:44.867Z",
-          "LastModifiedDate": "2025-09-22T21:23:01.543Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2025-39862",
-          "PkgID": "linux-libc-dev@6.12.57-1",
-          "PkgName": "linux-libc-dev",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
-            "UID": "87d4472f9f5d13b3"
-          },
-          "InstalledVersion": "6.12.57-1",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39862",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "kernel: wifi: mt76: mt7915: fix list corruption after hardware restart",
-          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix list corruption after hardware restart\n\nSince stations are recreated from scratch, all lists that wcids are added\nto must be cleared before calling ieee80211_restart_hw.\nSet wcid-\u003esta = 0 for each wcid entry in order to ensure that they are\nnot added again before they are ready.",
-          "Severity": "MEDIUM",
-          "VendorSeverity": {
-            "redhat": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-39862",
-            "https://git.kernel.org/linus/065c79df595af21d6d1b27d642860faa1d938774 (6.17-rc5)",
-            "https://git.kernel.org/stable/c/065c79df595af21d6d1b27d642860faa1d938774",
-            "https://git.kernel.org/stable/c/8fa8eb52bc2eb08d93202863b5fc478e0bebc00c",
-            "https://lore.kernel.org/linux-cve-announce/2025091906-CVE-2025-39862-5acb@gregkh/T",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-39862",
-            "https://www.cve.org/CVERecord?id=CVE-2025-39862"
-          ],
-          "PublishedDate": "2025-09-19T16:15:45.203Z",
-          "LastModifiedDate": "2025-09-22T21:23:01.543Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-39910",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
@@ -32348,6 +32360,7 @@
           "Layer": {
             "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39910",
           "DataSource": {
             "ID": "debian",
@@ -32357,11 +32370,19 @@
           "Title": "kernel: mm/vmalloc, mm/kasan: respect gfp mask in kasan_populate_vmalloc()",
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/vmalloc, mm/kasan: respect gfp mask in kasan_populate_vmalloc()\n\nkasan_populate_vmalloc() and its helpers ignore the caller's gfp_mask and\nalways allocate memory using the hardcoded GFP_KERNEL flag.  This makes\nthem inconsistent with vmalloc(), which was recently extended to support\nGFP_NOFS and GFP_NOIO allocations.\n\nPage table allocations performed during shadow population also ignore the\nexternal gfp_mask.  To preserve the intended semantics of GFP_NOFS and\nGFP_NOIO, wrap the apply_to_page_range() calls into the appropriate\nmemalloc scope.\n\nxfs calls vmalloc with GFP_NOFS, so this bug could lead to deadlock.\n\nThere was a report here\nhttps://lkml.kernel.org/r/686ea951.050a0220.385921.0016.GAE@google.com\n\nThis patch:\n - Extends kasan_populate_vmalloc() and helpers to take gfp_mask;\n - Passes gfp_mask down to alloc_pages_bulk() and __get_free_page();\n - Enforces GFP_NOFS/NOIO semantics with memalloc_*_save()/restore()\n   around apply_to_page_range();\n - Updates vmalloc.c and percpu allocator call sites accordingly.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-667"
+          ],
           "VendorSeverity": {
+            "nvd": 2,
             "redhat": 2,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.5
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
               "V3Score": 6.2
@@ -32377,7 +32398,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-39910"
           ],
           "PublishedDate": "2025-10-01T08:15:33.993Z",
-          "LastModifiedDate": "2025-10-02T19:12:17.16Z"
+          "LastModifiedDate": "2025-12-12T18:27:53.403Z"
         },
         {
           "VulnerabilityID": "CVE-2025-39925",
@@ -32392,6 +32413,7 @@
           "Layer": {
             "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-39925",
           "DataSource": {
             "ID": "debian",
@@ -32403,11 +32425,17 @@
           "Severity": "MEDIUM",
           "VendorSeverity": {
             "alma": 2,
+            "nvd": 2,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.5
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
               "V3Score": 4.9
@@ -32425,7 +32453,12 @@
             "https://bugzilla.redhat.com/2406758",
             "https://bugzilla.redhat.com/2406776",
             "https://bugzilla.redhat.com/2414741",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2400629",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2404109",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-39925",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-39979",
             "https://errata.almalinux.org/10/ALSA-2025-22854.html",
+            "https://errata.rockylinux.org/RLSA-2025:22865",
             "https://git.kernel.org/linus/7fcbe5b2c6a4b5407bf2241fdb71e0a390f6ab9a (6.17-rc6)",
             "https://git.kernel.org/stable/c/7fcbe5b2c6a4b5407bf2241fdb71e0a390f6ab9a",
             "https://git.kernel.org/stable/c/da9e8f429139928570407e8f90559b5d46c20262",
@@ -32436,7 +32469,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-39925"
           ],
           "PublishedDate": "2025-10-01T08:15:35.857Z",
-          "LastModifiedDate": "2025-10-02T19:12:17.16Z"
+          "LastModifiedDate": "2025-12-11T18:24:09.007Z"
         },
         {
           "VulnerabilityID": "CVE-2025-39958",
@@ -32558,6 +32591,7 @@
             "https://nvd.nist.gov/vuln/detail/CVE-2025-40025",
             "https://ubuntu.com/security/notices/USN-7906-1",
             "https://ubuntu.com/security/notices/USN-7906-2",
+            "https://ubuntu.com/security/notices/USN-7906-3",
             "https://www.cve.org/CVERecord?id=CVE-2025-40025"
           ],
           "PublishedDate": "2025-10-28T10:15:40.92Z",
@@ -33394,6 +33428,44 @@
           "LastModifiedDate": "2025-11-25T22:16:16.69Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-40213",
+          "PkgID": "linux-libc-dev@6.12.57-1",
+          "PkgName": "linux-libc-dev",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
+            "UID": "87d4472f9f5d13b3"
+          },
+          "InstalledVersion": "6.12.57-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40213",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "kernel: Bluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete\n\nThere is a BUG: KASAN: stack-out-of-bounds in set_mesh_sync due to\nmemcpy from badly declared on-stack flexible array.\n\nAnother crash is in set_mesh_complete() due to double list_del via\nmgmt_pending_valid + mgmt_pending_remove.\n\nUse DEFINE_FLEX to declare the flexible array right, and don't memcpy\noutside bounds.\n\nAs mgmt_pending_valid removes the cmd from list, use mgmt_pending_free,\nand also report status on error.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "ubuntu": 2
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-40213",
+            "https://git.kernel.org/linus/e8785404de06a69d89dcdd1e9a0b6ea42dc6d327 (6.18-rc4)",
+            "https://git.kernel.org/stable/c/1c9aca1787e8395a2c59fef20e914467958969c5",
+            "https://git.kernel.org/stable/c/5c19daa93d9af29f1f46251b47e1ea66bcc8d679",
+            "https://git.kernel.org/stable/c/e8785404de06a69d89dcdd1e9a0b6ea42dc6d327",
+            "https://lore.kernel.org/linux-cve-announce/2025112447-CVE-2025-40213-c55f@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-40213",
+            "https://www.cve.org/CVERecord?id=CVE-2025-40213"
+          ],
+          "PublishedDate": "2025-11-24T16:15:49.15Z",
+          "LastModifiedDate": "2025-11-25T22:16:16.69Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-40247",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
@@ -34148,6 +34220,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\norangefs: fix xattr related buffer overflow...\n\nWilly Tarreau \u003cw@1wt.eu\u003e forwarded me a message from\nDisclosure \u003cdisclosure@aisle.com\u003e with the following\nwarning:\n\n\u003e The helper `xattr_key()` uses the pointer variable in the loop condition\n\u003e rather than dereferencing it. As `key` is incremented, it remains non-NULL\n\u003e (until it runs into unmapped memory), so the loop does not terminate on\n\u003e valid C strings and will walk memory indefinitely, consuming CPU or hanging\n\u003e the thread.\n\nI easily reproduced this with setfattr and getfattr, causing a kernel\noops, hung user processes and corrupted orangefs files. Disclosure\nsent along a diff (not a patch) with a suggested fix, which I based\nthis patch on.\n\nAfter xattr_key started working right, xfstest generic/069 exposed an\nxattr related memory leak that lead to OOM. xattr_key returns\na hashed key.  When adding xattrs to the orangefs xattr cache, orangefs\nused hash_add, a kernel hashing macro. hash_add also hashes the key using\nhash_log which resulted in additions to the xattr cache going to the wrong\nhash bucket. generic/069 tortures a single file and orangefs does a\ngetattr for the xattr \"security.capability\" every time. Orangefs\nnegative caches on xattrs which includes a kmalloc. Since adds to the\nxattr cache were going to the wrong bucket, every getattr for\n\"security.capability\" resulted in another kmalloc, none of which were\never freed.\n\nI changed the two uses of hash_add to hlist_add_head instead\nand the memory leak ceased and generic/069 quit throwing furniture.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34290,6 +34363,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: pretend $Extend records as regular files\n\nSince commit af153bb63a33 (\"vfs: catch invalid modes in may_open()\")\nrequires any inode be one of S_IFDIR/S_IFLNK/S_IFREG/S_IFCHR/S_IFBLK/\nS_IFIFO/S_IFSOCK type, use S_IFREG for $Extend records.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34338,6 +34412,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: cdns3: gadget: Use-after-free during failed initialization and exit of cdnsp gadget\n\nIn the __cdnsp_gadget_init() and cdnsp_gadget_exit() functions, the gadget\nstructure (pdev-\u003egadget) was freed before its endpoints.\nThe endpoints are linked via the ep_list in the gadget structure.\nFreeing the gadget first leaves dangling pointers in the endpoint list.\nWhen the endpoints are subsequently freed, this results in a use-after-free.\n\nFix:\nBy separating the usb_del_gadget_udc() operation into distinct \"del\" and\n\"put\" steps, cdnsp_gadget_free_endpoints() can be executed prior to the\nfinal release of the gadget structure with usb_put_gadget().\n\nA patch similar to bb9c74a5bd14(\"usb: dwc3: gadget: Free gadget structure\n only after freeing endpoints\").",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34386,6 +34461,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_fs: Fix epfile null pointer access after ep enable.\n\nA race condition occurs when ffs_func_eps_enable() runs concurrently\nwith ffs_data_reset(). The ffs_data_clear() called in ffs_data_reset()\nsets ffs-\u003eepfiles to NULL before resetting ffs-\u003eeps_count to 0, leading\nto a NULL pointer dereference when accessing epfile-\u003eep in\nffs_func_eps_enable() after successful usb_ep_enable().\n\nThe ffs-\u003eepfiles pointer is set to NULL in both ffs_data_clear() and\nffs_data_close() functions, and its modification is protected by the\nspinlock ffs-\u003eeps_lock. And the whole ffs_func_eps_enable() function\nis also protected by ffs-\u003eeps_lock.\n\nThus, add NULL pointer handling for ffs-\u003eepfiles in the\nffs_func_eps_enable() function to fix issues",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 3,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34436,7 +34512,8 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix device use-after-free on unbind\n\nA recent change fixed device reference leaks when looking up drm\nplatform device driver data during bind() but failed to remove a partial\nfix which had been added by commit 80805b62ea5b (\"drm/mediatek: Fix\nkobject put for component sub-drivers\").\n\nThis results in a reference imbalance on component bind() failures and\non unbind() which could lead to a user-after-free.\n\nMake sure to only drop the references after retrieving the driver data\nby effectively reverting the previous partial fix.\n\nNote that holding a reference to a device does not prevent its driver\ndata from going away so there is no point in keeping the reference.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -34446,6 +34523,7 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-40316",
+            "https://git.kernel.org/linus/926d002e6d7e2f1fd5c1b53cf6208153ee7d380d (6.18-rc4)",
             "https://git.kernel.org/stable/c/0142fe895986addf35885b43440718e567121155",
             "https://git.kernel.org/stable/c/8ba827e09eb586e952d10e39406fa02d10bb591e",
             "https://git.kernel.org/stable/c/926d002e6d7e2f1fd5c1b53cf6208153ee7d380d",
@@ -34480,6 +34558,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nregmap: slimbus: fix bus_context pointer in regmap init calls\n\nCommit 4e65bda8273c (\"ASoC: wcd934x: fix error handling in\nwcd934x_codec_parse_data()\") revealed the problem in the slimbus regmap.\nThat commit breaks audio playback, for instance, on sdm845 Thundercomm\nDragonboard 845c board:\n\n Unable to handle kernel paging request at virtual address ffff8000847cbad4\n ...\n CPU: 5 UID: 0 PID: 776 Comm: aplay Not tainted 6.18.0-rc1-00028-g7ea30958b305 #11 PREEMPT\n Hardware name: Thundercomm Dragonboard 845c (DT)\n ...\n Call trace:\n  slim_xfer_msg+0x24/0x1ac [slimbus] (P)\n  slim_read+0x48/0x74 [slimbus]\n  regmap_slimbus_read+0x18/0x24 [regmap_slimbus]\n  _regmap_raw_read+0xe8/0x174\n  _regmap_bus_read+0x44/0x80\n  _regmap_read+0x60/0xd8\n  _regmap_update_bits+0xf4/0x140\n  _regmap_select_page+0xa8/0x124\n  _regmap_raw_write_impl+0x3b8/0x65c\n  _regmap_bus_raw_write+0x60/0x80\n  _regmap_write+0x58/0xc0\n  regmap_write+0x4c/0x80\n  wcd934x_hw_params+0x494/0x8b8 [snd_soc_wcd934x]\n  snd_soc_dai_hw_params+0x3c/0x7c [snd_soc_core]\n  __soc_pcm_hw_params+0x22c/0x634 [snd_soc_core]\n  dpcm_be_dai_hw_params+0x1d4/0x38c [snd_soc_core]\n  dpcm_fe_dai_hw_params+0x9c/0x17c [snd_soc_core]\n  snd_pcm_hw_params+0x124/0x464 [snd_pcm]\n  snd_pcm_common_ioctl+0x110c/0x1820 [snd_pcm]\n  snd_pcm_ioctl+0x34/0x4c [snd_pcm]\n  __arm64_sys_ioctl+0xac/0x104\n  invoke_syscall+0x48/0x104\n  el0_svc_common.constprop.0+0x40/0xe0\n  do_el0_svc+0x1c/0x28\n  el0_svc+0x34/0xec\n  el0t_64_sync_handler+0xa0/0xf0\n  el0t_64_sync+0x198/0x19c\n\nThe __devm_regmap_init_slimbus() started to be used instead of\n__regmap_init_slimbus() after the commit mentioned above and turns out\nthe incorrect bus_context pointer (3rd argument) was used in\n__devm_regmap_init_slimbus(). It should be just \"slimbus\" (which is equal\nto \u0026slimbus-\u003edev). Correct it. The wcd934x codec seems to be the only or\nthe first user of devm_regmap_init_slimbus() but we should fix it till\nthe point where __devm_regmap_init_slimbus() was introduced therefore\ntwo \"Fixes\" tags.\n\nWhile at this, also correct the same argument in __regmap_init_slimbus().",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34530,6 +34609,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Sync pending IRQ work before freeing ring buffer\n\nFix a race where irq_work can be queued in bpf_ringbuf_commit()\nbut the ring buffer is freed before the work executes.\nIn the syzbot reproducer, a BPF program attached to sched_switch\ntriggers bpf_ringbuf_commit(), queuing an irq_work. If the ring buffer\nis freed before this work executes, the irq_work thread may accesses\nfreed memory.\nCalling `irq_work_sync(\u0026rb-\u003ework)` ensures that all pending irq_work\ncomplete before freeing the buffer.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
+            "photon": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -34656,6 +34736,56 @@
           "LastModifiedDate": "2025-12-09T18:36:53.557Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-40331",
+          "PkgID": "linux-libc-dev@6.12.57-1",
+          "PkgName": "linux-libc-dev",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
+            "UID": "87d4472f9f5d13b3"
+          },
+          "InstalledVersion": "6.12.57-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40331",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "kernel: sctp: Prevent TOCTOU out-of-bounds write",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: Prevent TOCTOU out-of-bounds write\n\nFor the following path not holding the sock lock,\n\n  sctp_diag_dump() -\u003e sctp_for_each_endpoint() -\u003e sctp_ep_dump()\n\nmake sure not to exceed bounds in case the address list has grown\nbetween buffer allocation (time-of-check) and write (time-of-use).",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 4.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-40331",
+            "https://git.kernel.org/linus/95aef86ab231f047bb8085c70666059b58f53c09 (6.18-rc5)",
+            "https://git.kernel.org/stable/c/2fe08fcaacb7eb019fa9c81db39b2214de216677",
+            "https://git.kernel.org/stable/c/3006959371007fc2eae4a078f823c680fa52de1a",
+            "https://git.kernel.org/stable/c/584307275b2048991b2e8984962189b6cc0a9b85",
+            "https://git.kernel.org/stable/c/72e3fea68eac8d088e44c3dd954e843478e9240e",
+            "https://git.kernel.org/stable/c/89eac1e150dbd42963e13d23828cb8c4e0763196",
+            "https://git.kernel.org/stable/c/95aef86ab231f047bb8085c70666059b58f53c09",
+            "https://git.kernel.org/stable/c/b106a68df0650b694b254427cd9250c04500edd3",
+            "https://git.kernel.org/stable/c/c9119f243d9c0da3c3b5f577a328de3e7ffd1b42",
+            "https://lore.kernel.org/linux-cve-announce/2025120910-CVE-2025-40331-ee3c@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-40331",
+            "https://www.cve.org/CVERecord?id=CVE-2025-40331"
+          ],
+          "PublishedDate": "2025-12-09T16:17:43.247Z",
+          "LastModifiedDate": "2025-12-09T18:36:53.557Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-40332",
           "PkgID": "linux-libc-dev@6.12.57-1",
           "PkgName": "linux-libc-dev",
@@ -34678,14 +34808,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Fix mmap write lock not release\n\nIf mmap write lock is taken while draining retry fault, mmap write lock\nis not released because svm_range_restore_pages calls mmap_read_unlock\nthen returns. This causes deadlock and system hangs later because mmap\nread or write lock cannot be taken.\n\nDowngrade mmap write lock to read lock if draining retry fault fix this\nbug.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2,
             "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
-            }
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-40332",
@@ -34723,14 +34846,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix infinite loop in __insert_extent_tree()\n\nWhen we get wrong extent info data, and look up extent_node in rb tree,\nit will cause infinite loop (CONFIG_F2FS_CHECK_FS=n). Avoiding this by\nreturn NULL and print some kernel messages in that case.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2,
             "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
-            }
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-40333",
@@ -34813,14 +34929,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: validate userq input args\n\nThis will help on validating the userq input args, and\nrejecting for the invalid userq request at the IOCTLs\nfirst place.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2,
             "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
-            }
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-40335",
@@ -34901,14 +35010,7 @@
           "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: stmmac: Correctly handle Rx checksum offload errors\n\nThe stmmac_rx function would previously set skb-\u003eip_summed to\nCHECKSUM_UNNECESSARY if hardware checksum offload (CoE) was enabled\nand the packet was of a known IP ethertype.\n\nHowever, this logic failed to check if the hardware had actually\nreported a checksum error. The hardware status, indicating a header or\npayload checksum failure, was being ignored at this stage. This could\ncause corrupt packets to be passed up the network stack as valid.\n\nThis patch corrects the logic by checking the `csum_none` status flag,\nwhich is set when the hardware reports a checksum error. If this flag\nis set, skb-\u003eip_summed is now correctly set to CHECKSUM_NONE,\nensuring the kernel's network stack will perform its own validation and\nproperly handle the corrupt packet.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2,
             "ubuntu": 2
-          },
-          "CVSS": {
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-              "V3Score": 5.5
-            }
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-40337",
@@ -35151,6 +35253,51 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-40343"
           ],
           "PublishedDate": "2025-12-09T16:17:44.65Z",
+          "LastModifiedDate": "2025-12-09T18:36:53.557Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-40344",
+          "PkgID": "linux-libc-dev@6.12.57-1",
+          "PkgName": "linux-libc-dev",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
+            "UID": "87d4472f9f5d13b3"
+          },
+          "InstalledVersion": "6.12.57-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40344",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "kernel: ASoC: Intel: avs: Disable periods-elapsed work when closing PCM",
+          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: avs: Disable periods-elapsed work when closing PCM\n\navs_dai_fe_shutdown() handles the shutdown procedure for HOST HDAudio\nstream while period-elapsed work services its IRQs. As the former\nfrees the DAI's private context, these two operations shall be\nsynchronized to avoid slab-use-after-free or worse errors.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "redhat": 2,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:H",
+              "V3Score": 5.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-40344",
+            "https://git.kernel.org/linus/845f716dc5f354c719f6fda35048b6c2eca99331 (6.18-rc4)",
+            "https://git.kernel.org/stable/c/845f716dc5f354c719f6fda35048b6c2eca99331",
+            "https://git.kernel.org/stable/c/b41fca4aa60be896ba8a81b57aac5dcc6eee66c0",
+            "https://git.kernel.org/stable/c/ca6d2b7aca778afbf8c0c4b330d10cb228c14052",
+            "https://lore.kernel.org/linux-cve-announce/2025120912-CVE-2025-40344-0c59@gregkh/T",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-40344",
+            "https://www.cve.org/CVERecord?id=CVE-2025-40344"
+          ],
+          "PublishedDate": "2025-12-09T16:17:44.777Z",
           "LastModifiedDate": "2025-12-09T18:36:53.557Z"
         },
         {
@@ -38782,40 +38929,6 @@
           }
         },
         {
-          "VulnerabilityID": "CVE-2025-40213",
-          "PkgID": "linux-libc-dev@6.12.57-1",
-          "PkgName": "linux-libc-dev",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/linux-libc-dev@6.12.57-1?arch=all\u0026distro=debian-13.2",
-            "UID": "87d4472f9f5d13b3"
-          },
-          "InstalledVersion": "6.12.57-1",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:b5b3b8db2f008396ab375fca0c3a3c32164411c2fd3a6cd35b12a46e58c3d898"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-40213",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "kernel: Bluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete",
-          "Description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete\n\nThere is a BUG: KASAN: stack-out-of-bounds in set_mesh_sync due to\nmemcpy from badly declared on-stack flexible array.\n\nAnother crash is in set_mesh_complete() due to double list_del via\nmgmt_pending_valid + mgmt_pending_remove.\n\nUse DEFINE_FLEX to declare the flexible array right, and don't memcpy\noutside bounds.\n\nAs mgmt_pending_valid removes the cmd from list, use mgmt_pending_free,\nand also report status on error.",
-          "Severity": "UNKNOWN",
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-40213",
-            "https://git.kernel.org/stable/c/1c9aca1787e8395a2c59fef20e914467958969c5",
-            "https://git.kernel.org/stable/c/5c19daa93d9af29f1f46251b47e1ea66bcc8d679",
-            "https://git.kernel.org/stable/c/e8785404de06a69d89dcdd1e9a0b6ea42dc6d327",
-            "https://lore.kernel.org/linux-cve-announce/2025112447-CVE-2025-40213-c55f@gregkh/T",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-40213",
-            "https://www.cve.org/CVERecord?id=CVE-2025-40213"
-          ],
-          "PublishedDate": "2025-11-24T16:15:49.15Z",
-          "LastModifiedDate": "2025-11-25T22:16:16.69Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "login@1:4.16.0-2+really2.41-5",
           "PkgName": "login",
@@ -39366,7 +39479,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61984",
           "DataSource": {
@@ -39418,7 +39531,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61985",
           "DataSource": {
@@ -39466,7 +39579,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2007-2243",
@@ -39514,7 +39627,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2007-2768",
@@ -39561,7 +39674,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2008-3234",
@@ -39605,7 +39718,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2016-20012",
@@ -39663,7 +39776,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-15919",
@@ -39717,7 +39830,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-6110",
@@ -39776,7 +39889,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-14145",
@@ -39853,7 +39966,7 @@
           "InstalledVersion": "1:10.0p1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15778",
@@ -40621,7 +40734,7 @@
           "InstalledVersion": "6.0-29",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:1d7bd7ec0e1cf434c80aeabcac0dd7edd223615e37d0f940c652667d5cdf5475"
+            "DiffID": "sha256:060b854323e2976c8a0f8d2dd443ee87049571208e75dd88d587319b50ffa0c0"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-4217",

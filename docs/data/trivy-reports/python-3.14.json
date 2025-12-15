@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:17:11.841537905Z",
+  "CreatedAt": "2025-12-15T04:01:30.501351146Z",
   "ArtifactName": "local-python-3.14",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:7d6ead2cd74fd055bc3e000998da409c7389690ea9316a58b87718aeb0e4fdee",
+    "ImageID": "sha256:bccdfd4ae43d62abf07e207bc1a06f7067a23a382f85bb47f12d5cac37bd3e94",
     "DiffIDs": [
       "sha256:e9b010e49a06fcdb7a531d2b36c7c266a5432b166bc31de70ebbab6cb2d4cef5",
       "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875",
@@ -17,14 +17,14 @@
       "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
       "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
       "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-      "sha256:a851f20f199dc1cae554158358e9dff44472abb04ee36b0d4d0dfade9c67fdda"
+      "sha256:10b474ee45750eb21b172239fd5325f917278b6ac191922bbd668267ef735056"
     ],
     "RepoTags": [
       "local-python-3.14:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:16:54.379000863Z",
+      "created": "2025-12-15T04:01:09.347502352Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -86,19 +86,19 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:54Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "LABEL maintainer=Johann Hipolito",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:54Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "LABEL org.opencontainers.image.title=python-3.14-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:54Z",
+          "created": "2025-12-15T04:01:09Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get remove -y --no-install-recommends     imagemagick     imagemagick-7-common     imagemagick-7.q16     libbluetooth-dev     libbluetooth3     libmagickcore-7-arch-config     libmagickcore-7-headers     libmagickcore-7.q16-10     libmagickcore-7.q16-10-extra     libmagickcore-7.q16-dev     libmagickcore-dev     libmagickwand-7-headers     libmagickwand-7.q16-10     libmagickwand-7.q16-dev     libmagickwand-dev     libpython3.13-minimal     libpython3.13-stdlib     libxml2     libxml2-dev     libxslt1-dev     libxslt1.1     linux-libc-dev     \u0026\u0026 apt-get autoremove -y     \u0026\u0026 apt-get clean     \u0026\u0026 rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -114,7 +114,7 @@
           "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
           "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
           "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-          "sha256:a851f20f199dc1cae554158358e9dff44472abb04ee36b0d4d0dfade9c67fdda"
+          "sha256:10b474ee45750eb21b172239fd5325f917278b6ac191922bbd668267ef735056"
         ]
       },
       "config": {

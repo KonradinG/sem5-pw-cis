@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:16:56.498947014Z",
+  "CreatedAt": "2025-12-15T04:01:26.92073982Z",
   "ArtifactName": "local-worker",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,21 +8,21 @@
       "Family": "debian",
       "Name": "11.9"
     },
-    "ImageID": "sha256:06ea09f83f98aa64d6a65b697e3dcabfeb9e39628743b6d511ec926d33fa56b0",
+    "ImageID": "sha256:d72b3ce092d81e9c043c7cdca0c29d23b576c8f0ad4b8cb6f433ccb33f77d4d3",
     "DiffIDs": [
       "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f",
       "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
       "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
       "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-      "sha256:3db7780cedae0eec4e8e826b396978bb3fc327b8296ff0d5452eecce52ddb02c",
-      "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
+      "sha256:39ad9777abb06ca2c7e4e1baf6acf5ab0aa8c4e0e8b2eb8be9438ba79204d95a",
+      "sha256:204eb21b6a35948db223601061a95633fb4f7d72b239f039e9b33a02add665e4"
     ],
     "RepoTags": [
       "local-worker:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:16:47.701420028Z",
+      "created": "2025-12-15T04:01:17.421509756Z",
       "history": [
         {
           "created": "2024-05-14T01:28:26Z",
@@ -61,17 +61,17 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:35Z",
+          "created": "2025-12-15T04:01:06Z",
           "created_by": "WORKDIR /app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:47Z",
+          "created": "2025-12-15T04:01:17Z",
           "created_by": "COPY /app . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-11T13:16:47Z",
+          "created": "2025-12-15T04:01:17Z",
           "created_by": "ENTRYPOINT [\"dotnet\" \"Worker.dll\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -85,8 +85,8 @@
           "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
           "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
           "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-          "sha256:3db7780cedae0eec4e8e826b396978bb3fc327b8296ff0d5452eecce52ddb02c",
-          "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
+          "sha256:39ad9777abb06ca2c7e4e1baf6acf5ab0aa8c4e0e8b2eb8be9438ba79204d95a",
+          "sha256:204eb21b6a35948db223601061a95633fb4f7d72b239f039e9b33a02add665e4"
         ]
       },
       "config": {
@@ -6460,6 +6460,7 @@
             "azure": 3,
             "cbl-mariner": 3,
             "oracle-oval": 3,
+            "photon": 3,
             "redhat": 3,
             "rocky": 3,
             "ubuntu": 2
@@ -6685,6 +6686,7 @@
             "azure": 3,
             "cbl-mariner": 3,
             "oracle-oval": 3,
+            "photon": 3,
             "redhat": 3,
             "rocky": 3,
             "ubuntu": 2
@@ -6910,6 +6912,7 @@
             "azure": 3,
             "cbl-mariner": 3,
             "oracle-oval": 3,
+            "photon": 3,
             "redhat": 3,
             "rocky": 3,
             "ubuntu": 2
@@ -7135,6 +7138,7 @@
             "azure": 3,
             "cbl-mariner": 3,
             "oracle-oval": 3,
+            "photon": 3,
             "redhat": 3,
             "rocky": 3,
             "ubuntu": 2
@@ -8215,6 +8219,7 @@
             "oracle-oval": 1,
             "photon": 2,
             "redhat": 1,
+            "rocky": 1,
             "ubuntu": 1
           },
           "CVSS": {
@@ -8238,7 +8243,16 @@
             "https://bugzilla.redhat.com/2257571",
             "https://bugzilla.redhat.com/2258502",
             "https://bugzilla.redhat.com/2259944",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2224962",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2227852",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2248616",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2270358",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5678",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-2408",
             "https://errata.almalinux.org/9/ALSA-2024-2447.html",
+            "https://errata.rockylinux.org/RLSA-2023:7877",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=34efaef6c103d636ab507a0cc34dca4d3aecc055",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=710fee740904b6290fef0dd5536fbcedbc38ff0c",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db925ae2e65d0d925adef429afc37f75bd1c2017",
@@ -11709,6 +11723,7 @@
             "oracle-oval": 1,
             "photon": 2,
             "redhat": 1,
+            "rocky": 1,
             "ubuntu": 1
           },
           "CVSS": {
@@ -11732,7 +11747,16 @@
             "https://bugzilla.redhat.com/2257571",
             "https://bugzilla.redhat.com/2258502",
             "https://bugzilla.redhat.com/2259944",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2224962",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2227852",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2248616",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2270358",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3446",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-3817",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5678",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-2408",
             "https://errata.almalinux.org/9/ALSA-2024-2447.html",
+            "https://errata.rockylinux.org/RLSA-2023:7877",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=34efaef6c103d636ab507a0cc34dca4d3aecc055",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=710fee740904b6290fef0dd5536fbcedbc38ff0c",
             "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=db925ae2e65d0d925adef429afc37f75bd1c2017",
@@ -13434,6 +13458,31 @@
           "Severity": "UNKNOWN"
         },
         {
+          "VulnerabilityID": "DLA-4403-1",
+          "VendorIDs": [
+            "DLA-4403-1"
+          ],
+          "PkgID": "tzdata@2024a-0+deb11u1",
+          "PkgName": "tzdata",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/tzdata@2024a-0%2Bdeb11u1?arch=all\u0026distro=debian-11.9",
+            "UID": "b9c5b74aa579aab0"
+          },
+          "InstalledVersion": "2024a-0+deb11u1",
+          "FixedVersion": "2025b-0+deb11u2",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "tzdata - new timezone database",
+          "Severity": "UNKNOWN"
+        },
+        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "util-linux@2.36.1-8+deb11u2",
           "PkgName": "util-linux",
@@ -13628,7 +13677,7 @@
           "FixedVersion": "8.0.3, 4.0.14, 4.1.13, 5.0.18, 6.0.11, 7.0.7",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
+            "DiffID": "sha256:204eb21b6a35948db223601061a95633fb4f7d72b239f039e9b33a02add665e4"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-32655",
@@ -13689,7 +13738,7 @@
           "FixedVersion": "4.7.2, 5.0.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:5629494a895f062e4d464d91b5a2b84558371834e88a1109e3bd1961b13a7656"
+            "DiffID": "sha256:204eb21b6a35948db223601061a95633fb4f7d72b239f039e9b33a02add665e4"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-24112",

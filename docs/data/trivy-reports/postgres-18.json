@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-11T13:16:50.65840773Z",
+  "CreatedAt": "2025-12-15T04:01:05.526858853Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:a64f7c54328b6819230f5f22db727352ffb387b64167f5ef94d723734c9eabd3",
+    "ImageID": "sha256:09737fb51edecb110683242ec54182f39bd6f9bcf553a476929b7f1749223a9a",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:21130c06be0c14127f0673e85b9fc3e0d2b5d4cdb83479dae1ae9ea1e8e52567",
@@ -23,14 +23,14 @@
       "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
       "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
       "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-      "sha256:04d9caf367de6df244aa9ffcd74e74b8f07ac6bbc45284bb507b30e1c9673838"
+      "sha256:24dd577f708aa34745dd1c514ed0a2aceea5091707f71d0172a93ecc33329105"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-11T13:16:40.694129354Z",
+      "created": "2025-12-15T04:00:52.328226393Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-11T13:16:40Z",
+          "created": "2025-12-15T04:00:52Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
           "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
           "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-          "sha256:04d9caf367de6df244aa9ffcd74e74b8f07ac6bbc45284bb507b30e1c9673838"
+          "sha256:24dd577f708aa34745dd1c514ed0a2aceea5091707f71d0172a93ecc33329105"
         ]
       },
       "config": {
@@ -5134,7 +5134,7 @@
             "bitnami": 2,
             "oracle-oval": 2,
             "redhat": 2,
-            "rocky": 3
+            "rocky": 2
           },
           "CVSS": {
             "bitnami": {
@@ -5152,12 +5152,10 @@
             "https://access.redhat.com/security/cve/CVE-2025-58183",
             "https://bugzilla.redhat.com/2404715",
             "https://bugzilla.redhat.com/2407258",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2404715",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-52881",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
             "https://errata.almalinux.org/9/ALSA-2025-22011.html",
-            "https://errata.rockylinux.org/RLSA-2025:22011",
+            "https://errata.rockylinux.org/RLSA-2025:23087",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",
@@ -5275,24 +5273,31 @@
             "Name": "The Go Vulnerability Database",
             "URL": "https://pkg.go.dev/vuln/"
           },
-          "Title": "Within HostnameError.Error(), when constructing an error string, there ...",
+          "Title": "crypto/x509: Excessive resource consumption when printing error string for host certificate validation in crypto/x509",
           "Description": "Within HostnameError.Error(), when constructing an error string, there is no limit to the number of hosts that will be printed out. Furthermore, the error string is constructed by repeated string concatenation, leading to quadratic runtime. Therefore, a certificate provided by a malicious actor can result in excessive resource consumption.",
           "Severity": "HIGH",
           "VendorSeverity": {
-            "bitnami": 3
+            "bitnami": 3,
+            "redhat": 3
           },
           "CVSS": {
             "bitnami": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
               "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
             }
           },
           "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-61729",
             "https://go.dev/cl/725920",
             "https://go.dev/issue/76445",
             "https://groups.google.com/g/golang-announce/c/8FJoBkPddm4",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61729",
-            "https://pkg.go.dev/vuln/GO-2025-4155"
+            "https://pkg.go.dev/vuln/GO-2025-4155",
+            "https://www.cve.org/CVERecord?id=CVE-2025-61729"
           ],
           "PublishedDate": "2025-12-02T19:15:51.447Z",
           "LastModifiedDate": "2025-12-04T17:15:25.86Z"
