@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-15T04:01:04.158545062Z",
+  "CreatedAt": "2025-12-22T04:01:34.261594355Z",
   "ArtifactName": "local-vote",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,24 +8,24 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:88f550e6d92a0d2a3b673d79b64c4cd5d7468d9bb1eb4bfc7e6be38e429e59a0",
+    "ImageID": "sha256:a601f61ee3d7eacb1b0b2ed7546b6ea3e52ecc4a114b196740a692c8e8b3fc38",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:00c85aa8c314631eb04e19e6248739faa3f20421d0fc55f743a80f1be3657558",
       "sha256:675da88ef5f2c5696498862cc8be508bb21b0a88f859eac1023b29ca335f8d73",
       "sha256:28431971bbcde23bc93a9bc4afa887552c01430e5ca1da0e6790a699830c6ea5",
-      "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b",
-      "sha256:63f3fdd5e938ec576cccc02ed9fd4d9a3bc41c2d70c2767e571e99f83d4751a2",
-      "sha256:5fa0becbfa9ba280e45501c87d46645ba9b8c0f1138dcceca1695c1cefac820a",
-      "sha256:53825127ea126b35af0d3470737b758674e9d221a441a52bcc81120cca7b8f98",
-      "sha256:f4c8f545b3a19ef685ea3b55b95283023e4ad8c89a120f4453f78e6e0b752d3f"
+      "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de",
+      "sha256:adc6f4073c6bde6eef38c717c3a0ec5102cca4c983e9117c997f4acb6dc5f5b3",
+      "sha256:6a384c7a6295951b8ea45719ddaa91b71fc3f82aaf73a42a9a33ffb5123e100a",
+      "sha256:d808a420f1bbfd797f6818d9cf228a728e928a5df0773299860eb8b7ad0a82b9",
+      "sha256:e03b4a04102c411a0df36fc94b36748061f57c599012b0ef39a87cb291a67b98"
     ],
     "RepoTags": [
       "local-vote:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-15T04:00:53.219849229Z",
+      "created": "2025-12-22T04:01:21.604863322Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -72,38 +72,38 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-15T04:00:49Z",
+          "created": "2025-12-22T04:01:18Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get install -y --no-install-recommends curl \u0026\u0026     rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-15T04:00:49Z",
+          "created": "2025-12-22T04:01:18Z",
           "created_by": "WORKDIR /usr/local/app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-15T04:00:49Z",
+          "created": "2025-12-22T04:01:18Z",
           "created_by": "COPY requirements.txt ./requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-15T04:00:53Z",
+          "created": "2025-12-22T04:01:21Z",
           "created_by": "RUN /bin/sh -c pip install --no-cache-dir -r requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-15T04:00:53Z",
+          "created": "2025-12-22T04:01:21Z",
           "created_by": "COPY . . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-15T04:00:53Z",
+          "created": "2025-12-22T04:01:21Z",
           "created_by": "EXPOSE map[80/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-15T04:00:53Z",
+          "created": "2025-12-22T04:01:21Z",
           "created_by": "CMD [\"gunicorn\" \"app:app\" \"-b\" \"0.0.0.0:80\" \"--log-file\" \"-\" \"--access-logfile\" \"-\" \"--workers\" \"4\" \"--keep-alive\" \"0\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -117,11 +117,11 @@
           "sha256:00c85aa8c314631eb04e19e6248739faa3f20421d0fc55f743a80f1be3657558",
           "sha256:675da88ef5f2c5696498862cc8be508bb21b0a88f859eac1023b29ca335f8d73",
           "sha256:28431971bbcde23bc93a9bc4afa887552c01430e5ca1da0e6790a699830c6ea5",
-          "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b",
-          "sha256:63f3fdd5e938ec576cccc02ed9fd4d9a3bc41c2d70c2767e571e99f83d4751a2",
-          "sha256:5fa0becbfa9ba280e45501c87d46645ba9b8c0f1138dcceca1695c1cefac820a",
-          "sha256:53825127ea126b35af0d3470737b758674e9d221a441a52bcc81120cca7b8f98",
-          "sha256:f4c8f545b3a19ef685ea3b55b95283023e4ad8c89a120f4453f78e6e0b752d3f"
+          "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de",
+          "sha256:adc6f4073c6bde6eef38c717c3a0ec5102cca4c983e9117c997f4acb6dc5f5b3",
+          "sha256:6a384c7a6295951b8ea45719ddaa91b71fc3f82aaf73a42a9a33ffb5123e100a",
+          "sha256:d808a420f1bbfd797f6818d9cf228a728e928a5df0773299860eb8b7ad0a82b9",
+          "sha256:e03b4a04102c411a0df36fc94b36748061f57c599012b0ef39a87cb291a67b98"
         ]
       },
       "config": {
@@ -449,7 +449,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -1411,7 +1411,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -1457,7 +1457,7 @@
           "InstalledVersion": "3.8.9-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3389",
@@ -1602,7 +1602,7 @@
           "InstalledVersion": "3.8.9-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-9820",
           "DataSource": {
@@ -1624,7 +1624,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1677,7 +1677,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1693,7 +1693,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -1711,16 +1711,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -1745,7 +1744,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -1761,7 +1760,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -1779,16 +1778,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -1813,7 +1811,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1866,7 +1864,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1882,7 +1880,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -1900,16 +1898,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -1934,7 +1931,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -1950,7 +1947,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -1968,16 +1965,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -2002,7 +1998,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2055,7 +2051,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2071,7 +2067,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -2089,16 +2085,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -2123,7 +2118,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2139,7 +2134,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -2157,16 +2152,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -2191,7 +2185,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2244,7 +2238,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2260,7 +2254,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -2278,16 +2272,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -2312,7 +2305,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2328,7 +2321,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -2346,16 +2339,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -2482,7 +2474,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2015-3276",
@@ -2539,7 +2531,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-14159",
@@ -2592,7 +2584,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-17740",
@@ -2648,7 +2640,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:ccc51e75c3a2a1170a1b9141b79be9bff98347e65153d2b3b37a103cbe876b6b"
+            "DiffID": "sha256:ea170066e5dedbc3f1773efd16715f3b31bf37ace72fa81b2a02f30ecc2a47de"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15719",
@@ -3731,7 +3723,7 @@
             "https://issues.rpath.com/browse/RPL-1825"
           ],
           "PublishedDate": "2007-10-28T17:08:00Z",
-          "LastModifiedDate": "2024-11-21T00:38:27.587Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2024-56433",
@@ -3773,12 +3765,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -4068,7 +4060,7 @@
             "https://issues.rpath.com/browse/RPL-1825"
           ],
           "PublishedDate": "2007-10-28T17:08:00Z",
-          "LastModifiedDate": "2024-11-21T00:38:27.587Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2024-56433",
@@ -4110,12 +4102,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",

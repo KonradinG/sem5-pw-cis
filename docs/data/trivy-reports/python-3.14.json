@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-15T04:01:30.501351146Z",
+  "CreatedAt": "2025-12-22T04:01:56.17859065Z",
   "ArtifactName": "local-python-3.14",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:bccdfd4ae43d62abf07e207bc1a06f7067a23a382f85bb47f12d5cac37bd3e94",
+    "ImageID": "sha256:b0aa4d041983b090c04b56c744bba1b26137beca0d2a774a717483f46bbbdd6c",
     "DiffIDs": [
       "sha256:e9b010e49a06fcdb7a531d2b36c7c266a5432b166bc31de70ebbab6cb2d4cef5",
       "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875",
@@ -17,14 +17,14 @@
       "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
       "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
       "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-      "sha256:10b474ee45750eb21b172239fd5325f917278b6ac191922bbd668267ef735056"
+      "sha256:9d0dd80846573c67b74c1157c4e02a628d27de6c44d3edce4ee969ab04001963"
     ],
     "RepoTags": [
       "local-python-3.14:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-15T04:01:09.347502352Z",
+      "created": "2025-12-22T04:01:38.610855918Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -86,19 +86,19 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-15T04:01:09Z",
+          "created": "2025-12-22T04:01:38Z",
           "created_by": "LABEL maintainer=Johann Hipolito",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-15T04:01:09Z",
+          "created": "2025-12-22T04:01:38Z",
           "created_by": "LABEL org.opencontainers.image.title=python-3.14-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-15T04:01:09Z",
+          "created": "2025-12-22T04:01:38Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get remove -y --no-install-recommends     imagemagick     imagemagick-7-common     imagemagick-7.q16     libbluetooth-dev     libbluetooth3     libmagickcore-7-arch-config     libmagickcore-7-headers     libmagickcore-7.q16-10     libmagickcore-7.q16-10-extra     libmagickcore-7.q16-dev     libmagickcore-dev     libmagickwand-7-headers     libmagickwand-7.q16-10     libmagickwand-7.q16-dev     libmagickwand-dev     libpython3.13-minimal     libpython3.13-stdlib     libxml2     libxml2-dev     libxslt1-dev     libxslt1.1     linux-libc-dev     \u0026\u0026 apt-get autoremove -y     \u0026\u0026 apt-get clean     \u0026\u0026 rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -114,7 +114,7 @@
           "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
           "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
           "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-          "sha256:10b474ee45750eb21b172239fd5325f917278b6ac191922bbd668267ef735056"
+          "sha256:9d0dd80846573c67b74c1157c4e02a628d27de6c44d3edce4ee969ab04001963"
         ]
       },
       "config": {
@@ -585,6 +585,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -600,6 +601,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -647,7 +650,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -662,6 +667,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -910,6 +920,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -920,7 +931,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -968,6 +979,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -979,7 +991,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -1034,7 +1046,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -1260,7 +1272,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -1316,7 +1328,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -1363,6 +1375,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -1375,7 +1388,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -2528,6 +2541,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -2543,6 +2557,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -2590,7 +2606,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2605,6 +2623,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -2853,6 +2876,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -2863,7 +2887,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -2911,6 +2935,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -2922,7 +2947,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -2977,7 +3002,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -3203,7 +3228,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -3259,7 +3284,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -3306,6 +3331,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -3318,7 +3344,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -4471,6 +4497,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -4486,6 +4513,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -4533,7 +4562,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -4548,6 +4579,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -4796,6 +4832,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -4806,7 +4843,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -4854,6 +4891,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -4865,7 +4903,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -4920,7 +4958,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -5146,7 +5184,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -5202,7 +5240,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -5249,6 +5287,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -5261,7 +5300,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -6493,24 +6532,29 @@
             "amazon": 2,
             "bitnami": 3,
             "debian": 1,
+            "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
             "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 8.8
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
               "V3Score": 7.5
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:7409",
+            "https://access.redhat.com/errata/RHSA-2025:8414",
             "https://access.redhat.com/security/cve/CVE-2024-52005",
             "https://bugzilla.redhat.com/2338289",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2338289",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-52005",
-            "https://errata.almalinux.org/9/ALSA-2025-7409.html",
+            "https://errata.almalinux.org/8/ALSA-2025-8414.html",
             "https://errata.rockylinux.org/RLSA-2025:7409",
             "https://github.com/git/git/security/advisories/GHSA-7jjc-gg6m-3329",
             "https://linux.oracle.com/cve/CVE-2024-52005.html",
@@ -6521,7 +6565,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2024-52005"
           ],
           "PublishedDate": "2025-01-15T18:15:24.13Z",
-          "LastModifiedDate": "2025-01-15T18:15:24.13Z"
+          "LastModifiedDate": "2025-12-18T16:00:17.533Z"
         },
         {
           "VulnerabilityID": "CVE-2018-1000021",
@@ -6664,24 +6708,29 @@
             "amazon": 2,
             "bitnami": 3,
             "debian": 1,
+            "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
             "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+              "V3Score": 8.8
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
               "V3Score": 7.5
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:7409",
+            "https://access.redhat.com/errata/RHSA-2025:8414",
             "https://access.redhat.com/security/cve/CVE-2024-52005",
             "https://bugzilla.redhat.com/2338289",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2338289",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-52005",
-            "https://errata.almalinux.org/9/ALSA-2025-7409.html",
+            "https://errata.almalinux.org/8/ALSA-2025-8414.html",
             "https://errata.rockylinux.org/RLSA-2025:7409",
             "https://github.com/git/git/security/advisories/GHSA-7jjc-gg6m-3329",
             "https://linux.oracle.com/cve/CVE-2024-52005.html",
@@ -6692,7 +6741,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2024-52005"
           ],
           "PublishedDate": "2025-01-15T18:15:24.13Z",
-          "LastModifiedDate": "2025-01-15T18:15:24.13Z"
+          "LastModifiedDate": "2025-12-18T16:00:17.533Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -7444,6 +7493,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -7459,6 +7509,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -7506,7 +7558,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -7521,6 +7575,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -7769,6 +7828,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -7779,7 +7839,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -7827,6 +7887,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -7838,7 +7899,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -7893,7 +7954,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -8119,7 +8180,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -8175,7 +8236,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -8222,6 +8283,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -8234,7 +8296,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -10253,6 +10315,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -10268,6 +10331,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -10315,7 +10380,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -10330,6 +10397,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -10578,6 +10650,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -10588,7 +10661,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -10636,6 +10709,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -10647,7 +10721,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -10702,7 +10776,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -10928,7 +11002,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -10984,7 +11058,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -11031,6 +11105,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -11043,7 +11118,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -12196,6 +12271,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -12211,6 +12287,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -12258,7 +12336,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -12273,6 +12353,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -12521,6 +12606,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -12531,7 +12617,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -12579,6 +12665,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -12590,7 +12677,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -12645,7 +12732,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -12871,7 +12958,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -12927,7 +13014,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -12974,6 +13061,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -12986,7 +13074,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -13904,12 +13992,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/16/2",
-            "https://access.redhat.com/errata/RHSA-2025:22175",
+            "https://access.redhat.com/errata/RHSA-2025:21974",
             "https://access.redhat.com/security/cve/CVE-2025-59375",
             "https://bugzilla.redhat.com/2395108",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2395108",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-59375",
-            "https://errata.almalinux.org/9/ALSA-2025-22175.html",
+            "https://errata.almalinux.org/8/ALSA-2025-21974.html",
             "https://errata.rockylinux.org/RLSA-2025:22175",
             "https://github.com/libexpat/libexpat/blob/676a4c531ec768732fac215da9730b5f50fbd2bf/expat/Changes#L45-L74",
             "https://github.com/libexpat/libexpat/blob/R_2_7_2/expat/Changes",
@@ -13937,6 +14025,7 @@
           "Layer": {
             "DiffID": "sha256:8e47c7b8acf33a418df9186109ad0e8b1863ee149177632079d07c6fea331de5"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-66382",
           "DataSource": {
             "ID": "debian",
@@ -13945,15 +14034,20 @@
           },
           "Title": "libexpat: libexpat: Denial of service via crafted file processing",
           "Description": "In libexpat through 2.7.3, a crafted file with an approximate size of 2 MiB can lead to dozens of seconds of processing time.",
-          "Severity": "LOW",
+          "Severity": "MEDIUM",
           "CweIDs": [
             "CWE-407"
           ],
           "VendorSeverity": {
+            "nvd": 2,
             "redhat": 1,
             "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V3Score": 5.5
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
               "V3Score": 2.9
@@ -13967,7 +14061,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-66382"
           ],
           "PublishedDate": "2025-11-28T07:15:57.9Z",
-          "LastModifiedDate": "2025-12-02T03:16:20.34Z"
+          "LastModifiedDate": "2025-12-19T16:05:03.557Z"
         },
         {
           "VulnerabilityID": "CVE-2018-6829",
@@ -14625,6 +14719,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -14640,6 +14735,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -14687,7 +14784,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -14702,6 +14801,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -14950,6 +15054,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -14960,7 +15065,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -15008,6 +15113,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -15019,7 +15125,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -15074,7 +15180,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -15300,7 +15406,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -15356,7 +15462,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -15403,6 +15509,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -15415,7 +15522,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -16278,7 +16385,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16296,16 +16403,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16346,7 +16452,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16364,16 +16470,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16520,7 +16625,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16538,16 +16643,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16588,7 +16692,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16606,16 +16710,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16709,7 +16812,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16727,16 +16830,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16777,7 +16879,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16795,16 +16897,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16898,7 +16999,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16916,16 +17017,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16966,7 +17066,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 2,
+            "alma": 1,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16984,16 +17084,15 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:9331",
+            "https://access.redhat.com/errata/RHSA-2024:3268",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
-            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
+            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -17575,7 +17674,9 @@
           ],
           "VendorSeverity": {
             "amazon": 2,
+            "azure": 2,
             "bitnami": 2,
+            "cbl-mariner": 2,
             "photon": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -17627,7 +17728,9 @@
           ],
           "VendorSeverity": {
             "amazon": 2,
+            "azure": 1,
             "bitnami": 1,
+            "cbl-mariner": 1,
             "photon": 1,
             "redhat": 1,
             "ubuntu": 2
@@ -17679,7 +17782,9 @@
           ],
           "VendorSeverity": {
             "amazon": 2,
+            "azure": 2,
             "bitnami": 2,
+            "cbl-mariner": 2,
             "photon": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -17731,7 +17836,9 @@
           ],
           "VendorSeverity": {
             "amazon": 2,
+            "azure": 1,
             "bitnami": 1,
+            "cbl-mariner": 1,
             "photon": 1,
             "redhat": 1,
             "ubuntu": 2
@@ -18126,6 +18233,7 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
             "ubuntu": 2
           },
@@ -18141,6 +18249,8 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://linux.oracle.com/cve/CVE-2025-11082.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16358",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33464",
@@ -18188,7 +18298,9 @@
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
+            "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -18203,6 +18315,11 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://linux.oracle.com/cve/CVE-2025-11083.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
             "https://sourceware.org/bugzilla/attachment.cgi?id=16353",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33457",
@@ -18451,6 +18568,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1147",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1147",
+            "https://security.netapp.com/advisory/ntap-20250404-0003/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15881",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32556",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=7be4186c22f89a87fff048c28910f5d26a0f61ce",
@@ -18461,7 +18579,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.643Z",
-          "LastModifiedDate": "2025-03-04T15:51:17.86Z"
+          "LastModifiedDate": "2025-04-04T23:15:41.91Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1148",
@@ -18509,6 +18627,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1148",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1148",
+            "https://security.netapp.com/advisory/ntap-20250404-0004/",
             "https://sourceware.org/bugzilla/attachment.cgi?id=15887",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32576",
             "https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=d4115c2c8d447e297ae353892de89192c1996211",
@@ -18520,7 +18639,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T14:15:29.927Z",
-          "LastModifiedDate": "2025-03-04T17:12:35.4Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.083Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1149",
@@ -18575,7 +18694,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T15:15:13.093Z",
-          "LastModifiedDate": "2025-03-04T14:53:43.637Z"
+          "LastModifiedDate": "2025-03-04T15:50:19.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-11494",
@@ -18801,7 +18920,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T17:15:18.713Z",
-          "LastModifiedDate": "2025-02-10T17:15:18.713Z"
+          "LastModifiedDate": "2025-03-04T17:16:19.053Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1152",
@@ -18857,7 +18976,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T18:15:34.043Z",
-          "LastModifiedDate": "2025-03-03T16:52:20.953Z"
+          "LastModifiedDate": "2025-03-03T17:32:01.613Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1153",
@@ -18904,6 +19023,7 @@
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-1153",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-1153",
+            "https://security.netapp.com/advisory/ntap-20250404-0005/",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=32603",
             "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=8d97c1a53f3dc9fd8e1ccdb039b8a33d50133150",
             "https://ubuntu.com/security/notices/USN-7423-1",
@@ -18916,7 +19036,7 @@
             "https://www.gnu.org/"
           ],
           "PublishedDate": "2025-02-10T19:15:39.9Z",
-          "LastModifiedDate": "2025-03-03T17:28:09.167Z"
+          "LastModifiedDate": "2025-04-04T23:15:42.23Z"
         },
         {
           "VulnerabilityID": "CVE-2025-1176",
@@ -20576,7 +20696,7 @@
             "https://issues.rpath.com/browse/RPL-1825"
           ],
           "PublishedDate": "2007-10-28T17:08:00Z",
-          "LastModifiedDate": "2024-11-21T00:38:27.587Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2024-56433",
@@ -20618,12 +20738,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -20711,7 +20831,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2008-1687"
           ],
           "PublishedDate": "2008-04-09T19:05:00Z",
-          "LastModifiedDate": "2024-11-21T00:45:06.03Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2008-1688",
@@ -20761,7 +20881,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2008-1688"
           ],
           "PublishedDate": "2008-04-09T19:05:00Z",
-          "LastModifiedDate": "2024-11-21T00:45:06.213Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2025-14104",
@@ -20996,8 +21116,10 @@
           ],
           "VendorSeverity": {
             "azure": 1,
+            "oracle-oval": 2,
             "photon": 1,
-            "redhat": 2
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -21009,7 +21131,14 @@
             "http://www.openwall.com/lists/oss-security/2025/10/07/1",
             "http://www.openwall.com/lists/oss-security/2025/10/12/1",
             "https://access.redhat.com/security/cve/CVE-2025-61984",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2401960",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2401962",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61984",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61985",
             "https://dgl.cx/2025/10/bash-a-newline-ssh-proxycommand-cve-2025-61984",
+            "https://errata.rockylinux.org/RLSA-2025:23481",
+            "https://linux.oracle.com/cve/CVE-2025-61984.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23481.html",
             "https://marc.info/?l=openssh-unix-dev\u0026m=175974522032149\u0026w=2",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61984",
             "https://www.cve.org/CVERecord?id=CVE-2025-61984",
@@ -21049,8 +21178,10 @@
           "VendorSeverity": {
             "azure": 1,
             "cbl-mariner": 2,
+            "oracle-oval": 2,
             "photon": 1,
-            "redhat": 2
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -21060,6 +21191,13 @@
           },
           "References": [
             "https://access.redhat.com/security/cve/CVE-2025-61985",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2401960",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2401962",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61984",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61985",
+            "https://errata.rockylinux.org/RLSA-2025:23481",
+            "https://linux.oracle.com/cve/CVE-2025-61985.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23481.html",
             "https://marc.info/?l=openssh-unix-dev\u0026m=175974522032149\u0026w=2",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61985",
             "https://www.cve.org/CVERecord?id=CVE-2025-61985",
@@ -21115,7 +21253,7 @@
             "https://security.netapp.com/advisory/ntap-20191107-0003/"
           ],
           "PublishedDate": "2007-04-25T16:19:00Z",
-          "LastModifiedDate": "2024-11-21T00:30:17.013Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2007-2768",
@@ -21162,7 +21300,7 @@
             "https://security.netapp.com/advisory/ntap-20191107-0002/"
           ],
           "PublishedDate": "2007-05-21T20:30:00Z",
-          "LastModifiedDate": "2024-11-21T00:31:36.827Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2008-3234",
@@ -21206,7 +21344,7 @@
             "https://www.exploit-db.com/exploits/6094"
           ],
           "PublishedDate": "2008-07-18T16:41:00Z",
-          "LastModifiedDate": "2024-11-21T00:48:46.157Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2016-20012",
@@ -21318,7 +21456,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2018-15919"
           ],
           "PublishedDate": "2018-08-28T08:29:00.207Z",
-          "LastModifiedDate": "2024-11-21T03:51:43.11Z"
+          "LastModifiedDate": "2025-12-18T12:15:53.58Z"
         },
         {
           "VulnerabilityID": "CVE-2019-6110",
@@ -21377,7 +21515,7 @@
             "https://www.exploit-db.com/exploits/46193/"
           ],
           "PublishedDate": "2019-01-31T18:29:00.807Z",
-          "LastModifiedDate": "2024-11-21T04:45:57.737Z"
+          "LastModifiedDate": "2025-12-18T15:15:47.94Z"
         },
         {
           "VulnerabilityID": "CVE-2020-14145",
@@ -21454,7 +21592,7 @@
             "https://www.fzi.de/en/news/news/detail-en/artikel/fsa-2020-2-ausnutzung-eines-informationslecks-fuer-gezielte-mitm-angriffe-auf-ssh-clients/"
           ],
           "PublishedDate": "2020-06-29T18:15:11.94Z",
-          "LastModifiedDate": "2024-11-21T05:02:44.08Z"
+          "LastModifiedDate": "2025-12-18T15:15:48.41Z"
         },
         {
           "VulnerabilityID": "CVE-2020-15778",
@@ -21571,7 +21709,7 @@
             "https://issues.rpath.com/browse/RPL-1825"
           ],
           "PublishedDate": "2007-10-28T17:08:00Z",
-          "LastModifiedDate": "2024-11-21T00:38:27.587Z"
+          "LastModifiedDate": "2025-04-09T00:30:58.49Z"
         },
         {
           "VulnerabilityID": "CVE-2024-56433",
@@ -21613,12 +21751,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",

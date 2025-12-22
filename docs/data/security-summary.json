@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2025-12-15T04:02:30Z",
+  "generatedAt": "2025-12-22T04:02:58Z",
   "period": {
-    "start": "2025-12-08",
-    "end": "2025-12-15"
+    "start": "2025-12-15",
+    "end": "2025-12-22"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 83,
-      "medium": 174,
+      "high": 100,
+      "medium": 282,
       "low": 473,
       "unknown": 1
     },
     {
       "name": "local-postgres-18",
       "critical": 0,
-      "high": 4,
-      "medium": 18,
+      "high": 2,
+      "medium": 20,
       "low": 82,
       "unknown": 1
     },
@@ -25,8 +25,8 @@
       "name": "local-python-3.14",
       "critical": 0,
       "high": 2,
-      "medium": 16,
-      "low": 370,
+      "medium": 17,
+      "low": 369,
       "unknown": 1
     },
     {
@@ -56,16 +56,16 @@
   ],
   "totals": {
     "critical": 8,
-    "high": 135,
-    "medium": 309,
-    "low": 1174,
+    "high": 150,
+    "medium": 420,
+    "low": 1173,
     "unknown": 10
   },
   "delta": {
     "critical": 0,
-    "high": 1,
-    "medium": 0,
-    "low": 0,
+    "high": 15,
+    "medium": 111,
+    "low": -1,
     "unknown": 0
   },
   "direction": "worse",
@@ -111,6 +111,12 @@
       "critical": 8,
       "high": 135,
       "medium": 309
+    },
+    {
+      "date": "2025-12-22",
+      "critical": 8,
+      "high": 150,
+      "medium": 420
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
