@@ -1,3 +1,10 @@
+## 2025-12-28
+CRITICAL=0 HIGH=0 MEDIUM=10 RISK_INDEX=10
+
+### 🔴 Top Critical/High Vulnerabilities
+
+---
+
 ## 2025-12-14
 CRITICAL=0 HIGH=0 MEDIUM=10 RISK_INDEX=10
 
