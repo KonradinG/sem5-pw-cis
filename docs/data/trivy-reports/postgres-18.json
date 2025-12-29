@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-22T04:01:37.288938221Z",
+  "CreatedAt": "2025-12-29T04:06:45.962536017Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:dc53c3c66ec0d716e8daa546a73315ed4b4d560d9a3c63747e5e92ae1006aa27",
+    "ImageID": "sha256:24c34d762a79e27de8e096df1a51b617bc8906a3d5a4726dad37f76bf588a771",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:21130c06be0c14127f0673e85b9fc3e0d2b5d4cdb83479dae1ae9ea1e8e52567",
@@ -23,14 +23,14 @@
       "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
       "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
       "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-      "sha256:7e6de4ce58370fb2c00121df50b9aa48296c49dd22aa0207c2271b95d6a3b893"
+      "sha256:bdb20628c92476a40a76e5b85f9efd27add0dc1cf11120796e1d8a45fed6d3cf"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-22T04:01:24.712514021Z",
+      "created": "2025-12-29T04:06:31.398107895Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:24Z",
+          "created": "2025-12-29T04:06:31Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:997242ffdede3fca8cc18a311dfd8247ee9e0482384b8d4508601f7f9a078ff8",
           "sha256:896e1f14c0c913b59b45b91fb67af207ba60b9f8ec419334817b54228616d79e",
           "sha256:5edfc795ed246a9960be3e67d15154c7bfa8b8b5fa2bf20ab3b3d3e8824a788b",
-          "sha256:7e6de4ce58370fb2c00121df50b9aa48296c49dd22aa0207c2271b95d6a3b893"
+          "sha256:bdb20628c92476a40a76e5b85f9efd27add0dc1cf11120796e1d8a45fed6d3cf"
         ]
       },
       "config": {
@@ -593,6 +593,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "dirmngr@2.4.7-21+b3",
+          "PkgName": "dirmngr",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "6a280f7c6d71952f"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "dirmngr@2.4.7-21+b3",
+          "PkgName": "dirmngr",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "6a280f7c6d71952f"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gnupg@2.4.7-21",
           "PkgName": "gnupg",
@@ -646,6 +713,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg@2.4.7-21",
+          "PkgName": "gnupg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "5a6270291afec115"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gnupg@2.4.7-21",
+          "PkgName": "gnupg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "5a6270291afec115"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -703,6 +837,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg-l10n@2.4.7-21",
+          "PkgName": "gnupg-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "e06ce0bdbb95a846"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gnupg-l10n@2.4.7-21",
+          "PkgName": "gnupg-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "e06ce0bdbb95a846"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gpg@2.4.7-21+b3",
           "PkgName": "gpg",
@@ -756,6 +957,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpg@2.4.7-21+b3",
+          "PkgName": "gpg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f8a8e33a95cd4814"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpg@2.4.7-21+b3",
+          "PkgName": "gpg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f8a8e33a95cd4814"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -813,6 +1081,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgName": "gpg-agent",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "7693666706cc8726"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgName": "gpg-agent",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "7693666706cc8726"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gpgconf@2.4.7-21+b3",
           "PkgName": "gpgconf",
@@ -868,6 +1203,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgName": "gpgconf",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f0935b7991605572"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgName": "gpgconf",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f0935b7991605572"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gpgsm@2.4.7-21+b3",
           "PkgName": "gpgsm",
@@ -921,6 +1323,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgName": "gpgsm",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "be29ee0b03568d99"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgName": "gpgsm",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "be29ee0b03568d99"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:fd4c89d969ac11c09adc6e03045867b7e2641cdcee20e269b5d6f0411bfe6634"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2011-3374",
@@ -4348,12 +4817,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -4685,12 +5154,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -5150,19 +5619,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:22668",
+            "https://access.redhat.com/errata/RHSA-2025:23326",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
-            "https://bugzilla.redhat.com/2396546",
             "https://bugzilla.redhat.com/2407258",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
-            "https://errata.almalinux.org/8/ALSA-2025-22668.html",
-            "https://errata.rockylinux.org/RLSA-2025:23087",
+            "https://errata.almalinux.org/9/ALSA-2025-23326.html",
+            "https://errata.rockylinux.org/RLSA-2025:23326",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",
             "https://linux.oracle.com/cve/CVE-2025-58183.html",
-            "https://linux.oracle.com/errata/ELSA-2025-23326.html",
+            "https://linux.oracle.com/errata/ELSA-2025-23948.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-58183",
             "https://pkg.go.dev/vuln/GO-2025-4014",
             "https://www.cve.org/CVERecord?id=CVE-2025-58183"

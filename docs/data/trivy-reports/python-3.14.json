@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-22T04:01:56.17859065Z",
+  "CreatedAt": "2025-12-29T04:06:59.597523978Z",
   "ArtifactName": "local-python-3.14",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:b0aa4d041983b090c04b56c744bba1b26137beca0d2a774a717483f46bbbdd6c",
+    "ImageID": "sha256:2cef81147b150261af74104c96cc9d156387dc202fdb9abaff37b043bed2b756",
     "DiffIDs": [
       "sha256:e9b010e49a06fcdb7a531d2b36c7c266a5432b166bc31de70ebbab6cb2d4cef5",
       "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875",
@@ -17,14 +17,14 @@
       "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
       "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
       "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-      "sha256:9d0dd80846573c67b74c1157c4e02a628d27de6c44d3edce4ee969ab04001963"
+      "sha256:26fba945a188b9b392cfed10e6d7bceee1291ee60c40582cdbb1b408f0ee1463"
     ],
     "RepoTags": [
       "local-python-3.14:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-22T04:01:38.610855918Z",
+      "created": "2025-12-29T04:06:42.014146093Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -86,19 +86,19 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:38Z",
+          "created": "2025-12-29T04:06:42Z",
           "created_by": "LABEL maintainer=Johann Hipolito",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:38Z",
+          "created": "2025-12-29T04:06:42Z",
           "created_by": "LABEL org.opencontainers.image.title=python-3.14-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-22T04:01:38Z",
+          "created": "2025-12-29T04:06:42Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get remove -y --no-install-recommends     imagemagick     imagemagick-7-common     imagemagick-7.q16     libbluetooth-dev     libbluetooth3     libmagickcore-7-arch-config     libmagickcore-7-headers     libmagickcore-7.q16-10     libmagickcore-7.q16-10-extra     libmagickcore-7.q16-dev     libmagickcore-dev     libmagickwand-7-headers     libmagickwand-7.q16-10     libmagickwand-7.q16-dev     libmagickwand-dev     libpython3.13-minimal     libpython3.13-stdlib     libxml2     libxml2-dev     libxslt1-dev     libxslt1.1     linux-libc-dev     \u0026\u0026 apt-get autoremove -y     \u0026\u0026 apt-get clean     \u0026\u0026 rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -114,7 +114,7 @@
           "sha256:f89b412f085433649645f4614d1f3fd2632f3e0a833bc7e395e832aca0b0c80a",
           "sha256:5c1d27353faa8c9d3ee20815101ee6e6829f3748a65c58d959e70fcef33ddcf0",
           "sha256:99026168d02fd673fb4fd1006da86bc02cc579e9c60adf8868ff3b3803e9e803",
-          "sha256:9d0dd80846573c67b74c1157c4e02a628d27de6c44d3edce4ee969ab04001963"
+          "sha256:26fba945a188b9b392cfed10e6d7bceee1291ee60c40582cdbb1b408f0ee1463"
         ]
       },
       "config": {
@@ -581,12 +581,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -600,7 +602,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -646,6 +657,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -666,10 +678,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -2537,12 +2552,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2556,7 +2573,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -2602,6 +2628,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -2622,10 +2649,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -4493,12 +4523,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -4512,7 +4544,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -4558,6 +4599,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -4578,10 +4620,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -6392,6 +6437,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "dirmngr@2.4.7-21+b3",
+          "PkgName": "dirmngr",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "6a280f7c6d71952f"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "dirmngr@2.4.7-21+b3",
+          "PkgName": "dirmngr",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "6a280f7c6d71952f"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2018-1000021",
           "PkgID": "git@1:2.47.3-0+deb13u1",
           "PkgName": "git",
@@ -6549,12 +6661,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:8414",
+            "https://access.redhat.com/errata/RHSA-2025:7409",
             "https://access.redhat.com/security/cve/CVE-2024-52005",
             "https://bugzilla.redhat.com/2338289",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2338289",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-52005",
-            "https://errata.almalinux.org/8/ALSA-2025-8414.html",
+            "https://errata.almalinux.org/9/ALSA-2025-7409.html",
             "https://errata.rockylinux.org/RLSA-2025:7409",
             "https://github.com/git/git/security/advisories/GHSA-7jjc-gg6m-3329",
             "https://linux.oracle.com/cve/CVE-2024-52005.html",
@@ -6725,12 +6837,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:8414",
+            "https://access.redhat.com/errata/RHSA-2025:7409",
             "https://access.redhat.com/security/cve/CVE-2024-52005",
             "https://bugzilla.redhat.com/2338289",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2338289",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-52005",
-            "https://errata.almalinux.org/8/ALSA-2025-8414.html",
+            "https://errata.almalinux.org/9/ALSA-2025-7409.html",
             "https://errata.rockylinux.org/RLSA-2025:7409",
             "https://github.com/git/git/security/advisories/GHSA-7jjc-gg6m-3329",
             "https://linux.oracle.com/cve/CVE-2024-52005.html",
@@ -6799,6 +6911,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg@2.4.7-21",
+          "PkgName": "gnupg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "5a6270291afec115"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gnupg@2.4.7-21",
+          "PkgName": "gnupg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "5a6270291afec115"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gnupg-l10n@2.4.7-21",
           "PkgName": "gnupg-l10n",
@@ -6852,6 +7031,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg-l10n@2.4.7-21",
+          "PkgName": "gnupg-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "e06ce0bdbb95a846"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gnupg-l10n@2.4.7-21",
+          "PkgName": "gnupg-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
+            "UID": "e06ce0bdbb95a846"
+          },
+          "InstalledVersion": "2.4.7-21",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -6909,6 +7155,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpg@2.4.7-21+b3",
+          "PkgName": "gpg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f8a8e33a95cd4814"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpg@2.4.7-21+b3",
+          "PkgName": "gpg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f8a8e33a95cd4814"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gpg-agent@2.4.7-21+b3",
           "PkgName": "gpg-agent",
@@ -6962,6 +7275,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgName": "gpg-agent",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "7693666706cc8726"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgName": "gpg-agent",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "7693666706cc8726"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -7019,6 +7399,73 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgName": "gpgconf",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f0935b7991605572"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgName": "gpgconf",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "f0935b7991605572"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
+        },
+        {
           "VulnerabilityID": "CVE-2022-3219",
           "PkgID": "gpgsm@2.4.7-21+b3",
           "PkgName": "gpgsm",
@@ -7072,6 +7519,73 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgName": "gpgsm",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "be29ee0b03568d99"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a pla ...",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-347"
+          ],
+          "References": [
+            "https://gpg.fail/formfeed",
+            "https://news.ycombinator.com/item?id=46404339"
+          ],
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2025-12-27T23:15:40.9Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-68973",
+          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgName": "gpgsm",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
+            "UID": "be29ee0b03568d99"
+          },
+          "InstalledVersion": "2.4.7-21+b3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:0b208bc29d309f8138d4e5dd666679c0a5495ea6c3da398364f627a5228cc875"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments ...",
+          "Description": "In GnuPG through 2.4.8, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input.",
+          "Severity": "UNKNOWN",
+          "CweIDs": [
+            "CWE-675"
+          ],
+          "References": [
+            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://gpg.fail/memcpy",
+            "https://news.ycombinator.com/item?id=46403200",
+            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+          ],
+          "PublishedDate": "2025-12-28T17:16:01.5Z",
+          "LastModifiedDate": "2025-12-28T17:16:01.5Z"
         },
         {
           "VulnerabilityID": "CVE-2011-3374",
@@ -7489,12 +8003,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -7508,7 +8024,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -7554,6 +8079,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -7574,10 +8100,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -10311,12 +10840,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -10330,7 +10861,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -10376,6 +10916,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -10396,10 +10937,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -12267,12 +12811,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -12286,7 +12832,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -12332,6 +12887,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -12352,10 +12908,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -13992,12 +14551,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/16/2",
-            "https://access.redhat.com/errata/RHSA-2025:21974",
+            "https://access.redhat.com/errata/RHSA-2025:22175",
             "https://access.redhat.com/security/cve/CVE-2025-59375",
             "https://bugzilla.redhat.com/2395108",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2395108",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-59375",
-            "https://errata.almalinux.org/8/ALSA-2025-21974.html",
+            "https://errata.almalinux.org/9/ALSA-2025-22175.html",
             "https://errata.rockylinux.org/RLSA-2025:22175",
             "https://github.com/libexpat/libexpat/blob/676a4c531ec768732fac215da9730b5f50fbd2bf/expat/Changes#L45-L74",
             "https://github.com/libexpat/libexpat/blob/R_2_7_2/expat/Changes",
@@ -14715,12 +15274,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -14734,7 +15295,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -14780,6 +15350,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -14800,10 +15371,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -16385,7 +16959,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16403,15 +16977,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16452,7 +17027,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16470,15 +17045,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16625,7 +17201,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16643,15 +17219,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16692,7 +17269,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16710,15 +17287,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16812,7 +17390,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -16830,15 +17408,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -16879,7 +17458,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -16897,15 +17476,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -16999,7 +17579,7 @@
             "CWE-401"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 2,
             "cbl-mariner": 2,
@@ -17017,15 +17597,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26458",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_1.md",
             "https://linux.oracle.com/cve/CVE-2024-26458.html",
@@ -17066,7 +17647,7 @@
             "CWE-770"
           ],
           "VendorSeverity": {
-            "alma": 1,
+            "alma": 2,
             "amazon": 2,
             "azure": 3,
             "cbl-mariner": 3,
@@ -17084,15 +17665,16 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2024:3268",
+            "https://access.redhat.com/errata/RHSA-2024:9331",
             "https://access.redhat.com/security/cve/CVE-2024-26461",
             "https://bugzilla.redhat.com/2266731",
             "https://bugzilla.redhat.com/2266740",
+            "https://bugzilla.redhat.com/2266742",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266731",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2266740",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26458",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26461",
-            "https://errata.almalinux.org/8/ALSA-2024-3268.html",
+            "https://errata.almalinux.org/9/ALSA-2024-9331.html",
             "https://errata.rockylinux.org/RLSA-2024:3268",
             "https://github.com/LuMingYinDetect/krb5_defects/blob/main/krb5_detect_2.md",
             "https://linux.oracle.com/cve/CVE-2024-26461.html",
@@ -18229,12 +18811,14 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
             "nvd": 3,
             "oracle-oval": 2,
             "redhat": 2,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -18248,7 +18832,16 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23306",
             "https://access.redhat.com/security/cve/CVE-2025-11082",
+            "https://bugzilla.redhat.com/2399943",
+            "https://bugzilla.redhat.com/2399948",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399943",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11082",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
+            "https://errata.almalinux.org/10/ALSA-2025-23306.html",
+            "https://errata.rockylinux.org/RLSA-2025:23306",
             "https://linux.oracle.com/cve/CVE-2025-11082.html",
             "https://linux.oracle.com/errata/ELSA-2025-23306.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11082",
@@ -18294,6 +18887,7 @@
             "CWE-122"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 2,
             "cbl-mariner": 2,
             "debian": 1,
@@ -18314,10 +18908,13 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23343",
             "https://access.redhat.com/security/cve/CVE-2025-11083",
+            "https://bugzilla.redhat.com/2399948",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2399948",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-11083",
-            "https://errata.rockylinux.org/RLSA-2025:23382",
+            "https://errata.almalinux.org/9/ALSA-2025-23343.html",
+            "https://errata.rockylinux.org/RLSA-2025:23343",
             "https://linux.oracle.com/cve/CVE-2025-11083.html",
             "https://linux.oracle.com/errata/ELSA-2025-23382.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-11083",
@@ -20738,12 +21335,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -21115,6 +21712,7 @@
             "CWE-159"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 1,
             "oracle-oval": 2,
             "photon": 1,
@@ -21130,12 +21728,16 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/07/1",
             "http://www.openwall.com/lists/oss-security/2025/10/12/1",
+            "https://access.redhat.com/errata/RHSA-2025:23480",
             "https://access.redhat.com/security/cve/CVE-2025-61984",
+            "https://bugzilla.redhat.com/2401960",
+            "https://bugzilla.redhat.com/2401962",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2401960",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2401962",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61984",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61985",
             "https://dgl.cx/2025/10/bash-a-newline-ssh-proxycommand-cve-2025-61984",
+            "https://errata.almalinux.org/9/ALSA-2025-23480.html",
             "https://errata.rockylinux.org/RLSA-2025:23481",
             "https://linux.oracle.com/cve/CVE-2025-61984.html",
             "https://linux.oracle.com/errata/ELSA-2025-23481.html",
@@ -21176,6 +21778,7 @@
             "CWE-158"
           ],
           "VendorSeverity": {
+            "alma": 2,
             "azure": 1,
             "cbl-mariner": 2,
             "oracle-oval": 2,
@@ -21190,11 +21793,15 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2025:23480",
             "https://access.redhat.com/security/cve/CVE-2025-61985",
+            "https://bugzilla.redhat.com/2401960",
+            "https://bugzilla.redhat.com/2401962",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2401960",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2401962",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61984",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61985",
+            "https://errata.almalinux.org/9/ALSA-2025-23480.html",
             "https://errata.rockylinux.org/RLSA-2025:23481",
             "https://linux.oracle.com/cve/CVE-2025-61985.html",
             "https://linux.oracle.com/errata/ELSA-2025-23481.html",
@@ -21751,12 +22358,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
