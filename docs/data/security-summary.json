@@ -1,41 +1,41 @@
 {
-  "generatedAt": "2025-12-29T04:08:04Z",
+  "generatedAt": "2026-01-05T04:14:08Z",
   "period": {
-    "start": "2025-12-22",
-    "end": "2025-12-29"
+    "start": "2025-12-29",
+    "end": "2026-01-05"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 107,
-      "medium": 306,
-      "low": 473,
+      "high": 104,
+      "medium": 300,
+      "low": 521,
       "unknown": 20
     },
     {
       "name": "local-postgres-18",
       "critical": 0,
-      "high": 2,
-      "medium": 20,
+      "high": 9,
+      "medium": 27,
       "low": 82,
-      "unknown": 15
+      "unknown": 1
     },
     {
       "name": "local-python-3.14",
       "critical": 0,
-      "high": 2,
-      "medium": 17,
-      "low": 369,
-      "unknown": 15
+      "high": 9,
+      "medium": 24,
+      "low": 417,
+      "unknown": 1
     },
     {
       "name": "local-result",
       "critical": 1,
-      "high": 16,
-      "medium": 32,
+      "high": 18,
+      "medium": 33,
       "low": 87,
-      "unknown": 3
+      "unknown": 1
     },
     {
       "name": "local-vote",
@@ -48,25 +48,25 @@
     {
       "name": "local-worker",
       "critical": 7,
-      "high": 30,
-      "medium": 59,
+      "high": 31,
+      "medium": 60,
       "low": 92,
-      "unknown": 7
+      "unknown": 5
     }
   ],
   "totals": {
     "critical": 8,
-    "high": 157,
-    "medium": 444,
-    "low": 1173,
-    "unknown": 61
+    "high": 171,
+    "medium": 454,
+    "low": 1269,
+    "unknown": 29
   },
   "delta": {
     "critical": 0,
-    "high": 7,
-    "medium": 24,
-    "low": 0,
-    "unknown": 51
+    "high": 14,
+    "medium": 10,
+    "low": 96,
+    "unknown": -32
   },
   "direction": "worse",
   "trend": [
@@ -123,6 +123,12 @@
       "critical": 8,
       "high": 157,
       "medium": 444
+    },
+    {
+      "date": "2026-01-05",
+      "critical": 8,
+      "high": 171,
+      "medium": 454
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
