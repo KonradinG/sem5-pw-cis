@@ -4,6 +4,7 @@
 [![SBOM Available](https://img.shields.io/badge/SBOM-Available-green?style=flat&logo=github)](https://github.com/KonradinG/sem5-pw-cis/network/dependencies)
 [![Trivy Scanning](https://img.shields.io/badge/Trivy-Weekly%20Scan-orange?style=flat&logo=aqua)](https://github.com/KonradinG/sem5-pw-cis/actions/workflows/security_summary.yml)
 [![Documentation](https://img.shields.io/badge/Documentation-Available-brightgreen?style=flat&logo=readthedocs)](DOCUMENTATION.md)
+[![PDF](https://img.shields.io/badge/PDF-More_info-EC1C24?style=flat&logo=adobeacrobatreader&logoColor=white)](ProjectWork_CIS.pdf)
 
 A fully automated DevSecOps pipeline for hardened container images with a strong focus on vulnerability management, automated dependency updates, and transparent security reporting. The goal is a reproducible, auditable, and customer‑ready example of modern container security practices.
 
