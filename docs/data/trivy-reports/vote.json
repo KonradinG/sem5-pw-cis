@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-05T04:12:45.923520525Z",
+  "CreatedAt": "2026-01-12T04:06:57.567254719Z",
   "ArtifactName": "local-vote",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,24 +8,24 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:97d8cfefe82e96699dcebbbd92f74e6077aa60f2c94135e2f5675947cb529103",
+    "ImageID": "sha256:240104aba990fc5b0b8ffe3035aac47a16737518b488c974476dcbd73f66c253",
     "DiffIDs": [
       "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472",
       "sha256:fe86684dd42c9412781d05ae9b7825becee89de97bccc01b4091376d0f1ae9dd",
       "sha256:33b7c8f872d7d43b2b6969e9c0d701f7e9a4871081f2d1a42ea2436ae72645fa",
       "sha256:d46f1325e6cf38efebec0b3f0dcaeb2e111a5121aded87933045409915467826",
-      "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564",
-      "sha256:fd5d41c286478ed518bc7b718ca8f72927b9d20ab20ce1adee67d4b7899fbda4",
-      "sha256:092df54655c3ed87b72c8ff8a948e250da0e978dc96c74df81d67a961cc38448",
-      "sha256:cf4b2a42477affd71dc194b2e8c25579f29ac96e24ec17c2acac171a75f363f3",
-      "sha256:8cc5d4730cad9251fa0e3285abaad36b44731daabfa68b84742be62e90a48dc0"
+      "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a",
+      "sha256:9758a1a722e9a00f95c235e2f09eeede9dbf789228a95e70f42d4b0b4251dd8c",
+      "sha256:dfee1ec214198cce46ff2999192e692394229755012ab68bccd60d28b49a340e",
+      "sha256:2d89dde0b0d4a3f87d8eac96384ff268a881d256ca7625c27ae0856bdcce6b4b",
+      "sha256:ac0c9341ce0ae38332fafc35beffd63f178a1324749af447e3998031cbd378ea"
     ],
     "RepoTags": [
       "local-vote:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-05T04:12:34.505086854Z",
+      "created": "2026-01-12T04:06:43.770556101Z",
       "history": [
         {
           "created": "2025-12-29T00:00:00Z",
@@ -72,38 +72,38 @@
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:30Z",
+          "created": "2026-01-12T04:06:40Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get install -y --no-install-recommends curl \u0026\u0026     rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:30Z",
+          "created": "2026-01-12T04:06:40Z",
           "created_by": "WORKDIR /usr/local/app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:30Z",
+          "created": "2026-01-12T04:06:40Z",
           "created_by": "COPY requirements.txt ./requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:34Z",
+          "created": "2026-01-12T04:06:43Z",
           "created_by": "RUN /bin/sh -c pip install --no-cache-dir -r requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:34Z",
+          "created": "2026-01-12T04:06:43Z",
           "created_by": "COPY . . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:34Z",
+          "created": "2026-01-12T04:06:43Z",
           "created_by": "EXPOSE map[80/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:34Z",
+          "created": "2026-01-12T04:06:43Z",
           "created_by": "CMD [\"gunicorn\" \"app:app\" \"-b\" \"0.0.0.0:80\" \"--log-file\" \"-\" \"--access-logfile\" \"-\" \"--workers\" \"4\" \"--keep-alive\" \"0\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -117,11 +117,11 @@
           "sha256:fe86684dd42c9412781d05ae9b7825becee89de97bccc01b4091376d0f1ae9dd",
           "sha256:33b7c8f872d7d43b2b6969e9c0d701f7e9a4871081f2d1a42ea2436ae72645fa",
           "sha256:d46f1325e6cf38efebec0b3f0dcaeb2e111a5121aded87933045409915467826",
-          "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564",
-          "sha256:fd5d41c286478ed518bc7b718ca8f72927b9d20ab20ce1adee67d4b7899fbda4",
-          "sha256:092df54655c3ed87b72c8ff8a948e250da0e978dc96c74df81d67a961cc38448",
-          "sha256:cf4b2a42477affd71dc194b2e8c25579f29ac96e24ec17c2acac171a75f363f3",
-          "sha256:8cc5d4730cad9251fa0e3285abaad36b44731daabfa68b84742be62e90a48dc0"
+          "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a",
+          "sha256:9758a1a722e9a00f95c235e2f09eeede9dbf789228a95e70f42d4b0b4251dd8c",
+          "sha256:dfee1ec214198cce46ff2999192e692394229755012ab68bccd60d28b49a340e",
+          "sha256:2d89dde0b0d4a3f87d8eac96384ff268a881d256ca7625c27ae0856bdcce6b4b",
+          "sha256:ac0c9341ce0ae38332fafc35beffd63f178a1324749af447e3998031cbd378ea"
         ]
       },
       "config": {
@@ -257,6 +257,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -439,6 +440,42 @@
           "LastModifiedDate": "2025-10-22T20:15:37.32Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-13034",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13034",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When using `CURLOPT_PINNEDPUBLICKEY` option with libcurl or `--pinnedp ...",
+          "Description": "When using `CURLOPT_PINNEDPUBLICKEY` option with libcurl or `--pinnedpubkey`\nwith the curl tool,curl should check the public key of the server certificate\nto verify the peer.\n\nThis check was skipped in a certain condition that would then make curl allow\nthe connection without performing the proper check, thus not noticing a\npossible impostor. To skip this check, the connection had to be done with QUIC\nwith ngtcp2 built to use GnuTLS and the user had to explicitly disable the\nstandard certificate verification.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "ubuntu": 2
+          },
+          "References": [
+            "https://curl.se/docs/CVE-2025-13034.html",
+            "https://curl.se/docs/CVE-2025-13034.json",
+            "https://www.cve.org/CVERecord?id=CVE-2025-13034"
+          ],
+          "PublishedDate": "2026-01-08T10:15:45.407Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-10966",
           "PkgID": "curl@8.14.1-2+deb13u2",
           "PkgName": "curl",
@@ -449,7 +486,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -462,6 +499,7 @@
           "Description": "curl's code for managing SSH connections when SFTP was done using the wolfSSH\npowered backend was flawed and missed host verification mechanisms.\n\nThis prevents curl from detecting MITM attackers and more.",
           "Severity": "LOW",
           "VendorSeverity": {
+            "amazon": 2,
             "debian": 1,
             "redhat": 2
           },
@@ -483,6 +521,202 @@
           ],
           "PublishedDate": "2025-11-07T08:15:39.617Z",
           "LastModifiedDate": "2025-11-12T16:20:22.257Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14017",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14017",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "curl: curl: Security bypass due to global TLS option changes in multi-threaded LDAPS transfers",
+          "Description": "When doing multi-threaded LDAPS transfers (LDAP over TLS) with libcurl,\nchanging TLS options in one thread would inadvertently change them globally\nand therefore possibly also affect other concurrently setup transfers.\n\nDisabling certificate verification for a specific transfer could\nunintentionally disable the feature for other threads as well.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "debian": 1,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+              "V3Score": 4.8
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/3",
+            "https://access.redhat.com/security/cve/CVE-2025-14017",
+            "https://curl.se/docs/CVE-2025-14017.html",
+            "https://curl.se/docs/CVE-2025-14017.json",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-14017",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14017"
+          ],
+          "PublishedDate": "2026-01-08T10:15:45.667Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14524",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14524",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When an OAuth2 bearer token is used for an HTTP(S) transfer, and that  ...",
+          "Description": "When an OAuth2 bearer token is used for an HTTP(S) transfer, and that transfer\nperforms a cross-protocol redirect to a second URL that uses an IMAP, LDAP,\nPOP3 or SMTP scheme, curl might wrongly pass on the bearer token to the new\ntarget host.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/4",
+            "https://curl.se/docs/CVE-2025-14524.html",
+            "https://curl.se/docs/CVE-2025-14524.json",
+            "https://hackerone.com/reports/3459417",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14524"
+          ],
+          "PublishedDate": "2026-01-08T10:15:46.607Z",
+          "LastModifiedDate": "2026-01-09T20:15:51.243Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14819",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14819",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing TLS related transfers with reused easy or multi handles and ...",
+          "Description": "When doing TLS related transfers with reused easy or multi handles and\naltering the  `CURLSSLOPT_NO_PARTIALCHAIN` option, libcurl could accidentally\nreuse a CA store cached in memory for which the partial chain option was\nreversed. Contrary to the user's wishes and expectations. This could make\nlibcurl find and accept a trust chain that it otherwise would not.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/5",
+            "https://curl.se/docs/CVE-2025-14819.html",
+            "https://curl.se/docs/CVE-2025-14819.json",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14819"
+          ],
+          "PublishedDate": "2026-01-08T10:15:46.73Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15079",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15079",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing SSH-based transfers using either SCP or SFTP, and setting t ...",
+          "Description": "When doing SSH-based transfers using either SCP or SFTP, and setting the\nknown_hosts file, libcurl could still mistakenly accept connecting to hosts\n*not present* in the specified file if they were added as recognized in the\nlibssh *global* known_hosts file.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-297"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/6",
+            "https://curl.se/docs/CVE-2025-15079.html",
+            "https://curl.se/docs/CVE-2025-15079.json",
+            "https://hackerone.com/reports/3477116",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15079"
+          ],
+          "PublishedDate": "2026-01-08T10:15:47.1Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15224",
+          "PkgID": "curl@8.14.1-2+deb13u2",
+          "PkgName": "curl",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/curl@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d75e0bb035cd8a38"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15224",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing SSH-based transfers using either SCP or SFTP, and asked to  ...",
+          "Description": "When doing SSH-based transfers using either SCP or SFTP, and asked to do\npublic key authentication, curl would wrongly still ask and authenticate using\na locally running SSH agent.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-287"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/7",
+            "https://curl.se/docs/CVE-2025-15224.html",
+            "https://curl.se/docs/CVE-2025-15224.json",
+            "https://hackerone.com/reports/3480925",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15224"
+          ],
+          "PublishedDate": "2026-01-08T10:15:47.207Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
         },
         {
           "VulnerabilityID": "CVE-2011-3374",
@@ -560,6 +794,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -1401,6 +1636,42 @@
           "LastModifiedDate": "2024-11-21T04:51:10.53Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-13034",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13034",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When using `CURLOPT_PINNEDPUBLICKEY` option with libcurl or `--pinnedp ...",
+          "Description": "When using `CURLOPT_PINNEDPUBLICKEY` option with libcurl or `--pinnedpubkey`\nwith the curl tool,curl should check the public key of the server certificate\nto verify the peer.\n\nThis check was skipped in a certain condition that would then make curl allow\nthe connection without performing the proper check, thus not noticing a\npossible impostor. To skip this check, the connection had to be done with QUIC\nwith ngtcp2 built to use GnuTLS and the user had to explicitly disable the\nstandard certificate verification.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "ubuntu": 2
+          },
+          "References": [
+            "https://curl.se/docs/CVE-2025-13034.html",
+            "https://curl.se/docs/CVE-2025-13034.json",
+            "https://www.cve.org/CVERecord?id=CVE-2025-13034"
+          ],
+          "PublishedDate": "2026-01-08T10:15:45.407Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-10966",
           "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
           "PkgName": "libcurl4t64",
@@ -1411,7 +1682,7 @@
           "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -1424,6 +1695,7 @@
           "Description": "curl's code for managing SSH connections when SFTP was done using the wolfSSH\npowered backend was flawed and missed host verification mechanisms.\n\nThis prevents curl from detecting MITM attackers and more.",
           "Severity": "LOW",
           "VendorSeverity": {
+            "amazon": 2,
             "debian": 1,
             "redhat": 2
           },
@@ -1447,17 +1719,213 @@
           "LastModifiedDate": "2025-11-12T16:20:22.257Z"
         },
         {
-          "VulnerabilityID": "CVE-2011-3389",
-          "PkgID": "libgnutls30t64@3.8.9-3",
-          "PkgName": "libgnutls30t64",
+          "VulnerabilityID": "CVE-2025-14017",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "129106c30c80cdba"
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
           },
-          "InstalledVersion": "3.8.9-3",
+          "InstalledVersion": "8.14.1-2+deb13u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14017",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "curl: curl: Security bypass due to global TLS option changes in multi-threaded LDAPS transfers",
+          "Description": "When doing multi-threaded LDAPS transfers (LDAP over TLS) with libcurl,\nchanging TLS options in one thread would inadvertently change them globally\nand therefore possibly also affect other concurrently setup transfers.\n\nDisabling certificate verification for a specific transfer could\nunintentionally disable the feature for other threads as well.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "debian": 1,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+              "V3Score": 4.8
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/3",
+            "https://access.redhat.com/security/cve/CVE-2025-14017",
+            "https://curl.se/docs/CVE-2025-14017.html",
+            "https://curl.se/docs/CVE-2025-14017.json",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-14017",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14017"
+          ],
+          "PublishedDate": "2026-01-08T10:15:45.667Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14524",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14524",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When an OAuth2 bearer token is used for an HTTP(S) transfer, and that  ...",
+          "Description": "When an OAuth2 bearer token is used for an HTTP(S) transfer, and that transfer\nperforms a cross-protocol redirect to a second URL that uses an IMAP, LDAP,\nPOP3 or SMTP scheme, curl might wrongly pass on the bearer token to the new\ntarget host.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/4",
+            "https://curl.se/docs/CVE-2025-14524.html",
+            "https://curl.se/docs/CVE-2025-14524.json",
+            "https://hackerone.com/reports/3459417",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14524"
+          ],
+          "PublishedDate": "2026-01-08T10:15:46.607Z",
+          "LastModifiedDate": "2026-01-09T20:15:51.243Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-14819",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14819",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing TLS related transfers with reused easy or multi handles and ...",
+          "Description": "When doing TLS related transfers with reused easy or multi handles and\naltering the  `CURLSSLOPT_NO_PARTIALCHAIN` option, libcurl could accidentally\nreuse a CA store cached in memory for which the partial chain option was\nreversed. Contrary to the user's wishes and expectations. This could make\nlibcurl find and accept a trust chain that it otherwise would not.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-295"
+          ],
+          "VendorSeverity": {
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/5",
+            "https://curl.se/docs/CVE-2025-14819.html",
+            "https://curl.se/docs/CVE-2025-14819.json",
+            "https://www.cve.org/CVERecord?id=CVE-2025-14819"
+          ],
+          "PublishedDate": "2026-01-08T10:15:46.73Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15079",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15079",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing SSH-based transfers using either SCP or SFTP, and setting t ...",
+          "Description": "When doing SSH-based transfers using either SCP or SFTP, and setting the\nknown_hosts file, libcurl could still mistakenly accept connecting to hosts\n*not present* in the specified file if they were added as recognized in the\nlibssh *global* known_hosts file.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-297"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/6",
+            "https://curl.se/docs/CVE-2025-15079.html",
+            "https://curl.se/docs/CVE-2025-15079.json",
+            "https://hackerone.com/reports/3477116",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15079"
+          ],
+          "PublishedDate": "2026-01-08T10:15:47.1Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15224",
+          "PkgID": "libcurl4t64@8.14.1-2+deb13u2",
+          "PkgName": "libcurl4t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libcurl4t64@8.14.1-2%2Bdeb13u2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "75750cb66fae27b9"
+          },
+          "InstalledVersion": "8.14.1-2+deb13u2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15224",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "When doing SSH-based transfers using either SCP or SFTP, and asked to  ...",
+          "Description": "When doing SSH-based transfers using either SCP or SFTP, and asked to do\npublic key authentication, curl would wrongly still ask and authenticate using\na locally running SSH agent.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-287"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "ubuntu": 1
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/07/7",
+            "https://curl.se/docs/CVE-2025-15224.html",
+            "https://curl.se/docs/CVE-2025-15224.json",
+            "https://hackerone.com/reports/3480925",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15224"
+          ],
+          "PublishedDate": "2026-01-08T10:15:47.207Z",
+          "LastModifiedDate": "2026-01-08T18:08:18.457Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2011-3389",
+          "PkgID": "libgnutls30t64@3.8.9-3+deb13u1",
+          "PkgName": "libgnutls30t64",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3%2Bdeb13u1?arch=amd64\u0026distro=debian-13.2",
+            "UID": "53ec9457f6f99efb"
+          },
+          "InstalledVersion": "3.8.9-3+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3389",
@@ -1592,39 +2060,17 @@
           "LastModifiedDate": "2025-04-11T00:51:21.963Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-9820",
-          "PkgID": "libgnutls30t64@3.8.9-3",
-          "PkgName": "libgnutls30t64",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "129106c30c80cdba"
-          },
-          "InstalledVersion": "3.8.9-3",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-9820",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "[GNUTLS-SA-2025-11-18]",
-          "Severity": "UNKNOWN"
-        },
-        {
           "VulnerabilityID": "CVE-2018-5709",
           "PkgID": "libgssapi-krb5-2@1.21.3-5",
           "PkgName": "libgssapi-krb5-2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libgssapi-krb5-2@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "b5a2373903b69c2a"
+            "UID": "4613d852c4a580c6"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1672,12 +2118,12 @@
           "PkgName": "libgssapi-krb5-2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libgssapi-krb5-2@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "b5a2373903b69c2a"
+            "UID": "4613d852c4a580c6"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1740,12 +2186,12 @@
           "PkgName": "libgssapi-krb5-2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libgssapi-krb5-2@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "b5a2373903b69c2a"
+            "UID": "4613d852c4a580c6"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -1813,7 +2259,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -1866,7 +2312,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -1934,7 +2380,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -1997,12 +2443,12 @@
           "PkgName": "libkrb5-3",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libkrb5-3@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "44769092d919ca9a"
+            "UID": "ae50e85d52c078fe"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2050,12 +2496,12 @@
           "PkgName": "libkrb5-3",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libkrb5-3@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "44769092d919ca9a"
+            "UID": "ae50e85d52c078fe"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2118,12 +2564,12 @@
           "PkgName": "libkrb5-3",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libkrb5-3@1.21.3-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "44769092d919ca9a"
+            "UID": "ae50e85d52c078fe"
           },
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2191,7 +2637,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -2244,7 +2690,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -2312,7 +2758,7 @@
           "InstalledVersion": "1.21.3-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -2395,6 +2841,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -2482,7 +2929,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2015-3276",
@@ -2539,7 +2986,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-14159",
@@ -2592,7 +3039,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-17740",
@@ -2648,7 +3095,7 @@
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:f14fa81a42a86a0508cbc690d9edca3ae7088b8e082f11e2040b6802e4bbb564"
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15719",
@@ -2701,6 +3148,56 @@
           "LastModifiedDate": "2024-11-21T05:06:05.903Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-22185",
+          "PkgID": "libldap2@2.6.10+dfsg-1",
+          "PkgName": "libldap2",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
+            "UID": "613d283492fc6579"
+          },
+          "InstalledVersion": "2.6.10+dfsg-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-22185",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "OpenLDAP: OpenLDAP LMDB: Denial of Service and Information Disclosure via Heap Buffer Underflow",
+          "Description": "OpenLDAP Lightning Memory-Mapped Database (LMDB) versions up to and including 0.9.14, prior to commit 8e1fda8, contain a heap buffer underflow in the readline() function of mdb_load. When processing malformed input containing an embedded NUL byte, an unsigned offset calculation can underflow and cause an out-of-bounds read of one byte before the allocated heap buffer. This can cause mdb_load to crash, leading to a limited denial-of-service condition.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-125",
+            "CWE-191"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+              "V3Score": 6.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-22185",
+            "https://bugs.openldap.org/show_bug.cgi?id=10421",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-22185",
+            "https://seclists.org/fulldisclosure/2026/Jan/5",
+            "https://seclists.org/fulldisclosure/2026/Jan/8",
+            "https://www.cve.org/CVERecord?id=CVE-2026-22185",
+            "https://www.openldap.org/",
+            "https://www.vulncheck.com/advisories/openldap-lmdb-mdb-load-heap-buffer-underflow-in-readline"
+          ],
+          "PublishedDate": "2026-01-07T21:16:01.733Z",
+          "LastModifiedDate": "2026-01-08T22:16:02.94Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "libmount1@2.41-5",
           "PkgName": "libmount1",
@@ -2726,6 +3223,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -2880,6 +3378,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3244,6 +3743,48 @@
           "LastModifiedDate": "2024-11-21T08:01:52.097Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-13151",
+          "PkgID": "libtasn1-6@4.20.0-2",
+          "PkgName": "libtasn1-6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libtasn1-6@4.20.0-2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "d6aea048ed4b98b7"
+          },
+          "InstalledVersion": "4.20.0-2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:8c81c7ddfc16c3aaad3f34f63457d3d29bf939243d1f44bbb206c4437ca2849a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13151",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "libtasn1: libtasn1: Denial of Service via stack-based buffer overflow in asn1_expend_octet_string",
+          "Description": "Stack-based buffer overflow in libtasn1 version: v4.20.0. The function fails to validate the size of input data resulting in a buffer overflow in asn1_expend_octet_string.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/08/5",
+            "https://access.redhat.com/security/cve/CVE-2025-13151",
+            "https://gitlab.com/gnutls/libtasn1",
+            "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
+            "https://www.cve.org/CVERecord?id=CVE-2025-13151"
+          ],
+          "PublishedDate": "2026-01-07T22:15:43.2Z",
+          "LastModifiedDate": "2026-01-08T19:15:55.983Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-6141",
           "PkgID": "libtinfo6@6.5+20250216-2",
           "PkgName": "libtinfo6",
@@ -3508,6 +4049,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3610,6 +4152,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3773,13 +4316,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -3843,6 +4386,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -4110,13 +4654,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -4336,6 +4880,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {

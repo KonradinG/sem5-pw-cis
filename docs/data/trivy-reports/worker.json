@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-05T04:12:47.450444794Z",
+  "CreatedAt": "2026-01-12T04:06:58.417975081Z",
   "ArtifactName": "local-worker",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,21 +8,21 @@
       "Family": "debian",
       "Name": "11.9"
     },
-    "ImageID": "sha256:3a8858c371a1409232592736b0a47a445cbc9cfef56b88888a841046064e492d",
+    "ImageID": "sha256:63e8656ae50d1a66f3c4e958d90fa927c2d88ba61771e4f3f85d5c46a5b62164",
     "DiffIDs": [
       "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f",
       "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
       "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
       "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-      "sha256:2521c8884bb4e612053ea00b9f4f658ae04e343c1a73faaf3fe24f5cd95b7ba7",
-      "sha256:a69262e5cee62ed835a0f2e3f01b23fee0deaa8123a914bf31eef8b08cb82f6a"
+      "sha256:1f495e23cd4508e9a6f6ef016aee76dd57fa9bbf660c5240e674083bf47b41c2",
+      "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
     ],
     "RepoTags": [
       "local-worker:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-05T04:12:37.07782948Z",
+      "created": "2026-01-12T04:06:48.599105497Z",
       "history": [
         {
           "created": "2024-05-14T01:28:26Z",
@@ -61,17 +61,17 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:26Z",
+          "created": "2026-01-12T04:06:37Z",
           "created_by": "WORKDIR /app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:37Z",
+          "created": "2026-01-12T04:06:48Z",
           "created_by": "COPY /app . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-05T04:12:37Z",
+          "created": "2026-01-12T04:06:48Z",
           "created_by": "ENTRYPOINT [\"dotnet\" \"Worker.dll\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -85,8 +85,8 @@
           "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
           "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
           "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-          "sha256:2521c8884bb4e612053ea00b9f4f658ae04e343c1a73faaf3fe24f5cd95b7ba7",
-          "sha256:a69262e5cee62ed835a0f2e3f01b23fee0deaa8123a914bf31eef8b08cb82f6a"
+          "sha256:1f495e23cd4508e9a6f6ef016aee76dd57fa9bbf660c5240e674083bf47b41c2",
+          "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
         ]
       },
       "config": {
@@ -277,6 +277,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -760,6 +761,7 @@
           "Layer": {
             "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -770,12 +772,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -784,18 +793,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-30258",
@@ -865,6 +881,7 @@
           "Layer": {
             "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -878,9 +895,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -895,7 +918,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -1028,6 +1051,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -1457,13 +1481,13 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/07/23/1",
-            "https://access.redhat.com/errata/RHSA-2025:13240",
+            "https://access.redhat.com/errata/RHSA-2025:12980",
             "https://access.redhat.com/security/cve/CVE-2025-8058",
             "https://bugzilla.redhat.com/2383146",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
-            "https://errata.almalinux.org/10/ALSA-2025-13240.html",
-            "https://errata.rockylinux.org/RLSA-2025:13240",
+            "https://errata.almalinux.org/8/ALSA-2025-12980.html",
+            "https://errata.rockylinux.org/RLSA-2025:12748",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-8058",
@@ -2211,13 +2235,13 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/07/23/1",
-            "https://access.redhat.com/errata/RHSA-2025:13240",
+            "https://access.redhat.com/errata/RHSA-2025:12980",
             "https://access.redhat.com/security/cve/CVE-2025-8058",
             "https://bugzilla.redhat.com/2383146",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
-            "https://errata.almalinux.org/10/ALSA-2025-13240.html",
-            "https://errata.rockylinux.org/RLSA-2025:13240",
+            "https://errata.almalinux.org/8/ALSA-2025-12980.html",
+            "https://errata.rockylinux.org/RLSA-2025:12748",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-8058",
@@ -3321,7 +3345,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16115",
+            "https://errata.rockylinux.org/RLSA-2025:16116",
             "https://linux.oracle.com/cve/CVE-2025-32988.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -3410,7 +3434,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16115",
+            "https://errata.rockylinux.org/RLSA-2025:16116",
             "https://linux.oracle.com/cve/CVE-2025-32990.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -3719,7 +3743,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16115",
+            "https://errata.rockylinux.org/RLSA-2025:16116",
             "https://linux.oracle.com/cve/CVE-2025-6395.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -4311,7 +4335,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359465",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-3576",
             "https://errata.almalinux.org/9/ALSA-2025-9430.html",
-            "https://errata.rockylinux.org/RLSA-2025:9418",
+            "https://errata.rockylinux.org/RLSA-2025:9430",
             "https://linux.oracle.com/cve/CVE-2025-3576.html",
             "https://linux.oracle.com/errata/ELSA-2025-9430.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00047.html",
@@ -4569,7 +4593,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2368600",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5222",
             "https://errata.almalinux.org/9/ALSA-2025-12083.html",
-            "https://errata.rockylinux.org/RLSA-2025:11888",
+            "https://errata.rockylinux.org/RLSA-2025:12083",
             "https://linux.oracle.com/cve/CVE-2025-5222.html",
             "https://linux.oracle.com/errata/ELSA-2025-12083.html",
             "https://lists.debian.org/debian-lts-announce/2025/06/msg00015.html",
@@ -4991,7 +5015,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359465",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-3576",
             "https://errata.almalinux.org/9/ALSA-2025-9430.html",
-            "https://errata.rockylinux.org/RLSA-2025:9418",
+            "https://errata.rockylinux.org/RLSA-2025:9430",
             "https://linux.oracle.com/cve/CVE-2025-3576.html",
             "https://linux.oracle.com/errata/ELSA-2025-9430.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00047.html",
@@ -5604,7 +5628,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359465",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-3576",
             "https://errata.almalinux.org/9/ALSA-2025-9430.html",
-            "https://errata.rockylinux.org/RLSA-2025:9418",
+            "https://errata.rockylinux.org/RLSA-2025:9430",
             "https://linux.oracle.com/cve/CVE-2025-3576.html",
             "https://linux.oracle.com/errata/ELSA-2025-9430.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00047.html",
@@ -6217,7 +6241,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359465",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-3576",
             "https://errata.almalinux.org/9/ALSA-2025-9430.html",
-            "https://errata.rockylinux.org/RLSA-2025:9418",
+            "https://errata.rockylinux.org/RLSA-2025:9430",
             "https://linux.oracle.com/cve/CVE-2025-3576.html",
             "https://linux.oracle.com/errata/ELSA-2025-9430.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00047.html",
@@ -6444,6 +6468,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -6597,7 +6622,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
+            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -6823,7 +6848,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
+            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -7049,7 +7074,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
+            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -7275,7 +7300,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
+            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -8123,6 +8148,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -8518,7 +8544,7 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/01/20/2",
-            "https://access.redhat.com/errata/RHSA-2025:15699",
+            "https://access.redhat.com/errata/RHSA-2025:16046",
             "https://access.redhat.com/security/cve/CVE-2024-13176",
             "https://bugzilla.redhat.com/2359885",
             "https://bugzilla.redhat.com/2359888",
@@ -8678,7 +8704,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50102",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50104",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5399",
-            "https://errata.almalinux.org/10/ALSA-2025-15699.html",
+            "https://errata.almalinux.org/9/ALSA-2025-16046.html",
             "https://errata.rockylinux.org/RLSA-2025:15699",
             "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
             "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
@@ -8972,13 +8998,13 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/30/5",
-            "https://access.redhat.com/errata/RHSA-2025:21248",
+            "https://access.redhat.com/errata/RHSA-2025:21255",
             "https://access.redhat.com/security/cve/CVE-2025-9230",
             "https://bugzilla.redhat.com/2396054",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2396054",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-9230",
-            "https://errata.almalinux.org/10/ALSA-2025-21248.html",
-            "https://errata.rockylinux.org/RLSA-2025:21248",
+            "https://errata.almalinux.org/9/ALSA-2025-21255.html",
+            "https://errata.rockylinux.org/RLSA-2025:21255",
             "https://github.com/openssl/openssl/commit/5965ea5dd6960f36d8b7f74f8eac67a8eb8f2b45",
             "https://github.com/openssl/openssl/commit/9e91358f365dee6c446dcdcdb01c04d2743fd280",
             "https://github.com/openssl/openssl/commit/a79c4ce559c6a3a8fd4109e9f33c1185d5bf2def",
@@ -8987,7 +9013,7 @@
             "https://github.openssl.org/openssl/extended-releases/commit/c2b96348bfa662f25f4fabf81958ae822063dae3",
             "https://github.openssl.org/openssl/extended-releases/commit/dfbaf161d8dafc1132dd88cd48ad990ed9b4c8ba",
             "https://linux.oracle.com/cve/CVE-2025-9230.html",
-            "https://linux.oracle.com/errata/ELSA-2025-28041.html",
+            "https://linux.oracle.com/errata/ELSA-2026-0337.html",
             "https://lists.debian.org/debian-lts-announce/2025/10/msg00001.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-9230",
             "https://openssl-library.org/news/secadv/20250930.txt",
@@ -10019,6 +10045,48 @@
           "LastModifiedDate": "2025-10-06T02:15:39.167Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-13151",
+          "PkgID": "libtasn1-6@4.16.0-2+deb11u1",
+          "PkgName": "libtasn1-6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libtasn1-6@4.16.0-2%2Bdeb11u1?arch=amd64\u0026distro=debian-11.9",
+            "UID": "2463a5e231a5d2ad"
+          },
+          "InstalledVersion": "4.16.0-2+deb11u1",
+          "Status": "fix_deferred",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13151",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "libtasn1: libtasn1: Denial of Service via stack-based buffer overflow in asn1_expend_octet_string",
+          "Description": "Stack-based buffer overflow in libtasn1 version: v4.20.0. The function fails to validate the size of input data resulting in a buffer overflow in asn1_expend_octet_string.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/08/5",
+            "https://access.redhat.com/security/cve/CVE-2025-13151",
+            "https://gitlab.com/gnutls/libtasn1",
+            "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
+            "https://www.cve.org/CVERecord?id=CVE-2025-13151"
+          ],
+          "PublishedDate": "2026-01-07T22:15:43.2Z",
+          "LastModifiedDate": "2026-01-08T19:15:55.983Z"
+        },
+        {
           "VulnerabilityID": "CVE-2023-50495",
           "PkgID": "libtinfo6@6.2+20201114-2+deb11u2",
           "PkgName": "libtinfo6",
@@ -10851,6 +10919,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -11361,13 +11430,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -11505,6 +11574,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -12038,7 +12108,7 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/01/20/2",
-            "https://access.redhat.com/errata/RHSA-2025:15699",
+            "https://access.redhat.com/errata/RHSA-2025:16046",
             "https://access.redhat.com/security/cve/CVE-2024-13176",
             "https://bugzilla.redhat.com/2359885",
             "https://bugzilla.redhat.com/2359888",
@@ -12198,7 +12268,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50102",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50104",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5399",
-            "https://errata.almalinux.org/10/ALSA-2025-15699.html",
+            "https://errata.almalinux.org/9/ALSA-2025-16046.html",
             "https://errata.rockylinux.org/RLSA-2025:15699",
             "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
             "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
@@ -12492,13 +12562,13 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/30/5",
-            "https://access.redhat.com/errata/RHSA-2025:21248",
+            "https://access.redhat.com/errata/RHSA-2025:21255",
             "https://access.redhat.com/security/cve/CVE-2025-9230",
             "https://bugzilla.redhat.com/2396054",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2396054",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-9230",
-            "https://errata.almalinux.org/10/ALSA-2025-21248.html",
-            "https://errata.rockylinux.org/RLSA-2025:21248",
+            "https://errata.almalinux.org/9/ALSA-2025-21255.html",
+            "https://errata.rockylinux.org/RLSA-2025:21255",
             "https://github.com/openssl/openssl/commit/5965ea5dd6960f36d8b7f74f8eac67a8eb8f2b45",
             "https://github.com/openssl/openssl/commit/9e91358f365dee6c446dcdcdb01c04d2743fd280",
             "https://github.com/openssl/openssl/commit/a79c4ce559c6a3a8fd4109e9f33c1185d5bf2def",
@@ -12507,7 +12577,7 @@
             "https://github.openssl.org/openssl/extended-releases/commit/c2b96348bfa662f25f4fabf81958ae822063dae3",
             "https://github.openssl.org/openssl/extended-releases/commit/dfbaf161d8dafc1132dd88cd48ad990ed9b4c8ba",
             "https://linux.oracle.com/cve/CVE-2025-9230.html",
-            "https://linux.oracle.com/errata/ELSA-2025-28041.html",
+            "https://linux.oracle.com/errata/ELSA-2026-0337.html",
             "https://lists.debian.org/debian-lts-announce/2025/10/msg00001.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-9230",
             "https://openssl-library.org/news/secadv/20250930.txt",
@@ -12989,13 +13059,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -13250,7 +13320,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2369407",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-40909",
             "https://errata.almalinux.org/8/ALSA-2025-11805.html",
-            "https://errata.rockylinux.org/RLSA-2025:12056",
+            "https://errata.rockylinux.org/RLSA-2025:11804",
             "https://github.com/Perl/perl5/commit/11a11ecf4bea72b17d250cfb43c897be1341861e",
             "https://github.com/Perl/perl5/commit/918bfff86ca8d6d4e4ec5b30994451e0bd74aba9.patch",
             "https://github.com/Perl/perl5/issues/10387",
@@ -13619,6 +13689,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -13788,7 +13859,7 @@
           "FixedVersion": "8.0.3, 4.0.14, 4.1.13, 5.0.18, 6.0.11, 7.0.7",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:a69262e5cee62ed835a0f2e3f01b23fee0deaa8123a914bf31eef8b08cb82f6a"
+            "DiffID": "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-32655",
@@ -13849,7 +13920,7 @@
           "FixedVersion": "4.7.2, 5.0.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:a69262e5cee62ed835a0f2e3f01b23fee0deaa8123a914bf31eef8b08cb82f6a"
+            "DiffID": "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-24112",

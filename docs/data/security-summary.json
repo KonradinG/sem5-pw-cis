@@ -1,74 +1,74 @@
 {
-  "generatedAt": "2026-01-05T04:14:08Z",
+  "generatedAt": "2026-01-12T04:08:20Z",
   "period": {
-    "start": "2025-12-29",
-    "end": "2026-01-05"
+    "start": "2026-01-05",
+    "end": "2026-01-12"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 104,
-      "medium": 300,
-      "low": 521,
-      "unknown": 20
+      "high": 29,
+      "medium": 145,
+      "low": 535,
+      "unknown": 0
     },
     {
       "name": "local-postgres-18",
       "critical": 0,
       "high": 9,
-      "medium": 27,
-      "low": 82,
+      "medium": 28,
+      "low": 83,
       "unknown": 1
     },
     {
       "name": "local-python-3.14",
       "critical": 0,
       "high": 9,
-      "medium": 24,
-      "low": 417,
+      "medium": 28,
+      "low": 433,
       "unknown": 1
     },
     {
       "name": "local-result",
       "critical": 1,
       "high": 18,
-      "medium": 33,
-      "low": 87,
+      "medium": 34,
+      "low": 98,
       "unknown": 1
     },
     {
       "name": "local-vote",
       "critical": 0,
       "high": 0,
-      "medium": 10,
-      "low": 70,
-      "unknown": 1
+      "medium": 13,
+      "low": 81,
+      "unknown": 0
     },
     {
       "name": "local-worker",
       "critical": 7,
       "high": 31,
-      "medium": 60,
+      "medium": 61,
       "low": 92,
       "unknown": 5
     }
   ],
   "totals": {
     "critical": 8,
-    "high": 171,
-    "medium": 454,
-    "low": 1269,
-    "unknown": 29
+    "high": 96,
+    "medium": 309,
+    "low": 1322,
+    "unknown": 8
   },
   "delta": {
     "critical": 0,
-    "high": 14,
-    "medium": 10,
-    "low": 96,
-    "unknown": -32
+    "high": -75,
+    "medium": -145,
+    "low": 53,
+    "unknown": -21
   },
-  "direction": "worse",
+  "direction": "better",
   "trend": [
     {
       "date": "2025-11-13",
@@ -129,6 +129,12 @@
       "critical": 8,
       "high": 171,
       "medium": 454
+    },
+    {
+      "date": "2026-01-12",
+      "critical": 8,
+      "high": 96,
+      "medium": 309
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",

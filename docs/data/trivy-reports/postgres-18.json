@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-05T04:12:49.41782674Z",
+  "CreatedAt": "2026-01-12T04:07:00.174577454Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:cc02b7aa19ad8aef8dc7f4ffdc1f6266cdf0a72e2d0acf7655a39754486b68bc",
+    "ImageID": "sha256:5fb6b4666d48347ef90fa1534b0d34cd7c6e82fa4fa5c653f0ee43d5b1907a04",
     "DiffIDs": [
       "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472",
       "sha256:d2832a1202ce153aacad13cf560dfc47d6cf11b62e1c1d8b0d9d658babe1554c",
@@ -23,14 +23,14 @@
       "sha256:4000c6ee4a583c40a25d612a7dafb93b4b7abdbd9b167150351821e44900158a",
       "sha256:4442ff3d8261ced271fee58da8445c6f9eb3f6bc857d0a40be1ed27dbd9fd226",
       "sha256:03df401152bbbf935f01947877230e0946e17bbcf7a0946ff1451483a092862b",
-      "sha256:0820c960041e1d1ec459a15bbbd1a317ca85eec1a218ecafe3d87c524a0fd006"
+      "sha256:e686f19aebafdc92676aa58bb6bd84e0a9d43ca96b33bdbeb0dc9da1fb34171e"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-05T04:12:33.893229853Z",
+      "created": "2026-01-12T04:06:44.763365789Z",
       "history": [
         {
           "created": "2025-12-29T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-05T04:12:33Z",
+          "created": "2026-01-12T04:06:44Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:4000c6ee4a583c40a25d612a7dafb93b4b7abdbd9b167150351821e44900158a",
           "sha256:4442ff3d8261ced271fee58da8445c6f9eb3f6bc857d0a40be1ed27dbd9fd226",
           "sha256:03df401152bbbf935f01947877230e0946e17bbcf7a0946ff1451483a092862b",
-          "sha256:0820c960041e1d1ec459a15bbbd1a317ca85eec1a218ecafe3d87c524a0fd006"
+          "sha256:e686f19aebafdc92676aa58bb6bd84e0a9d43ca96b33bdbeb0dc9da1fb34171e"
         ]
       },
       "config": {
@@ -356,6 +356,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -546,10 +547,12 @@
             "UID": "6a280f7c6d71952f"
           },
           "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -560,12 +563,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -574,18 +584,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -600,6 +617,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -613,9 +631,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -630,7 +654,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -696,10 +720,12 @@
             "UID": "5a6270291afec115"
           },
           "InstalledVersion": "2.4.7-21",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -710,12 +736,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -724,18 +757,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -750,6 +790,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -763,9 +804,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -780,7 +827,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -846,10 +893,12 @@
             "UID": "e06ce0bdbb95a846"
           },
           "InstalledVersion": "2.4.7-21",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -860,12 +909,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -874,18 +930,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -900,6 +963,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -913,9 +977,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -930,7 +1000,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -996,10 +1066,12 @@
             "UID": "f8a8e33a95cd4814"
           },
           "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -1010,12 +1082,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -1024,18 +1103,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -1050,6 +1136,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -1063,9 +1150,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -1080,7 +1173,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -1146,10 +1239,12 @@
             "UID": "7693666706cc8726"
           },
           "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -1160,12 +1255,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -1174,18 +1276,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -1200,6 +1309,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -1213,9 +1323,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -1230,7 +1346,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -1296,10 +1412,12 @@
             "UID": "f0935b7991605572"
           },
           "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -1310,12 +1428,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -1324,18 +1449,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -1350,6 +1482,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -1363,9 +1496,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -1380,7 +1519,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -1446,10 +1585,12 @@
             "UID": "be29ee0b03568d99"
           },
           "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
+          "FixedVersion": "2.4.7-21+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
           "DataSource": {
             "ID": "debian",
@@ -1460,12 +1601,19 @@
           "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
           "Severity": "HIGH",
           "CweIDs": [
-            "CWE-675"
+            "CWE-675",
+            "CWE-787"
           ],
           "VendorSeverity": {
-            "redhat": 3
+            "nvd": 3,
+            "redhat": 3,
+            "ubuntu": 3
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
               "V3Score": 7.8
@@ -1474,18 +1622,25 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://dev.gnupg.org/T7906",
+            "https://dev.gnupg.org/T8001",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
+            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
+            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
+            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
+            "https://ubuntu.com/security/notices/USN-7946-1",
+            "https://ubuntu.com/security/notices/USN-7946-2",
             "https://www.cve.org/CVERecord?id=CVE-2025-68973",
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.803Z"
+          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -1500,6 +1655,7 @@
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
+          "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
@@ -1513,9 +1669,15 @@
             "CWE-347"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
+            },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
               "V3Score": 5.9
@@ -1530,7 +1692,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
           "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-02T21:15:56.583Z"
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
@@ -1663,6 +1825,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3158,7 +3321,8 @@
             "UID": "c1f30538acdb3412"
           },
           "InstalledVersion": "3.8.9-3",
-          "Status": "affected",
+          "FixedVersion": "3.8.9-3+deb13u1",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
           },
@@ -3197,6 +3361,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3503,6 +3668,56 @@
           "LastModifiedDate": "2024-11-21T05:06:05.903Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-22185",
+          "PkgID": "libldap2@2.6.10+dfsg-1",
+          "PkgName": "libldap2",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
+            "UID": "e3bb10dd5d9ac596"
+          },
+          "InstalledVersion": "2.6.10+dfsg-1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+          },
+          "SeveritySource": "debian",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-22185",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "OpenLDAP: OpenLDAP LMDB: Denial of Service and Information Disclosure via Heap Buffer Underflow",
+          "Description": "OpenLDAP Lightning Memory-Mapped Database (LMDB) versions up to and including 0.9.14, prior to commit 8e1fda8, contain a heap buffer underflow in the readline() function of mdb_load. When processing malformed input containing an embedded NUL byte, an unsigned offset calculation can underflow and cause an out-of-bounds read of one byte before the allocated heap buffer. This can cause mdb_load to crash, leading to a limited denial-of-service condition.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-125",
+            "CWE-191"
+          ],
+          "VendorSeverity": {
+            "debian": 1,
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+              "V3Score": 6.8
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-22185",
+            "https://bugs.openldap.org/show_bug.cgi?id=10421",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-22185",
+            "https://seclists.org/fulldisclosure/2026/Jan/5",
+            "https://seclists.org/fulldisclosure/2026/Jan/8",
+            "https://www.cve.org/CVERecord?id=CVE-2026-22185",
+            "https://www.openldap.org/",
+            "https://www.vulncheck.com/advisories/openldap-lmdb-mdb-load-heap-buffer-underflow-in-readline"
+          ],
+          "PublishedDate": "2026-01-07T21:16:01.733Z",
+          "LastModifiedDate": "2026-01-08T22:16:02.94Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "libmount1@2.41-5",
           "PkgName": "libmount1",
@@ -3528,6 +3743,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -3738,6 +3954,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -4102,6 +4319,48 @@
           "LastModifiedDate": "2024-11-21T08:01:52.097Z"
         },
         {
+          "VulnerabilityID": "CVE-2025-13151",
+          "PkgID": "libtasn1-6@4.20.0-2",
+          "PkgName": "libtasn1-6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libtasn1-6@4.20.0-2?arch=amd64\u0026distro=debian-13.2",
+            "UID": "a5cd15f82518847b"
+          },
+          "InstalledVersion": "4.20.0-2",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13151",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "libtasn1: libtasn1: Denial of Service via stack-based buffer overflow in asn1_expend_octet_string",
+          "Description": "Stack-based buffer overflow in libtasn1 version: v4.20.0. The function fails to validate the size of input data resulting in a buffer overflow in asn1_expend_octet_string.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/08/5",
+            "https://access.redhat.com/security/cve/CVE-2025-13151",
+            "https://gitlab.com/gnutls/libtasn1",
+            "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
+            "https://www.cve.org/CVERecord?id=CVE-2025-13151"
+          ],
+          "PublishedDate": "2026-01-07T22:15:43.2Z",
+          "LastModifiedDate": "2026-01-08T19:15:55.983Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-6141",
           "PkgID": "libtinfo6@6.5+20250216-2",
           "PkgName": "libtinfo6",
@@ -4366,6 +4625,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -4850,6 +5110,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -5013,13 +5274,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -5083,6 +5344,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -5350,13 +5612,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20145",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -5688,6 +5950,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "cbl-mariner": 2,
             "redhat": 2
           },
           "CVSS": {
@@ -5815,13 +6078,13 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:23295",
+            "https://access.redhat.com/errata/RHSA-2025:23326",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
             "https://bugzilla.redhat.com/2407258",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
-            "https://errata.almalinux.org/10/ALSA-2025-23295.html",
-            "https://errata.rockylinux.org/RLSA-2025:23295",
+            "https://errata.almalinux.org/9/ALSA-2025-23326.html",
+            "https://errata.rockylinux.org/RLSA-2025:23326",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",
@@ -5860,6 +6123,7 @@
             "CWE-295"
           ],
           "VendorSeverity": {
+            "amazon": 3,
             "bitnami": 3,
             "redhat": 3
           },
@@ -6365,6 +6629,7 @@
             "CWE-295"
           ],
           "VendorSeverity": {
+            "amazon": 3,
             "bitnami": 2,
             "redhat": 2
           },
