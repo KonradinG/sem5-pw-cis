@@ -1,200 +1,200 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-12T04:07:00.174577454Z",
+  "CreatedAt": "2026-01-19T04:08:03.818047015Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
     "OS": {
       "Family": "debian",
-      "Name": "13.2"
+      "Name": "13.3"
     },
-    "ImageID": "sha256:5fb6b4666d48347ef90fa1534b0d34cd7c6e82fa4fa5c653f0ee43d5b1907a04",
+    "ImageID": "sha256:e35ebb19661a7cc4c950acf0985d46c00621c7c541d4637bc9c8d83f133d263e",
     "DiffIDs": [
-      "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472",
-      "sha256:d2832a1202ce153aacad13cf560dfc47d6cf11b62e1c1d8b0d9d658babe1554c",
-      "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b",
-      "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c",
-      "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41",
-      "sha256:0ebef1d3053b0bbf04bdba636cb339d8a7ac4e6399888a5b5bed802bbf18d7a7",
-      "sha256:ae7c718941f080da3dd0ca201662ab0849db127f9c0f3f1d66dade8fc8376d3c",
-      "sha256:d2d32c8c96f880b48971a0c7d74ef6bb78a6c71f5f603459f67fa40e2c219c33",
-      "sha256:86f34e27eb84b9e786e3fc33d05437b487c2e7109f22a0b696d182e7687bb9de",
-      "sha256:0afc0109ea2df62325795fb9a51c37b7d0026c508cee972a880fc01dbd12f567",
-      "sha256:4000c6ee4a583c40a25d612a7dafb93b4b7abdbd9b167150351821e44900158a",
-      "sha256:4442ff3d8261ced271fee58da8445c6f9eb3f6bc857d0a40be1ed27dbd9fd226",
-      "sha256:03df401152bbbf935f01947877230e0946e17bbcf7a0946ff1451483a092862b",
-      "sha256:e686f19aebafdc92676aa58bb6bd84e0a9d43ca96b33bdbeb0dc9da1fb34171e"
+      "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92",
+      "sha256:ca42cb9c943c2204e8b511f6f7e849601cc8646deda86a7b87d7cbc1e4935c0f",
+      "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5",
+      "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76",
+      "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754",
+      "sha256:f753be1bdac1db576aaa5c32f15e3a8acfbe6908ce976dd80a6d0e616931db8b",
+      "sha256:b61466673bc4a9d78ccef4e65b207a204581717b0e4c69cb6fbbcf35fe8de7bd",
+      "sha256:400399446ab66f754aa69d9ebfc560940a06d52cb3f102e49ba28984f746e373",
+      "sha256:cb80ac84aa49142d02a7dfa5d850da7e01cdb44eaa221ac8a8bde2c3e51c4300",
+      "sha256:c9f43626c01a2b7b86656671cba99f2fd35ab9a7777675527e2a6c16612da9a2",
+      "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
+      "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
+      "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
+      "sha256:962ecf47bc837dbfa1e6423acbf2c5109070ef735da9211d12b18ada1b05c40d"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-12T04:06:44.763365789Z",
+      "created": "2026-01-19T04:07:49.199499704Z",
       "history": [
         {
-          "created": "2025-12-29T00:00:00Z",
-          "created_by": "# debian.sh --arch 'amd64' out/ 'trixie' '@1766966400'",
+          "created": "2026-01-12T00:00:00Z",
+          "created_by": "# debian.sh --arch 'amd64' out/ 'trixie' '@1768176000'",
           "comment": "debuerreotype 0.17"
         },
         {
-          "created": "2025-12-29T23:36:06Z",
+          "created": "2026-01-13T01:49:16Z",
           "created_by": "RUN /bin/sh -c set -eux; \tgroupadd -r postgres --gid=999; \tuseradd -r -g postgres --uid=999 --home-dir=/var/lib/postgresql --shell=/bin/bash postgres; \tinstall --verbose --directory --owner postgres --group postgres --mode 1777 /var/lib/postgresql # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:11Z",
+          "created": "2026-01-13T01:49:22Z",
           "created_by": "RUN /bin/sh -c set -ex; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tgnupg \t\tless \t; \trm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:18Z",
+          "created": "2026-01-13T01:49:29Z",
           "created_by": "ENV GOSU_VERSION=1.19",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:18Z",
+          "created": "2026-01-13T01:49:29Z",
           "created_by": "RUN /bin/sh -c set -eux; \tsavedAptMark=\"$(apt-mark showmanual)\"; \tapt-get update; \tapt-get install -y --no-install-recommends ca-certificates wget; \trm -rf /var/lib/apt/lists/*; \tdpkgArch=\"$(dpkg --print-architecture | awk -F- '{ print $NF }')\"; \twget -O /usr/local/bin/gosu \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch\"; \twget -O /usr/local/bin/gosu.asc \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc\"; \texport GNUPGHOME=\"$(mktemp -d)\"; \tgpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \tgpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \tgpgconf --kill all; \trm -rf \"$GNUPGHOME\" /usr/local/bin/gosu.asc; \tapt-mark auto '.*' \u003e /dev/null; \t[ -z \"$savedAptMark\" ] || apt-mark manual $savedAptMark \u003e /dev/null; \tapt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \tchmod +x /usr/local/bin/gosu; \tgosu --version; \tgosu nobody true # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:22Z",
+          "created": "2026-01-13T01:49:34Z",
           "created_by": "RUN /bin/sh -c set -eux; \tif [ -f /etc/dpkg/dpkg.cfg.d/docker ]; then \t\tgrep -q '/usr/share/locale' /etc/dpkg/dpkg.cfg.d/docker; \t\tsed -ri '/\\/usr\\/share\\/locale/d' /etc/dpkg/dpkg.cfg.d/docker; \t\t! grep -q '/usr/share/locale' /etc/dpkg/dpkg.cfg.d/docker; \tfi; \tapt-get update; apt-get install -y --no-install-recommends locales; rm -rf /var/lib/apt/lists/*; \techo 'en_US.UTF-8 UTF-8' \u003e\u003e /etc/locale.gen; \tlocale-gen; \tlocale -a | grep 'en_US.utf8' # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:22Z",
+          "created": "2026-01-13T01:49:34Z",
           "created_by": "ENV LANG=en_US.utf8",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:25Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "RUN /bin/sh -c set -eux; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tlibnss-wrapper \t\txz-utils \t\tzstd \t; \trm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:25Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "RUN /bin/sh -c mkdir /docker-entrypoint-initdb.d # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:26Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "RUN /bin/sh -c set -ex; \tkey='B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8'; \texport GNUPGHOME=\"$(mktemp -d)\"; \tmkdir -p /usr/local/share/keyrings/; \tgpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\"; \tgpg --batch --export --armor \"$key\" \u003e /usr/local/share/keyrings/postgres.gpg.asc; \tgpgconf --kill all; \trm -rf \"$GNUPGHOME\" # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:26Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "ENV PG_MAJOR=18",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:26Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/18/bin",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:26Z",
+          "created": "2026-01-13T01:49:37Z",
           "created_by": "ENV PG_VERSION=18.1-1.pgdg13+2",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:52Z",
           "created_by": "RUN /bin/sh -c set -ex; \t\texport PYTHONDONTWRITEBYTECODE=1; \t\tdpkgArch=\"$(dpkg --print-architecture)\"; \taptRepo=\"[ signed-by=/usr/local/share/keyrings/postgres.gpg.asc ] http://apt.postgresql.org/pub/repos/apt trixie-pgdg main $PG_MAJOR\"; \tcase \"$dpkgArch\" in \t\tamd64 | arm64 | ppc64el) \t\t\techo \"deb $aptRepo\" \u003e /etc/apt/sources.list.d/pgdg.list; \t\t\tapt-get update; \t\t\t;; \t\t*) \t\t\techo \"deb-src $aptRepo\" \u003e /etc/apt/sources.list.d/pgdg.list; \t\t\t\t\t\tsavedAptMark=\"$(apt-mark showmanual)\"; \t\t\t\t\t\ttempDir=\"$(mktemp -d)\"; \t\t\tcd \"$tempDir\"; \t\t\t\t\t\tapt-get update; \t\t\tapt-get install -y --no-install-recommends dpkg-dev; \t\t\techo \"deb [ trusted=yes ] file://$tempDir ./\" \u003e /etc/apt/sources.list.d/temp.list; \t\t\t_update_repo() { \t\t\t\tdpkg-scanpackages . \u003e Packages; \t\t\t\tapt-get -o Acquire::GzipIndexes=false update; \t\t\t}; \t\t\t_update_repo; \t\t\t\t\t\tnproc=\"$(nproc)\"; \t\t\texport DEB_BUILD_OPTIONS=\"nocheck parallel=$nproc\"; \t\t\tapt-get build-dep -y postgresql-common-dev; \t\t\tapt-get source --compile postgresql-common-dev; \t\t\t_update_repo; \t\t\tapt-get build-dep -y \"postgresql-$PG_MAJOR=$PG_VERSION\"; \t\t\tapt-get source --compile \"postgresql-$PG_MAJOR=$PG_VERSION\"; \t\t\t\t\t\t\t\t\tapt-mark showmanual | xargs apt-mark auto \u003e /dev/null; \t\t\tapt-mark manual $savedAptMark; \t\t\t\t\t\tls -lAFh; \t\t\t_update_repo; \t\t\tgrep '^Package: ' Packages; \t\t\tcd /; \t\t\t;; \tesac; \t\tapt-get install -y --no-install-recommends postgresql-common; \tsed -ri 's/#(create_main_cluster) .*$/\\1 = false/' /etc/postgresql-common/createcluster.conf; \tapt-get install -y --no-install-recommends \t\t\"postgresql-$PG_MAJOR=$PG_VERSION\" \t; \tif apt-get install -s \"postgresql-$PG_MAJOR-jit\" \u003e /dev/null 2\u003e\u00261; then \t\tapt-get install -y --no-install-recommends \"postgresql-$PG_MAJOR-jit=$PG_VERSION\"; \tfi; \t\trm -rf /var/lib/apt/lists/*; \t\tif [ -n \"$tempDir\" ]; then \t\tapt-get purge -y --auto-remove; \t\trm -rf \"$tempDir\" /etc/apt/sources.list.d/temp.list; \tfi; \t\tfind /usr -name '*.pyc' -type f -exec bash -c 'for pyc; do dpkg -S \"$pyc\" \u0026\u003e /dev/null || rm -vf \"$pyc\"; done' -- '{}' +; \t\tpostgres --version # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "RUN /bin/sh -c set -eux; \tdpkg-divert --add --rename --divert \"/usr/share/postgresql/postgresql.conf.sample.dpkg\" \"/usr/share/postgresql/$PG_MAJOR/postgresql.conf.sample\"; \tcp -v /usr/share/postgresql/postgresql.conf.sample.dpkg /usr/share/postgresql/postgresql.conf.sample; \tln -sv ../postgresql.conf.sample \"/usr/share/postgresql/$PG_MAJOR/\"; \tsed -ri \"s!^#?(listen_addresses)\\s*=\\s*\\S+.*!\\1 = '*'!\" /usr/share/postgresql/postgresql.conf.sample; \tgrep -F \"listen_addresses = '*'\" /usr/share/postgresql/postgresql.conf.sample # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "RUN /bin/sh -c install --verbose --directory --owner postgres --group postgres --mode 3777 /var/run/postgresql # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "ENV PGDATA=/var/lib/postgresql/18/docker",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "VOLUME [/var/lib/postgresql]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "COPY docker-entrypoint.sh docker-ensure-initdb.sh /usr/local/bin/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "RUN /bin/sh -c ln -sT docker-ensure-initdb.sh /usr/local/bin/docker-enforce-initdb.sh # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "ENTRYPOINT [\"docker-entrypoint.sh\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "STOPSIGNAL SIGINT",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "EXPOSE map[5432/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-29T23:36:40Z",
+          "created": "2026-01-13T01:49:53Z",
           "created_by": "CMD [\"postgres\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-12T04:06:44Z",
+          "created": "2026-01-19T04:07:49Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -203,20 +203,20 @@
       "rootfs": {
         "type": "layers",
         "diff_ids": [
-          "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472",
-          "sha256:d2832a1202ce153aacad13cf560dfc47d6cf11b62e1c1d8b0d9d658babe1554c",
-          "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b",
-          "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c",
-          "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41",
-          "sha256:0ebef1d3053b0bbf04bdba636cb339d8a7ac4e6399888a5b5bed802bbf18d7a7",
-          "sha256:ae7c718941f080da3dd0ca201662ab0849db127f9c0f3f1d66dade8fc8376d3c",
-          "sha256:d2d32c8c96f880b48971a0c7d74ef6bb78a6c71f5f603459f67fa40e2c219c33",
-          "sha256:86f34e27eb84b9e786e3fc33d05437b487c2e7109f22a0b696d182e7687bb9de",
-          "sha256:0afc0109ea2df62325795fb9a51c37b7d0026c508cee972a880fc01dbd12f567",
-          "sha256:4000c6ee4a583c40a25d612a7dafb93b4b7abdbd9b167150351821e44900158a",
-          "sha256:4442ff3d8261ced271fee58da8445c6f9eb3f6bc857d0a40be1ed27dbd9fd226",
-          "sha256:03df401152bbbf935f01947877230e0946e17bbcf7a0946ff1451483a092862b",
-          "sha256:e686f19aebafdc92676aa58bb6bd84e0a9d43ca96b33bdbeb0dc9da1fb34171e"
+          "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92",
+          "sha256:ca42cb9c943c2204e8b511f6f7e849601cc8646deda86a7b87d7cbc1e4935c0f",
+          "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5",
+          "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76",
+          "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754",
+          "sha256:f753be1bdac1db576aaa5c32f15e3a8acfbe6908ce976dd80a6d0e616931db8b",
+          "sha256:b61466673bc4a9d78ccef4e65b207a204581717b0e4c69cb6fbbcf35fe8de7bd",
+          "sha256:400399446ab66f754aa69d9ebfc560940a06d52cb3f102e49ba28984f746e373",
+          "sha256:cb80ac84aa49142d02a7dfa5d850da7e01cdb44eaa221ac8a8bde2c3e51c4300",
+          "sha256:c9f43626c01a2b7b86656671cba99f2fd35ab9a7777675527e2a6c16612da9a2",
+          "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
+          "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
+          "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
+          "sha256:962ecf47bc837dbfa1e6423acbf2c5109070ef735da9211d12b18ada1b05c40d"
         ]
       },
       "config": {
@@ -250,7 +250,7 @@
   },
   "Results": [
     {
-      "Target": "local-postgres-18 (debian 13.2)",
+      "Target": "local-postgres-18 (debian 13.3)",
       "Class": "os-pkgs",
       "Type": "debian",
       "Vulnerabilities": [
@@ -259,13 +259,13 @@
           "PkgID": "apt@3.0.3",
           "PkgName": "apt",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/apt@3.0.3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6642a59b2f9859f6"
+            "PURL": "pkg:deb/debian/apt@3.0.3?arch=amd64\u0026distro=debian-13.3",
+            "UID": "ee5909b019090ce0"
           },
           "InstalledVersion": "3.0.3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3374",
@@ -306,16 +306,16 @@
         },
         {
           "VulnerabilityID": "TEMP-0841856-B18BAF",
-          "PkgID": "bash@5.2.37-2+b5",
+          "PkgID": "bash@5.2.37-2+b7",
           "PkgName": "bash",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/bash@5.2.37-2%2Bb5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "45cfeabe81518977"
+            "PURL": "pkg:deb/debian/bash@5.2.37-2%2Bb7?arch=amd64\u0026distro=debian-13.3",
+            "UID": "f3f6aed02568dce2"
           },
-          "InstalledVersion": "5.2.37-2+b5",
+          "InstalledVersion": "5.2.37-2+b7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://security-tracker.debian.org/tracker/TEMP-0841856-B18BAF",
@@ -335,13 +335,13 @@
           "PkgID": "bsdutils@1:2.41-5",
           "PkgName": "bsdutils",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/bsdutils@2.41-5?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
+            "PURL": "pkg:deb/debian/bsdutils@2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
             "UID": "c9de60be80a96a27"
           },
           "InstalledVersion": "1:2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -356,6 +356,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -379,13 +380,13 @@
           "PkgID": "bsdutils@1:2.41-5",
           "PkgName": "bsdutils",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/bsdutils@2.41-5?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
+            "PURL": "pkg:deb/debian/bsdutils@2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
             "UID": "c9de60be80a96a27"
           },
           "InstalledVersion": "1:2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -438,13 +439,13 @@
           "PkgID": "coreutils@9.7-3",
           "PkgName": "coreutils",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/coreutils@9.7-3?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/coreutils@9.7-3?arch=amd64\u0026distro=debian-13.3",
             "UID": "a90cbdbcbab1768e"
           },
           "InstalledVersion": "9.7-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-18018",
@@ -490,13 +491,13 @@
           "PkgID": "coreutils@9.7-3",
           "PkgName": "coreutils",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/coreutils@9.7-3?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/coreutils@9.7-3?arch=amd64\u0026distro=debian-13.3",
             "UID": "a90cbdbcbab1768e"
           },
           "InstalledVersion": "9.7-3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-5278",
@@ -539,135 +540,70 @@
           "LastModifiedDate": "2025-10-22T20:15:37.32Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "dirmngr@2.4.7-21+b3",
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "dirmngr@2.4.7-21+deb13u1+b1",
           "PkgName": "dirmngr",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6a280f7c6d71952f"
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "199f3f6a83641523"
           },
-          "InstalledVersion": "2.4.7-21+b3",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
+          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "MEDIUM",
           "CweIDs": [
-            "CWE-675",
-            "CWE-787"
+            "CWE-347"
           ],
           "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
+            "azure": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
             },
             "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
+              "V3Score": 5.9
             }
           },
           "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
+            "https://access.redhat.com/security/cve/CVE-2025-68972",
+            "https://gpg.fail/formfeed",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+            "https://news.ycombinator.com/item?id=46404339",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
+            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "dirmngr@2.4.7-21+b3",
+          "VulnerabilityID": "CVE-2022-3219",
+          "PkgID": "dirmngr@2.4.7-21+deb13u1+b1",
           "PkgName": "dirmngr",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6a280f7c6d71952f"
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "199f3f6a83641523"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
-          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
-          "Severity": "MEDIUM",
-          "CweIDs": [
-            "CWE-347"
-          ],
-          "VendorSeverity": {
-            "nvd": 2,
-            "redhat": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
-              "V3Score": 4.7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-68972",
-            "https://gpg.fail/formfeed",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46404339",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
-          ],
-          "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "dirmngr@2.4.7-21+b3",
-          "PkgName": "dirmngr",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6a280f7c6d71952f"
-          },
-          "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -712,135 +648,70 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gnupg@2.4.7-21",
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg@2.4.7-21+deb13u1",
           "PkgName": "gnupg",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "5a6270291afec115"
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "381fb5a3d0faa225"
           },
-          "InstalledVersion": "2.4.7-21",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
+          "InstalledVersion": "2.4.7-21+deb13u1",
+          "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
+          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "MEDIUM",
           "CweIDs": [
-            "CWE-675",
-            "CWE-787"
+            "CWE-347"
           ],
           "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
+            "azure": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
             },
             "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
+              "V3Score": 5.9
             }
           },
           "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
+            "https://access.redhat.com/security/cve/CVE-2025-68972",
+            "https://gpg.fail/formfeed",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+            "https://news.ycombinator.com/item?id=46404339",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
+            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gnupg@2.4.7-21",
+          "VulnerabilityID": "CVE-2022-3219",
+          "PkgID": "gnupg@2.4.7-21+deb13u1",
           "PkgName": "gnupg",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "5a6270291afec115"
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "381fb5a3d0faa225"
           },
-          "InstalledVersion": "2.4.7-21",
+          "InstalledVersion": "2.4.7-21+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
-          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
-          "Severity": "MEDIUM",
-          "CweIDs": [
-            "CWE-347"
-          ],
-          "VendorSeverity": {
-            "nvd": 2,
-            "redhat": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
-              "V3Score": 4.7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-68972",
-            "https://gpg.fail/formfeed",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46404339",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
-          ],
-          "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gnupg@2.4.7-21",
-          "PkgName": "gnupg",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "5a6270291afec115"
-          },
-          "InstalledVersion": "2.4.7-21",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -885,135 +756,70 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gnupg-l10n@2.4.7-21",
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gnupg-l10n@2.4.7-21+deb13u1",
           "PkgName": "gnupg-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "e06ce0bdbb95a846"
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "7c8c8c8328e69db6"
           },
-          "InstalledVersion": "2.4.7-21",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
+          "InstalledVersion": "2.4.7-21+deb13u1",
+          "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
+          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "MEDIUM",
           "CweIDs": [
-            "CWE-675",
-            "CWE-787"
+            "CWE-347"
           ],
           "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
+            "azure": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
             },
             "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
+              "V3Score": 5.9
             }
           },
           "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
+            "https://access.redhat.com/security/cve/CVE-2025-68972",
+            "https://gpg.fail/formfeed",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+            "https://news.ycombinator.com/item?id=46404339",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
+            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gnupg-l10n@2.4.7-21",
+          "VulnerabilityID": "CVE-2022-3219",
+          "PkgID": "gnupg-l10n@2.4.7-21+deb13u1",
           "PkgName": "gnupg-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "e06ce0bdbb95a846"
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "7c8c8c8328e69db6"
           },
-          "InstalledVersion": "2.4.7-21",
+          "InstalledVersion": "2.4.7-21+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
-          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
-          "Severity": "MEDIUM",
-          "CweIDs": [
-            "CWE-347"
-          ],
-          "VendorSeverity": {
-            "nvd": 2,
-            "redhat": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
-              "V3Score": 4.7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-68972",
-            "https://gpg.fail/formfeed",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46404339",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
-          ],
-          "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gnupg-l10n@2.4.7-21",
-          "PkgName": "gnupg-l10n",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21?arch=all\u0026distro=debian-13.2",
-            "UID": "e06ce0bdbb95a846"
-          },
-          "InstalledVersion": "2.4.7-21",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -1058,135 +864,70 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gpg@2.4.7-21+b3",
+          "VulnerabilityID": "CVE-2025-68972",
+          "PkgID": "gpg@2.4.7-21+deb13u1+b1",
           "PkgName": "gpg",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f8a8e33a95cd4814"
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "73d01e3bb5b9367a"
           },
-          "InstalledVersion": "2.4.7-21+b3",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
           "DataSource": {
             "ID": "debian",
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
+          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
+          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
+          "Severity": "MEDIUM",
           "CweIDs": [
-            "CWE-675",
-            "CWE-787"
+            "CWE-347"
           ],
           "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
+            "azure": 2,
+            "nvd": 2,
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+              "V3Score": 4.7
             },
             "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
+              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
+              "V3Score": 5.9
             }
           },
           "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
+            "https://access.redhat.com/security/cve/CVE-2025-68972",
+            "https://gpg.fail/formfeed",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
+            "https://news.ycombinator.com/item?id=46404339",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
+            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
           ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
+          "PublishedDate": "2025-12-27T23:15:40.9Z",
+          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gpg@2.4.7-21+b3",
+          "VulnerabilityID": "CVE-2022-3219",
+          "PkgID": "gpg@2.4.7-21+deb13u1+b1",
           "PkgName": "gpg",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f8a8e33a95cd4814"
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "73d01e3bb5b9367a"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "gnupg: GnuPG: Signature bypass via form feed character in signed messages",
-          "Description": "In GnuPG through 2.4.8, if a signed message has \\f at the end of a plaintext line, an adversary can construct a modified message that places additional text after the signed material, such that signature verification of the modified message succeeds (although an \"invalid armor\" message is printed during verification). This is related to use of \\f as a marker to denote truncation of a long plaintext line.",
-          "Severity": "MEDIUM",
-          "CweIDs": [
-            "CWE-347"
-          ],
-          "VendorSeverity": {
-            "nvd": 2,
-            "redhat": 2,
-            "ubuntu": 2
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
-              "V3Score": 4.7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N",
-              "V3Score": 5.9
-            }
-          },
-          "References": [
-            "https://access.redhat.com/security/cve/CVE-2025-68972",
-            "https://gpg.fail/formfeed",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46404339",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68972",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68972"
-          ],
-          "PublishedDate": "2025-12-27T23:15:40.9Z",
-          "LastModifiedDate": "2026-01-09T20:08:47.323Z"
-        },
-        {
-          "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gpg@2.4.7-21+b3",
-          "PkgName": "gpg",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f8a8e33a95cd4814"
-          },
-          "InstalledVersion": "2.4.7-21+b3",
-          "Status": "affected",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -1231,83 +972,17 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gpg-agent@2.4.7-21+b3",
-          "PkgName": "gpg-agent",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "7693666706cc8726"
-          },
-          "InstalledVersion": "2.4.7-21+b3",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-675",
-            "CWE-787"
-          ],
-          "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
-            }
-          },
-          "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
-          ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgID": "gpg-agent@2.4.7-21+deb13u1+b1",
           "PkgName": "gpg-agent",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "7693666706cc8726"
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "c99bca1ef36f2eda"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
@@ -1323,6 +998,7 @@
             "CWE-347"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "nvd": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -1350,16 +1026,16 @@
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gpg-agent@2.4.7-21+b3",
+          "PkgID": "gpg-agent@2.4.7-21+deb13u1+b1",
           "PkgName": "gpg-agent",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "7693666706cc8726"
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "c99bca1ef36f2eda"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -1404,83 +1080,17 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gpgconf@2.4.7-21+b3",
-          "PkgName": "gpgconf",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f0935b7991605572"
-          },
-          "InstalledVersion": "2.4.7-21+b3",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-675",
-            "CWE-787"
-          ],
-          "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
-            }
-          },
-          "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
-          ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgID": "gpgconf@2.4.7-21+deb13u1+b1",
           "PkgName": "gpgconf",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f0935b7991605572"
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3950088e68d1ba44"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
@@ -1496,6 +1106,7 @@
             "CWE-347"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "nvd": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -1523,16 +1134,16 @@
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gpgconf@2.4.7-21+b3",
+          "PkgID": "gpgconf@2.4.7-21+deb13u1+b1",
           "PkgName": "gpgconf",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "f0935b7991605572"
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3950088e68d1ba44"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -1577,83 +1188,17 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-68973",
-          "PkgID": "gpgsm@2.4.7-21+b3",
-          "PkgName": "gpgsm",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "be29ee0b03568d99"
-          },
-          "InstalledVersion": "2.4.7-21+b3",
-          "FixedVersion": "2.4.7-21+deb13u1",
-          "Status": "fixed",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "SeveritySource": "nvd",
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68973",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "GnuPG: GnuPG: Information disclosure and potential arbitrary code execution via out-of-bounds write",
-          "Description": "In GnuPG before 2.4.9, armor_filter in g10/armor.c has two increments of an index variable where one is intended, leading to an out-of-bounds write for crafted input. (For ExtendedLTS, 2.2.51 and later are fixed versions.)",
-          "Severity": "HIGH",
-          "CweIDs": [
-            "CWE-675",
-            "CWE-787"
-          ],
-          "VendorSeverity": {
-            "nvd": 3,
-            "redhat": 3,
-            "ubuntu": 3
-          },
-          "CVSS": {
-            "nvd": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-              "V3Score": 7
-            },
-            "redhat": {
-              "V3Vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
-              "V3Score": 7.8
-            }
-          },
-          "References": [
-            "http://www.openwall.com/lists/oss-security/2025/12/29/11",
-            "https://access.redhat.com/security/cve/CVE-2025-68973",
-            "https://dev.gnupg.org/T7906",
-            "https://dev.gnupg.org/T8001",
-            "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
-            "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
-            "https://github.com/gpg/gnupg/commit/1e929abd20fa2e4be3797a137caca63a971d5372 (gnupg-2.2.51)",
-            "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
-            "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
-            "https://gpg.fail/memcpy",
-            "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
-            "https://news.ycombinator.com/item?id=46403200",
-            "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
-            "https://ubuntu.com/security/notices/USN-7946-1",
-            "https://ubuntu.com/security/notices/USN-7946-2",
-            "https://www.cve.org/CVERecord?id=CVE-2025-68973",
-            "https://www.openwall.com/lists/oss-security/2025/12/28/5"
-          ],
-          "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
-        },
-        {
           "VulnerabilityID": "CVE-2025-68972",
-          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgID": "gpgsm@2.4.7-21+deb13u1+b1",
           "PkgName": "gpgsm",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "be29ee0b03568d99"
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "a804ec6f178e4be4"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-68972",
@@ -1669,6 +1214,7 @@
             "CWE-347"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "nvd": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -1696,16 +1242,16 @@
         },
         {
           "VulnerabilityID": "CVE-2022-3219",
-          "PkgID": "gpgsm@2.4.7-21+b3",
+          "PkgID": "gpgsm@2.4.7-21+deb13u1+b1",
           "PkgName": "gpgsm",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bb3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "be29ee0b03568d99"
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "a804ec6f178e4be4"
           },
-          "InstalledVersion": "2.4.7-21+b3",
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-3219",
@@ -1754,13 +1300,13 @@
           "PkgID": "libapt-pkg7.0@3.0.3",
           "PkgName": "libapt-pkg7.0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libapt-pkg7.0@3.0.3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a42f664fd0cab715"
+            "PURL": "pkg:deb/debian/libapt-pkg7.0@3.0.3?arch=amd64\u0026distro=debian-13.3",
+            "UID": "fcb54560d93a880b"
           },
           "InstalledVersion": "3.0.3",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3374",
@@ -1804,13 +1350,13 @@
           "PkgID": "libblkid1@2.41-5",
           "PkgName": "libblkid1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libblkid1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6c9693ac78293e63"
+            "PURL": "pkg:deb/debian/libblkid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3537354242b80232"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -1825,6 +1371,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -1848,13 +1395,13 @@
           "PkgID": "libblkid1@2.41-5",
           "PkgName": "libblkid1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libblkid1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6c9693ac78293e63"
+            "PURL": "pkg:deb/debian/libblkid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3537354242b80232"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -1903,17 +1450,106 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
-          "VulnerabilityID": "CVE-2010-4756",
-          "PkgID": "libc-bin@2.41-12",
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
+          "PkgName": "libc-bin",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2010-4756",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
+          "PkgName": "libc-bin",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2010-4756",
@@ -1959,16 +1595,16 @@
         },
         {
           "VulnerabilityID": "CVE-2018-20796",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-20796",
@@ -2016,16 +1652,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010022",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010022",
@@ -2066,16 +1702,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010023",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010023",
@@ -2119,16 +1755,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010024",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010024",
@@ -2176,16 +1812,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010025",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010025",
@@ -2232,16 +1868,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-9192",
-          "PkgID": "libc-bin@2.41-12",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-bin@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a531ca45463d06a2"
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-9192",
@@ -2285,17 +1921,106 @@
           "LastModifiedDate": "2024-11-21T04:51:10.53Z"
         },
         {
-          "VulnerabilityID": "CVE-2010-4756",
-          "PkgID": "libc-l10n@2.41-12",
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
+          "PkgName": "libc-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2010-4756",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
+          "PkgName": "libc-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2010-4756",
@@ -2341,16 +2066,16 @@
         },
         {
           "VulnerabilityID": "CVE-2018-20796",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-20796",
@@ -2398,16 +2123,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010022",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010022",
@@ -2448,16 +2173,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010023",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010023",
@@ -2501,16 +2226,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010024",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010024",
@@ -2558,16 +2283,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010025",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010025",
@@ -2614,16 +2339,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-9192",
-          "PkgID": "libc-l10n@2.41-12",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
           "PkgName": "libc-l10n",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc-l10n@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "fc75c2f01760e3b7"
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-9192",
@@ -2667,17 +2392,106 @@
           "LastModifiedDate": "2024-11-21T04:51:10.53Z"
         },
         {
-          "VulnerabilityID": "CVE-2010-4756",
-          "PkgID": "libc6@2.41-12",
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "libc6@2.41-12+deb13u1",
+          "PkgName": "libc6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2010-4756",
+          "PkgID": "libc6@2.41-12+deb13u1",
+          "PkgName": "libc6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2010-4756",
@@ -2723,16 +2537,16 @@
         },
         {
           "VulnerabilityID": "CVE-2018-20796",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-20796",
@@ -2780,16 +2594,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010022",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010022",
@@ -2830,16 +2644,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010023",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010023",
@@ -2883,16 +2697,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010024",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010024",
@@ -2940,16 +2754,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010025",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010025",
@@ -2996,16 +2810,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-9192",
-          "PkgID": "libc6@2.41-12",
+          "PkgID": "libc6@2.41-12+deb13u1",
           "PkgName": "libc6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libc6@2.41-12?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a6d2d0103571346b"
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-9192",
@@ -3053,13 +2867,13 @@
           "PkgID": "libgcrypt20@1.11.0-7",
           "PkgName": "libgcrypt20",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgcrypt20@1.11.0-7?arch=amd64\u0026distro=debian-13.2",
-            "UID": "ba55a48977e993b9"
+            "PURL": "pkg:deb/debian/libgcrypt20@1.11.0-7?arch=amd64\u0026distro=debian-13.3",
+            "UID": "288c3701fa73fda3"
           },
           "InstalledVersion": "1.11.0-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-6829",
@@ -3108,13 +2922,13 @@
           "PkgID": "libgcrypt20@1.11.0-7",
           "PkgName": "libgcrypt20",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgcrypt20@1.11.0-7?arch=amd64\u0026distro=debian-13.2",
-            "UID": "ba55a48977e993b9"
+            "PURL": "pkg:deb/debian/libgcrypt20@1.11.0-7?arch=amd64\u0026distro=debian-13.3",
+            "UID": "288c3701fa73fda3"
           },
           "InstalledVersion": "1.11.0-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-2236",
@@ -3169,16 +2983,16 @@
         },
         {
           "VulnerabilityID": "CVE-2011-3389",
-          "PkgID": "libgnutls30t64@3.8.9-3",
+          "PkgID": "libgnutls30t64@3.8.9-3+deb13u1",
           "PkgName": "libgnutls30t64",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "c1f30538acdb3412"
+            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "45209d14af59ebb0"
           },
-          "InstalledVersion": "3.8.9-3",
+          "InstalledVersion": "3.8.9-3+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-3389",
@@ -3313,40 +3127,17 @@
           "LastModifiedDate": "2025-04-11T00:51:21.963Z"
         },
         {
-          "VulnerabilityID": "CVE-2025-9820",
-          "PkgID": "libgnutls30t64@3.8.9-3",
-          "PkgName": "libgnutls30t64",
-          "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libgnutls30t64@3.8.9-3?arch=amd64\u0026distro=debian-13.2",
-            "UID": "c1f30538acdb3412"
-          },
-          "InstalledVersion": "3.8.9-3",
-          "FixedVersion": "3.8.9-3+deb13u1",
-          "Status": "fixed",
-          "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
-          },
-          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-9820",
-          "DataSource": {
-            "ID": "debian",
-            "Name": "Debian Security Tracker",
-            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
-          },
-          "Title": "[GNUTLS-SA-2025-11-18]",
-          "Severity": "UNKNOWN"
-        },
-        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "liblastlog2-2@2.41-5",
           "PkgName": "liblastlog2-2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/liblastlog2-2@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "df76396cbfd04981"
+            "PURL": "pkg:deb/debian/liblastlog2-2@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "870a761736951a7a"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -3361,6 +3152,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -3384,13 +3176,13 @@
           "PkgID": "liblastlog2-2@2.41-5",
           "PkgName": "liblastlog2-2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/liblastlog2-2@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "df76396cbfd04981"
+            "PURL": "pkg:deb/debian/liblastlog2-2@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "870a761736951a7a"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -3443,13 +3235,13 @@
           "PkgID": "libldap2@2.6.10+dfsg-1",
           "PkgName": "libldap2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e3bb10dd5d9ac596"
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "95ff493d00e192d2"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2015-3276",
@@ -3500,13 +3292,13 @@
           "PkgID": "libldap2@2.6.10+dfsg-1",
           "PkgName": "libldap2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e3bb10dd5d9ac596"
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "95ff493d00e192d2"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-14159",
@@ -3553,13 +3345,13 @@
           "PkgID": "libldap2@2.6.10+dfsg-1",
           "PkgName": "libldap2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e3bb10dd5d9ac596"
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "95ff493d00e192d2"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-17740",
@@ -3609,13 +3401,13 @@
           "PkgID": "libldap2@2.6.10+dfsg-1",
           "PkgName": "libldap2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e3bb10dd5d9ac596"
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "95ff493d00e192d2"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15719",
@@ -3672,13 +3464,13 @@
           "PkgID": "libldap2@2.6.10+dfsg-1",
           "PkgName": "libldap2",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e3bb10dd5d9ac596"
+            "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "95ff493d00e192d2"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-22185",
@@ -3696,7 +3488,8 @@
           ],
           "VendorSeverity": {
             "debian": 1,
-            "redhat": 2
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -3715,20 +3508,20 @@
             "https://www.vulncheck.com/advisories/openldap-lmdb-mdb-load-heap-buffer-underflow-in-readline"
           ],
           "PublishedDate": "2026-01-07T21:16:01.733Z",
-          "LastModifiedDate": "2026-01-08T22:16:02.94Z"
+          "LastModifiedDate": "2026-01-14T18:16:42.147Z"
         },
         {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "libmount1@2.41-5",
           "PkgName": "libmount1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libmount1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6d2d7374cd54451e"
+            "PURL": "pkg:deb/debian/libmount1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "d221671730a103d6"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -3743,6 +3536,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -3766,13 +3560,13 @@
           "PkgID": "libmount1@2.41-5",
           "PkgName": "libmount1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libmount1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "6d2d7374cd54451e"
+            "PURL": "pkg:deb/debian/libmount1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "d221671730a103d6"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -3825,13 +3619,13 @@
           "PkgID": "libncursesw6@6.5+20250216-2",
           "PkgName": "libncursesw6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libncursesw6@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.2",
-            "UID": "9ab389651a2b5886"
+            "PURL": "pkg:deb/debian/libncursesw6@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.3",
+            "UID": "d8cc076ff864a414"
           },
           "InstalledVersion": "6.5+20250216-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-6141",
           "DataSource": {
@@ -3877,13 +3671,13 @@
           "PkgID": "libperl5.40@5.40.1-6",
           "PkgName": "libperl5.40",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libperl5.40@5.40.1-6?arch=amd64\u0026distro=debian-13.2",
-            "UID": "2317fd40c840954"
+            "PURL": "pkg:deb/debian/libperl5.40@5.40.1-6?arch=amd64\u0026distro=debian-13.3",
+            "UID": "d3c6340de26a1fe9"
           },
           "InstalledVersion": "5.40.1-6",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:86f34e27eb84b9e786e3fc33d05437b487c2e7109f22a0b696d182e7687bb9de"
+            "DiffID": "sha256:cb80ac84aa49142d02a7dfa5d850da7e01cdb44eaa221ac8a8bde2c3e51c4300"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-4116",
@@ -3933,13 +3727,13 @@
           "PkgID": "libsmartcols1@2.41-5",
           "PkgName": "libsmartcols1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsmartcols1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "bdd963006efde917"
+            "PURL": "pkg:deb/debian/libsmartcols1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "55096df77b1297e"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -3954,6 +3748,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -3977,13 +3772,13 @@
           "PkgID": "libsmartcols1@2.41-5",
           "PkgName": "libsmartcols1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsmartcols1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "bdd963006efde917"
+            "PURL": "pkg:deb/debian/libsmartcols1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "55096df77b1297e"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -4036,13 +3831,13 @@
           "PkgID": "libsqlite3-0@3.46.1-7",
           "PkgName": "libsqlite3-0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsqlite3-0@3.46.1-7?arch=amd64\u0026distro=debian-13.2",
-            "UID": "d3b12dcb7bd33f74"
+            "PURL": "pkg:deb/debian/libsqlite3-0@3.46.1-7?arch=amd64\u0026distro=debian-13.3",
+            "UID": "426214ab8c828031"
           },
           "InstalledVersion": "3.46.1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-7709",
           "DataSource": {
@@ -4075,13 +3870,13 @@
           "PkgID": "libsqlite3-0@3.46.1-7",
           "PkgName": "libsqlite3-0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsqlite3-0@3.46.1-7?arch=amd64\u0026distro=debian-13.2",
-            "UID": "d3b12dcb7bd33f74"
+            "PURL": "pkg:deb/debian/libsqlite3-0@3.46.1-7?arch=amd64\u0026distro=debian-13.3",
+            "UID": "426214ab8c828031"
           },
           "InstalledVersion": "3.46.1-7",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-45346",
@@ -4136,13 +3931,13 @@
           "PkgID": "libsystemd0@257.9-1~deb13u1",
           "PkgName": "libsystemd0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "cfc904cffc1cab8"
+            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "e78c19ab1926c0bd"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2013-4392",
@@ -4188,13 +3983,13 @@
           "PkgID": "libsystemd0@257.9-1~deb13u1",
           "PkgName": "libsystemd0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "cfc904cffc1cab8"
+            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "e78c19ab1926c0bd"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31437",
@@ -4232,13 +4027,13 @@
           "PkgID": "libsystemd0@257.9-1~deb13u1",
           "PkgName": "libsystemd0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "cfc904cffc1cab8"
+            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "e78c19ab1926c0bd"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31438",
@@ -4277,13 +4072,13 @@
           "PkgID": "libsystemd0@257.9-1~deb13u1",
           "PkgName": "libsystemd0",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "cfc904cffc1cab8"
+            "PURL": "pkg:deb/debian/libsystemd0@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "e78c19ab1926c0bd"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31439",
@@ -4323,13 +4118,13 @@
           "PkgID": "libtasn1-6@4.20.0-2",
           "PkgName": "libtasn1-6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libtasn1-6@4.20.0-2?arch=amd64\u0026distro=debian-13.2",
-            "UID": "a5cd15f82518847b"
+            "PURL": "pkg:deb/debian/libtasn1-6@4.20.0-2?arch=amd64\u0026distro=debian-13.3",
+            "UID": "a09475abdd277fa"
           },
           "InstalledVersion": "4.20.0-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a1c9a5edd50a6c8b84683ee4b632a9de0a4316366326cf7177314cccd3fc018b"
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-13151",
           "DataSource": {
@@ -4341,7 +4136,8 @@
           "Description": "Stack-based buffer overflow in libtasn1 version: v4.20.0. The function fails to validate the size of input data resulting in a buffer overflow in asn1_expend_octet_string.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -4355,6 +4151,7 @@
             "https://gitlab.com/gnutls/libtasn1",
             "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
+            "https://ubuntu.com/security/notices/USN-7954-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-13151"
           ],
           "PublishedDate": "2026-01-07T22:15:43.2Z",
@@ -4365,13 +4162,13 @@
           "PkgID": "libtinfo6@6.5+20250216-2",
           "PkgName": "libtinfo6",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libtinfo6@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.2",
-            "UID": "39109c87ce11f4ff"
+            "PURL": "pkg:deb/debian/libtinfo6@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.3",
+            "UID": "2775c95ca4834aac"
           },
           "InstalledVersion": "6.5+20250216-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-6141",
           "DataSource": {
@@ -4417,13 +4214,13 @@
           "PkgID": "libudev1@257.9-1~deb13u1",
           "PkgName": "libudev1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "1ca70176cbd700b3"
+            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "2fd3e8a18c69a8b2"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2013-4392",
@@ -4469,13 +4266,13 @@
           "PkgID": "libudev1@257.9-1~deb13u1",
           "PkgName": "libudev1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "1ca70176cbd700b3"
+            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "2fd3e8a18c69a8b2"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31437",
@@ -4513,13 +4310,13 @@
           "PkgID": "libudev1@257.9-1~deb13u1",
           "PkgName": "libudev1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "1ca70176cbd700b3"
+            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "2fd3e8a18c69a8b2"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31438",
@@ -4558,13 +4355,13 @@
           "PkgID": "libudev1@257.9-1~deb13u1",
           "PkgName": "libudev1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.2",
-            "UID": "1ca70176cbd700b3"
+            "PURL": "pkg:deb/debian/libudev1@257.9-1~deb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "2fd3e8a18c69a8b2"
           },
           "InstalledVersion": "257.9-1~deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-31439",
@@ -4604,13 +4401,13 @@
           "PkgID": "libuuid1@2.41-5",
           "PkgName": "libuuid1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libuuid1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e68ae51900aac46d"
+            "PURL": "pkg:deb/debian/libuuid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "4cbf1ae7d7774880"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -4625,6 +4422,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -4648,13 +4446,13 @@
           "PkgID": "libuuid1@2.41-5",
           "PkgName": "libuuid1",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/libuuid1@2.41-5?arch=amd64\u0026distro=debian-13.2",
-            "UID": "e68ae51900aac46d"
+            "PURL": "pkg:deb/debian/libuuid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "4cbf1ae7d7774880"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -4703,17 +4501,106 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
-          "VulnerabilityID": "CVE-2010-4756",
-          "PkgID": "locales@2.41-12",
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "locales@2.41-12+deb13u1",
+          "PkgName": "locales",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2010-4756",
+          "PkgID": "locales@2.41-12+deb13u1",
+          "PkgName": "locales",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2010-4756",
@@ -4759,16 +4646,16 @@
         },
         {
           "VulnerabilityID": "CVE-2018-20796",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-20796",
@@ -4816,16 +4703,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010022",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010022",
@@ -4866,16 +4753,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010023",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010023",
@@ -4919,16 +4806,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010024",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010024",
@@ -4976,16 +4863,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-1010025",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-1010025",
@@ -5032,16 +4919,16 @@
         },
         {
           "VulnerabilityID": "CVE-2019-9192",
-          "PkgID": "locales@2.41-12",
+          "PkgID": "locales@2.41-12+deb13u1",
           "PkgName": "locales",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/locales@2.41-12?arch=all\u0026distro=debian-13.2",
-            "UID": "a3557a3a89a95fa5"
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
           },
-          "InstalledVersion": "2.41-12",
+          "InstalledVersion": "2.41-12+deb13u1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:a95354b7aa1ef84f14eb75aa996efad0f0ea630be8476783d150b8b098a81d41"
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2019-9192",
@@ -5089,13 +4976,13 @@
           "PkgID": "login@1:4.16.0-2+really2.41-5",
           "PkgName": "login",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/login@4.16.0-2%2Breally2.41-5?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
-            "UID": "9a6da06303db8b93"
+            "PURL": "pkg:deb/debian/login@4.16.0-2%2Breally2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "ca152d53e85ce4cc"
           },
           "InstalledVersion": "1:4.16.0-2+really2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -5110,6 +4997,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -5133,13 +5021,13 @@
           "PkgID": "login@1:4.16.0-2+really2.41-5",
           "PkgName": "login",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/login@4.16.0-2%2Breally2.41-5?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
-            "UID": "9a6da06303db8b93"
+            "PURL": "pkg:deb/debian/login@4.16.0-2%2Breally2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "ca152d53e85ce4cc"
           },
           "InstalledVersion": "1:4.16.0-2+really2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -5192,13 +5080,13 @@
           "PkgID": "login.defs@1:4.17.4-2",
           "PkgName": "login.defs",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.2\u0026epoch=1",
+            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.3\u0026epoch=1",
             "UID": "b2ebc9108569350a"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2007-5686",
@@ -5239,13 +5127,13 @@
           "PkgID": "login.defs@1:4.17.4-2",
           "PkgName": "login.defs",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.2\u0026epoch=1",
+            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.3\u0026epoch=1",
             "UID": "b2ebc9108569350a"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-56433",
           "DataSource": {
@@ -5274,12 +5162,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -5297,13 +5185,13 @@
           "PkgID": "login.defs@1:4.17.4-2",
           "PkgName": "login.defs",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.2\u0026epoch=1",
+            "PURL": "pkg:deb/debian/login.defs@4.17.4-2?arch=all\u0026distro=debian-13.3\u0026epoch=1",
             "UID": "b2ebc9108569350a"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://security-tracker.debian.org/tracker/TEMP-0628843-DBAD28",
@@ -5323,13 +5211,13 @@
           "PkgID": "mount@2.41-5",
           "PkgName": "mount",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/mount@2.41-5?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/mount@2.41-5?arch=amd64\u0026distro=debian-13.3",
             "UID": "c6fdc5cf989db569"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -5344,6 +5232,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -5367,13 +5256,13 @@
           "PkgID": "mount@2.41-5",
           "PkgName": "mount",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/mount@2.41-5?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/mount@2.41-5?arch=amd64\u0026distro=debian-13.3",
             "UID": "c6fdc5cf989db569"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -5426,13 +5315,13 @@
           "PkgID": "ncurses-base@6.5+20250216-2",
           "PkgName": "ncurses-base",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/ncurses-base@6.5%2B20250216-2?arch=all\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/ncurses-base@6.5%2B20250216-2?arch=all\u0026distro=debian-13.3",
             "UID": "76a1fb5936f344dc"
           },
           "InstalledVersion": "6.5+20250216-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-6141",
           "DataSource": {
@@ -5478,13 +5367,13 @@
           "PkgID": "ncurses-bin@6.5+20250216-2",
           "PkgName": "ncurses-bin",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/ncurses-bin@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/ncurses-bin@6.5%2B20250216-2?arch=amd64\u0026distro=debian-13.3",
             "UID": "d03e89ad6a7a5243"
           },
           "InstalledVersion": "6.5+20250216-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-6141",
           "DataSource": {
@@ -5530,13 +5419,13 @@
           "PkgID": "passwd@1:4.17.4-2",
           "PkgName": "passwd",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
-            "UID": "5e15080d1eeaf8e8"
+            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "b5cd60abe9a494cb"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2007-5686",
@@ -5577,13 +5466,13 @@
           "PkgID": "passwd@1:4.17.4-2",
           "PkgName": "passwd",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
-            "UID": "5e15080d1eeaf8e8"
+            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "b5cd60abe9a494cb"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-56433",
           "DataSource": {
@@ -5612,12 +5501,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -5635,13 +5524,13 @@
           "PkgID": "passwd@1:4.17.4-2",
           "PkgName": "passwd",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.2\u0026epoch=1",
-            "UID": "5e15080d1eeaf8e8"
+            "PURL": "pkg:deb/debian/passwd@4.17.4-2?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "b5cd60abe9a494cb"
           },
           "InstalledVersion": "1:4.17.4-2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://security-tracker.debian.org/tracker/TEMP-0628843-DBAD28",
@@ -5661,13 +5550,13 @@
           "PkgID": "perl@5.40.1-6",
           "PkgName": "perl",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/perl@5.40.1-6?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/perl@5.40.1-6?arch=amd64\u0026distro=debian-13.3",
             "UID": "8dace0e06553a406"
           },
           "InstalledVersion": "5.40.1-6",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:86f34e27eb84b9e786e3fc33d05437b487c2e7109f22a0b696d182e7687bb9de"
+            "DiffID": "sha256:cb80ac84aa49142d02a7dfa5d850da7e01cdb44eaa221ac8a8bde2c3e51c4300"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-4116",
@@ -5717,13 +5606,13 @@
           "PkgID": "perl-base@5.40.1-6",
           "PkgName": "perl-base",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/perl-base@5.40.1-6?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/perl-base@5.40.1-6?arch=amd64\u0026distro=debian-13.3",
             "UID": "17f06da2c02a11c6"
           },
           "InstalledVersion": "5.40.1-6",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-4116",
@@ -5773,13 +5662,13 @@
           "PkgID": "perl-modules-5.40@5.40.1-6",
           "PkgName": "perl-modules-5.40",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/perl-modules-5.40@5.40.1-6?arch=all\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/perl-modules-5.40@5.40.1-6?arch=all\u0026distro=debian-13.3",
             "UID": "99273aa6c35f7b1f"
           },
           "InstalledVersion": "5.40.1-6",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:86f34e27eb84b9e786e3fc33d05437b487c2e7109f22a0b696d182e7687bb9de"
+            "DiffID": "sha256:cb80ac84aa49142d02a7dfa5d850da7e01cdb44eaa221ac8a8bde2c3e51c4300"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2011-4116",
@@ -5829,13 +5718,13 @@
           "PkgID": "sysvinit-utils@3.14-4",
           "PkgName": "sysvinit-utils",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/sysvinit-utils@3.14-4?arch=amd64\u0026distro=debian-13.2",
-            "UID": "c7e8999242a896a1"
+            "PURL": "pkg:deb/debian/sysvinit-utils@3.14-4?arch=amd64\u0026distro=debian-13.3",
+            "UID": "ef67a3a863df838d"
           },
           "InstalledVersion": "3.14-4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://security-tracker.debian.org/tracker/TEMP-0517018-A83CE6",
@@ -5855,13 +5744,13 @@
           "PkgID": "tar@1.35+dfsg-3.1",
           "PkgName": "tar",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/tar@1.35%2Bdfsg-3.1?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/tar@1.35%2Bdfsg-3.1?arch=amd64\u0026distro=debian-13.3",
             "UID": "50aee76d081ea925"
           },
           "InstalledVersion": "1.35+dfsg-3.1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2005-2541",
@@ -5903,13 +5792,13 @@
           "PkgID": "tar@1.35+dfsg-3.1",
           "PkgName": "tar",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/tar@1.35%2Bdfsg-3.1?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/tar@1.35%2Bdfsg-3.1?arch=amd64\u0026distro=debian-13.3",
             "UID": "50aee76d081ea925"
           },
           "InstalledVersion": "1.35+dfsg-3.1",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://security-tracker.debian.org/tracker/TEMP-0290435-0B57B5",
@@ -5929,13 +5818,13 @@
           "PkgID": "util-linux@2.41-5",
           "PkgName": "util-linux",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/util-linux@2.41-5?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/util-linux@2.41-5?arch=amd64\u0026distro=debian-13.3",
             "UID": "38be4846f19b7fa"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14104",
           "DataSource": {
@@ -5950,6 +5839,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -5973,13 +5863,13 @@
           "PkgID": "util-linux@2.41-5",
           "PkgName": "util-linux",
           "PkgIdentifier": {
-            "PURL": "pkg:deb/debian/util-linux@2.41-5?arch=amd64\u0026distro=debian-13.2",
+            "PURL": "pkg:deb/debian/util-linux@2.41-5?arch=amd64\u0026distro=debian-13.3",
             "UID": "38be4846f19b7fa"
           },
           "InstalledVersion": "2.41-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:6a7f953ae30c9f480e6eaf7be8b1ba742bce57a3a83c43e927348e763cff7472"
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-0563",
@@ -6045,7 +5935,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58183",
           "DataSource": {
@@ -6078,12 +5968,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:23326",
+            "https://access.redhat.com/errata/RHSA-2025:23295",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
             "https://bugzilla.redhat.com/2407258",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
-            "https://errata.almalinux.org/9/ALSA-2025-23326.html",
+            "https://errata.almalinux.org/10/ALSA-2025-23295.html",
             "https://errata.rockylinux.org/RLSA-2025:23326",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
@@ -6108,7 +5998,7 @@
           "FixedVersion": "1.24.11, 1.25.5",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61729",
           "DataSource": {
@@ -6116,7 +6006,7 @@
             "Name": "The Go Vulnerability Database",
             "URL": "https://pkg.go.dev/vuln/"
           },
-          "Title": "crypto/x509: Excessive resource consumption when printing error string for host certificate validation in crypto/x509",
+          "Title": "crypto/x509: golang: Denial of Service due to excessive resource consumption via crafted certificate",
           "Description": "Within HostnameError.Error(), when constructing an error string, there is no limit to the number of hosts that will be printed out. Furthermore, the error string is constructed by repeated string concatenation, leading to quadratic runtime. Therefore, a certificate provided by a malicious actor can result in excessive resource consumption.",
           "Severity": "HIGH",
           "CweIDs": [
@@ -6160,7 +6050,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-47912",
           "DataSource": {
@@ -6210,7 +6100,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58185",
           "DataSource": {
@@ -6261,7 +6151,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58186",
           "DataSource": {
@@ -6311,7 +6201,7 @@
           "FixedVersion": "1.24.9, 1.25.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58187",
           "DataSource": {
@@ -6362,7 +6252,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58188",
           "DataSource": {
@@ -6413,7 +6303,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-58189",
           "DataSource": {
@@ -6463,7 +6353,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61723",
           "DataSource": {
@@ -6514,7 +6404,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61724",
           "DataSource": {
@@ -6564,7 +6454,7 @@
           "FixedVersion": "1.24.8, 1.25.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61725",
           "DataSource": {
@@ -6614,7 +6504,7 @@
           "FixedVersion": "1.24.11, 1.25.5",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:3492c6d1538504567db92394f3934428759b78aa3fc1c95e02552525b7a28d1c"
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61727",
           "DataSource": {

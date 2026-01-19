@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-12T04:06:58.417975081Z",
+  "CreatedAt": "2026-01-19T04:08:07.590764571Z",
   "ArtifactName": "local-worker",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,21 +8,21 @@
       "Family": "debian",
       "Name": "11.9"
     },
-    "ImageID": "sha256:63e8656ae50d1a66f3c4e958d90fa927c2d88ba61771e4f3f85d5c46a5b62164",
+    "ImageID": "sha256:a0b2c1406dd56e65f828141393f0aea98741f5b41aea68a8a8f8182667f18959",
     "DiffIDs": [
       "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f",
       "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
       "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
       "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-      "sha256:1f495e23cd4508e9a6f6ef016aee76dd57fa9bbf660c5240e674083bf47b41c2",
-      "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
+      "sha256:66e8ae2ec0a913e68fdc9c2d4ee6bba61c9767afd7cc0e9628b83e115b366277",
+      "sha256:46b7ec5c6a370a0c851b6e61709da9ad2c6f5b9b70a311d5ad0edc7f318f2c3f"
     ],
     "RepoTags": [
       "local-worker:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-12T04:06:48.599105497Z",
+      "created": "2026-01-19T04:07:55.278836379Z",
       "history": [
         {
           "created": "2024-05-14T01:28:26Z",
@@ -61,17 +61,17 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-12T04:06:37Z",
+          "created": "2026-01-19T04:07:42Z",
           "created_by": "WORKDIR /app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-12T04:06:48Z",
+          "created": "2026-01-19T04:07:55Z",
           "created_by": "COPY /app . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-01-12T04:06:48Z",
+          "created": "2026-01-19T04:07:55Z",
           "created_by": "ENTRYPOINT [\"dotnet\" \"Worker.dll\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -85,8 +85,8 @@
           "sha256:ba941484fbe1acaf9f85a0c203296ef4ae38deef4314e9dc3460c9bbef0b8bde",
           "sha256:b4ec6db9c2519235e846d6741fd461f1db4c40dd65f5f9a088f603f91600bd19",
           "sha256:4d29f6e29d109230f55df9f0c4802db982eafa6bbe1c89c05e304e43b6e9231a",
-          "sha256:1f495e23cd4508e9a6f6ef016aee76dd57fa9bbf660c5240e674083bf47b41c2",
-          "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
+          "sha256:66e8ae2ec0a913e68fdc9c2d4ee6bba61c9767afd7cc0e9628b83e115b366277",
+          "sha256:46b7ec5c6a370a0c851b6e61709da9ad2c6f5b9b70a311d5ad0edc7f318f2c3f"
         ]
       },
       "config": {
@@ -277,6 +277,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -750,6 +751,9 @@
         },
         {
           "VulnerabilityID": "CVE-2025-68973",
+          "VendorIDs": [
+            "DLA-4437-1"
+          ],
           "PkgID": "gpgv@2.2.27-2+deb11u2",
           "PkgName": "gpgv",
           "PkgIdentifier": {
@@ -757,7 +761,8 @@
             "UID": "1810215cda552c04"
           },
           "InstalledVersion": "2.2.27-2+deb11u2",
-          "Status": "affected",
+          "FixedVersion": "2.2.27-2+deb11u3",
+          "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
           },
@@ -776,7 +781,10 @@
             "CWE-787"
           ],
           "VendorSeverity": {
+            "alma": 3,
+            "azure": 3,
             "nvd": 3,
+            "oracle-oval": 3,
             "redhat": 3,
             "ubuntu": 3
           },
@@ -792,9 +800,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/12/29/11",
+            "https://access.redhat.com/errata/RHSA-2026:0697",
             "https://access.redhat.com/security/cve/CVE-2025-68973",
+            "https://bugzilla.redhat.com/2425966",
             "https://dev.gnupg.org/T7906",
             "https://dev.gnupg.org/T8001",
+            "https://errata.almalinux.org/10/ALSA-2026-0697.html",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
@@ -802,6 +813,9 @@
             "https://github.com/gpg/gnupg/commit/4ecc5122f20e10c17172ed72f4fa46c784b5fb48 (gnupg-2.4.9)",
             "https://github.com/gpg/gnupg/compare/gnupg-2.2.50...gnupg-2.2.51",
             "https://gpg.fail/memcpy",
+            "https://linux.oracle.com/cve/CVE-2025-68973.html",
+            "https://linux.oracle.com/errata/ELSA-2026-0728.html",
+            "https://lists.debian.org/debian-lts-announce/2026/01/msg00008.html",
             "https://media.ccc.de/v/39c3-to-sign-or-not-to-sign-practical-vulnerabilities-i",
             "https://news.ycombinator.com/item?id=46403200",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68973",
@@ -811,7 +825,7 @@
             "https://www.openwall.com/lists/oss-security/2025/12/28/5"
           ],
           "PublishedDate": "2025-12-28T17:16:01.5Z",
-          "LastModifiedDate": "2026-01-07T14:45:55.817Z"
+          "LastModifiedDate": "2026-01-14T19:16:46.857Z"
         },
         {
           "VulnerabilityID": "CVE-2025-30258",
@@ -895,6 +909,7 @@
             "CWE-347"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "nvd": 2,
             "redhat": 2,
             "ubuntu": 2
@@ -1051,6 +1066,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -1197,6 +1213,51 @@
           ],
           "PublishedDate": "2025-05-16T20:15:22.28Z",
           "LastModifiedDate": "2025-11-03T20:19:11.153Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "libc-bin@2.31-13+deb11u10",
+          "PkgName": "libc-bin",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-bin@2.31-13%2Bdeb11u10?arch=amd64\u0026distro=debian-11.9",
+            "UID": "ef1b76948a61a26b"
+          },
+          "InstalledVersion": "2.31-13+deb11u10",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
         },
         {
           "VulnerabilityID": "CVE-2023-4806",
@@ -1481,12 +1542,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/07/23/1",
-            "https://access.redhat.com/errata/RHSA-2025:12980",
+            "https://access.redhat.com/errata/RHSA-2025:13240",
             "https://access.redhat.com/security/cve/CVE-2025-8058",
             "https://bugzilla.redhat.com/2383146",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
-            "https://errata.almalinux.org/8/ALSA-2025-12980.html",
+            "https://errata.almalinux.org/10/ALSA-2025-13240.html",
             "https://errata.rockylinux.org/RLSA-2025:12748",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
@@ -1499,6 +1560,50 @@
           ],
           "PublishedDate": "2025-07-23T20:15:27.747Z",
           "LastModifiedDate": "2025-11-04T22:16:44.44Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "libc-bin@2.31-13+deb11u10",
+          "PkgName": "libc-bin",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-bin@2.31-13%2Bdeb11u10?arch=amd64\u0026distro=debian-11.9",
+            "UID": "ef1b76948a61a26b"
+          },
+          "InstalledVersion": "2.31-13+deb11u10",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -1953,6 +2058,51 @@
           "LastModifiedDate": "2025-11-03T20:19:11.153Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-0861",
+          "PkgID": "libc6@2.31-13+deb11u10",
+          "PkgName": "libc6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc6@2.31-13%2Bdeb11u10?arch=amd64\u0026distro=debian-11.9",
+            "UID": "e3e843544e4dd2f3"
+          },
+          "InstalledVersion": "2.31-13+deb11u10",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0861",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: Integer overflow in memalign leads to heap corruption",
+          "Description": "Passing too large an alignment to the memalign suite of functions (memalign, posix_memalign, aligned_alloc) in the GNU C Library version 2.30 to 2.42 may result in an integer overflow, which could consequently result in a heap corruption.\n\nNote that the attacker must have control over both, the size as well as the alignment arguments of the memalign function to be able to exploit this.  The size parameter must be close enough to PTRDIFF_MAX so as to overflow size_t along with the large alignment argument.  This limits the malicious inputs for the alignment for memalign to the range [1\u003c\u003c62+ 1, 1\u003c\u003c63] and exactly 1\u003c\u003c63 for posix_memalign and aligned_alloc.\n\nTypically the alignment argument passed to such functions is a known constrained quantity (e.g. page size, block size, struct sizes) and is not attacker controlled, because of which this may not be easily exploitable in practice.  An application bug could potentially result in the input alignment being too large, e.g. due to a different buffer overflow or integer overflow in the application or its dependent libraries, but that is again an uncommon usage pattern given typical sources of alignments.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.1
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
+            "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0861"
+          ],
+          "PublishedDate": "2026-01-14T21:15:52.617Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
           "VulnerabilityID": "CVE-2023-4806",
           "PkgID": "libc6@2.31-13+deb11u10",
           "PkgName": "libc6",
@@ -2235,12 +2385,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/07/23/1",
-            "https://access.redhat.com/errata/RHSA-2025:12980",
+            "https://access.redhat.com/errata/RHSA-2025:13240",
             "https://access.redhat.com/security/cve/CVE-2025-8058",
             "https://bugzilla.redhat.com/2383146",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
-            "https://errata.almalinux.org/8/ALSA-2025-12980.html",
+            "https://errata.almalinux.org/10/ALSA-2025-13240.html",
             "https://errata.rockylinux.org/RLSA-2025:12748",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
@@ -2253,6 +2403,50 @@
           ],
           "PublishedDate": "2025-07-23T20:15:27.747Z",
           "LastModifiedDate": "2025-11-04T22:16:44.44Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-0915",
+          "PkgID": "libc6@2.31-13+deb11u10",
+          "PkgName": "libc6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc6@2.31-13%2Bdeb11u10?arch=amd64\u0026distro=debian-11.9",
+            "UID": "e3e843544e4dd2f3"
+          },
+          "InstalledVersion": "2.31-13+deb11u10",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:123eef91533f6745362321baeef5b3fcbb846bbbf250f5b10653d0fab061b90f"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-0915",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: glibc: Information disclosure via zero-valued network query",
+          "Description": "Calling getnetbyaddr or getnetbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend for networks and queries for a zero-valued network in the GNU C Library version 2.0 to version 2.42 can leak stack contents to the configured DNS resolver.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
+            "https://www.cve.org/CVERecord?id=CVE-2026-0915"
+          ],
+          "PublishedDate": "2026-01-15T22:16:12.457Z",
+          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -4242,8 +4436,11 @@
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
           "Title": "krb5: overflow when calculating ulog block size",
-          "Description": "A flaw was found in krb5. With incremental propagation enabled, an authenticated attacker can cause kadmind to write beyond the end of the mapped region for the iprop log file. This issue can trigger a process crash and lead to a denial of service.",
+          "Description": "In MIT Kerberos 5 (aka krb5) before 1.22 (with incremental propagation), there is an integer overflow for a large update size to resize() in kdb_log.c. An authenticated attacker can cause an out-of-bounds write and kadmind daemon crash.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
           "VendorSeverity": {
             "alma": 2,
             "amazon": 2,
@@ -4267,12 +4464,16 @@
             "https://errata.almalinux.org/9/ALSA-2025-7067.html",
             "https://errata.rockylinux.org/RLSA-2025:7067",
             "https://github.com/krb5/krb5/commit/78ceba024b64d49612375be4a12d1c066b0bfbd0",
+            "https://github.com/krb5/krb5/compare/krb5-1.21.3-final...krb5-1.22-final",
             "https://linux.oracle.com/cve/CVE-2025-24528.html",
             "https://linux.oracle.com/errata/ELSA-2025-7067.html",
+            "https://lists.debian.org/debian-lts-announce/2025/02/msg00029.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-24528",
             "https://ubuntu.com/security/notices/USN-7314-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-24528"
-          ]
+          ],
+          "PublishedDate": "2026-01-16T18:16:06.633Z",
+          "LastModifiedDate": "2026-01-16T19:16:17.213Z"
         },
         {
           "VulnerabilityID": "CVE-2025-3576",
@@ -4922,8 +5123,11 @@
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
           "Title": "krb5: overflow when calculating ulog block size",
-          "Description": "A flaw was found in krb5. With incremental propagation enabled, an authenticated attacker can cause kadmind to write beyond the end of the mapped region for the iprop log file. This issue can trigger a process crash and lead to a denial of service.",
+          "Description": "In MIT Kerberos 5 (aka krb5) before 1.22 (with incremental propagation), there is an integer overflow for a large update size to resize() in kdb_log.c. An authenticated attacker can cause an out-of-bounds write and kadmind daemon crash.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
           "VendorSeverity": {
             "alma": 2,
             "amazon": 2,
@@ -4947,12 +5151,16 @@
             "https://errata.almalinux.org/9/ALSA-2025-7067.html",
             "https://errata.rockylinux.org/RLSA-2025:7067",
             "https://github.com/krb5/krb5/commit/78ceba024b64d49612375be4a12d1c066b0bfbd0",
+            "https://github.com/krb5/krb5/compare/krb5-1.21.3-final...krb5-1.22-final",
             "https://linux.oracle.com/cve/CVE-2025-24528.html",
             "https://linux.oracle.com/errata/ELSA-2025-7067.html",
+            "https://lists.debian.org/debian-lts-announce/2025/02/msg00029.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-24528",
             "https://ubuntu.com/security/notices/USN-7314-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-24528"
-          ]
+          ],
+          "PublishedDate": "2026-01-16T18:16:06.633Z",
+          "LastModifiedDate": "2026-01-16T19:16:17.213Z"
         },
         {
           "VulnerabilityID": "CVE-2025-3576",
@@ -5535,8 +5743,11 @@
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
           "Title": "krb5: overflow when calculating ulog block size",
-          "Description": "A flaw was found in krb5. With incremental propagation enabled, an authenticated attacker can cause kadmind to write beyond the end of the mapped region for the iprop log file. This issue can trigger a process crash and lead to a denial of service.",
+          "Description": "In MIT Kerberos 5 (aka krb5) before 1.22 (with incremental propagation), there is an integer overflow for a large update size to resize() in kdb_log.c. An authenticated attacker can cause an out-of-bounds write and kadmind daemon crash.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
           "VendorSeverity": {
             "alma": 2,
             "amazon": 2,
@@ -5560,12 +5771,16 @@
             "https://errata.almalinux.org/9/ALSA-2025-7067.html",
             "https://errata.rockylinux.org/RLSA-2025:7067",
             "https://github.com/krb5/krb5/commit/78ceba024b64d49612375be4a12d1c066b0bfbd0",
+            "https://github.com/krb5/krb5/compare/krb5-1.21.3-final...krb5-1.22-final",
             "https://linux.oracle.com/cve/CVE-2025-24528.html",
             "https://linux.oracle.com/errata/ELSA-2025-7067.html",
+            "https://lists.debian.org/debian-lts-announce/2025/02/msg00029.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-24528",
             "https://ubuntu.com/security/notices/USN-7314-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-24528"
-          ]
+          ],
+          "PublishedDate": "2026-01-16T18:16:06.633Z",
+          "LastModifiedDate": "2026-01-16T19:16:17.213Z"
         },
         {
           "VulnerabilityID": "CVE-2025-3576",
@@ -6148,8 +6363,11 @@
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
           "Title": "krb5: overflow when calculating ulog block size",
-          "Description": "A flaw was found in krb5. With incremental propagation enabled, an authenticated attacker can cause kadmind to write beyond the end of the mapped region for the iprop log file. This issue can trigger a process crash and lead to a denial of service.",
+          "Description": "In MIT Kerberos 5 (aka krb5) before 1.22 (with incremental propagation), there is an integer overflow for a large update size to resize() in kdb_log.c. An authenticated attacker can cause an out-of-bounds write and kadmind daemon crash.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
           "VendorSeverity": {
             "alma": 2,
             "amazon": 2,
@@ -6173,12 +6391,16 @@
             "https://errata.almalinux.org/9/ALSA-2025-7067.html",
             "https://errata.rockylinux.org/RLSA-2025:7067",
             "https://github.com/krb5/krb5/commit/78ceba024b64d49612375be4a12d1c066b0bfbd0",
+            "https://github.com/krb5/krb5/compare/krb5-1.21.3-final...krb5-1.22-final",
             "https://linux.oracle.com/cve/CVE-2025-24528.html",
             "https://linux.oracle.com/errata/ELSA-2025-7067.html",
+            "https://lists.debian.org/debian-lts-announce/2025/02/msg00029.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-24528",
             "https://ubuntu.com/security/notices/USN-7314-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-24528"
-          ]
+          ],
+          "PublishedDate": "2026-01-16T18:16:06.633Z",
+          "LastModifiedDate": "2026-01-16T19:16:17.213Z"
         },
         {
           "VulnerabilityID": "CVE-2025-3576",
@@ -6468,6 +6690,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -6622,7 +6845,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -6848,7 +7071,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -7074,7 +7297,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -7300,7 +7523,7 @@
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
-            "https://errata.almalinux.org/9/ALSA-2025-9526.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20181.html",
             "https://errata.rockylinux.org/RLSA-2025:9526",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
@@ -8148,6 +8371,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -8544,7 +8768,7 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/01/20/2",
-            "https://access.redhat.com/errata/RHSA-2025:16046",
+            "https://access.redhat.com/errata/RHSA-2025:15699",
             "https://access.redhat.com/security/cve/CVE-2024-13176",
             "https://bugzilla.redhat.com/2359885",
             "https://bugzilla.redhat.com/2359888",
@@ -8704,7 +8928,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50102",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50104",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5399",
-            "https://errata.almalinux.org/9/ALSA-2025-16046.html",
+            "https://errata.almalinux.org/10/ALSA-2025-15699.html",
             "https://errata.rockylinux.org/RLSA-2025:15699",
             "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
             "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
@@ -8998,12 +9222,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/30/5",
-            "https://access.redhat.com/errata/RHSA-2025:21255",
+            "https://access.redhat.com/errata/RHSA-2025:21248",
             "https://access.redhat.com/security/cve/CVE-2025-9230",
             "https://bugzilla.redhat.com/2396054",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2396054",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-9230",
-            "https://errata.almalinux.org/9/ALSA-2025-21255.html",
+            "https://errata.almalinux.org/10/ALSA-2025-21248.html",
             "https://errata.rockylinux.org/RLSA-2025:21255",
             "https://github.com/openssl/openssl/commit/5965ea5dd6960f36d8b7f74f8eac67a8eb8f2b45",
             "https://github.com/openssl/openssl/commit/9e91358f365dee6c446dcdcdb01c04d2743fd280",
@@ -9013,7 +9237,7 @@
             "https://github.openssl.org/openssl/extended-releases/commit/c2b96348bfa662f25f4fabf81958ae822063dae3",
             "https://github.openssl.org/openssl/extended-releases/commit/dfbaf161d8dafc1132dd88cd48ad990ed9b4c8ba",
             "https://linux.oracle.com/cve/CVE-2025-9230.html",
-            "https://linux.oracle.com/errata/ELSA-2026-0337.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50008.html",
             "https://lists.debian.org/debian-lts-announce/2025/10/msg00001.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-9230",
             "https://openssl-library.org/news/secadv/20250930.txt",
@@ -9201,13 +9425,11 @@
             "CWE-385"
           ],
           "VendorSeverity": {
-            "debian": 1,
-            "ubuntu": 1
+            "debian": 1
           },
           "References": [
             "https://github.com/openssl/openssl/issues/24253",
-            "https://minerva.crocs.fi.muni.cz",
-            "https://www.cve.org/CVERecord?id=CVE-2025-27587"
+            "https://minerva.crocs.fi.muni.cz"
           ],
           "PublishedDate": "2025-06-16T22:15:44.093Z",
           "LastModifiedDate": "2025-06-26T17:15:30.497Z"
@@ -9645,6 +9867,7 @@
             "https://access.redhat.com/errata/RHSA-2025:22868",
             "https://access.redhat.com/errata/RHSA-2025:23227",
             "https://access.redhat.com/errata/RHSA-2025:23234",
+            "https://access.redhat.com/errata/RHSA-2026:0414",
             "https://access.redhat.com/security/cve/CVE-2025-4598",
             "https://blogs.oracle.com/linux/post/analysis-of-cve-2025-4598",
             "https://bugzilla.redhat.com/2369242",
@@ -9671,7 +9894,7 @@
             "https://www.qualys.com/2025/05/29/apport-coredump/apport-coredump.txt"
           ],
           "PublishedDate": "2025-05-30T14:15:23.557Z",
-          "LastModifiedDate": "2025-12-16T10:15:42.77Z"
+          "LastModifiedDate": "2026-01-13T23:16:03.237Z"
         },
         {
           "VulnerabilityID": "CVE-2013-4392",
@@ -10067,7 +10290,8 @@
           "Description": "Stack-based buffer overflow in libtasn1 version: v4.20.0. The function fails to validate the size of input data resulting in a buffer overflow in asn1_expend_octet_string.",
           "Severity": "MEDIUM",
           "VendorSeverity": {
-            "redhat": 2
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -10081,6 +10305,7 @@
             "https://gitlab.com/gnutls/libtasn1",
             "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
+            "https://ubuntu.com/security/notices/USN-7954-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-13151"
           ],
           "PublishedDate": "2026-01-07T22:15:43.2Z",
@@ -10567,6 +10792,7 @@
             "https://access.redhat.com/errata/RHSA-2025:22868",
             "https://access.redhat.com/errata/RHSA-2025:23227",
             "https://access.redhat.com/errata/RHSA-2025:23234",
+            "https://access.redhat.com/errata/RHSA-2026:0414",
             "https://access.redhat.com/security/cve/CVE-2025-4598",
             "https://blogs.oracle.com/linux/post/analysis-of-cve-2025-4598",
             "https://bugzilla.redhat.com/2369242",
@@ -10593,7 +10819,7 @@
             "https://www.qualys.com/2025/05/29/apport-coredump/apport-coredump.txt"
           ],
           "PublishedDate": "2025-05-30T14:15:23.557Z",
-          "LastModifiedDate": "2025-12-16T10:15:42.77Z"
+          "LastModifiedDate": "2026-01-13T23:16:03.237Z"
         },
         {
           "VulnerabilityID": "CVE-2013-4392",
@@ -10919,6 +11145,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -11430,12 +11657,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -11574,6 +11801,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -12108,7 +12336,7 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/01/20/2",
-            "https://access.redhat.com/errata/RHSA-2025:16046",
+            "https://access.redhat.com/errata/RHSA-2025:15699",
             "https://access.redhat.com/security/cve/CVE-2024-13176",
             "https://bugzilla.redhat.com/2359885",
             "https://bugzilla.redhat.com/2359888",
@@ -12268,7 +12496,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50102",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-50104",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5399",
-            "https://errata.almalinux.org/9/ALSA-2025-16046.html",
+            "https://errata.almalinux.org/10/ALSA-2025-15699.html",
             "https://errata.rockylinux.org/RLSA-2025:15699",
             "https://github.com/openssl/openssl/commit/07272b05b04836a762b4baa874958af51d513844",
             "https://github.com/openssl/openssl/commit/2af62e74fb59bc469506bc37eb2990ea408d9467",
@@ -12562,12 +12790,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/09/30/5",
-            "https://access.redhat.com/errata/RHSA-2025:21255",
+            "https://access.redhat.com/errata/RHSA-2025:21248",
             "https://access.redhat.com/security/cve/CVE-2025-9230",
             "https://bugzilla.redhat.com/2396054",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2396054",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-9230",
-            "https://errata.almalinux.org/9/ALSA-2025-21255.html",
+            "https://errata.almalinux.org/10/ALSA-2025-21248.html",
             "https://errata.rockylinux.org/RLSA-2025:21255",
             "https://github.com/openssl/openssl/commit/5965ea5dd6960f36d8b7f74f8eac67a8eb8f2b45",
             "https://github.com/openssl/openssl/commit/9e91358f365dee6c446dcdcdb01c04d2743fd280",
@@ -12577,7 +12805,7 @@
             "https://github.openssl.org/openssl/extended-releases/commit/c2b96348bfa662f25f4fabf81958ae822063dae3",
             "https://github.openssl.org/openssl/extended-releases/commit/dfbaf161d8dafc1132dd88cd48ad990ed9b4c8ba",
             "https://linux.oracle.com/cve/CVE-2025-9230.html",
-            "https://linux.oracle.com/errata/ELSA-2026-0337.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50008.html",
             "https://lists.debian.org/debian-lts-announce/2025/10/msg00001.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-9230",
             "https://openssl-library.org/news/secadv/20250930.txt",
@@ -12765,13 +12993,11 @@
             "CWE-385"
           ],
           "VendorSeverity": {
-            "debian": 1,
-            "ubuntu": 1
+            "debian": 1
           },
           "References": [
             "https://github.com/openssl/openssl/issues/24253",
-            "https://minerva.crocs.fi.muni.cz",
-            "https://www.cve.org/CVERecord?id=CVE-2025-27587"
+            "https://minerva.crocs.fi.muni.cz"
           ],
           "PublishedDate": "2025-06-16T22:15:44.093Z",
           "LastModifiedDate": "2025-06-26T17:15:30.497Z"
@@ -13059,12 +13285,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20559",
+            "https://access.redhat.com/errata/RHSA-2025:20145",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
             "https://errata.rockylinux.org/RLSA-2025:20559",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
@@ -13689,6 +13915,7 @@
             "CWE-125"
           ],
           "VendorSeverity": {
+            "azure": 2,
             "cbl-mariner": 2,
             "redhat": 2
           },
@@ -13859,7 +14086,7 @@
           "FixedVersion": "8.0.3, 4.0.14, 4.1.13, 5.0.18, 6.0.11, 7.0.7",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
+            "DiffID": "sha256:46b7ec5c6a370a0c851b6e61709da9ad2c6f5b9b70a311d5ad0edc7f318f2c3f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-32655",
@@ -13920,7 +14147,7 @@
           "FixedVersion": "4.7.2, 5.0.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:5cc2452521d5459ceed541cac94c4bb9dbda9266aae2052f5c3292f7ca475d60"
+            "DiffID": "sha256:46b7ec5c6a370a0c851b6e61709da9ad2c6f5b9b70a311d5ad0edc7f318f2c3f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2021-24112",
