@@ -1,3 +1,20 @@
+## 2026-01-25
+CRITICAL=1 HIGH=22 MEDIUM=36 RISK_INDEX=107
+
+### 🔄 Lifecycle Changes
+
+#### 🆕 Neu erkannte CVEs
+
+#### ✅ Behobene CVEs
+
+### 🔴 Top Critical/High Vulnerabilities
+- **[CVE-2024-37890](https://avd.aquasec.com/nvd/cve-2024-37890)** (HIGH) - `ws@8.11.0` | CVSS: 5.9 | Fix: 5.2.4, 6.2.3, 7.5.10, 8.17.1
+- **[CVE-2026-23950](https://avd.aquasec.com/nvd/cve-2026-23950)** (HIGH) - `tar@6.2.1` | CVSS: 8.8 | Fix: 7.5.4
+- **[CVE-2026-23745](https://avd.aquasec.com/nvd/cve-2026-23745)** (HIGH) - `tar@6.2.1` | CVSS: 8.2 | Fix: 7.5.3
+- **[CVE-2025-15284](https://avd.aquasec.com/nvd/cve-2025-15284)** (HIGH) - `qs@6.11.0` | CVSS: 7.5 | Fix: 6.14.1
+- **[CVE-2024-52798](https://avd.aquasec.com/nvd/cve-2024-52798)** (HIGH) - `path-to-regexp@0.1.7` | CVSS: 5.3 | Fix: 0.1.12
+---
+
 ## 2026-01-18
 CRITICAL=1 HIGH=21 MEDIUM=34 RISK_INDEX=102
 
