@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-19T04:08:03.818047015Z",
+  "CreatedAt": "2026-01-26T04:13:19.404337446Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.3"
     },
-    "ImageID": "sha256:e35ebb19661a7cc4c950acf0985d46c00621c7c541d4637bc9c8d83f133d263e",
+    "ImageID": "sha256:9f9db307a9442608982ff15e540c7042bd842254edec0599fa80f3ca7e511f1c",
     "DiffIDs": [
       "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92",
       "sha256:ca42cb9c943c2204e8b511f6f7e849601cc8646deda86a7b87d7cbc1e4935c0f",
@@ -23,14 +23,14 @@
       "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
       "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
       "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
-      "sha256:962ecf47bc837dbfa1e6423acbf2c5109070ef735da9211d12b18ada1b05c40d"
+      "sha256:3fccd25efd91e3c48196a9e4a84de9492468ee4c5570fce4c35e92765441d2cc"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-19T04:07:49.199499704Z",
+      "created": "2026-01-26T04:13:02.15112384Z",
       "history": [
         {
           "created": "2026-01-12T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-19T04:07:49Z",
+          "created": "2026-01-26T04:13:02Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
           "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
           "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
-          "sha256:962ecf47bc837dbfa1e6423acbf2c5109070ef735da9211d12b18ada1b05c40d"
+          "sha256:3fccd25efd91e3c48196a9e4a84de9492468ee4c5570fce4c35e92765441d2cc"
         ]
       },
       "config": {
@@ -1475,7 +1475,8 @@
             "CWE-190"
           ],
           "VendorSeverity": {
-            "redhat": 1
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -1493,6 +1494,50 @@
           ],
           "PublishedDate": "2026-01-14T21:15:52.617Z",
           "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15281",
+          "PkgID": "libc-bin@2.41-12+deb13u1",
+          "PkgName": "libc-bin",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-bin@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7a2855ad102371a8"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15281",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: wordexp with WRDE_REUSE and WRDE_APPEND may return uninitialized memory",
+          "Description": "Calling wordexp with WRDE_REUSE in conjunction with WRDE_APPEND in the GNU C Library version 2.0 to version 2.42 may cause the interface to return uninitialized memory in the we_wordv member, which on subsequent calls to wordfree may abort the process.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/20/3",
+            "https://access.redhat.com/security/cve/CVE-2025-15281",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33814",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15281"
+          ],
+          "PublishedDate": "2026-01-20T14:16:07.843Z",
+          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -1536,7 +1581,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
           ],
           "PublishedDate": "2026-01-15T22:16:12.457Z",
-          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+          "LastModifiedDate": "2026-01-23T19:36:50.73Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -1946,7 +1991,8 @@
             "CWE-190"
           ],
           "VendorSeverity": {
-            "redhat": 1
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -1964,6 +2010,50 @@
           ],
           "PublishedDate": "2026-01-14T21:15:52.617Z",
           "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15281",
+          "PkgID": "libc-l10n@2.41-12+deb13u1",
+          "PkgName": "libc-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc-l10n@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "680a76a353bc8525"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15281",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: wordexp with WRDE_REUSE and WRDE_APPEND may return uninitialized memory",
+          "Description": "Calling wordexp with WRDE_REUSE in conjunction with WRDE_APPEND in the GNU C Library version 2.0 to version 2.42 may cause the interface to return uninitialized memory in the we_wordv member, which on subsequent calls to wordfree may abort the process.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/20/3",
+            "https://access.redhat.com/security/cve/CVE-2025-15281",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33814",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15281"
+          ],
+          "PublishedDate": "2026-01-20T14:16:07.843Z",
+          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -2007,7 +2097,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
           ],
           "PublishedDate": "2026-01-15T22:16:12.457Z",
-          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+          "LastModifiedDate": "2026-01-23T19:36:50.73Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -2417,7 +2507,8 @@
             "CWE-190"
           ],
           "VendorSeverity": {
-            "redhat": 1
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -2435,6 +2526,50 @@
           ],
           "PublishedDate": "2026-01-14T21:15:52.617Z",
           "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15281",
+          "PkgID": "libc6@2.41-12+deb13u1",
+          "PkgName": "libc6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libc6@2.41-12%2Bdeb13u1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "7bdabb7e1bdbcd9b"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15281",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: wordexp with WRDE_REUSE and WRDE_APPEND may return uninitialized memory",
+          "Description": "Calling wordexp with WRDE_REUSE in conjunction with WRDE_APPEND in the GNU C Library version 2.0 to version 2.42 may cause the interface to return uninitialized memory in the we_wordv member, which on subsequent calls to wordfree may abort the process.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/20/3",
+            "https://access.redhat.com/security/cve/CVE-2025-15281",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33814",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15281"
+          ],
+          "PublishedDate": "2026-01-20T14:16:07.843Z",
+          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -2478,7 +2613,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
           ],
           "PublishedDate": "2026-01-15T22:16:12.457Z",
-          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+          "LastModifiedDate": "2026-01-23T19:36:50.73Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -4152,10 +4287,11 @@
             "https://gitlab.com/gnutls/libtasn1/-/merge_requests/121",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-13151",
             "https://ubuntu.com/security/notices/USN-7954-1",
-            "https://www.cve.org/CVERecord?id=CVE-2025-13151"
+            "https://www.cve.org/CVERecord?id=CVE-2025-13151",
+            "https://www.kb.cert.org/vuls/id/271649"
           ],
           "PublishedDate": "2026-01-07T22:15:43.2Z",
-          "LastModifiedDate": "2026-01-08T19:15:55.983Z"
+          "LastModifiedDate": "2026-01-20T18:16:01.827Z"
         },
         {
           "VulnerabilityID": "CVE-2025-6141",
@@ -4526,7 +4662,8 @@
             "CWE-190"
           ],
           "VendorSeverity": {
-            "redhat": 1
+            "redhat": 1,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -4544,6 +4681,50 @@
           ],
           "PublishedDate": "2026-01-14T21:15:52.617Z",
           "LastModifiedDate": "2026-01-16T18:16:09.343Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-15281",
+          "PkgID": "locales@2.41-12+deb13u1",
+          "PkgName": "locales",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/locales@2.41-12%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "cfe3902a53f779fd"
+          },
+          "InstalledVersion": "2.41-12+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:95c90a996cf6523ae30875cd8a00974cbcd16ed5b92806d90790129863047754"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15281",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "glibc: wordexp with WRDE_REUSE and WRDE_APPEND may return uninitialized memory",
+          "Description": "Calling wordexp with WRDE_REUSE in conjunction with WRDE_APPEND in the GNU C Library version 2.0 to version 2.42 may cause the interface to return uninitialized memory in the we_wordv member, which on subsequent calls to wordfree may abort the process.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-908"
+          ],
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/20/3",
+            "https://access.redhat.com/security/cve/CVE-2025-15281",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
+            "https://sourceware.org/bugzilla/show_bug.cgi?id=33814",
+            "https://www.cve.org/CVERecord?id=CVE-2025-15281"
+          ],
+          "PublishedDate": "2026-01-20T14:16:07.843Z",
+          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -4587,7 +4768,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
           ],
           "PublishedDate": "2026-01-15T22:16:12.457Z",
-          "LastModifiedDate": "2026-01-16T18:16:09.487Z"
+          "LastModifiedDate": "2026-01-23T19:36:50.73Z"
         },
         {
           "VulnerabilityID": "CVE-2010-4756",
@@ -5968,12 +6149,12 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:23295",
+            "https://access.redhat.com/errata/RHSA-2025:23948",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
             "https://bugzilla.redhat.com/2407258",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
-            "https://errata.almalinux.org/10/ALSA-2025-23295.html",
+            "https://errata.almalinux.org/8/ALSA-2025-23948.html",
             "https://errata.rockylinux.org/RLSA-2025:23326",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
@@ -6013,9 +6194,12 @@
             "CWE-295"
           ],
           "VendorSeverity": {
+            "alma": 3,
             "amazon": 3,
             "bitnami": 3,
-            "redhat": 3
+            "oracle-oval": 3,
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "bitnami": {
@@ -6028,10 +6212,18 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:0922",
             "https://access.redhat.com/security/cve/CVE-2025-61729",
+            "https://bugzilla.redhat.com/2418462",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2418462",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61729",
+            "https://errata.almalinux.org/10/ALSA-2026-0922.html",
+            "https://errata.rockylinux.org/RLSA-2026:0923",
             "https://go.dev/cl/725920",
             "https://go.dev/issue/76445",
             "https://groups.google.com/g/golang-announce/c/8FJoBkPddm4",
+            "https://linux.oracle.com/cve/CVE-2025-61729.html",
+            "https://linux.oracle.com/errata/ELSA-2026-0923.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61729",
             "https://pkg.go.dev/vuln/GO-2025-4155",
             "https://www.cve.org/CVERecord?id=CVE-2025-61729"

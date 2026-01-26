@@ -1,39 +1,39 @@
 {
-  "generatedAt": "2026-01-19T04:09:31Z",
+  "generatedAt": "2026-01-26T04:14:28Z",
   "period": {
-    "start": "2026-01-12",
-    "end": "2026-01-19"
+    "start": "2026-01-19",
+    "end": "2026-01-26"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 60,
-      "medium": 238,
-      "low": 537,
-      "unknown": 4
+      "high": 53,
+      "medium": 275,
+      "low": 539,
+      "unknown": 23
     },
     {
       "name": "local-postgres-18",
       "critical": 0,
       "high": 6,
-      "medium": 32,
+      "medium": 36,
       "low": 83,
       "unknown": 0
     },
     {
       "name": "local-python-3.14",
       "critical": 0,
-      "high": 4,
+      "high": 2,
       "medium": 27,
       "low": 433,
-      "unknown": 3
+      "unknown": 4
     },
     {
       "name": "local-result",
       "critical": 1,
-      "high": 21,
-      "medium": 34,
+      "high": 22,
+      "medium": 36,
       "low": 99,
       "unknown": 1
     },
@@ -41,7 +41,7 @@
       "name": "local-vote",
       "critical": 0,
       "high": 2,
-      "medium": 13,
+      "medium": 15,
       "low": 81,
       "unknown": 2
     },
@@ -49,24 +49,24 @@
       "name": "local-worker",
       "critical": 7,
       "high": 33,
-      "medium": 63,
+      "medium": 65,
       "low": 92,
       "unknown": 5
     }
   ],
   "totals": {
     "critical": 8,
-    "high": 126,
-    "medium": 407,
-    "low": 1325,
-    "unknown": 15
+    "high": 118,
+    "medium": 454,
+    "low": 1327,
+    "unknown": 35
   },
   "delta": {
     "critical": 0,
-    "high": 30,
-    "medium": 98,
-    "low": 3,
-    "unknown": 7
+    "high": -8,
+    "medium": 47,
+    "low": 2,
+    "unknown": 20
   },
   "direction": "worse",
   "trend": [
@@ -141,6 +141,12 @@
       "critical": 8,
       "high": 126,
       "medium": 407
+    },
+    {
+      "date": "2026-01-26",
+      "critical": 8,
+      "high": 118,
+      "medium": 454
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",
