@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-01-26T04:13:19.404337446Z",
+  "CreatedAt": "2026-02-02T04:52:09.876100123Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.3"
     },
-    "ImageID": "sha256:9f9db307a9442608982ff15e540c7042bd842254edec0599fa80f3ca7e511f1c",
+    "ImageID": "sha256:8f5ac08785153ba15792ea556497117a67ef06d64f203bd3bb9ac9355d87e3a2",
     "DiffIDs": [
       "sha256:e50a58335e1366e2581fe61794c1651afe2fe04e881e795aa166f24f4fc78d92",
       "sha256:ca42cb9c943c2204e8b511f6f7e849601cc8646deda86a7b87d7cbc1e4935c0f",
@@ -23,14 +23,14 @@
       "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
       "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
       "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
-      "sha256:3fccd25efd91e3c48196a9e4a84de9492468ee4c5570fce4c35e92765441d2cc"
+      "sha256:42009d3a78ad7848e5e3f344b4c2a90fcf803a7dab14bd87d469bfeb13bd8f75"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-01-26T04:13:02.15112384Z",
+      "created": "2026-02-02T04:51:56.716601786Z",
       "history": [
         {
           "created": "2026-01-12T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-01-26T04:13:02Z",
+          "created": "2026-02-02T04:51:56Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:bab10377f77b4085e0efd0f6289e406423f0dcf746a8cc4dd77e82760993935a",
           "sha256:014714cd92fac482d35996af77e83d907daa144824b175f9d205bf9ae46d05e9",
           "sha256:6f46f3bf60ebd49c2746e78c79c9de2b54b15bbb14dce3f84e5200248263d705",
-          "sha256:3fccd25efd91e3c48196a9e4a84de9492468ee4c5570fce4c35e92765441d2cc"
+          "sha256:42009d3a78ad7848e5e3f344b4c2a90fcf803a7dab14bd87d469bfeb13bd8f75"
         ]
       },
       "config": {
@@ -260,7 +260,7 @@
           "PkgName": "apt",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/apt@3.0.3?arch=amd64\u0026distro=debian-13.3",
-            "UID": "ee5909b019090ce0"
+            "UID": "3401cb7403f865f4"
           },
           "InstalledVersion": "3.0.3",
           "Status": "affected",
@@ -540,6 +540,51 @@
           "LastModifiedDate": "2025-10-22T20:15:37.32Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "dirmngr@2.4.7-21+deb13u1+b1",
+          "PkgName": "dirmngr",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/dirmngr@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "199f3f6a83641523"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-68972",
           "PkgID": "dirmngr@2.4.7-21+deb13u1+b1",
           "PkgName": "dirmngr",
@@ -646,6 +691,51 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gnupg@2.4.7-21+deb13u1",
+          "PkgName": "gnupg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "381fb5a3d0faa225"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -756,6 +846,51 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gnupg-l10n@2.4.7-21+deb13u1",
+          "PkgName": "gnupg-l10n",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gnupg-l10n@2.4.7-21%2Bdeb13u1?arch=all\u0026distro=debian-13.3",
+            "UID": "7c8c8c8328e69db6"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-68972",
           "PkgID": "gnupg-l10n@2.4.7-21+deb13u1",
           "PkgName": "gnupg-l10n",
@@ -862,6 +997,51 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gpg@2.4.7-21+deb13u1+b1",
+          "PkgName": "gpg",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "73d01e3bb5b9367a"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -972,6 +1152,51 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gpg-agent@2.4.7-21+deb13u1+b1",
+          "PkgName": "gpg-agent",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpg-agent@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "c99bca1ef36f2eda"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-68972",
           "PkgID": "gpg-agent@2.4.7-21+deb13u1+b1",
           "PkgName": "gpg-agent",
@@ -1080,6 +1305,51 @@
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gpgconf@2.4.7-21+deb13u1+b1",
+          "PkgName": "gpgconf",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgconf@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3950088e68d1ba44"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
+        },
+        {
           "VulnerabilityID": "CVE-2025-68972",
           "PkgID": "gpgconf@2.4.7-21+deb13u1+b1",
           "PkgName": "gpgconf",
@@ -1186,6 +1456,51 @@
           ],
           "PublishedDate": "2023-02-23T20:15:12.393Z",
           "LastModifiedDate": "2025-03-12T21:15:38.207Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-24882",
+          "PkgID": "gpgsm@2.4.7-21+deb13u1+b1",
+          "PkgName": "gpgsm",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gpgsm@2.4.7-21%2Bdeb13u1%2Bb1?arch=amd64\u0026distro=debian-13.3",
+            "UID": "a804ec6f178e4be4"
+          },
+          "InstalledVersion": "2.4.7-21+deb13u1+b1",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:07d95fd4454982fec9fef6653e0529da8f14e8cdbdbd09bf985cc2f9d7582af5"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-24882",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "GnuPG: GnuPG: Stack-based buffer overflow in tpm2daemon allows arbitrary code execution",
+          "Description": "In GnuPG before 2.5.17, a stack-based buffer overflow exists in tpm2daemon during handling of the PKDECRYPT command for TPM-backed RSA and ECC keys.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-121"
+          ],
+          "VendorSeverity": {
+            "redhat": 3,
+            "ubuntu": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+              "V3Score": 8.4
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-24882",
+            "https://dev.gnupg.org/T8045",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
+            "https://www.cve.org/CVERecord?id=CVE-2026-24882",
+            "https://www.openwall.com/lists/oss-security/2026/01/27/8"
+          ],
+          "PublishedDate": "2026-01-27T19:16:16.67Z",
+          "LastModifiedDate": "2026-01-29T16:31:35.7Z"
         },
         {
           "VulnerabilityID": "CVE-2025-68972",
@@ -1301,7 +1616,7 @@
           "PkgName": "libapt-pkg7.0",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libapt-pkg7.0@3.0.3?arch=amd64\u0026distro=debian-13.3",
-            "UID": "fcb54560d93a880b"
+            "UID": "7eaa84de09dc9aa8"
           },
           "InstalledVersion": "3.0.3",
           "Status": "affected",
@@ -1475,7 +1790,10 @@
             "CWE-190"
           ],
           "VendorSeverity": {
+            "alma": 2,
+            "oracle-oval": 2,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -1486,7 +1804,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0861.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
             "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
@@ -1537,7 +1866,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-15281"
           ],
           "PublishedDate": "2026-01-20T14:16:07.843Z",
-          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
+          "LastModifiedDate": "2026-01-26T15:05:23.427Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -1565,7 +1894,10 @@
             "CWE-908"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "alma": 2,
+            "oracle-oval": 2,
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -1575,7 +1907,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0915.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
@@ -1991,7 +2334,10 @@
             "CWE-190"
           ],
           "VendorSeverity": {
+            "alma": 2,
+            "oracle-oval": 2,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2002,7 +2348,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0861.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
             "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
@@ -2053,7 +2410,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-15281"
           ],
           "PublishedDate": "2026-01-20T14:16:07.843Z",
-          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
+          "LastModifiedDate": "2026-01-26T15:05:23.427Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -2081,7 +2438,10 @@
             "CWE-908"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "alma": 2,
+            "oracle-oval": 2,
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -2091,7 +2451,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0915.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
@@ -2507,7 +2878,10 @@
             "CWE-190"
           ],
           "VendorSeverity": {
+            "alma": 2,
+            "oracle-oval": 2,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2518,7 +2892,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0861.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
             "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
@@ -2569,7 +2954,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-15281"
           ],
           "PublishedDate": "2026-01-20T14:16:07.843Z",
-          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
+          "LastModifiedDate": "2026-01-26T15:05:23.427Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -2597,7 +2982,10 @@
             "CWE-908"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "alma": 2,
+            "oracle-oval": 2,
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -2607,7 +2995,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0915.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
@@ -3371,7 +3770,7 @@
           "PkgName": "libldap2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
-            "UID": "95ff493d00e192d2"
+            "UID": "34b94104a62518f5"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
@@ -3428,7 +3827,7 @@
           "PkgName": "libldap2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
-            "UID": "95ff493d00e192d2"
+            "UID": "34b94104a62518f5"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
@@ -3481,7 +3880,7 @@
           "PkgName": "libldap2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
-            "UID": "95ff493d00e192d2"
+            "UID": "34b94104a62518f5"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
@@ -3537,7 +3936,7 @@
           "PkgName": "libldap2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
-            "UID": "95ff493d00e192d2"
+            "UID": "34b94104a62518f5"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
@@ -3600,7 +3999,7 @@
           "PkgName": "libldap2",
           "PkgIdentifier": {
             "PURL": "pkg:deb/debian/libldap2@2.6.10%2Bdfsg-1?arch=amd64\u0026distro=debian-13.3",
-            "UID": "95ff493d00e192d2"
+            "UID": "34b94104a62518f5"
           },
           "InstalledVersion": "2.6.10+dfsg-1",
           "Status": "affected",
@@ -4662,7 +5061,10 @@
             "CWE-190"
           ],
           "VendorSeverity": {
+            "alma": 2,
+            "oracle-oval": 2,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -4673,7 +5075,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/5",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0861",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0861.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0861",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33796",
             "https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=advisories/GLIBC-SA-2026-0001",
@@ -4724,7 +5137,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-15281"
           ],
           "PublishedDate": "2026-01-20T14:16:07.843Z",
-          "LastModifiedDate": "2026-01-22T20:16:05.96Z"
+          "LastModifiedDate": "2026-01-26T15:05:23.427Z"
         },
         {
           "VulnerabilityID": "CVE-2026-0915",
@@ -4752,7 +5165,10 @@
             "CWE-908"
           ],
           "VendorSeverity": {
-            "redhat": 2
+            "alma": 2,
+            "oracle-oval": 2,
+            "redhat": 2,
+            "rocky": 2
           },
           "CVSS": {
             "redhat": {
@@ -4762,7 +5178,18 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/16/6",
+            "https://access.redhat.com/errata/RHSA-2026:1334",
             "https://access.redhat.com/security/cve/CVE-2026-0915",
+            "https://bugzilla.redhat.com/2429771",
+            "https://bugzilla.redhat.com/2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
+            "https://errata.almalinux.org/10/ALSA-2026-1334.html",
+            "https://errata.rockylinux.org/RLSA-2026:1334",
+            "https://linux.oracle.com/cve/CVE-2026-0915.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50078.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-0915",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=33802",
             "https://www.cve.org/CVERecord?id=CVE-2026-0915"
@@ -5343,13 +5770,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -5682,13 +6109,13 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2025:20145",
+            "https://access.redhat.com/errata/RHSA-2025:20559",
             "https://access.redhat.com/security/cve/CVE-2024-56433",
             "https://bugzilla.redhat.com/2334165",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
-            "https://errata.almalinux.org/10/ALSA-2025-20145.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.almalinux.org/9/ALSA-2025-20559.html",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -6149,24 +6576,114 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2025/10/08/1",
-            "https://access.redhat.com/errata/RHSA-2025:23948",
+            "https://access.redhat.com/errata/RHSA-2025:23326",
             "https://access.redhat.com/security/cve/CVE-2025-58183",
             "https://bugzilla.redhat.com/2407258",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
-            "https://errata.almalinux.org/8/ALSA-2025-23948.html",
-            "https://errata.rockylinux.org/RLSA-2025:23326",
+            "https://errata.almalinux.org/9/ALSA-2025-23326.html",
+            "https://errata.rockylinux.org/RLSA-2025:23295",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",
             "https://linux.oracle.com/cve/CVE-2025-58183.html",
-            "https://linux.oracle.com/errata/ELSA-2025-23948.html",
+            "https://linux.oracle.com/errata/ELSA-2026-50076.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-58183",
             "https://pkg.go.dev/vuln/GO-2025-4014",
             "https://www.cve.org/CVERecord?id=CVE-2025-58183"
           ],
           "PublishedDate": "2025-10-29T23:16:19.357Z",
           "LastModifiedDate": "2025-11-04T22:16:33.2Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-61726",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@1.24.6",
+            "UID": "b031cc5b98a042ca"
+          },
+          "InstalledVersion": "1.24.6",
+          "FixedVersion": "1.24.12, 1.25.6",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61726",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "The net/url package does not set a limit on the number of query parame ...",
+          "Description": "The net/url package does not set a limit on the number of query parameters in a query. While the maximum size of query parameters in URLs is generally limited by the maximum request header size, the net/http.Request.ParseForm method can parse large URL-encoded forms. Parsing a large form containing many unique query parameters can cause excessive memory consumption.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "bitnami": 3
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://go.dev/cl/736712",
+            "https://go.dev/issue/77101",
+            "https://groups.google.com/g/golang-announce/c/Vd2tYVM8eUc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-61726",
+            "https://pkg.go.dev/vuln/GO-2026-4341"
+          ],
+          "PublishedDate": "2026-01-28T20:16:09.713Z",
+          "LastModifiedDate": "2026-01-29T19:16:16.243Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-61728",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@1.24.6",
+            "UID": "b031cc5b98a042ca"
+          },
+          "InstalledVersion": "1.24.6",
+          "FixedVersion": "1.24.12, 1.25.6",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61728",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "golang: archive/zip: Excessive CPU consumption when building archive index in archive/zip",
+          "Description": "archive/zip uses a super-linear file name indexing algorithm that is invoked the first time a file in an archive is opened. This can lead to a denial of service when consuming a maliciously constructed ZIP archive.",
+          "Severity": "HIGH",
+          "VendorSeverity": {
+            "bitnami": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+              "V3Score": 6.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "http://www.openwall.com/lists/oss-security/2026/01/15/4",
+            "https://access.redhat.com/security/cve/CVE-2025-61728",
+            "https://go.dev/cl/736713",
+            "https://go.dev/issue/77102",
+            "https://groups.google.com/g/golang-announce/c/Vd2tYVM8eUc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-61728",
+            "https://pkg.go.dev/vuln/GO-2026-4342",
+            "https://www.cve.org/CVERecord?id=CVE-2025-61728"
+          ],
+          "PublishedDate": "2026-01-28T20:16:09.83Z",
+          "LastModifiedDate": "2026-01-29T19:16:16.39Z"
         },
         {
           "VulnerabilityID": "CVE-2025-61729",
@@ -6212,18 +6729,18 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:0922",
+            "https://access.redhat.com/errata/RHSA-2026:0923",
             "https://access.redhat.com/security/cve/CVE-2025-61729",
             "https://bugzilla.redhat.com/2418462",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2418462",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61729",
-            "https://errata.almalinux.org/10/ALSA-2026-0922.html",
-            "https://errata.rockylinux.org/RLSA-2026:0923",
+            "https://errata.almalinux.org/9/ALSA-2026-0923.html",
+            "https://errata.rockylinux.org/RLSA-2026:0922",
             "https://go.dev/cl/725920",
             "https://go.dev/issue/76445",
             "https://groups.google.com/g/golang-announce/c/8FJoBkPddm4",
             "https://linux.oracle.com/cve/CVE-2025-61729.html",
-            "https://linux.oracle.com/errata/ELSA-2026-0923.html",
+            "https://linux.oracle.com/errata/ELSA-2026-1518.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61729",
             "https://pkg.go.dev/vuln/GO-2025-4155",
             "https://www.cve.org/CVERecord?id=CVE-2025-61729"
@@ -6279,7 +6796,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-47912"
           ],
           "PublishedDate": "2025-10-29T23:16:18.187Z",
-          "LastModifiedDate": "2025-11-04T22:16:16.497Z"
+          "LastModifiedDate": "2026-01-29T13:57:18.69Z"
         },
         {
           "VulnerabilityID": "CVE-2025-58185",
@@ -6303,6 +6820,9 @@
           "Title": "encoding/asn1: Parsing DER payload can cause memory exhaustion in encoding/asn1",
           "Description": "Parsing a maliciously crafted DER payload could allocate large amounts of memory, causing memory exhaustion.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-770"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 2,
@@ -6330,7 +6850,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-58185"
           ],
           "PublishedDate": "2025-10-29T23:16:19.45Z",
-          "LastModifiedDate": "2025-11-04T22:16:33.327Z"
+          "LastModifiedDate": "2026-01-29T13:26:08.45Z"
         },
         {
           "VulnerabilityID": "CVE-2025-58186",
@@ -6404,6 +6924,9 @@
           "Title": "crypto/x509: Quadratic complexity when checking name constraints in crypto/x509",
           "Description": "Due to the design of the name constraint checking algorithm, the processing time of some inputs scale non-linearly with respect to the size of the certificate. This affects programs which validate arbitrary certificate chains.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-407"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 3,
@@ -6431,7 +6954,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-58187"
           ],
           "PublishedDate": "2025-10-29T23:16:19.643Z",
-          "LastModifiedDate": "2025-11-20T23:15:52.007Z"
+          "LastModifiedDate": "2026-01-29T16:02:27.08Z"
         },
         {
           "VulnerabilityID": "CVE-2025-58188",
@@ -6455,6 +6978,9 @@
           "Title": "crypto/x509: golang: Panic when validating certificates with DSA public keys in crypto/x509",
           "Description": "Validating certificate chains which contain DSA public keys can cause programs to panic, due to a interface cast that assumes they implement the Equal method. This affects programs which validate arbitrary certificate chains.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-295"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 3,
@@ -6482,7 +7008,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-58188"
           ],
           "PublishedDate": "2025-10-29T23:16:19.74Z",
-          "LastModifiedDate": "2025-11-04T22:16:33.74Z"
+          "LastModifiedDate": "2026-01-29T15:55:11.97Z"
         },
         {
           "VulnerabilityID": "CVE-2025-58189",
@@ -6506,6 +7032,9 @@
           "Title": "crypto/tls: go crypto/tls ALPN negotiation error contains attacker controlled information",
           "Description": "When Conn.Handshake fails during ALPN negotiation the error contains attacker controlled information (the ALPN protocols sent by the client) which is not escaped.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-532"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 2,
@@ -6532,7 +7061,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-58189"
           ],
           "PublishedDate": "2025-10-29T23:16:19.833Z",
-          "LastModifiedDate": "2025-11-04T22:16:33.877Z"
+          "LastModifiedDate": "2026-01-29T15:49:24.543Z"
         },
         {
           "VulnerabilityID": "CVE-2025-61723",
@@ -6556,6 +7085,9 @@
           "Title": "encoding/pem: Quadratic complexity when parsing some invalid inputs in encoding/pem",
           "Description": "The processing time for parsing some invalid inputs scales non-linearly with respect to the size of the input. This affects programs which parse untrusted PEM inputs.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-770"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 3,
@@ -6583,7 +7115,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-61723"
           ],
           "PublishedDate": "2025-10-29T23:16:19.927Z",
-          "LastModifiedDate": "2025-11-04T22:16:36.42Z"
+          "LastModifiedDate": "2026-01-29T15:49:05.343Z"
         },
         {
           "VulnerabilityID": "CVE-2025-61724",
@@ -6607,6 +7139,9 @@
           "Title": "net/textproto: Excessive CPU consumption in Reader.ReadResponse in net/textproto",
           "Description": "The Reader.ReadResponse function constructs a response string through repeated string concatenation of lines. When the number of lines in a response is large, this can cause excessive CPU consumption.",
           "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-770"
+          ],
           "VendorSeverity": {
             "amazon": 3,
             "bitnami": 2,
@@ -6633,7 +7168,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-61724"
           ],
           "PublishedDate": "2025-10-29T23:16:20.02Z",
-          "LastModifiedDate": "2025-11-04T22:16:36.567Z"
+          "LastModifiedDate": "2026-01-29T15:30:53.69Z"
         },
         {
           "VulnerabilityID": "CVE-2025-61725",
@@ -6736,6 +7271,47 @@
           ],
           "PublishedDate": "2025-12-03T20:16:25.607Z",
           "LastModifiedDate": "2025-12-18T20:15:10.957Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-61730",
+          "PkgName": "stdlib",
+          "PkgIdentifier": {
+            "PURL": "pkg:golang/stdlib@1.24.6",
+            "UID": "b031cc5b98a042ca"
+          },
+          "InstalledVersion": "1.24.6",
+          "FixedVersion": "1.24.12, 1.25.6",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:205425e4b4e70bcb289d445e3c15032b522a6214b537861253772d0821e4df76"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-61730",
+          "DataSource": {
+            "ID": "govulndb",
+            "Name": "The Go Vulnerability Database",
+            "URL": "https://pkg.go.dev/vuln/"
+          },
+          "Title": "During the TLS 1.3 handshake if multiple messages are sent in records  ...",
+          "Description": "During the TLS 1.3 handshake if multiple messages are sent in records that span encryption level boundaries (for instance the Client Hello and Encrypted Extensions messages), the subsequent messages may be processed before the encryption level changes. This can cause some minor information disclosure if a network-local attacker can inject messages during the handshake.",
+          "Severity": "MEDIUM",
+          "VendorSeverity": {
+            "bitnami": 2
+          },
+          "CVSS": {
+            "bitnami": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://go.dev/cl/724120",
+            "https://go.dev/issue/76443",
+            "https://groups.google.com/g/golang-announce/c/Vd2tYVM8eUc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-61730",
+            "https://pkg.go.dev/vuln/GO-2026-4340"
+          ],
+          "PublishedDate": "2026-01-28T20:16:09.94Z",
+          "LastModifiedDate": "2026-01-29T19:16:16.533Z"
         }
       ]
     }
