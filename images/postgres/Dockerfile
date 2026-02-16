@@ -1,4 +1,4 @@
-FROM postgres:18.1
+FROM postgres:18.2
 
 LABEL org.opencontainers.image.title="postgres-secured"
 LABEL org.opencontainers.image.description="Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain"
