@@ -1,3 +1,17 @@
+## 2026-02-22
+CRITICAL=0 HIGH=2 MEDIUM=18 RISK_INDEX=24
+
+### 🔄 Lifecycle Changes
+
+#### 🆕 Neu erkannte CVEs
+
+#### ✅ Behobene CVEs
+
+### 🔴 Top Critical/High Vulnerabilities
+- **[CVE-2026-0861](https://avd.aquasec.com/nvd/cve-2026-0861)** (HIGH) - `libc6@2.41-12+deb13u1` | CVSS: 8.1 | Fix: Pending
+- **[CVE-2026-0861](https://avd.aquasec.com/nvd/cve-2026-0861)** (HIGH) - `libc-bin@2.41-12+deb13u1` | CVSS: 8.1 | Fix: Pending
+---
+
 ## 2026-02-15
 CRITICAL=0 HIGH=2 MEDIUM=18 RISK_INDEX=24
 
