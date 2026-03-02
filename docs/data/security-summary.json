@@ -1,40 +1,40 @@
 {
-  "generatedAt": "2026-02-23T04:54:02Z",
+  "generatedAt": "2026-03-02T04:44:56Z",
   "period": {
-    "start": "2026-02-16",
-    "end": "2026-02-23"
+    "start": "2026-02-23",
+    "end": "2026-03-02"
   },
   "images": [
     {
       "name": "local-8.1-apache-mysql",
       "critical": 0,
-      "high": 34,
-      "medium": 162,
-      "low": 540,
-      "unknown": 4
+      "high": 33,
+      "medium": 164,
+      "low": 549,
+      "unknown": 0
     },
     {
       "name": "local-postgres-18",
       "critical": 1,
       "high": 16,
       "medium": 38,
-      "low": 83,
+      "low": 92,
       "unknown": 0
     },
     {
       "name": "local-python-3.14",
       "critical": 0,
-      "high": 15,
-      "medium": 35,
-      "low": 435,
+      "high": 9,
+      "medium": 32,
+      "low": 444,
       "unknown": 0
     },
     {
       "name": "local-result",
       "critical": 1,
-      "high": 25,
+      "high": 27,
       "medium": 39,
-      "low": 100,
+      "low": 108,
       "unknown": 0
     },
     {
@@ -42,7 +42,7 @@
       "critical": 0,
       "high": 2,
       "medium": 18,
-      "low": 82,
+      "low": 91,
       "unknown": 0
     },
     {
@@ -50,25 +50,25 @@
       "critical": 7,
       "high": 37,
       "medium": 78,
-      "low": 92,
+      "low": 99,
       "unknown": 5
     }
   ],
   "totals": {
     "critical": 9,
-    "high": 129,
-    "medium": 370,
-    "low": 1332,
-    "unknown": 9
+    "high": 124,
+    "medium": 369,
+    "low": 1383,
+    "unknown": 5
   },
   "delta": {
     "critical": 0,
-    "high": 5,
-    "medium": 11,
-    "low": 2,
-    "unknown": -35
+    "high": -5,
+    "medium": -1,
+    "low": 51,
+    "unknown": -4
   },
-  "direction": "worse",
+  "direction": "better",
   "trend": [
     {
       "date": "2025-11-13",
@@ -171,6 +171,12 @@
       "critical": 9,
       "high": 129,
       "medium": 370
+    },
+    {
+      "date": "2026-03-02",
+      "critical": 9,
+      "high": 124,
+      "medium": 369
     }
   ],
   "summary": "Sicherheitsrelevante Schwachstellen erkannt – siehe Detailzahlen.",

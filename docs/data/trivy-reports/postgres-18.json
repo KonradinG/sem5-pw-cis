@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-02-23T04:52:39.657230708Z",
+  "CreatedAt": "2026-03-02T04:43:37.442108985Z",
   "ArtifactName": "local-postgres-18",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,7 +8,7 @@
       "Family": "debian",
       "Name": "13.3"
     },
-    "ImageID": "sha256:d31bd30e05d7245a2a31b6ed60ee826357985654ae25de4217ee39e2bf04652a",
+    "ImageID": "sha256:62b97a8b964e728eb5f39cbedbba9b4bb1af38c9247654b7e46ce804fa292ccc",
     "DiffIDs": [
       "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03",
       "sha256:85cf80c56814bb1ce7bcfffb5c5887b6b430cb105fab8d1d95e0c2d646dcc637",
@@ -23,14 +23,14 @@
       "sha256:a5da602db3a8377292d66264f68a4b0d9881e8d57c7bf591bd9680c63788c71b",
       "sha256:ec2fccb794232e99b75f8da66d3f926f0f1ddd622862056f4bda65733b280b4b",
       "sha256:bde23017d09da996a953cf54220f6f6a15251e53991fe8be82c1c4c1b9cd67f8",
-      "sha256:165aecf9adf37505bd7f6fea94f54a575a7185acb8738b43b38693026e5416c1"
+      "sha256:12fc38dd9fd0bb329ec6552b344c147ac0e4475e82a41d29cdf445f4389a377f"
     ],
     "RepoTags": [
       "local-postgres-18:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-02-23T04:52:26.392165126Z",
+      "created": "2026-03-02T04:43:21.577954845Z",
       "history": [
         {
           "created": "2026-02-02T00:00:00Z",
@@ -164,37 +164,37 @@
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "LABEL org.opencontainers.image.title=postgres-secured",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "LABEL org.opencontainers.image.description=Postgres mit aktualisierten OpenSSL-Paketen und ohne XSLT-Toolchain",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "LABEL org.opencontainers.image.licenses=PostgreSQL",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "LABEL org.opencontainers.image.pipeline-test=pr-security-compare-trigger",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "ENV DEBIAN_FRONTEND=noninteractive",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:26Z",
+          "created": "2026-03-02T04:43:21Z",
           "created_by": "RUN /bin/sh -c set -eux;     apt-get update;     apt-get install -y --only-upgrade         openssl         libssl3t64         openssl-provider-legacy         || true;     apt-get purge -y         libxslt1.1         xsltproc         libxml2-utils         || true;     apt-get autoremove -y;     rm -rf /var/lib/apt/lists/*;     dpkg-query -W openssl libssl3t64 openssl-provider-legacy || true;     ! dpkg -s libxslt1.1 \u003e/dev/null 2\u003e\u00261 || (echo \"WARN: libxslt1.1 noch installiert\" \u0026\u0026 exit 1) # buildkit",
           "comment": "buildkit.dockerfile.v0"
         }
@@ -216,7 +216,7 @@
           "sha256:a5da602db3a8377292d66264f68a4b0d9881e8d57c7bf591bd9680c63788c71b",
           "sha256:ec2fccb794232e99b75f8da66d3f926f0f1ddd622862056f4bda65733b280b4b",
           "sha256:bde23017d09da996a953cf54220f6f6a15251e53991fe8be82c1c4c1b9cd67f8",
-          "sha256:165aecf9adf37505bd7f6fea94f54a575a7185acb8738b43b38693026e5416c1"
+          "sha256:12fc38dd9fd0bb329ec6552b344c147ac0e4475e82a41d29cdf445f4389a377f"
         ]
       },
       "config": {
@@ -378,19 +378,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -450,6 +451,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "bsdutils@1:2.41-5",
+          "PkgName": "bsdutils",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/bsdutils@2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "c9de60be80a96a27"
+          },
+          "InstalledVersion": "1:2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2017-18018",
@@ -586,9 +624,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -604,8 +644,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -753,9 +796,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -771,8 +816,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -920,9 +968,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -938,8 +988,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -1087,9 +1140,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -1105,8 +1160,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -1254,9 +1312,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -1272,8 +1332,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -1421,9 +1484,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -1439,8 +1504,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -1588,9 +1656,11 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
-            "redhat": 3
+            "redhat": 3,
+            "rocky": 3
           },
           "CVSS": {
             "nvd": {
@@ -1606,8 +1676,11 @@
             "https://access.redhat.com/errata/RHSA-2026:2719",
             "https://access.redhat.com/security/cve/CVE-2026-24882",
             "https://bugzilla.redhat.com/2433464",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2433464",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24882",
             "https://dev.gnupg.org/T8045",
             "https://errata.almalinux.org/10/ALSA-2026-2719.html",
+            "https://errata.rockylinux.org/RLSA-2026:2719",
             "https://linux.oracle.com/cve/CVE-2026-24882.html",
             "https://linux.oracle.com/errata/ELSA-2026-2719.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-24882",
@@ -1823,19 +1896,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -1897,6 +1971,43 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libblkid1@2.41-5",
+          "PkgName": "libblkid1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libblkid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "3537354242b80232"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
+        },
+        {
           "VulnerabilityID": "CVE-2026-0861",
           "PkgID": "libc-bin@2.41-12+deb13u1",
           "PkgName": "libc-bin",
@@ -1992,6 +2103,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2007,7 +2119,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -2562,6 +2681,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2577,7 +2697,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -3132,6 +3259,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -3147,7 +3275,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -3685,7 +3820,7 @@
           "Description": "A timing-based side-channel flaw was found in libgcrypt's RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.",
           "Severity": "LOW",
           "CweIDs": [
-            "CWE-208"
+            "CWE-385"
           ],
           "VendorSeverity": {
             "alma": 2,
@@ -3723,7 +3858,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2024-2236"
           ],
           "PublishedDate": "2024-03-06T22:15:57.977Z",
-          "LastModifiedDate": "2025-04-02T17:15:37.79Z"
+          "LastModifiedDate": "2026-02-25T20:17:20.547Z"
         },
         {
           "VulnerabilityID": "CVE-2025-14831",
@@ -3967,19 +4102,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -4039,6 +4175,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "liblastlog2-2@2.41-5",
+          "PkgName": "liblastlog2-2",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/liblastlog2-2@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "870a761736951a7a"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2015-3276",
@@ -4368,19 +4541,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -4440,6 +4614,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libmount1@2.41-5",
+          "PkgName": "libmount1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libmount1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "d221671730a103d6"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2025-6141",
@@ -4597,19 +4808,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -4669,6 +4881,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libsmartcols1@2.41-5",
+          "PkgName": "libsmartcols1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libsmartcols1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "55096df77b1297e"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2025-7709",
@@ -5297,19 +5546,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -5369,6 +5619,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libuuid1@2.41-5",
+          "PkgName": "libuuid1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libuuid1@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "4cbf1ae7d7774880"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2026-0861",
@@ -5466,6 +5753,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -5481,7 +5769,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -5988,19 +6283,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -6060,6 +6356,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "login@1:4.16.0-2+really2.41-5",
+          "PkgName": "login",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/login@4.16.0-2%2Breally2.41-5?arch=amd64\u0026distro=debian-13.3\u0026epoch=1",
+            "UID": "ca152d53e85ce4cc"
+          },
+          "InstalledVersion": "1:4.16.0-2+really2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2007-5686",
@@ -6154,7 +6487,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
             "https://errata.almalinux.org/9/ALSA-2025-20559.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -6240,19 +6573,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -6312,6 +6646,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "mount@2.41-5",
+          "PkgName": "mount",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/mount@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "c6fdc5cf989db569"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2025-6141",
@@ -6510,7 +6881,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
             "https://errata.almalinux.org/9/ALSA-2025-20559.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -6864,19 +7235,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -6936,6 +7308,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "util-linux@2.41-5",
+          "PkgName": "util-linux",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/util-linux@2.41-5?arch=amd64\u0026distro=debian-13.3",
+            "UID": "38be4846f19b7fa"
+          },
+          "InstalledVersion": "2.41-5",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:a8ff6f8cbdfd6741c10dd183560df7212db666db046768b0f05bbc3904515f03"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2026-27171",
@@ -7049,28 +7458,25 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:2920",
+            "https://access.redhat.com/errata/RHSA-2026:3337",
             "https://access.redhat.com/security/cve/CVE-2025-68121",
             "https://bugzilla.redhat.com/2418462",
-            "https://bugzilla.redhat.com/2433242",
             "https://bugzilla.redhat.com/2434431",
             "https://bugzilla.redhat.com/2434432",
             "https://bugzilla.redhat.com/2437111",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434431",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434432",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2437016",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2437111",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61726",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61728",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61732",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-68121",
-            "https://errata.almalinux.org/9/ALSA-2026-2920.html",
-            "https://errata.rockylinux.org/RLSA-2026:2709",
+            "https://errata.almalinux.org/9/ALSA-2026-3337.html",
+            "https://errata.rockylinux.org/RLSA-2026:3188",
             "https://go.dev/cl/737700",
             "https://go.dev/issue/77217",
             "https://groups.google.com/g/golang-announce/c/K09ubi9FQFk",
             "https://linux.oracle.com/cve/CVE-2025-68121.html",
-            "https://linux.oracle.com/errata/ELSA-2026-2920.html",
+            "https://linux.oracle.com/errata/ELSA-2026-3343.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-68121",
             "https://pkg.go.dev/vuln/GO-2026-4337",
             "https://www.cve.org/CVERecord?id=CVE-2025-68121"
@@ -7129,7 +7535,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2407258",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-58183",
             "https://errata.almalinux.org/9/ALSA-2026-1381.html",
-            "https://errata.rockylinux.org/RLSA-2025:23326",
+            "https://errata.rockylinux.org/RLSA-2025:23948",
             "https://go.dev/cl/709861",
             "https://go.dev/issue/75677",
             "https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI",
@@ -7189,28 +7595,25 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:2920",
+            "https://access.redhat.com/errata/RHSA-2026:3337",
             "https://access.redhat.com/security/cve/CVE-2025-61726",
             "https://bugzilla.redhat.com/2418462",
-            "https://bugzilla.redhat.com/2433242",
             "https://bugzilla.redhat.com/2434431",
             "https://bugzilla.redhat.com/2434432",
             "https://bugzilla.redhat.com/2437111",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434431",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434432",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2437016",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2437111",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61726",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61728",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61732",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-68121",
-            "https://errata.almalinux.org/9/ALSA-2026-2920.html",
-            "https://errata.rockylinux.org/RLSA-2026:2709",
+            "https://errata.almalinux.org/9/ALSA-2026-3337.html",
+            "https://errata.rockylinux.org/RLSA-2026:3188",
             "https://go.dev/cl/736712",
             "https://go.dev/issue/77101",
             "https://groups.google.com/g/golang-announce/c/Vd2tYVM8eUc",
             "https://linux.oracle.com/cve/CVE-2025-61726.html",
-            "https://linux.oracle.com/errata/ELSA-2026-2920.html",
+            "https://linux.oracle.com/errata/ELSA-2026-3343.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61726",
             "https://pkg.go.dev/vuln/GO-2026-4341",
             "https://www.cve.org/CVERecord?id=CVE-2025-61726"
@@ -7265,28 +7668,25 @@
           },
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/01/15/4",
-            "https://access.redhat.com/errata/RHSA-2026:2920",
+            "https://access.redhat.com/errata/RHSA-2026:3337",
             "https://access.redhat.com/security/cve/CVE-2025-61728",
             "https://bugzilla.redhat.com/2418462",
-            "https://bugzilla.redhat.com/2433242",
             "https://bugzilla.redhat.com/2434431",
             "https://bugzilla.redhat.com/2434432",
             "https://bugzilla.redhat.com/2437111",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434431",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2434432",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2437016",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2437111",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61726",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61728",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61732",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-68121",
-            "https://errata.almalinux.org/9/ALSA-2026-2920.html",
-            "https://errata.rockylinux.org/RLSA-2026:2709",
+            "https://errata.almalinux.org/9/ALSA-2026-3337.html",
+            "https://errata.rockylinux.org/RLSA-2026:3188",
             "https://go.dev/cl/736713",
             "https://go.dev/issue/77102",
             "https://groups.google.com/g/golang-announce/c/Vd2tYVM8eUc",
             "https://linux.oracle.com/cve/CVE-2025-61728.html",
-            "https://linux.oracle.com/errata/ELSA-2026-2920.html",
+            "https://linux.oracle.com/errata/ELSA-2026-3337.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61728",
             "https://pkg.go.dev/vuln/GO-2026-4342",
             "https://www.cve.org/CVERecord?id=CVE-2025-61728"
@@ -7339,22 +7739,25 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:2920",
+            "https://access.redhat.com/errata/RHSA-2026:3337",
             "https://access.redhat.com/security/cve/CVE-2025-61729",
             "https://bugzilla.redhat.com/2418462",
-            "https://bugzilla.redhat.com/2433242",
             "https://bugzilla.redhat.com/2434431",
             "https://bugzilla.redhat.com/2434432",
             "https://bugzilla.redhat.com/2437111",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2268022",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2418462",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2418900",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-24785",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-61729",
-            "https://errata.almalinux.org/9/ALSA-2026-2920.html",
-            "https://errata.rockylinux.org/RLSA-2026:1908",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-65637",
+            "https://errata.almalinux.org/9/ALSA-2026-3337.html",
+            "https://errata.rockylinux.org/RLSA-2026:3428",
             "https://go.dev/cl/725920",
             "https://go.dev/issue/76445",
             "https://groups.google.com/g/golang-announce/c/8FJoBkPddm4",
             "https://linux.oracle.com/cve/CVE-2025-61729.html",
-            "https://linux.oracle.com/errata/ELSA-2026-2920.html",
+            "https://linux.oracle.com/errata/ELSA-2026-3428.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-61729",
             "https://pkg.go.dev/vuln/GO-2025-4155",
             "https://www.cve.org/CVERecord?id=CVE-2025-61729"

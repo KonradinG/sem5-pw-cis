@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2026-02-23T04:52:35.784730746Z",
+  "CreatedAt": "2026-03-02T04:43:33.000894841Z",
   "ArtifactName": "local-result",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,26 +8,26 @@
       "Family": "debian",
       "Name": "12.11"
     },
-    "ImageID": "sha256:fdc074a1213f142ad8baa72dc96b38e01f62cccc7185db47e4c9f935015ae16a",
+    "ImageID": "sha256:14a7a700e64c5ede8bc428623c91837c2a6a371d4b4220fceeadd045d72f0436",
     "DiffIDs": [
       "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783",
       "sha256:206f13f5e3179e2addf8227aeed4c85cb94d95776d4cc2540f9e19c41914c43c",
       "sha256:cd1cd7c2e57b8121f760e24ee1943adf4b9dea43ce5940b71f80ffdeace35f0e",
       "sha256:9b95ddc8a1403d1f6fc68bd1ea2daa65a247c2a922a985dfce6aec5574be803a",
       "sha256:e1e93a4fa4fdd7848ab14c10ec7ccf2f6e14d5fedb6b80edce58dad4de95a900",
-      "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e",
-      "sha256:337d3727cf34a54673fdb37262402477bacbd53c22d08fb7d8a2c668cb534cf0",
-      "sha256:3c2767957255915f618d47bdd659c0736def84612988c32567638c251e2cfb79",
-      "sha256:acd7743afe24475640f80c729c0680a6942629a17ea2d32291d8ebadd9819eee",
-      "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3",
-      "sha256:f09bfa8ae2cd8848f248527988c7538b57f965ae76b47462d9f3b6ef0674f971"
+      "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028",
+      "sha256:78322517b8396d4ada3b2db306367179a862788ce38c65b8c7dec219c4741be6",
+      "sha256:15da37f566b14eb9b74313c8ecfe5c4c9d79bc58dbf578a6e748118b82cc97f8",
+      "sha256:55da5f1d6c79be1cc284a19110b4d55f965e11c48a98b5fd29507619ebe6187c",
+      "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62",
+      "sha256:e1edd6a729efe71d1c4471940ac3bea5bf4445ca2877ec8de089fea9ab5a74b1"
     ],
     "RepoTags": [
       "local-result:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-02-23T04:52:22.554648032Z",
+      "created": "2026-03-02T04:43:15.209278167Z",
       "history": [
         {
           "created": "2025-03-27T14:23:08Z",
@@ -79,55 +79,55 @@
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:18Z",
+          "created": "2026-03-02T04:43:11Z",
           "created_by": "RUN /bin/sh -c apt-get update \u0026\u0026     apt-get install -y --no-install-recommends curl tini \u0026\u0026     rm -rf /var/lib/apt/lists/* # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:18Z",
+          "created": "2026-03-02T04:43:11Z",
           "created_by": "WORKDIR /usr/local/app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:20Z",
+          "created": "2026-03-02T04:43:12Z",
           "created_by": "RUN /bin/sh -c npm install -g nodemon # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:20Z",
+          "created": "2026-03-02T04:43:12Z",
           "created_by": "COPY package*.json ./ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "RUN /bin/sh -c npm ci \u0026\u0026  npm cache clean --force \u0026\u0026  mv /usr/local/app/node_modules /node_modules # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "COPY . . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "ENV PORT=80",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "EXPOSE map[80/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "ENTRYPOINT [\"/usr/bin/tini\" \"--\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2026-02-23T04:52:22Z",
+          "created": "2026-03-02T04:43:15Z",
           "created_by": "CMD [\"node\" \"server.js\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -142,12 +142,12 @@
           "sha256:cd1cd7c2e57b8121f760e24ee1943adf4b9dea43ce5940b71f80ffdeace35f0e",
           "sha256:9b95ddc8a1403d1f6fc68bd1ea2daa65a247c2a922a985dfce6aec5574be803a",
           "sha256:e1e93a4fa4fdd7848ab14c10ec7ccf2f6e14d5fedb6b80edce58dad4de95a900",
-          "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e",
-          "sha256:337d3727cf34a54673fdb37262402477bacbd53c22d08fb7d8a2c668cb534cf0",
-          "sha256:3c2767957255915f618d47bdd659c0736def84612988c32567638c251e2cfb79",
-          "sha256:acd7743afe24475640f80c729c0680a6942629a17ea2d32291d8ebadd9819eee",
-          "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3",
-          "sha256:f09bfa8ae2cd8848f248527988c7538b57f965ae76b47462d9f3b6ef0674f971"
+          "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028",
+          "sha256:78322517b8396d4ada3b2db306367179a862788ce38c65b8c7dec219c4741be6",
+          "sha256:15da37f566b14eb9b74313c8ecfe5c4c9d79bc58dbf578a6e748118b82cc97f8",
+          "sha256:55da5f1d6c79be1cc284a19110b4d55f965e11c48a98b5fd29507619ebe6187c",
+          "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62",
+          "sha256:e1edd6a729efe71d1c4471940ac3bea5bf4445ca2877ec8de089fea9ab5a74b1"
         ]
       },
       "config": {
@@ -300,19 +300,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -372,6 +373,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "bsdutils@1:2.38.1-5+deb12u3",
+          "PkgName": "bsdutils",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/bsdutils@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11\u0026epoch=1",
+            "UID": "b5147cb35d13a963"
+          },
+          "InstalledVersion": "1:2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2016-2781",
@@ -551,7 +589,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "will_not_fix",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10148",
           "DataSource": {
@@ -585,6 +623,7 @@
             "https://curl.se/docs/CVE-2025-10148.json",
             "https://hackerone.com/reports/3330839",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-10148",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-10148"
           ],
           "PublishedDate": "2025-09-12T06:15:40.02Z",
@@ -601,7 +640,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-2379",
@@ -657,7 +696,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-0725",
@@ -712,7 +751,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -760,7 +799,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14017",
@@ -778,7 +817,8 @@
             "cbl-mariner": 2,
             "debian": 1,
             "photon": 2,
-            "redhat": 2
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -792,6 +832,7 @@
             "https://curl.se/docs/CVE-2025-14017.html",
             "https://curl.se/docs/CVE-2025-14017.json",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14017",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14017"
           ],
           "PublishedDate": "2026-01-08T10:15:45.667Z",
@@ -808,7 +849,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14524",
           "DataSource": {
@@ -832,6 +873,7 @@
             "https://curl.se/docs/CVE-2025-14524.html",
             "https://curl.se/docs/CVE-2025-14524.json",
             "https://hackerone.com/reports/3459417",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14524"
           ],
           "PublishedDate": "2026-01-08T10:15:46.607Z",
@@ -848,7 +890,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14819",
           "DataSource": {
@@ -871,6 +913,7 @@
             "http://www.openwall.com/lists/oss-security/2026/01/07/5",
             "https://curl.se/docs/CVE-2025-14819.html",
             "https://curl.se/docs/CVE-2025-14819.json",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14819"
           ],
           "PublishedDate": "2026-01-08T10:15:46.73Z",
@@ -887,7 +930,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15079",
@@ -913,6 +956,7 @@
             "https://curl.se/docs/CVE-2025-15079.html",
             "https://curl.se/docs/CVE-2025-15079.json",
             "https://hackerone.com/reports/3477116",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-15079"
           ],
           "PublishedDate": "2026-01-08T10:15:47.1Z",
@@ -929,7 +973,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15224",
@@ -955,6 +999,7 @@
             "https://curl.se/docs/CVE-2025-15224.html",
             "https://curl.se/docs/CVE-2025-15224.json",
             "https://hackerone.com/reports/3480925",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-15224"
           ],
           "PublishedDate": "2026-01-08T10:15:47.207Z",
@@ -1089,6 +1134,7 @@
             "alma": 3,
             "amazon": 3,
             "azure": 3,
+            "cbl-mariner": 3,
             "nvd": 3,
             "oracle-oval": 3,
             "photon": 3,
@@ -1116,7 +1162,7 @@
             "https://dev.gnupg.org/T7906",
             "https://dev.gnupg.org/T8001",
             "https://errata.almalinux.org/9/ALSA-2026-0719.html",
-            "https://errata.rockylinux.org/RLSA-2026:0719",
+            "https://errata.rockylinux.org/RLSA-2026:0728",
             "https://github.com/gpg/gnupg/blob/ff30683418695f5d2cc9e6cf8c9418e09378ebe4/g10/armor.c#L1305-L1306",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9",
             "https://github.com/gpg/gnupg/commit/115d138ba599328005c5321c0ef9f00355838ca9 (gnupg-2.5.14)",
@@ -1399,19 +1445,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -1473,6 +1520,43 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libblkid1@2.38.1-5+deb12u3",
+          "PkgName": "libblkid1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libblkid1@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "db8b5ae53bf85f30"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
+        },
+        {
           "VulnerabilityID": "CVE-2025-4802",
           "PkgID": "libc-bin@2.36-9+deb12u10",
           "PkgName": "libc-bin",
@@ -1523,7 +1607,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2367468",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-4802",
             "https://errata.almalinux.org/9/ALSA-2025-8655.html",
-            "https://errata.rockylinux.org/RLSA-2025:8655",
+            "https://errata.rockylinux.org/RLSA-2025:8686",
             "https://linux.oracle.com/cve/CVE-2025-4802.html",
             "https://linux.oracle.com/errata/ELSA-2025-8686.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00033.html",
@@ -1635,6 +1719,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -1650,7 +1735,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -1712,7 +1804,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
             "https://errata.almalinux.org/8/ALSA-2025-12980.html",
-            "https://errata.rockylinux.org/RLSA-2025:12748",
+            "https://errata.rockylinux.org/RLSA-2025:12980",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-8058",
@@ -2224,7 +2316,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2367468",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-4802",
             "https://errata.almalinux.org/9/ALSA-2025-8655.html",
-            "https://errata.rockylinux.org/RLSA-2025:8655",
+            "https://errata.rockylinux.org/RLSA-2025:8686",
             "https://linux.oracle.com/cve/CVE-2025-4802.html",
             "https://linux.oracle.com/errata/ELSA-2025-8686.html",
             "https://lists.debian.org/debian-lts-announce/2025/05/msg00033.html",
@@ -2336,6 +2428,7 @@
             "oracle-oval": 2,
             "photon": 3,
             "redhat": 1,
+            "rocky": 2,
             "ubuntu": 2
           },
           "CVSS": {
@@ -2351,7 +2444,14 @@
             "https://bugzilla.redhat.com/2429771",
             "https://bugzilla.redhat.com/2430201",
             "https://bugzilla.redhat.com/2431196",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2429771",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2430201",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2431196",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-15281",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0861",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0915",
             "https://errata.almalinux.org/9/ALSA-2026-2786.html",
+            "https://errata.rockylinux.org/RLSA-2026:2786",
             "https://linux.oracle.com/cve/CVE-2025-15281.html",
             "https://linux.oracle.com/errata/ELSA-2026-50120.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-15281",
@@ -2413,7 +2513,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2383146",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8058",
             "https://errata.almalinux.org/8/ALSA-2025-12980.html",
-            "https://errata.rockylinux.org/RLSA-2025:12748",
+            "https://errata.rockylinux.org/RLSA-2025:12980",
             "https://linux.oracle.com/cve/CVE-2025-8058.html",
             "https://linux.oracle.com/errata/ELSA-2025-28054.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-8058",
@@ -2885,7 +2985,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "will_not_fix",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10148",
           "DataSource": {
@@ -2919,6 +3019,7 @@
             "https://curl.se/docs/CVE-2025-10148.json",
             "https://hackerone.com/reports/3330839",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-10148",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-10148"
           ],
           "PublishedDate": "2025-09-12T06:15:40.02Z",
@@ -2935,7 +3036,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-2379",
@@ -2991,7 +3092,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-0725",
@@ -3046,7 +3147,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-10966",
@@ -3094,7 +3195,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14017",
@@ -3112,7 +3213,8 @@
             "cbl-mariner": 2,
             "debian": 1,
             "photon": 2,
-            "redhat": 2
+            "redhat": 2,
+            "ubuntu": 2
           },
           "CVSS": {
             "redhat": {
@@ -3126,6 +3228,7 @@
             "https://curl.se/docs/CVE-2025-14017.html",
             "https://curl.se/docs/CVE-2025-14017.json",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14017",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14017"
           ],
           "PublishedDate": "2026-01-08T10:15:45.667Z",
@@ -3142,7 +3245,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14524",
           "DataSource": {
@@ -3166,6 +3269,7 @@
             "https://curl.se/docs/CVE-2025-14524.html",
             "https://curl.se/docs/CVE-2025-14524.json",
             "https://hackerone.com/reports/3459417",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14524"
           ],
           "PublishedDate": "2026-01-08T10:15:46.607Z",
@@ -3182,7 +3286,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-14819",
           "DataSource": {
@@ -3205,6 +3309,7 @@
             "http://www.openwall.com/lists/oss-security/2026/01/07/5",
             "https://curl.se/docs/CVE-2025-14819.html",
             "https://curl.se/docs/CVE-2025-14819.json",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-14819"
           ],
           "PublishedDate": "2026-01-08T10:15:46.73Z",
@@ -3221,7 +3326,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15079",
@@ -3247,6 +3352,7 @@
             "https://curl.se/docs/CVE-2025-15079.html",
             "https://curl.se/docs/CVE-2025-15079.json",
             "https://hackerone.com/reports/3477116",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-15079"
           ],
           "PublishedDate": "2026-01-08T10:15:47.1Z",
@@ -3263,7 +3369,7 @@
           "InstalledVersion": "7.88.1-10+deb12u14",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15224",
@@ -3289,6 +3395,7 @@
             "https://curl.se/docs/CVE-2025-15224.html",
             "https://curl.se/docs/CVE-2025-15224.json",
             "https://hackerone.com/reports/3480925",
+            "https://ubuntu.com/security/notices/USN-8062-1",
             "https://www.cve.org/CVERecord?id=CVE-2025-15224"
           ],
           "PublishedDate": "2026-01-08T10:15:47.207Z",
@@ -3433,7 +3540,7 @@
           "Description": "A timing-based side-channel flaw was found in libgcrypt's RSA implementation. This issue may allow a remote attacker to initiate a Bleichenbacher-style attack, which can lead to the decryption of RSA ciphertexts.",
           "Severity": "LOW",
           "CweIDs": [
-            "CWE-208"
+            "CWE-385"
           ],
           "VendorSeverity": {
             "alma": 2,
@@ -3471,7 +3578,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2024-2236"
           ],
           "PublishedDate": "2024-03-06T22:15:57.977Z",
-          "LastModifiedDate": "2025-04-02T17:15:37.79Z"
+          "LastModifiedDate": "2026-02-25T20:17:20.547Z"
         },
         {
           "VulnerabilityID": "CVE-2025-32988",
@@ -3541,15 +3648,13 @@
             "https://bugzilla.redhat.com/2359622",
             "https://bugzilla.redhat.com/2376755",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359620",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2359621",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359622",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2376755",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32988",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32989",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16116",
+            "https://errata.rockylinux.org/RLSA-2025:17415",
             "https://linux.oracle.com/cve/CVE-2025-32988.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -3630,15 +3735,13 @@
             "https://bugzilla.redhat.com/2359622",
             "https://bugzilla.redhat.com/2376755",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359620",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2359621",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359622",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2376755",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32988",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32989",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16116",
+            "https://errata.rockylinux.org/RLSA-2025:17415",
             "https://linux.oracle.com/cve/CVE-2025-32990.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -3769,7 +3872,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16116",
+            "https://errata.rockylinux.org/RLSA-2025:16115",
             "https://linux.oracle.com/cve/CVE-2025-32989.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.gnupg.org/pipermail/gnutls-help/2025-July/004883.html",
@@ -3842,15 +3945,13 @@
             "https://bugzilla.redhat.com/2359622",
             "https://bugzilla.redhat.com/2376755",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359620",
-            "https://bugzilla.redhat.com/show_bug.cgi?id=2359621",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2359622",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2376755",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32988",
-            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32989",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32990",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6395",
             "https://errata.almalinux.org/9/ALSA-2025-16116.html",
-            "https://errata.rockylinux.org/RLSA-2025:16116",
+            "https://errata.rockylinux.org/RLSA-2025:17415",
             "https://linux.oracle.com/cve/CVE-2025-6395.html",
             "https://linux.oracle.com/errata/ELSA-2025-20606.html",
             "https://lists.debian.org/debian-lts-announce/2025/08/msg00005.html",
@@ -4071,7 +4172,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -4124,7 +4225,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -4192,7 +4293,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -4260,7 +4361,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -4313,7 +4414,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -4381,7 +4482,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -4449,7 +4550,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -4502,7 +4603,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -4570,7 +4671,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -4638,7 +4739,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2018-5709",
@@ -4691,7 +4792,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26458",
@@ -4759,7 +4860,7 @@
           "InstalledVersion": "1.20.1-2+deb12u4",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-26461",
@@ -4827,7 +4928,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "nvd",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2023-2953",
@@ -4905,7 +5006,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2015-3276",
@@ -4962,7 +5063,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-14159",
@@ -5015,7 +5116,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2017-17740",
@@ -5071,7 +5172,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2020-15719",
@@ -5134,7 +5235,7 @@
           "InstalledVersion": "2.5.13+dfsg-5",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-22185",
@@ -5222,19 +5323,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -5294,6 +5396,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libmount1@2.38.1-5+deb12u3",
+          "PkgName": "libmount1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libmount1@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "6ebca51aff38e6ce"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2025-6020",
@@ -5369,9 +5508,11 @@
             "https://access.redhat.com/security/cve/CVE-2025-6020",
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2388220",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8941",
             "https://errata.almalinux.org/9/ALSA-2025-9526.html",
-            "https://errata.rockylinux.org/RLSA-2025:9526",
+            "https://errata.rockylinux.org/RLSA-2025:14557",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
             "https://lists.debian.org/debian-lts-announce/2025/09/msg00021.html",
@@ -5590,9 +5731,11 @@
             "https://access.redhat.com/security/cve/CVE-2025-6020",
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2388220",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8941",
             "https://errata.almalinux.org/9/ALSA-2025-9526.html",
-            "https://errata.rockylinux.org/RLSA-2025:9526",
+            "https://errata.rockylinux.org/RLSA-2025:14557",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
             "https://lists.debian.org/debian-lts-announce/2025/09/msg00021.html",
@@ -5811,9 +5954,11 @@
             "https://access.redhat.com/security/cve/CVE-2025-6020",
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2388220",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8941",
             "https://errata.almalinux.org/9/ALSA-2025-9526.html",
-            "https://errata.rockylinux.org/RLSA-2025:9526",
+            "https://errata.rockylinux.org/RLSA-2025:14557",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
             "https://lists.debian.org/debian-lts-announce/2025/09/msg00021.html",
@@ -6032,9 +6177,11 @@
             "https://access.redhat.com/security/cve/CVE-2025-6020",
             "https://bugzilla.redhat.com/2372512",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2372512",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2388220",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-6020",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-8941",
             "https://errata.almalinux.org/9/ALSA-2025-9526.html",
-            "https://errata.rockylinux.org/RLSA-2025:9526",
+            "https://errata.rockylinux.org/RLSA-2025:14557",
             "https://linux.oracle.com/cve/CVE-2025-6020.html",
             "https://linux.oracle.com/errata/ELSA-2025-9526.html",
             "https://lists.debian.org/debian-lts-announce/2025/09/msg00021.html",
@@ -6227,19 +6374,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -6301,6 +6449,43 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libsmartcols1@2.38.1-5+deb12u3",
+          "PkgName": "libsmartcols1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libsmartcols1@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "ccde01db134296f8"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
+        },
+        {
           "VulnerabilityID": "CVE-2025-27587",
           "PkgID": "libssl3@3.0.18-1~deb12u2",
           "PkgName": "libssl3",
@@ -6311,7 +6496,7 @@
           "InstalledVersion": "3.0.18-1~deb12u2",
           "Status": "affected",
           "Layer": {
-            "DiffID": "sha256:501bc067e858c75f8a0f44168f5ce7629c37bb44ececd9f96cfb11a60d6b464e"
+            "DiffID": "sha256:0946099d58b1dd88952637a798be159e889ac73274af927b5069a04fc0447028"
           },
           "SeveritySource": "debian",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-27587",
@@ -7143,19 +7328,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -7215,6 +7401,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "libuuid1@2.38.1-5+deb12u3",
+          "PkgName": "libuuid1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libuuid1@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "9ad01d49bd044281"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2007-5686",
@@ -7309,7 +7532,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
             "https://errata.almalinux.org/9/ALSA-2025-20559.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -7395,19 +7618,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -7467,6 +7691,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "mount@2.38.1-5+deb12u3",
+          "PkgName": "mount",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/mount@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "63b0977e705f5d35"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2023-50495",
@@ -7773,7 +8034,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2334165",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-56433",
             "https://errata.almalinux.org/9/ALSA-2025-20559.html",
-            "https://errata.rockylinux.org/RLSA-2025:20559",
+            "https://errata.rockylinux.org/RLSA-2025:20145",
             "https://github.com/shadow-maint/shadow/blob/e2512d5741d4a44bdd81a8c2d0029b6222728cf0/etc/login.defs#L238-L241",
             "https://github.com/shadow-maint/shadow/issues/1157",
             "https://github.com/shadow-maint/shadow/releases/tag/4.4",
@@ -7870,7 +8131,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2218667",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-31484",
             "https://errata.almalinux.org/9/ALSA-2023-6539.html",
-            "https://errata.rockylinux.org/RLSA-2023:6539",
+            "https://errata.rockylinux.org/RLSA-2024:3094",
             "https://github.com/andk/cpanpm/commit/9c98370287f4e709924aee7c58ef21c85289a7f0 (2.35-TRIAL)",
             "https://github.com/andk/cpanpm/pull/175",
             "https://linux.oracle.com/cve/CVE-2023-31484.html",
@@ -7951,7 +8212,7 @@
             "https://bugzilla.redhat.com/show_bug.cgi?id=2369407",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-40909",
             "https://errata.almalinux.org/8/ALSA-2025-11805.html",
-            "https://errata.rockylinux.org/RLSA-2025:11804",
+            "https://errata.rockylinux.org/RLSA-2025:11805",
             "https://github.com/Perl/perl5/commit/11a11ecf4bea72b17d250cfb43c897be1341861e",
             "https://github.com/Perl/perl5/commit/918bfff86ca8d6d4e4ec5b30994451e0bd74aba9.patch",
             "https://github.com/Perl/perl5/issues/10387",
@@ -8242,19 +8503,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -8316,6 +8578,43 @@
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "util-linux@2.38.1-5+deb12u3",
+          "PkgName": "util-linux",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/util-linux@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "7baf07217f173406"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
+        },
+        {
           "VulnerabilityID": "CVE-2025-14104",
           "PkgID": "util-linux-extra@2.38.1-5+deb12u3",
           "PkgName": "util-linux-extra",
@@ -8363,19 +8662,20 @@
             "https://access.redhat.com/errata/RHSA-2026:2563",
             "https://access.redhat.com/errata/RHSA-2026:2737",
             "https://access.redhat.com/errata/RHSA-2026:2800",
+            "https://access.redhat.com/errata/RHSA-2026:3406",
             "https://access.redhat.com/security/cve/CVE-2025-14104",
             "https://bugzilla.redhat.com/2419369",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2419369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-14104",
             "https://errata.almalinux.org/9/ALSA-2026-1913.html",
-            "https://errata.rockylinux.org/RLSA-2026:1913",
+            "https://errata.rockylinux.org/RLSA-2026:1852",
             "https://linux.oracle.com/cve/CVE-2025-14104.html",
             "https://linux.oracle.com/errata/ELSA-2026-1913.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2025-14104",
             "https://www.cve.org/CVERecord?id=CVE-2025-14104"
           ],
           "PublishedDate": "2025-12-05T17:16:03.117Z",
-          "LastModifiedDate": "2026-02-17T10:15:57.08Z"
+          "LastModifiedDate": "2026-02-26T08:16:15.54Z"
         },
         {
           "VulnerabilityID": "CVE-2022-0563",
@@ -8435,6 +8735,43 @@
           ],
           "PublishedDate": "2022-02-21T19:15:08.393Z",
           "LastModifiedDate": "2025-06-09T16:15:33.237Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-3184",
+          "PkgID": "util-linux-extra@2.38.1-5+deb12u3",
+          "PkgName": "util-linux-extra",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/util-linux-extra@2.38.1-5%2Bdeb12u3?arch=amd64\u0026distro=debian-12.11",
+            "UID": "30ac64362504313"
+          },
+          "InstalledVersion": "2.38.1-5+deb12u3",
+          "Status": "affected",
+          "Layer": {
+            "DiffID": "sha256:ace34d1d784c01e3f9d156687089e8f58f786e23ccd097bdbbf337d6d28b3783"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-3184",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Title": "util-linux: util-linux: Access control bypass due to improper hostname canonicalization",
+          "Description": "No description is available for this CVE.",
+          "Severity": "LOW",
+          "VendorSeverity": {
+            "redhat": 1
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-3184",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-3184",
+            "https://www.cve.org/CVERecord?id=CVE-2026-3184"
+          ]
         },
         {
           "VulnerabilityID": "CVE-2023-45853",
@@ -8584,7 +8921,7 @@
           "FixedVersion": "1.20.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45590",
@@ -8712,7 +9049,7 @@
           "FixedVersion": "0.7.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-47764",
@@ -8763,7 +9100,7 @@
           "FixedVersion": "0.7.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-47764",
@@ -8933,7 +9270,7 @@
           "FixedVersion": "4.19.2, 5.0.0-beta.3",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-29041",
@@ -8994,7 +9331,7 @@
           "FixedVersion": "4.20.0, 5.0.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43796",
@@ -9109,7 +9446,7 @@
             "UID": "9164b23f843c2453"
           },
           "InstalledVersion": "9.0.5",
-          "FixedVersion": "10.2.1",
+          "FixedVersion": "10.2.1, 9.0.6, 8.0.5, 7.4.7, 6.2.1, 5.1.7, 4.2.4, 3.1.3",
           "Status": "fixed",
           "Layer": {
             "DiffID": "sha256:cd1cd7c2e57b8121f760e24ee1943adf4b9dea43ce5940b71f80ffdeace35f0e"
@@ -9158,6 +9495,112 @@
           "LastModifiedDate": "2026-02-20T19:12:33.527Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-27903",
+          "PkgID": "minimatch@9.0.5",
+          "PkgName": "minimatch",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/minimatch/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/minimatch@9.0.5",
+            "UID": "9164b23f843c2453"
+          },
+          "InstalledVersion": "9.0.5",
+          "FixedVersion": "10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.3",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:cd1cd7c2e57b8121f760e24ee1943adf4b9dea43ce5940b71f80ffdeace35f0e"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27903",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "minimatch: minimatch: Denial of Service due to unbounded recursive backtracking via crafted glob patterns",
+          "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Prior to version 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.3, `matchOne()` performs unbounded recursive backtracking when a glob pattern contains multiple non-adjacent `**` (GLOBSTAR) segments and the input path does not match. The time complexity is O(C(n, k)) -- binomial -- where `n` is the number of path segments and `k` is the number of globstars. With k=11 and n=30, a call to the default `minimatch()` API stalls for roughly 5 seconds. With k=13, it exceeds 15 seconds. No memoization or call budget exists to bound this behavior. Any application where an attacker can influence the glob pattern passed to `minimatch()` is vulnerable. The realistic attack surface includes build tools and task runners that accept user-supplied glob arguments (ESLint, Webpack, Rollup config), multi-tenant systems where one tenant configures glob-based rules that run in a shared process, admin or developer interfaces that accept ignore-rule or filter configuration as globs, and CI/CD pipelines that evaluate user-submitted config files containing glob patterns. An attacker who can place a crafted pattern into any of these paths can stall the Node.js event loop for tens of seconds per invocation. The pattern is 56 bytes for a 5-second stall and does not require authentication in contexts where pattern input is part of the feature. Versions 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.3 fix the issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-407"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-27903",
+            "https://github.com/isaacs/minimatch",
+            "https://github.com/isaacs/minimatch/commit/0bf499aa45f5059b56809cc3b75ff3eafeb8d748",
+            "https://github.com/isaacs/minimatch/security/advisories/GHSA-7r86-cg39-jmmj",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-27903",
+            "https://www.cve.org/CVERecord?id=CVE-2026-27903"
+          ],
+          "PublishedDate": "2026-02-26T02:16:21.353Z",
+          "LastModifiedDate": "2026-02-27T17:21:22.37Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-27904",
+          "PkgID": "minimatch@9.0.5",
+          "PkgName": "minimatch",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/minimatch/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/minimatch@9.0.5",
+            "UID": "9164b23f843c2453"
+          },
+          "InstalledVersion": "9.0.5",
+          "FixedVersion": "10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, 3.1.4",
+          "Status": "fixed",
+          "Layer": {
+            "DiffID": "sha256:cd1cd7c2e57b8121f760e24ee1943adf4b9dea43ce5940b71f80ffdeace35f0e"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-27904",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Title": "minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions",
+          "Description": "minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Prior to version 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.4, nested `*()` extglobs produce regexps with nested unbounded quantifiers (e.g. `(?:(?:a|b)*)*`), which exhibit catastrophic backtracking in V8. With a 12-byte pattern `*(*(*(a|b)))` and an 18-byte non-matching input, `minimatch()` stalls for over 7 seconds. Adding a single nesting level or a few input characters pushes this to minutes. This is the most severe finding: it is triggered by the default `minimatch()` API with no special options, and the minimum viable pattern is only 12 bytes. The same issue affects `+()` extglobs equally. Versions 10.2.3, 9.0.7, 8.0.6, 7.4.8, 6.2.2, 5.1.8, 4.2.5, and 3.1.4 fix the issue.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-1333"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-27904",
+            "https://github.com/isaacs/minimatch",
+            "https://github.com/isaacs/minimatch/commit/11d0df6165d15a955462316b26d52e5efae06fce",
+            "https://github.com/isaacs/minimatch/security/advisories/GHSA-23c5-xmqv-rm74",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-27904",
+            "https://www.cve.org/CVERecord?id=CVE-2026-27904"
+          ],
+          "PublishedDate": "2026-02-26T02:16:21.76Z",
+          "LastModifiedDate": "2026-02-27T17:16:23.773Z"
+        },
+        {
           "VulnerabilityID": "CVE-2024-45296",
           "PkgID": "path-to-regexp@0.1.7",
           "PkgName": "path-to-regexp",
@@ -9170,7 +9613,7 @@
           "FixedVersion": "1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-45296",
@@ -9233,7 +9676,7 @@
           "FixedVersion": "0.1.12",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-52798",
@@ -9292,7 +9735,7 @@
           "FixedVersion": "6.14.1",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-15284",
@@ -9332,7 +9775,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2025-15284"
           ],
           "PublishedDate": "2025-12-29T23:15:42.703Z",
-          "LastModifiedDate": "2026-02-10T20:16:43.62Z"
+          "LastModifiedDate": "2026-02-26T19:57:11.663Z"
         },
         {
           "VulnerabilityID": "CVE-2026-2391",
@@ -9347,7 +9790,7 @@
           "FixedVersion": "6.14.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-2391",
@@ -9364,12 +9807,17 @@
           ],
           "VendorSeverity": {
             "ghsa": 1,
+            "nvd": 3,
             "redhat": 2
           },
           "CVSS": {
             "ghsa": {
               "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
               "V3Score": 3.7
+            },
+            "nvd": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
             },
             "redhat": {
               "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
@@ -9385,7 +9833,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-2391"
           ],
           "PublishedDate": "2026-02-12T05:17:11.187Z",
-          "LastModifiedDate": "2026-02-12T16:16:19.44Z"
+          "LastModifiedDate": "2026-02-24T20:13:51.837Z"
         },
         {
           "VulnerabilityID": "CVE-2024-43799",
@@ -9400,7 +9848,7 @@
           "FixedVersion": "0.19.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43799",
@@ -9462,7 +9910,7 @@
           "FixedVersion": "1.16.0, 2.1.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-43800",
@@ -9755,7 +10203,7 @@
           "FixedVersion": "5.2.4, 6.2.3, 7.5.10, 8.17.1",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:0f805403c2ca9b63d08c25ef6a2e89d1597aed4229d8f1f85f167a57954b0fc3"
+            "DiffID": "sha256:64f1465f9d996ceecbb7ad50d8dcda9af394c3d010419c71e2b49b80e024ee62"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-37890",
