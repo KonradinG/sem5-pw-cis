@@ -1,4 +1,4 @@
-FROM python:3.14
+FROM python:3.15
 
 LABEL maintainer="Johann Hipolito"
 LABEL org.opencontainers.image.title="python-3.14-secured"
